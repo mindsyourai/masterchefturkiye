@@ -123,6 +123,29 @@ details.week-group>summary:hover{border-color:var(--gold)}
 .kind-tag.tartisma{background:var(--red-bg);color:var(--red-dark)}
 .kind-tag.gundem{background:var(--gold-bg);color:#7A5E00}
 
+/* Konsey Oyları */
+.vote-ep{background:#fff;border:1px solid var(--line);border-left:5px solid var(--red);border-radius:12px;padding:16px 18px;margin:14px 0}
+.vote-ep h3{margin:2px 0 0;font-size:1.2rem;color:var(--ink)}
+.vote-ep h4{margin:16px 0 8px;font-family:Georgia,serif;color:var(--red-dark);font-size:1.08rem;border-bottom:1px solid var(--line);padding-bottom:4px}
+.vote-bars{margin:8px 0}
+.vote-bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:.93rem}
+.vote-bar-name{width:92px;text-align:right;font-weight:700;flex:none}
+.vote-bar-track{flex:1;background:var(--cream);border:1px solid var(--line);border-radius:999px;height:16px;overflow:hidden}
+.vote-bar-fill{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--red2))}
+.vote-bar-row.top .vote-bar-fill{background:linear-gradient(90deg,var(--gold),#D4AF37)}
+.vote-bar-row.top .vote-bar-name{color:var(--red)}
+.vote-bar-count{width:56px;flex:none;color:var(--muted);font-size:.9rem}
+.ballot-chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.ballot-chip{background:var(--gold-bg);border:1px solid var(--gold);border-radius:999px;padding:4px 11px;font-size:.88rem}
+.ballot-chip .conf{color:var(--muted);font-size:.78rem}
+.ballot-chip.unknown{background:var(--cream);border:1px dashed var(--line);color:var(--muted)}
+.vote-post{border:1px dashed var(--gold);background:#FFFDF5;border-radius:10px;padding:10px 14px;margin:10px 0}
+.vote-post h4{margin:0 0 6px;border-bottom:none;padding-bottom:0}
+.vote-coverage{color:var(--muted);font-size:.88rem;margin:10px 0 0}
+.vote-source{color:var(--muted);font-size:.85rem;margin:6px 0 0}
+.vote-sub{margin:20px 0 8px}
+.vote-sub h3{margin:0 0 4px;font-size:1.15rem}
+
 /* İstatistikler */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
 .stat-board{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:14px 16px}
