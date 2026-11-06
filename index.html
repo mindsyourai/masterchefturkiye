@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MasterChef Türkiye 2026 — Gün Gün Yemek Listesi</title>
-<meta name="description" content="MasterChef Türkiye 2026: gün gün yemek listesi — kim ne pişirdi, kim kazandı. Transkriptler ve web kaynaklarından, gün gün eklenerek.">
+<title>MasterChef Türkiye 2026 — Yarışmacılar, Bölümler, Tartışmalar</title>
+<meta name="description" content="MasterChef Türkiye 2026: yarışmacı profilleri, gün gün yemek listesi, tartışmalar ve istatistikler. Transkriptler ve web kaynaklarından.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="hero">
   <h1>MasterChef Türkiye 2026</h1>
-  <p>Gün gün yemek listesi — kim ne pişirdi, kim kazandı</p>
-  <p class="meta"><span id="updated">Son güncelleme: 6 Kasım 2026</span> · Jüri: Mehmet Yalçınkaya, Somer Sivrioğlu, Danilo Zanna</p>
+  <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 6 Kasım 2026</span></p>
+  <div class="kilim" aria-hidden="true"></div>
 </header>
 <nav class="sticky" aria-label="Sayfa içi gezinme">
-  <button type="button" data-goto="episodes-section">En son bölüm</button>
-  <button type="button" data-goto="apron-section">Ana kadro</button>
-  <button type="button" data-goto="episodes-section">Haftalar</button>
   <button type="button" data-goto="contestants-section">Yarışmacılar</button>
+  <button type="button" data-goto="episodes-section">Bölümler</button>
+  <button type="button" data-goto="discussions-section">Tartışmalar</button>
+  <button type="button" data-goto="stats-section">İstatistikler</button>
   <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
   <span class="search-info" id="search-info"></span>
 </nav>
@@ -25,33 +26,43 @@
   <p class="note" id="site-note"></p>
   <section class="summary" id="summary-strip" aria-label="Özet"></section>
 
-  <section id="episodes-section">
-    <h2>Gün Gün Bölümler — En Son Önce</h2>
-    <p class="note"><span id="ep-count"></span> · ✅ transkriptten doğrulandı · 🌐 webden doğrulandı, transkript bekleniyor · ❓ teyit edilecek · Bilinmeyen yemek/kazanan uydurulmaz, "bilinmiyor — transkript bekleniyor" diye yazılır.</p>
-    <div id="episodes"></div>
-  </section>
-
-  <section id="apron-section">
-    <h2>Ana Kadro — Önlük Sırasıyla (20 Kişi)</h2>
-    <p class="note">Ana kadro 8 Ağustos 2026'da tamamlandı. 28 Temmuz'da önlük yok — yedek kadro seçimleri günü. 3 Ağustos'ta önlük verildiğine dair webde kayıt bulunamadı.</p>
-    <div id="apron-table"></div>
-  </section>
-
   <section id="contestants-section">
     <h2>Yarışmacılar</h2>
-    <p class="note">Bilinen galibiyetler yalnızca kaynaklarda açıkça yazanlardır. <span id="contestants-info"></span></p>
-    <div class="filter-row">
+    <p class="note">Karta tıklayın — her yarışmacının yemekleri, galibiyetleri, kaptanlıkları, pota geçmişi ve zaman çizelgesi açılır. Sayılar kayıtlardan hesaplanır; yalnızca kaynaklarda yazan galibiyetler gösterilir. <span id="contestants-info"></span></p>
+    <div class="filter-row" role="group" aria-label="Durum filtresi">
       <button type="button" data-status="all" class="active">Tümü</button>
       <button type="button" data-status="active">Yarışıyor</button>
       <button type="button" data-status="out">Elendi / Seçmelerde elendi</button>
     </div>
     <div class="contestants-grid" id="contestants-grid"></div>
+    <div id="contestant-detail" class="detail-panel" hidden></div>
+    <h3>Önlük Sırası — Ana Kadro (20 Kişi)</h3>
+    <p class="note">Ana kadro 8 Ağustos 2026'da tamamlandı. 28 Temmuz'da önlük yok — yedek kadro seçimleri günü. 3 Ağustos'ta önlük verildiğine dair webde kayıt bulunamadı.</p>
+    <div id="apron-table"></div>
+  </section>
+
+  <section id="episodes-section">
+    <h2>Gün Gün Bölümler — En Son Önce</h2>
+    <p class="note"><span id="ep-count"></span> · ✅ transkriptten doğrulandı · 🌐 webden doğrulandı, transkript bekleniyor · ❓ teyit edilecek · Bilinmeyen yemek/kazanan uydurulmaz, "bilinmiyor — transkript bekleniyor" diye yazılır. Hafta başlıklarına tıklayarak açıp kapatabilirsiniz.</p>
+    <div id="episodes"></div>
+  </section>
+
+  <section id="discussions-section">
+    <h2>Tartışmalar &amp; Gündem</h2>
+    <p class="note">Yemeklerin dışında, bölüm transkriptlerinde geçen tartışma ve gündemler — ayrı bir bölümde toplanmıştır. Özetler tarafsız ve olgusaldır; diyalog uydurulmaz, taraf tutulmaz.</p>
+    <div id="discussions"></div>
+  </section>
+
+  <section id="stats-section">
+    <h2>İstatistikler</h2>
+    <p class="note">Aşağıdaki sıralamalar sayfadaki kayıtlardan (transkriptler, web listesi ve yemek kayıtları) hesaplanır; elle yazılmış sayılar değildir. Web haftalarında yalnızca kazananın adı bilindiği için bazı yemek kayıtları eksiktir — bu, sıralamaları etkileyebilir.</p>
+    <div id="stats"></div>
   </section>
 
   <section id="sources-section">
     <h2>Kaynaklar ve Eksikler</h2>
     <ul>
-      <li>Transkriptler: 17 Temmuz 2026 (1. Gün), 3 Kasım 2026, 5 Kasım 2026 — bu üç bölüm yemek yemek tam.</li>
+      <li>Transkriptler: 17 Temmuz, 2 Kasım (kaptanlık), 3 Kasım, 5 Kasım 2026 — bu dört bölüm yemek yemek tam.</li>
       <li>Web: TV8, yemek.com ve haber siteleri (YouTube kullanılmadı).</li>
       <li>Eksik: 28 Eylül–3 Ekim ve 5–8 Ekim dokunulmazlık oyunları araştırılmadı; çoğu hafta takım oyunu menüleri webde yazmıyor, transkript bekleniyor.</li>
       <li>Teyit edilecek: 5 Kasım Tolga–Enes düellosu (ASR bozuk), 6 Kasım bölümü (yalnızca Instagram yorumları), Ayşe'nin Empanada önlüğü (yalnızca Instagram özet hesabı), bazı takım listeleri ve hafta numaraları.</li>
@@ -60,9 +71,11 @@
   </section>
 </main>
 <footer>
-  MasterChef Türkiye 2026 — gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Veriler: LISTE.md ve LISTE_WEB.md
+  <div class="kilim" aria-hidden="true"></div>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Veriler: LISTE.md ve LISTE_WEB.md</p>
 </footer>
 <script src="data.js"></script>
+<script src="discussions.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
