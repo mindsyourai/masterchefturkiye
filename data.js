@@ -407,10 +407,10 @@ EPISODES.push(
   summary:"Hafta 6: kaptanlar Armağan (Mavi, profiterol) / Bahar (Kırmızı). 15 Eyl: 1. oyun — Kırmızı kazandı; potaya ilk 2 aday Şiringül, Tolgahan. 16 Eyl: düello — Mavi kazandı; bireysel Kübra, Faruk'u seçti, oylamayla 4. aday Şadi oldu. 18 Eyl: 80'ler yemekleri — Mavi kazandı; bireysel Burçin, Tolga'yı seçti. 17 ve 19 Eyl oyunları bilinmiyor.",
   captains:{blue:"Armağan Kırant", red:"Bahar Kaya"},
   teams:{blue:["Armağan","Muhammed","Nurten","Enes","Batuhan","Ayşe","Tolgahan","Şiringül","Recep","Emre Can"], red:["Bahar","Nilay","Şükran","Tolga","Hasan Alp","Eyüp Can","Burçin","Faruk","Kübra","Şadi"]},
-  pot:["Şiringül Kaya","Tolgahan Özden","Faruk Garip","Şadi Altınay","Tolga Çakuş","Bahar Kaya","Kübra Satılmış","Nurten Ocak Tamer","Ayşe Nur İnal"],
+  pot:["Şiringül Kaya","Tolgahan Özden","Faruk Garip","Şadi Altınay","Tolga Çakuş"],
   eliminated:"Faruk Garip",
-  games:[{name:"Eleme — Tur 1: tahin", detail:"Final: ördek bastilla — Faruk vs Tolgahan / Kübra / Ayşe grubu.", winner:"Faruk Garip elendi"}],
-  notes:["Bu haftanın yemek listesi transkript bekleniyor."]
+  games:[{name:"Eleme — Tur 1: tahin", detail:"Final: ördek bastilla — Faruk vs Tolgahan.", winner:"Faruk Garip elendi"}],
+  notes:["Bu haftanın yemek listesi transkript bekleniyor.","Düzeltme (6 Kas 2026): web kaynağındaki 9 kişilik pota listesi hatalıydı — Bahar, Kübra, Nurten, Ayşe çıkarıldı. 2 Kasım transkriptinde şefler Bahar'ın 13 haftadır hiç potaya girmediğini söylüyor; Kübra o hafta bireysel dokunulmazlık kazanmıştı."]
 },
 {
   id:"2026-09-13", date:"13 Eylül 2026", weekday:"Pazar", week:"5. Hafta", title:"Eleme — Cansu Elendi", source:"web",
