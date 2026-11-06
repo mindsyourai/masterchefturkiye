@@ -24,7 +24,7 @@ const SITE = {
     {name:"Emre İrkilmez", date:"25 Ekim 2026"},
     {name:"Hasan Alp Karabacak", date:"1 Kasım 2026"}
   ],
-  transcriptComplete: ["17 Temmuz 2026","3 Kasım 2026","5 Kasım 2026"]
+  transcriptComplete: ["17 Temmuz 2026","2 Kasım 2026","3 Kasım 2026","5 Kasım 2026"]
 };
 
 /* Yarışmacılar — wins: yalnızca kaynaklarda açıkça yazan galibiyetler.
@@ -48,7 +48,7 @@ const CONTESTANTS = [
   {name:"Simge Çıtak", short:"Simge", apron:16, group:"4. Grup", status:"elendi", elimDate:"30 Ağustos 2026", wins:["4 Ağu — önlük (pideli köfte)","25 Ağu — bireysel dokunulmazlık"]},
   {name:"Bahar Kaya", short:"Bahar", apron:17, group:"4. Grup", status:"yarışıyor", wins:["5 Ağu — önlük (levreği merkeze alan yaratıcı tabak)","8 Eyl — bireysel dokunulmazlık (helva-i hakani)","21 Eki — bireysel dokunulmazlık"]},
   {name:"Şükran Boyraz", short:"Şükran", apron:18, group:"4. Grup", status:"yarışıyor", wins:["6 Ağu — önlük (sebzeli gyoza)"]},
-  {name:"Armağan Kırant", short:"Armağan", apron:19, group:"4. Grup", status:"yarışıyor", wins:["7 Ağu — önlük (asma yaprağını merkeze alan yaratıcı tabaklar)","19 Ağu — bireysel dokunulmazlık","2 Eyl — bireysel dokunulmazlık (incir)"]},
+  {name:"Armağan Kırant", short:"Armağan", apron:19, group:"4. Grup", status:"yarışıyor", wins:["7 Ağu — önlük (asma yaprağını merkeze alan yaratıcı tabaklar)","19 Ağu — bireysel dokunulmazlık","2 Eyl — bireysel dokunulmazlık (incir)","2 Kas — kaptanlık (kıymalı kaşarlı pide, Mavi kaptan)"]},
   {name:"Koray Saygı", short:"Koray", apron:20, group:"4. Grup", status:"elendi", elimDate:"6 Eylül 2026", wins:["8 Ağu — önlük (crème brûlée)"]},
   {name:"Recep Batur", short:"Recep", apron:null, group:"Yedek 1", status:"elendi", elimDate:"27 Eylül 2026", wins:["15 Ağu — yedekten ana kadroya (testi kebabı)"]},
   {name:"Emre İrkilmez", short:"Emre", apron:null, group:"Yedek 2", status:"elendi", elimDate:"25 Ekim 2026", wins:["18 Ağu — yedekten ana kadroya (ratatuy)","30 Eyl — bireysel dokunulmazlık (meyveli tart)"]},
@@ -133,11 +133,28 @@ const EPISODES = [
   notes:["Oylamada Şadi–Ayşe tartışması; Şadi oy pusulasını Ayşe'nin önünde masaya vurdu; Mehmet Şef ikisini de stüdyodan çıkardı."]
 },
 {
-  id:"2026-11-02", date:"2 Kasım 2026", weekday:"Pazartesi", week:"13. Hafta", title:"Kaptanlık", source:"web",
-  summary:"Armağan pide (45 dk) ile Mavi kaptan oldu; Şükran'ı Kırmızı kaptan seçti.",
+  id:"2026-11-02", date:"2 Kasım 2026", weekday:"Pazartesi", week:"13. Hafta", title:"Kaptanlık — Pide", source:"transkript",
+  summary:"Pide, 45 dakika — her yarışmacı iki pide yaptı (biri bitmiş, biri fırına hazır). Kazanan Armağan Kırant, Mavi kaptan oldu; Şükran'ı Kırmızı kaptan seçti. Bahar Kaya 13 haftadır potaya hiç girmedi — MasterChef rekoru.",
   captains:{blue:"Armağan Kırant", red:"Şükran Boyraz"},
   teams:{blue:["Armağan","Muhammed","Tolga","Kübra","Şadi","Tolgahan","Ayşe"], red:["Şükran","Bahar","Burçin","Nurten","Eyüp Can","Nilay","Enes"]},
-  games:[{name:"Kaptanlık oyunu — pide", duration:"45 dk", winner:"Armağan Kırant (Mavi kaptan)", detail:"Şükran Boyraz Kırmızı kaptan seçildi."}]
+  games:[{name:"Kaptanlık oyunu — pide", duration:"45 dk", winner:"Armağan Kırant — 1. (Mavi kaptan, 2. kaptanlığı)", detail:"Serbest pide türü. Her yarışmacı iki pide yaptı: biri bitmiş, biri fırına girmeye hazır; şefler ilkini tattı, en iyi ikiyi (Nurten ve Armağan) tekrar tattı.",
+    dishes:[
+      {dish:"Kıymalı kaşarlı pide (Musa Dağdeviren'in Türk mutfağı kitabından hamur tarifi; kıyma sulu, ince, çıtır kenarlar, kenarlarda kaşar)", name:"Armağan Kırant", rank:"1.", note:"Kazanan — Mavi kaptan (2. kaptanlığı; ilki profiterol, 6. hafta)."},
+      {dish:"Bursa cantığı (kıyma, domates, biber, soğan suyu; hamur kepekle açıldı, buzlu su; dışı çıtır içi yumuşak, sulu; elle bütün yenir; Tatar kökenli)", name:"Enes Vardar", rank:"2. (çıkarım)", note:"Şefler: 'son dönemin en iyi iki pidesi' (Enes ve Armağan). 2.'lik çıkarım — son ikiye Enes ve Armağan kaldı, Armağan kazandı."},
+      {dish:"Soslu pide (alt: soğan + domates + bol tereyağı; kavurma — antrikotu kendisi tereyağında haşladı — pastırma, sucuk, kaşar, yumurta sarısı)", name:"Muhammed Yahya Haliloğlu", rank:"3.", note:"Biraz kuru olmasına rağmen işçilik, kenarlar ve üç pide de lezzetli."},
+      {dish:"Karışık 3 bölümlü pide (kuşbaşılı + kavurmalı kaşarlı + sucuklu yumurtalı)", name:"Tolga Çakuş", rank:"4.", note:"Sucuklu-yumurtalı orta bölüm şefleri şaşırttı, üst malzeme fazla, biraz ıslak; hamuru çok iyi."},
+      {dish:"Sütlü peynirli ev pidesi (beyaz peynir + kaşar, süt, soğan, kapya biber, maydanoz, kuru nane; saçta yapılan çökelekli börek usulü)", name:"Şükran Boyraz", rank:"5.", note:"Hiç protein yok — ilk 6'nın en ilginç pidesi; hamur biraz kalın/az pişmiş."},
+      {dish:"Develi cıvıklısı (kıyma, kapya biber, yeşil biber, domates, karabiber, pul biber, tuz)", name:"Nurten Ocak Tamer", rank:"6.", note:"Kıyma cıvıklı için çok fazla (az, küçük kuşbaşı ve sulu olmalı); tabanı ince ve çıtır — övüldü."},
+      {dish:"Kavurmalı kaşarlı pide (kapya + yeşil biber, pul/karabiber)", name:"Şadi Altınay", rank:"—", note:"Lezzetli ama biraz kuru."},
+      {dish:"Kıymalı, kuşbaşılı, soğanlı, biberli, maydanozlu pide", name:"Elif Nilay Özgen", rank:"—", note:"İçi çok iyi, hamur yumuşak; ama bir köşesini kesmiş."},
+      {dish:"Kuşbaşılı pide + karamelize soğan (antrikot, kaşar, yumurta sarısı, yeşil/kırmızı biber)", name:"Tolgahan Özden", rank:"—", note:""},
+      {dish:"Sade kuşbaşılı pide (domates, biber, hepsi çiğden)", name:"Burçin Oğuz", rank:"—", note:""},
+      {dish:"Kıymalı kaşarlı pide (sütlü mayalı hamur; kıyma kuru, altı iyi)", name:"Kübra Satılmış", rank:"—", note:""},
+      {dish:"Urfa pidesi (domates ve biber ayrı zırhta, domatesin suyu çektirilmiş, kenarlara bol kaşar, kalın hamur)", name:"Eyüp Can Güneş", rank:"—", note:"Hamur kalın, biraz daha pişebilirdi, fazla beyaz."},
+      {dish:"Kıymalı soğanlı pide, altında beyaz peynir + pastırma + yumurta (kendine üçüncü pide de yaptı)", name:"Ayşe Nur İnal", rank:"—", note:"Pidesinde kusur yok, sadece ilk ikiden iyi değil."},
+      {dish:"Kıymalı kaşarlı pide (domates, soğan, biber, maydanoz, kaşar hafif çıtır)", name:"Bahar Kaya", rank:"—", note:"Harcı güzel, hamur ince değil."}
+    ]}],
+  notes:["Takım seçimi: Armağan Şükran'ı Kırmızı kaptan seçti (sürpriz — genelde takım arkadaşı olarak seçerdi). Armağan'ın seçim sırası: 1. Muhammed, 2. Tolga, 3. Kübra, 4. Şadi, 5. Tolgahan, 6. Ayşe. Şükran'ın seçim sırası: 1. Burçin, 2. Nurten, 3. Eyüp Can, 4. Nilay, 5. Enes.","Bahar Kaya: 13 haftadır potaya hiç girmedi — MasterChef rekoru (önceki rekor Onur, 11 hafta).","Instagram takipçi sayıları (bölümde söylendi): Muhammed 114.000, Eyüp Can 50.500, Ayşe 41.000, Enes 35.500, Armağan 28.500, Bahar 26.600, Tolga 25.500, Nurten 18.000, Burçin 14.000, Kübra 14.000, Nilay 13.600, Şadi 13.000, Şükran 6.000, Tolgahan 5.500.","Not: ASR bir yerde bu kaptanlığı '14. hafta' diye geçiriyor; hafta numaralandırmamız değişmedi (13. hafta, 2–8 Kasım)."]
 },
 {
   id:"2026-11-01", date:"1 Kasım 2026", weekday:"Pazar", week:"12. Hafta", title:"Eleme — Hasan Alp Elendi", source:"web",
