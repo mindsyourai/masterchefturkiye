@@ -18,6 +18,7 @@
   <button type="button" data-goto="contestants-section">Yarışmacılar</button>
   <button type="button" data-goto="episodes-section">Bölümler</button>
   <button type="button" data-goto="discussions-section">Tartışmalar</button>
+  <button type="button" data-goto="votes-section">Konsey Oyları</button>
   <button type="button" data-goto="stats-section">İstatistikler</button>
   <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
   <span class="search-info" id="search-info"></span>
@@ -53,6 +54,12 @@
     <div id="discussions"></div>
   </section>
 
+  <section id="votes-section">
+    <h2>Konsey Oyları</h2>
+    <p class="note">Konsey oyları gizli — ekranda yalnızca toplamlar açıklanır. Bireysel oylar, sadece yarışmacının kamerada kendi söylediği oylar; söylenmeyen oylar "bilinmiyor" olarak kalır, toplamdan tahmin edilmez.</p>
+    <div id="votes"></div>
+  </section>
+
   <section id="stats-section">
     <h2>İstatistikler</h2>
     <p class="note">Aşağıdaki sıralamalar sayfadaki kayıtlardan (transkriptler, web listesi ve yemek kayıtları) hesaplanır; elle yazılmış sayılar değildir. Web haftalarında yalnızca kazananın adı bilindiği için bazı yemek kayıtları eksiktir — bu, sıralamaları etkileyebilir.</p>
@@ -76,6 +83,7 @@
 </footer>
 <script src="data.js"></script>
 <script src="discussions.js"></script>
+<script src="votes.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
