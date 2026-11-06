@@ -314,6 +314,19 @@
       h += "<h4>Bireysel Dokunulmazlıklar</h4><ul class='wins-list'>" +
         st.immunity.map(function (x) { return "<li>🛡️ " + esc(x.label) + "</li>"; }).join("") + "</ul>";
     }
+    var vp = voteProfile(name);
+    if (vp.received.length || vp.given.length) {
+      h += "<h4>Konsey Oyları</h4>";
+      if (vp.received.length) {
+        h += "<p><strong>Aldığı oylar:</strong></p><ul class='wins-list'>" +
+          vp.received.map(function (v) { return "<li>🗳️ " + esc(v.label) + "</li>"; }).join("") + "</ul>";
+      }
+      if (vp.given.length) {
+        h += "<p><strong>Aday gösterdiği:</strong></p><ul class='wins-list'>" +
+          vp.given.map(function (v) { return "<li>🎯 " + esc(v.label) + "</li>"; }).join("") + "</ul>";
+      }
+      h += "<p class='note'>Bireysel konsey oyları yalnızca kamerada söylenenlerdir; söylenmeyen oylar bilinmiyor olarak kalır, toplamdan tahmin edilmez.</p>";
+    }
     if (best.length) {
       h += "<h4>En İyi Tabakları</h4><ul class='wins-list'>" +
         best.map(function (d) { return "<li>⭐ <strong>" + esc(d.dish) + "</strong> <span class='dish-date'>(" + esc(trDate(d.d)) + " — " + esc(d.g) + ")</span></li>"; }).join("") + "</ul>";
@@ -396,6 +409,155 @@
         '<p class="disc-source">Kaynak: ' + esc(d.source) + "</p></article>";
     }).join("");
   }
+  /* ---- Konsey Oyları ---- */
+  function shortOf(full) {
+    for (var i = 0; i < CONTESTANTS.length; i++) {
+      if (CONTESTANTS[i].name === full) return CONTESTANTS[i].short;
+    }
+    return full;
+  }
+  /* Türkçe ek uyumu (kısa isimler için): -e hali ('e/'a) ve -i hali ('yi/'yı/'yu/'yü) */
+  function lastVowel(s) {
+    var vs = "aıoueiöü";
+    s = String(s);
+    for (var i = s.length - 1; i >= 0; i--) {
+      if (vs.indexOf(s[i].toLowerCase()) !== -1) return s[i].toLowerCase();
+    }
+    return "e";
+  }
+  function datSuffix(s) {
+    var v = lastVowel(s);
+    return (v === "a" || v === "ı" || v === "o" || v === "u") ? "'a" : "'e";
+  }
+  function accSuffix(s) {
+    var v = lastVowel(s);
+    if (v === "a" || v === "ı") return "'yı";
+    if (v === "e" || v === "i") return "'yi";
+    if (v === "o" || v === "u") return "'yu";
+    return "'yü";
+  }
+  function confLabel(conf) {
+    var c = String(conf || "").toLowerCase();
+    if (c.indexOf("yuksek") === 0) return "yüksek güven";
+    if (c.indexOf("orta") === 0) return "orta güven";
+    if (c.indexOf("dusuk") === 0) return "düşük güven";
+    return "";
+  }
+  /* votes_cast kaydında confidence "birinci/ikinci oy" sırasıyla yazılır (ör. "yuksek/dusuk") */
+  function ballotConf(rec, idx) {
+    var parts = String(rec.confidence || "").split("/");
+    if (parts.length > idx) return parts[idx].trim();
+    return (parts[0] || "").trim();
+  }
+  function isPostResult(rec) {
+    return (rec.note || "").indexOf("SONUÇ AÇIKLANDIKTAN SONRA") !== -1;
+  }
+  function ballotChip(voter, target, conf) {
+    var who = voter === "belirsiz" ? "belirsiz" : shortOf(voter);
+    return '<span class="ballot-chip">' + esc(who) + " → " + esc(shortOf(target)) +
+      (conf ? ' <span class="conf">(' + esc(confLabel(conf)) + ")</span>" : "") + "</span>";
+  }
+  function renderVotes() {
+    if (typeof VOTES === "undefined" || !VOTES.episodes) { el("votes").innerHTML = "<p>Veri yüklenemedi (votes.js bulunamadı).</p>"; return; }
+    var h = "";
+    /* "Boş oy" bulgusu */
+    h += '<div class="vote-post"><h4>📌 "Boş oy" nedir?</h4><p style="margin:0">Yarışmacıların "boş oy" dediği oy, ciddiye alınmayan bir isme yazılan <strong>göstermelik</strong> oydur ve toplamda <strong>sayılır</strong> — gerçek boş pusula değildir. Kanıt: 5 Kasım\'da Bahar\'ın Nilay\'a "boş oy" dediği oy, Nilay\'ın toplamındaki <strong>1 oy</strong> olarak sayıldı.</p></div>';
+    VOTES.episodes.forEach(function (ep) {
+      var dateTr = trDate(ep.date);
+      var names = Object.keys(ep.totals).sort(function (a, b) { return ep.totals[b] - ep.totals[a]; });
+      var max = names.length ? ep.totals[names[0]] : 0;
+      var chips = [], postChips = [], unknownCounted = 0, unknownPost = 0;
+      (ep.votes_cast || []).forEach(function (rec) {
+        var post = isPostResult(rec);
+        rec.votes.forEach(function (t, i) {
+          if (t === "bilinmiyor") { if (post) unknownPost++; else unknownCounted++; return; }
+          if (post) postChips.push(ballotChip(rec.voter, t, ballotConf(rec, i)));
+          else chips.push(ballotChip(rec.voter, t, ballotConf(rec, i)));
+        });
+      });
+      h += '<article class="vote-ep" data-search="' + esc(JSON.stringify(ep).toLowerCase()) + '">';
+      h += '<header class="ep-head"><div><div class="ep-date">' + esc(dateTr) + " · Konsey · " + esc(ep.team) + ' takım</div>' +
+        "<h3>" + esc(dateTr) + " Konsey Oylaması</h3></div>" +
+        '<span class="badge badge-t">✅ transkript</span></header>';
+      h += '<h4>Toplamlar <span class="dur">(' + ep.totals_sum + " sayılan oy)</span></h4>";
+      h += '<div class="vote-bars">' + names.map(function (n, i) {
+        var pct = max ? Math.round(ep.totals[n] / max * 100) : 0;
+        return '<div class="vote-bar-row' + (i === 0 ? " top" : "") + '"><span class="vote-bar-name">' + esc(shortOf(n)) + '</span>' +
+          '<span class="vote-bar-track"><span class="vote-bar-fill" style="width:' + pct + '%"></span></span>' +
+          '<span class="vote-bar-count"><b>' + ep.totals[n] + "</b> oy</span></div>";
+      }).join("") + "</div>";
+      h += '<p class="winner-line">🎯 ' + esc(ep.outcome) + "</p>";
+      h += "<h4>Söylenen bireysel oylar</h4>";
+      h += chips.length ? '<div class="ballot-chips">' + chips.join("") + "</div>" : "<p class='note'>Kamerada söylenen bireysel oy yok.</p>";
+      if (unknownCounted) h += '<p><span class="ballot-chip unknown">bilinmiyor (' + unknownCounted + " oy)</span> <span class='note'>— kamerada söylenmedi, toplamdan tahmin edilmedi.</span></p>";
+      if (postChips.length || unknownPost) {
+        h += '<div class="vote-post"><h4>⏰ Sonuç açıklandıktan sonra kullanılan oylar <span class="dur">(toplamlara dahil değil)</span></h4>' +
+          (postChips.length ? '<div class="ballot-chips">' + postChips.join("") + "</div>" : "") +
+          (unknownPost ? '<p><span class="ballot-chip unknown">bilinmiyor (' + unknownPost + " oy)</span></p>" : "") + "</div>";
+      }
+      if (ep.coverage_note) h += '<p class="vote-coverage">' + esc(ep.coverage_note) + "</p>";
+      if (ep.source) h += '<p class="vote-source">Kaynak: ' + esc(ep.source) + "</p>";
+      h += "</article>";
+    });
+    /* Dokunulmazlık kazananının aday seçimleri */
+    if (VOTES.dokunulmazlik_secimleri && VOTES.dokunulmazlik_secimleri.length) {
+      var picks = VOTES.dokunulmazlik_secimleri;
+      h += '<div class="vote-sub" data-search="' + esc(JSON.stringify(picks).toLowerCase()) + '"><h3>Dokunulmazlık Kazananının Aday Seçimleri</h3>' +
+        '<p class="note">Bireysel dokunulmazlığı kazanan yarışmacı, potaya gidecek bir aday seçer. ' + picks.length + " kayıt.</p>" +
+        '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Tarih</th><th>Kazanan</th><th>Aday gösterdiği</th><th>Kaynak</th></tr></thead><tbody>' +
+        picks.map(function (p) {
+          return "<tr><td>" + esc(trDate(p.date)) + "</td><td><strong>" + esc(p.winner) + "</strong></td><td><strong>" + esc(p.picked) + "</strong>" +
+            (p.confidence === "dusuk" ? ' <span class="rank">❓ teyit edilecek</span>' : "") +
+            (p.note ? "<br><span class='note'>" + esc(p.note) + "</span>" : "") + "</td><td>" +
+            (p.source && p.source.indexOf("transkript") === 0 ? "✅ transkript" : "🌐 web") + "</td></tr>";
+        }).join("") + "</tbody></table></div></div>";
+    }
+    /* Kaptan beraberlik kararları */
+    if (VOTES.kaptan_beraberlik_kararlari && VOTES.kaptan_beraberlik_kararlari.length) {
+      var ties = VOTES.kaptan_beraberlik_kararlari;
+      h += '<div class="vote-sub" data-search="' + esc(JSON.stringify(ties).toLowerCase()) + '"><h3>Kaptan Beraberlik Kararları</h3>' +
+        '<p class="note">Konsey oylamasında eşitlik çıkarsa kaptan karar verir. ' + ties.length + " kayıt.</p>" +
+        '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Tarih</th><th>Kaptan</th><th>Eşitlik</th><th>Seçtiği</th></tr></thead><tbody>' +
+        ties.map(function (t) {
+          return "<tr><td>" + esc(trDate(t.date)) + "</td><td><strong>" + esc(t.captain) + "</strong></td><td>" + esc(t.tie) + "</td><td><strong>" + esc(t.picked) + "</strong></td></tr>";
+        }).join("") + "</tbody></table></div></div>";
+    }
+    if (VOTES.web_konsey_notu) h += '<p class="note">' + esc(VOTES.web_konsey_notu) + "</p>";
+    el("votes").innerHTML = h;
+  }
+  /* Bir yarışmacının konsey kaydı — VOTES'tan çalışma anında hesaplanır, elle yazılmaz */
+  function voteProfile(name) {
+    var received = [], given = [];
+    if (typeof VOTES === "undefined") return { received: received, given: given };
+    (VOTES.episodes || []).forEach(function (ep) {
+      if (ep.totals && ep.totals[name]) {
+        received.push({ date: ep.date, label: trDate(ep.date) + " konseyi — " + ep.totals[name] + " oy aldı" });
+      }
+      (ep.votes_cast || []).forEach(function (rec) {
+        if (rec.voter !== name) return;
+        var post = isPostResult(rec);
+        rec.votes.forEach(function (t, i) {
+          var suffix = post ? " (sonuç açıklandıktan sonra — toplamlara dahil değil)" : "";
+          if (t === "bilinmiyor") {
+            given.push({ date: ep.date, label: trDate(ep.date) + " konseyi — 1 oyu bilinmiyor" + suffix });
+          } else {
+            given.push({ date: ep.date, label: trDate(ep.date) + " konseyi — " + shortOf(t) + datSuffix(shortOf(t)) + " oy verdi" + suffix + " (" + confLabel(ballotConf(rec, i)) + ")" });
+          }
+        });
+      });
+    });
+    (VOTES.dokunulmazlik_secimleri || []).forEach(function (p) {
+      if (p.picked === name) received.push({ date: p.date, label: trDate(p.date) + " — " + p.winner + "'ın dokunulmazlık seçimiyle potaya girdi" + (p.confidence === "dusuk" ? " (teyit edilecek)" : "") });
+      if (p.winner === name) given.push({ date: p.date, label: trDate(p.date) + " — dokunulmazlığı kazanıp " + shortOf(p.picked) + accSuffix(shortOf(p.picked)) + " potaya gönderdi" + (p.confidence === "dusuk" ? " (teyit edilecek)" : "") });
+    });
+    (VOTES.kaptan_beraberlik_kararlari || []).forEach(function (t) {
+      if (t.picked === name) received.push({ date: t.date, label: trDate(t.date) + " — oylama eşitliğinde kaptan " + shortOf(t.captain) + " onu seçti" });
+      if (t.captain === name) given.push({ date: t.date, label: trDate(t.date) + " — kaptan olarak oylama eşitliğinde " + shortOf(t.picked) + accSuffix(shortOf(t.picked)) + " seçti" });
+    });
+    received.sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
+    given.sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
+    return { received: received, given: given };
+  }
   function renderStats() {
     function top(list, key, label, n) {
       var arr = list.filter(function (x) { return x[key] > 0; }).sort(function (a, b) { return b[key] - a[key]; }).slice(0, n || 5);
@@ -420,7 +582,7 @@
   }
   function applySearch() {
     var q = (el("search").value || "").trim().toLowerCase();
-    var epShown = 0, discShown = 0;
+    var epShown = 0, discShown = 0, voteShown = 0;
     document.querySelectorAll("#episodes .ep").forEach(function (card) {
       var hit = !q || card.getAttribute("data-search").indexOf(q) !== -1;
       card.style.display = hit ? "" : "none";
@@ -436,9 +598,14 @@
       card.style.display = hit ? "" : "none";
       if (hit) discShown++;
     });
+    document.querySelectorAll("#votes .vote-ep, #votes .vote-sub").forEach(function (card) {
+      var hit = !q || card.getAttribute("data-search").indexOf(q) !== -1;
+      card.style.display = hit ? "" : "none";
+      if (hit) voteShown++;
+    });
     renderContestants();
     var anyContestant = document.querySelectorAll("#contestants-grid .contestant").length;
-    el("search-info").textContent = q ? epShown + " bölüm · " + anyContestant + " yarışmacı · " + discShown + " tartışma eşleşti — '" + el("search").value.trim() + "'" : "";
+    el("search-info").textContent = q ? epShown + " bölüm · " + anyContestant + " yarışmacı · " + discShown + " tartışma · " + voteShown + " konsey kaydı eşleşti — '" + el("search").value.trim() + "'" : "";
     el("contestants-info").textContent = q ? anyContestant + " yarışmacı eşleşti" : "";
   }
   function init() {
@@ -452,6 +619,7 @@
     renderApron();
     renderEpisodes();
     renderDiscussions();
+    renderVotes();
     renderStats();
     var search = el("search");
     if (search) search.addEventListener("input", applySearch);
