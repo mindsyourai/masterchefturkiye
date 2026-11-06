@@ -1,0 +1,46 @@
+episode_date,vote_type,voter,voted_for,source,source_confidence,notes
+2026-11-03,konsey,Muhammed Yahya Haliloğlu,Ayşe Nur İnal,transkript_03.11.2026,yuksek,1:56:34 'Ayşe kusura bakma'; 5 Kas özeti 18:07'de Muhammed'in Ayşe'ye 'boş oy adı altında' oy attığı anlatılıyor.
+2026-11-03,konsey,Tolga Çakuş,Ayşe Nur İnal,transkript_03.11.2026,yuksek,2:00:26 'Ben bir Ayşe'ye verdim geçmeyen tabak'.
+2026-11-03,konsey,Şadi Altınay,Ayşe Nur İnal,transkript_05.11.2026,yuksek,"5 Kas bölümü 18:50, Ayşe: 'Şadi abi bana attı'."
+2026-11-03,konsey,Ayşe Nur İnal,Şadi Altınay,transkript_03.11.2026,orta,"1:57:25 'Sıra şimdi Ayşe'da' — sıra Ayşe'nin; 1:57:29-42 'O kişi sensin Şadi abi'. DÜZELTME: önceki sürümde konuşmacı yanlışlıkla Nilay yazılmıştı — Nilay o hafta Kırmızı takımdaydı, Mavi konseyinde oy kullanamaz. Konuşmacı tespiti sıra anonsuna dayanır (ASR'da konuşmacı etiketi yok), güven orta."
+2026-11-03,konsey,Ayşe Nur İnal,bilinmiyor,transkript_03.11.2026,dusuk,"2. oy: kendi ifadesiyle 'boş oy' (1:57:32 'iki tane boş oy seçtim'); toplamlar 14 isimli oy gösterdiği için göstermelik oy olması muhtemel, hedef tespit edilemedi."
+2026-11-03,konsey,Tolga Çakuş,bilinmiyor,transkript_03.11.2026,dusuk,2. oy: 2:01:21 'Boş oy ya' — hedef tespit edilemedi; toplam tutarsızlığı notuna bakınız (votes.json bos_oy_notu).
+2026-11-03,konsey,Muhammed Yahya Haliloğlu,bilinmiyor,transkript_03.11.2026,dusuk,"2. oy: 1:57:05 'öncelikle boş oylar katıyorum' — ASR bozuk, hedef tespit edilemedi."
+2026-11-03,konsey,Kübra Satılmış,bilinmiyor,transkript_05.11.2026,dusuk,5 Kas özeti 15:33-16:04'te konuşmacı 'bir boş oy attı' diyor; konuşmacının Kübra olduğu dolaylı çıkarım ('Ayşe ben hariç herkesin oyunu aldı') — kesin değil; 2. oyunun hedefi de bilinmiyor.
+2026-11-05,konsey,Şükran Boyraz,Eyüp Can Güneş,transkript_05.11.2026,yuksek,2:09:47 'Eyüpçüğüm seni yazdım'.
+2026-11-05,konsey,Şükran Boyraz,Enes Vardar,transkript_05.11.2026,orta,"2:09:56 'seni yazdım Enesciğim' — cümle ASR'da bozuk, hedef çıkarım."
+2026-11-05,konsey,Elif Nilay Özgen,Eyüp Can Güneş,transkript_05.11.2026,yuksek,2:10:46 'ilk oyumda... Eyüp Can'.
+2026-11-05,konsey,Elif Nilay Özgen,Burçin Oğuz,transkript_05.11.2026,orta,2:11:30 'Burçin yazıyor gerçekten yanlışlıkla yazdım' — pusulada Burçin yazıyor; kendisi Enes yazmak istediğini söylüyor.
+2026-11-05,konsey,belirsiz,Eyüp Can Güneş,transkript_05.11.2026,dusuk,2:11:45 'ilk oyumu oyuna göre attım. 2'de 0 olduğu için Eyüp Can'ı attım.' Konuşmacı ASR'dan tespit edilemedi; muhtemelen Burçin veya Enes.
+2026-11-05,konsey,belirsiz,Şükran Boyraz,transkript_05.11.2026,dusuk,2:11:59 'boş oy gerekiyordu. Şükran'ı yazdım.' Göstermelik oy; konuşmacı tespit edilemedi.
+2026-11-05,konsey,Eyüp Can Güneş,Şükran Boyraz,transkript_05.11.2026,orta,"2:12:35 'sana yemin ederim yanlışlıkla yazdım' — Şükran'a hitaben; ASR bozuk, konuşmacının Eyüp Can olduğu bağlamdan çıkarım."
+2026-11-05,konsey,Bahar Kaya,Eyüp Can Güneş,transkript_05.11.2026,yuksek,2:19:00 'oylarımı Eyüp Can ilk önce sana verdim'.
+2026-11-05,konsey,Bahar Kaya,Elif Nilay Özgen,transkript_05.11.2026,yuksek,2:19:08 'onun dışında Nilay'a da boş oy attım' — göstermelik oy; toplamda Nilay 1 olarak sayıldı.
+2026-11-05,konsey,Nurten Ocak Tamer,Burçin Oğuz,transkript_05.11.2026,yuksek,SONUÇ AÇIKLANDIKTAN SONRA kullanıldı (2:19:56 'Nurten sen de oylarını kullan'); açıklanan toplamlara dahil değil. 2:20:22 'Burçin sana da kimse atmaz diye attım'.
+2026-08-11,dokunulmazlik_secimi,Elif Nilay Özgen,Batuhan Nazikoğlu,web,dusuk,Kazananın Nilay mı Nilay+Burçin mi olduğu belirsiz (LISTE_WEB.md).
+2026-08-19,dokunulmazlik_secimi,Armağan Kırant,Ayşe Nur İnal,web,yuksek,
+2026-09-02,dokunulmazlik_secimi,Armağan Kırant,Şükran Boyraz,web,yuksek,
+2026-09-08,dokunulmazlik_secimi,Bahar Kaya,Cansu Şöhret,web,yuksek,
+2026-09-11,dokunulmazlik_secimi,Batuhan Nazikoğlu,Recep Batur,web,yuksek,
+2026-09-16,dokunulmazlik_secimi,Kübra Satılmış,Faruk Garip,web,yuksek,
+2026-09-18,dokunulmazlik_secimi,Burçin Oğuz,Tolga Çakuş,web,yuksek,
+2026-09-22,dokunulmazlik_secimi,Burçin Oğuz,Recep Batur,web,yuksek,
+2026-09-26,dokunulmazlik_secimi,Elif Nilay Özgen,Muhammed Yahya Haliloğlu,web,yuksek,
+2026-09-30,dokunulmazlik_secimi,Emre İrkilmez,Kübra Satılmış,web,yuksek,
+2026-10-13,dokunulmazlik_secimi,Şadi Altınay,Şiringül Kaya,web,yuksek,
+2026-10-15,dokunulmazlik_secimi,Tolga Çakuş,Burçin Oğuz,web,yuksek,
+2026-10-16,dokunulmazlik_secimi,Ayşe Nur İnal,Tolga Çakuş,web,yuksek,
+2026-10-17,dokunulmazlik_secimi,Muhammed Yahya Haliloğlu,Şükran Boyraz,web,yuksek,
+2026-10-20,dokunulmazlik_secimi,Burçin Oğuz,Enes Vardar,web,yuksek,
+2026-10-21,dokunulmazlik_secimi,Bahar Kaya,Ayşe Nur İnal,web,yuksek,
+2026-10-22,dokunulmazlik_secimi,Enes Vardar,Elif Nilay Özgen,web,yuksek,
+2026-10-24,dokunulmazlik_secimi,Elif Nilay Özgen,Tolgahan Özden,web,yuksek,
+2026-10-27,dokunulmazlik_secimi,Muhammed Yahya Haliloğlu,Nurten Ocak Tamer,web,yuksek,
+2026-10-28,dokunulmazlik_secimi,Tolgahan Özden,Şükran Boyraz,web,yuksek,
+2026-11-03,dokunulmazlik_secimi,Kübra Satılmış,Tolgahan Özden,transkript_03.11.2026,yuksek,
+2026-11-05,dokunulmazlik_secimi,Nurten Ocak Tamer,Bahar Kaya,transkript_05.11.2026,yuksek,
+2026-11-06,dokunulmazlik_secimi,Tolgahan Özden,Şadi Altınay,web,dusuk,Yalnızca resmî Instagram yorumlarından gelen iddia — teyit edilecek.
+2026-10-15,kaptan_beraberlik,Kübra Satılmış,Nurten Ocak Tamer,web,yuksek,Oylama eşitliği (Nurten / Kübra) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
+2026-10-17,kaptan_beraberlik,Muhammed Yahya Haliloğlu,Enes Vardar,web,yuksek,Oylama eşitliği (Şadi / Enes) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
+2026-10-21,kaptan_beraberlik,Şadi Altınay,Eyüp Can Güneş,web,yuksek,Oylama eşitliği (belirtilmedi) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
+2026-10-27,kaptan_beraberlik,Hasan Alp Karabacak,Enes Vardar,web,yuksek,Oylama eşitliği (Enes / Şükran) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
