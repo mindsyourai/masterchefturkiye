@@ -123,3 +123,51 @@ Ana kadro seçimleri 18 Jul–8 Aug (winners' dishes only; #3 Hasan Alp, #7 Demi
 | Faruk Garip | 2 | Beyhan | 1 | Fazlı | 1 |
 
 **Rows by source:** transkript_17.07.2026: 22 · transkript_02.11.2026: 14 · transkript_03.11.2026: 21 · transkript_05.11.2026: 21 · web: 199. **Rows by episode_type:** ana_kadro_secim 58 · kaptanlik 23 · takim_oyunu 28 · bireysel_dokunulmazlik 101 · odul_oyunu 2 · eleme 65.
+
+## Konsey oyları — votes.csv / votes.json / votes.js
+
+Kim kime oy verdi. Üç dosya aynı veriyi tutar: `votes.csv` (45 satır), `votes.json` (başlıklı yapı),
+`votes.js` (web uygulaması için `const VOTES`).
+
+### Kural — gizli pusula
+Konsey oyları gizli pusulayla kullanılır; yayında yalnızca TOPLAMLAR açıklanır. Bu yüzden bireysel
+oylar yalnızca yarışmacının kendi oyunu kamerada sözlü olarak söylediği durumlarda kaydedildi.
+Toplamlardan geriye dönük oy çıkarımı YAPILMADI; bilinmeyen oylar `bilinmiyor` bırakıldı.
+
+### "Boş oy" ne demek?
+Yarışmacıların "boş oy" dediği oy, genelde ciddiye alınmayan bir isme yazılan GÖSTERMELİK oydur ve
+toplamda SAYILIR — gerçek boş pusula değildir. Kanıt: 5 Kasım'da Bahar "Nilay'a da boş oy attım"
+dedi ve Nilay açıklanan toplamda 1 oy aldı. 3 Kasım'da Ayşe ve Tolga "boş oy" dediklerini söylese de
+açıklanan toplamlar (5+4+3+2=14) 7 seçmen × 2 oyun tamamının isimli olduğunu gösteriyor.
+
+### Bilinenler (transkript)
+- **3 Kasım 2026 (Mavi):** toplam Ayşe 5, Muhammed 4, Tolga 3, Şadi 2 (=14). Söylenen oylar: 4/14 —
+  Muhammed→Ayşe, Tolga→Ayşe, Şadi→Ayşe (5 Kas özetinde Ayşe'nin sözü), Ayşe→Şadi. Kalan 10 oy bilinmiyor.
+  Ara sayım (Tolgahan'dan sonra): Ayşe 3, Muhammed 3, Tolga 2, Şadi 2. Sonuç: Ayşe 2. aday oldu.
+- **5 Kasım 2026 (Kırmızı):** toplam Eyüp Can 5, Enes 3, Şükran 2, Nilay 1, Burçin 1 (=12). Söylenen oylar:
+  9/12 sayılan oy + Nurten'in sonuç-sonrası 1 oyu — Şükran→Eyüp Can, Enes; Nilay→Eyüp Can, Burçin
+  (yanlışlıkla, Enes demek istemiş); belirsiz konuşmacı→Eyüp Can, Şükran (göstermelik); Bahar→Eyüp Can,
+  Nilay (göstermelik "boş oy"); Eyüp Can→Şükran (yanlışlıkla, orta güven); Nurten→Burçin (sonuç açıklandıktan sonra,
+  toplamlara dahil değil). Kalan 3 oy bilinmiyor (Eyüp Can'ın 2. oyu + son seçmenin 2 oyu). Ara sayım (Bahar'dan önce): Eyüp Can 4, Enes 3, Şükran 2, Burçin 1. Sonuç:
+  Eyüp Can 4. aday oldu. Not: Nurten'in oyları toplam dışı olduğu için sayılan oy 12'dir (6 seçmen × 2);
+  7. seçmen Nurten'in 2 oyu ayrıca atıldı.
+
+### Düzeltme (6 Kasım 2026) — 3 Kasım konuşmacısı
+İlk sürümde 3 Kasım 1:57:29'daki "O kişi sensin Şadi abi" konuşması yanlışlıkla Nilay'a yazılmıştı.
+Doğrusu **Ayşe→Şadi**: sıra anonsu "Sıra şimdi Ayşe'da" diyor ve Nilay o hafta Kırmızı takımdaydı,
+Mavi konseyinde oy kullanamaz. Konuşmacı tespiti sıra anonsuna dayandığı için güven **orta** (ASR'da
+konuşmacı etiketi yok). Ayrıca 5 Kasım özetinde geçen "Muhammed ve Şadi'ye oy vererek" cümlesindeki
+oy verenin kim olduğu ASR'dan tespit edilemedi — satır olarak eklenmedi.
+
+### Web haftaları
+Konsey TOPLAMLARI hiçbir web kaynağında yazmıyor — yalnızca sonuç (potaya giden aday) biliniyor. Bu
+yüzden web haftaları için konsey satırı yok; yalnızca dokunulmazlık kazananının seçimi (23 satır) ve
+kaptan beraberlik kararları (4 satır: 15 Eki Kübra→Nurten, 17 Eki Muhammed→Enes, 21 Eki Şadi→Eyüp Can,
+27 Eki Hasan Alp→Enes) listelendi.
+
+### votes.csv sütunları
+`episode_date, vote_type, voter, voted_for, source, source_confidence, notes` —
+vote_type: `konsey` (gizli pusula oyu) · `dokunulmazlik_secimi` (dokunulmazlık kazananının aday seçimi) ·
+`kaptan_beraberlik` (oylama eşitliğinde kaptan kararı). `voted_for` = `bilinmiyor` ise oy atıldığı
+söylendi ama hedef tespit edilemedi; `belirsiz` (voter) ise hedef söylendi ama konuşmacı ASR'dan
+tespit edilemedi. Her satırın `notes` alanında dayandığı transkript zaman damgası var.
