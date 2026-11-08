@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yarışmacılar — MasterChef Türkiye 2026</title>
+<meta name="description" content="MasterChef Türkiye 2026 yarışmacıları: profiller, yemekler, galibiyetler, kaptanlıklar ve pota geçmişi.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <h1>MasterChef Türkiye 2026</h1>
+  <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 8 Kasım 2026</span></p>
+  <div class="kilim" aria-hidden="true"></div>
+</header>
+<nav class="sticky" aria-label="Sayfa gezinmesi">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="yarismacilar.html" class="active">Yarışmacılar</a>
+  <a href="bolumler.html">Bölümler</a>
+  <a href="takimlar.html">Takımlar</a>
+  <a href="tartismalar.html">Tartışmalar</a>
+  <a href="konsey.html">Konsey Oyları</a>
+  <a href="istatistikler.html">İstatistikler</a>
+  <a href="kaynaklar.html">Kaynaklar &amp; Uyarılar</a>
+  <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
+  <span class="search-info" id="search-info"></span>
+</nav>
+<main>
+  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
+  <section id="contestants-section">
+    <h2>Yarışmacılar</h2>
+    <p class="note">Karta tıklayın — her yarışmacının yemekleri, galibiyetleri, kaptanlıkları, pota geçmişi ve zaman çizelgesi açılır. Sayılar kayıtlardan hesaplanır; yalnızca kaynaklarda yazan galibiyetler gösterilir. Kimin kaç kez potaya gittiğini görmek cesaret ister — Ayşe 8 kez gitti, biz saymaktan yorulmadık. <span id="contestants-info"></span></p>
+    <div class="filter-row" role="group" aria-label="Durum filtresi">
+      <button type="button" data-status="all" class="active">Tümü</button>
+      <button type="button" data-status="active">Yarışıyor</button>
+      <button type="button" data-status="out">Elendi / Seçmelerde elendi</button>
+    </div>
+    <div class="contestants-grid" id="contestants-grid"></div>
+    <div id="contestant-detail" class="detail-panel" hidden></div>
+    <h3>Önlük Sırası — Ana Kadro (20 Kişi)</h3>
+    <p class="note">Ana kadro 8 Ağustos 2026'da tamamlandı. 28 Temmuz'da önlük yok — yedek kadro seçimleri günü. 3 Ağustos'ta önlük verildiğine dair webde kayıt bulunamadı.</p>
+    <div id="apron-table"></div>
+  </section>
+</main>
+<footer>
+  <div class="kilim" aria-hidden="true"></div>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="kaynaklar.html">Kaynaklar, Yöntem &amp; Uyarılar</a></p>
+</footer>
+<button type="button" id="to-top" aria-label="Yukarı çık" hidden>↑ Yukarı</button>
+<script src="data.js"></script>
+<script src="discussions.js"></script>
+<script src="votes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
