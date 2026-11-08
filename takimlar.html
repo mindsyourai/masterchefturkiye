@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Takımlar — MasterChef Türkiye 2026</title>
+<meta name="description" content="MasterChef Türkiye 2026 takımları: hafta hafta kadrolar, en iyi ikililer ve en güçlü haftalık kadrolar.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <h1>MasterChef Türkiye 2026</h1>
+  <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 8 Kasım 2026</span></p>
+  <div class="kilim" aria-hidden="true"></div>
+</header>
+<nav class="sticky" aria-label="Sayfa gezinmesi">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="yarismacilar.html">Yarışmacılar</a>
+  <a href="bolumler.html">Bölümler</a>
+  <a href="takimlar.html" class="active">Takımlar</a>
+  <a href="tartismalar.html">Tartışmalar</a>
+  <a href="konsey.html">Konsey Oyları</a>
+  <a href="istatistikler.html">İstatistikler</a>
+  <a href="kaynaklar.html">Kaynaklar &amp; Uyarılar</a>
+  <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
+  <span class="search-info" id="search-info"></span>
+</nav>
+<main>
+  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
+  <section id="teams-section">
+    <h2>Takımlar — Hafta Hafta Kadrolar</h2>
+    <p class="note">Her haftanın kadrosu, haftanın kaptanlık bölümündeki (haftanın ilk günü) takım listesinden alınır; kaptanlar 👑 ile işaretlidir. Hafta içi kadro değişikliği kayıtlarda yok. İsme tıklayınca yarışmacının profili açılır. <span id="teams-info"></span></p>
+    <div id="teams"></div>
+  </section>
+
+  <section id="combos-section">
+    <h2>En İyi Takım Kombinasyonları 🏆</h2>
+    <p class="note">Hangi ikili birlikteyken kazanıyor, hangi haftanın kadrosu en güçlüydü? Hepsi bölüm kayıtlarından hesaplanır — tahmin yok, sadece skor.</p>
+    <div id="team-combos"></div>
+  </section>
+</main>
+<footer>
+  <div class="kilim" aria-hidden="true"></div>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="kaynaklar.html">Kaynaklar, Yöntem &amp; Uyarılar</a></p>
+</footer>
+<button type="button" id="to-top" aria-label="Yukarı çık" hidden>↑ Yukarı</button>
+<script src="data.js"></script>
+<script src="discussions.js"></script>
+<script src="votes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
