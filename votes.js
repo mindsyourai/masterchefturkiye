@@ -1,736 +1,2334 @@
 /* MasterChef Türkiye 2026 — konsey oyları (kim kime oy verdi)
-   Kaynak: 3 ve 5 Kasım 2026 bölüm transkriptleri, 24 Ekim–1 Kasım 2026 transkriptleri + web haftaları (LISTE_WEB.md).
+   Kaynak: tam sezon transkript dosyası (tum_kompakt.txt, 132 bölüm, 13.06–07.11.2026);
+   27 Ekim bölümü dosyada yok, o bölümün oyları 24.10–01.11 transkript grubundan.
    Not: Oylar konseyde söylenen/açıklanan haliyle kaydedildi. 'boş oy' = yarışmacının
    göstermelik yazdığı isim (yine de sayılır). Konsey sonuçları açıklanmadığında
    bilinmeyen oylar 'bilinmiyor' yazılır, uydurulmaz.
-   15–22 Ekim oyları 27 Ekim bölümü açılış özetinden (Armağan, Muhammed'in notlarından okudu).
    Bu dosyadaki tüm oylar doğrudan bölüm transkriptlerinden çıkarıldı.
+   11 Ağustos seçmen listesi düzeltmesi (2026-11-08): Ayşe Nur İnal → Batuhan Nazikoğlu.
 */
 const VOTES = {
-  "project": "MasterChef Türkiye 2026 — konsey oyları (kim kime oy verdi)",
-  "built_date": "2026-11-07",
-  "coverage": "Konsey oyları gizli pusulayla kullanılır; yayında yalnızca TOPLAMLAR açıklanır. Aşağıdaki bireysel oylar, yalnızca yarışmacının kendi oyunu kamerada sözlü olarak söylediği durumlarda kaydedilmiştir. Toplamlardan geriye dönük oy çıkarımı YAPILMADI; bilinmeyen oylar 'bilinmiyor' olarak bırakıldı. Kısmi liste, dürüst listedir. 24 Ekim–1 Kasım 2026 transkriptleriyle 15, 16, 20, 21, 22 ve 24 Ekim konseylerinden söylenen oylar eklendi (7 Kasım 2026); 15–22 Ekim oyları 27 Ekim bölümü açılış özetinden (Armağan, Muhammed'in notlarından okudu) — ikinci el, orta güven; 24 Ekim oyları doğrudan 24 Ekim transkriptinden.",
-  "bos_oy_notu": "Yarışmacıların 'boş oy' dediği oy, genelde ciddiye alınmayan bir isme yazılan GÖSTERMELİK oydur ve toplamda SAYILIR — gerçek boş pusula değildir. Kanıt: 5 Kasım'da Bahar 'Nilay'a da boş oy attım' dedi ve Nilay açıklanan toplamda 1 oy aldı. 3 Kasım'da Ayşe ve Tolga 'boş oy' dediklerini söylese de açıklanan toplamlar (5+4+3+2=14) 7 seçmen x 2 oyun tamamının isimli olduğunu gösteriyor; bu yüzden 3 Kasım'daki 'boş oy' satırları göstermelik oy olarak yorumlandı ve hedefi tespit edilemeyenler 'bilinmiyor' bırakıldı.",
-  "episodes": [
+ "project": "MasterChef Türkiye 2026 — konsey oyları (kim kime oy verdi) — TAM SEZON",
+ "built_date": "2026-11-08",
+ "coverage": "Konsey oyları gizli pusulayla kullanılır; yayında yalnızca TOPLAMLAR açıklanır. Aşağıdaki bireysel oylar, yalnızca yarışmacının kendi oyunu kamerada sözlü olarak söylediği durumlarda kaydedilmiştir. Toplamlardan geriye dönük oy çıkarımı YAPILMADI; bilinmeyen oylar 'bilinmiyor' olarak bırakıldı. Kısmi liste, dürüst listedir. Tam sezon transkript dosyasından (tum_kompakt.txt, 132 bölüm) çıkarıldı; 27 Ekim bölümü dosyada yok, o bölümün oyları 24.10–01.11 transkript grubundan korunuyor.",
+ "bos_oy_notu": "Yarışmacıların 'boş oy' dediği oy, genelde ciddiye alınmayan bir isme yazılan GÖSTERMELİK oydur ve toplamda SAYILIR — gerçek boş pusula değildir. Kanıt: 5 Kasım'da Bahar 'Nilay'a da boş oy attım' dedi ve Nilay açıklanan toplamda 1 oy aldı. 3 Kasım'da Ayşe ve Tolga 'boş oy' dediklerini söylese de açıklanan toplamlar (5+4+3+2=14) 7 seçmen x 2 oyun tamamının isimli olduğunu gösteriyor; bu yüzden 3 Kasım'daki 'boş oy' satırları göstermelik oy olarak yorumlandı ve hedefi tespit edilemeyenler 'bilinmiyor' bırakıldı. Aynı kural 16 Eyl (Bahar→Tolga), 18 Eyl (Şükran'a 1 oy), 21 Eki (Kübra'ya 1 oy) ve 28 Eki (isimsiz 1 oy) için de uygulandı.",
+ "teams_notu": "Takım üyelikleri transcripts/work/teams_weeks1-12.csv + transkriptten alındı; çelişmede transkript kazanır. İKİ DÜZELTME: (1) 8. hafta Kırmızı kaptan tabloda Şadi yazıyor ama transkript Nurten diyor (28 Eyl kaptanlık bölümü L34148-34151: '8. hafta kırmızı takım kaptanlığı yapacak kişi... Nurten abla'; 01-03 Eki'de defalarca 'Kaptan Nurten'); 02 Eki konseyinde Nurten kaptan olarak potaya gitti. Şadi Kırmızı üye olarak kalır. (2) 1. hafta Kırmızı kaptan tabloda Armağan yazıyor; 10 Eki transkriptinde 'Ayşe Kaptan seçildi' (L74608) ve 'Ayşe'nin takım kaptanlığı gayet güzel' satırları var — AMA 11 Eki konsey toplamı 20 oy (10 Mavi seçmen × 2) ve tablonun Mavi listesi Ayşe dahil 10 kişi; Ayşe Kırmızı kaptan olsaydı Mavi 9 kişi kalır ve 20 oy çıkmazdı. Bu çelişki 10 Eki transkriptini inceleyen işçiye bırakıldı; bu dosyada 1. hafta takımları tabloya göre alındı (Ayşe Mavi seçmen).",
+ "episodes": [
+  {
+   "date": "2026-08-11",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Burçin Oğuz",
+    "Bahar Kaya",
+    "Kübra Satılmış",
+    "Tolga Çakuş",
+    "Eyüp Can Güneş",
+    "Hasan Alp Karabacak",
+    "Elif Nilay Özgen",
+    "Demirhan Ali Tekin",
+    "Şiringül Kaya",
+    "Batuhan Nazikoğlu"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Demirhan Ali Tekin": 6,
+    "Tolga Çakuş": 5,
+    "Kübra Satılmış": 5,
+    "Şiringül Kaya": 4
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Demirhan Ali Tekin 2. aday olarak potaya gitti (1. aday: Batuhan Nazikoğlu, Nilay'ın seçimi)",
+   "source": "transkript_11.08.2026",
+   "coverage_note": "Söylenen oy yok; 10 seçmen × 2 = 20, toplam tam. | DÜZELTME 2026-11-08: seçmen listesinde tablo hatası düzeltildi — Ayşe Nur İnal (Kırmızı kaptan) çıkarıldı, Batuhan Nazikoğlu (Mavi) eklendi; 10 seçmen × 2 oy = 20 toplam değişmedi."
+  },
+  {
+   "date": "2026-08-12",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Burçin Oğuz",
+    "Bahar Kaya",
+    "Kübra Satılmış",
+    "Tolga Çakuş",
+    "Eyüp Can Güneş",
+    "Hasan Alp Karabacak",
+    "Elif Nilay Özgen",
+    "Demirhan Ali Tekin",
+    "Şiringül Kaya",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
     {
-      "date": "2026-10-15",
-      "team": "bilinmiyor",
-      "voters_eligible": [
-        "Kübra Satılmış",
-        "Bahar Kaya",
-        "Nurten Ocak Tamer",
-        "Emre İrkilmez",
-        "Tolga Çakuş",
-        "Ayşe Nur İnal"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Kübra Satılmış",
-          "votes": [
-            "Ayşe Nur İnal",
-            "Nurten Ocak Tamer"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Kübra abla Ayşe ve Nurten ablaya oy vermiş.'"
-        },
-        {
-          "voter": "Bahar Kaya",
-          "votes": [
-            "Kübra Satılmış",
-            "Ayşe Nur İnal"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Bahar Kübra ve Ayşe'ye oy vermiş.'"
-        },
-        {
-          "voter": "Nurten Ocak Tamer",
-          "votes": [
-            "Bahar Kaya",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Nurten abla Bahar ve Kübra'ya.'"
-        },
-        {
-          "voter": "Emre İrkilmez",
-          "votes": [
-            "Kübra Satılmış",
-            "Nurten Ocak Tamer"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Emre Kübra ve Nurten'e.'"
-        },
-        {
-          "voter": "Tolga Çakuş",
-          "votes": [
-            "Nurten Ocak Tamer",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Tolga Nurten ve Kübra'ya.'"
-        },
-        {
-          "voter": "Ayşe Nur İnal",
-          "votes": [
-            "Nurten Ocak Tamer",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 5:20 — özet: 'Ayşe Nurten ve Kübra'ya.'"
-        }
-      ],
-      "totals": null,
-      "totals_sum": null,
-      "blank_votes": "",
-      "outcome": "Nurten Ocak Tamer potaya gitti (kaptan Kübra'nın eşitlik kararı — web kaydı; söylenen oylar eşitliği göstermiyor: Kübra 5, Nurten 4, bilinmeyen oylar var)",
-      "source": "transkript_27.10.2026 (açılış özeti 5:20-5:31 — Armağan, Muhammed'in notlarından okudu)",
-      "coverage_note": "10. hafta takım listesi bu transkriptte yok; seçmen kümesi tam bilinmiyor. Söylenen 12 oy (6 seçmen × 2); konsey toplamı açıklanmadı."
-    },
-    {
-      "date": "2026-10-16",
-      "team": "bilinmiyor",
-      "voters_eligible": [
-        "Tolga Çakuş"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Tolga Çakuş",
-          "votes": [
-            "Emre İrkilmez",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 7:02-7:48 — özet: 'Tolga Emre'ye yazdı. Tolga Kübra'ya yazdı.'"
-        }
-      ],
-      "totals": null,
-      "totals_sum": null,
-      "blank_votes": "",
-      "outcome": "bilinmiyor — konsey sonucu bu transkriptte geçmiyor (web kaydı: Ayşe dokunulmazlığı aldı, Tolga'yı gönderdi)",
-      "source": "transkript_27.10.2026 (açılış özeti 7:02-7:48)",
-      "coverage_note": "Söylenen 2 oy (1 seçmen); seçmen kümesi ve toplam bilinmiyor."
-    },
-    {
-      "date": "2026-10-20",
-      "team": "Kırmızı",
-      "voters_eligible": [
-        "Enes Vardar",
-        "Armağan Kırant",
-        "Emre İrkilmez",
-        "Elif Nilay Özgen",
-        "Burçin Oğuz",
-        "Hasan Alp Karabacak",
-        "Tolgahan Özden",
-        "Nurten Ocak Tamer"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Burçin Oğuz",
-          "votes": [
-            "Elif Nilay Özgen",
-            "bilinmiyor"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 9:04 — özet: 'Burçin abla Nilay'a oy atarken boş oy olarak verdiğini söyledi.' Nilay o gün toplam 3 oy aldı (9:47)."
-        }
-      ],
-      "totals": null,
-      "totals_sum": null,
-      "blank_votes": "Burçin'in Nilay'a oyu 'boş oy' olarak verildi (göstermelik).",
-      "outcome": "Emre İrkilmez 2. aday (oylama — 24 Eki 2:09:21 sayımından çıkarım; Enes 1. aday, Burçin'in seçimi)",
-      "source": "transkript_27.10.2026 (açılış özeti 9:04-9:47)",
-      "coverage_note": "Söylenen 1 oy; 15 bilinmiyor. Nilay'ın gün toplamı 3 oy olarak açıklandı (9:47)."
-    },
-    {
-      "date": "2026-10-21",
-      "team": "Mavi",
-      "voters_eligible": [
-        "Şadi Altınay",
-        "Muhammed Yahya Haliloğlu",
-        "Bahar Kaya",
-        "Eyüp Can Güneş",
-        "Şükran Boyraz",
-        "Ayşe Nur İnal",
-        "Kübra Satılmış",
-        "Tolga Çakuş"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Bahar Kaya",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 10:10 — özet: 'Bahar Eyüp Can'ı yazdı, Kübra'yı yazdı.'"
-        },
-        {
-          "voter": "Şadi Altınay",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Kübra Satılmış"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 10:10 — özet: 'Şadi abi Eyüp Can'ı yazdı, Kübra'yı yazdı.'"
-        },
-        {
-          "voter": "Muhammed Yahya Haliloğlu",
-          "votes": [
-            "Tolga Çakuş",
-            "Eyüp Can Güneş"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 10:11 — özet: 'Muhammed Tolga'yı yazdı, Eyüp Can'ı yazdı.'"
-        },
-        {
-          "voter": "Şükran Boyraz",
-          "votes": [
-            "Muhammed Yahya Haliloğlu",
-            "Eyüp Can Güneş"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 10:14 — özet: 'Şükran abla Muhammed'i yazdı, Eyüp Can'ı yazdı.'"
-        },
-        {
-          "voter": "Eyüp Can Güneş",
-          "votes": [
-            "Şükran Boyraz",
-            "bilinmiyor"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 10:31 — özet: 'Eyüp Can Şükran ablayı yazdı, bilmiyorum.'"
-        },
-        {
-          "voter": "Tolga Çakuş",
-          "votes": [
-            "Şükran Boyraz",
-            "bilinmiyor"
-          ],
-          "confidence": "dusuk",
-          "note": "27 Eki 10:31-10:34 — özet: 'Tolga Şükran ablayı yazdı, bilmiyorum.' İkinci oy 'bilmiyorum' (ASR: 'Tolga yazdı')."
-        }
-      ],
-      "totals": null,
-      "totals_sum": null,
-      "blank_votes": "Bahar ve Şadi'nin Kübra'ya oyları 'boş oy' (göstermelik) olarak verildi.",
-      "outcome": "Eyüp Can Güneş 4. aday (oylama — web kaydı: eşitlik sonrası kaptan Şadi'nin seçimi; transkript eşitliği doğrulamıyor, Eyüp söylenen oyların en çoğu: 4)",
-      "source": "transkript_27.10.2026 (açılış özeti 10:10-10:37 — Muhammed'in notlarından okundu)",
-      "coverage_note": "Söylenen 10 oy; 6 bilinmiyor. Konsey toplamı açıklanmadı."
-    },
-    {
-      "date": "2026-10-22",
-      "team": "Kırmızı",
-      "voters_eligible": [
-        "Enes Vardar",
-        "Armağan Kırant",
-        "Emre İrkilmez",
-        "Elif Nilay Özgen",
-        "Burçin Oğuz",
-        "Hasan Alp Karabacak",
-        "Tolgahan Özden",
-        "Nurten Ocak Tamer"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Armağan Kırant",
-          "votes": [
-            "Tolgahan Özden",
-            "Burçin Oğuz"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 13:56 — özet: 'Armağan Tolgahan'ı yazdı, Burçin'i yazdı.'"
-        },
-        {
-          "voter": "Emre İrkilmez",
-          "votes": [
-            "Burçin Oğuz",
-            "Hasan Alp Karabacak"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 13:56 — özet: 'Emre Burçin'i yazdı, Hasan Alp'i yazdı.'"
-        },
-        {
-          "voter": "Elif Nilay Özgen",
-          "votes": [
-            "Tolgahan Özden",
-            "Hasan Alp Karabacak"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 13:57 — özet: 'Nilay Tolgahan'ı yazdı, Hasan'ı yazdı.'"
-        },
-        {
-          "voter": "Enes Vardar",
-          "votes": [
-            "Burçin Oğuz",
-            "Nurten Ocak Tamer"
-          ],
-          "confidence": "orta",
-          "note": "27 Eki 13:57 — özet: 'Enes Burçin'i yazdı, Nurten'i yazdı.'"
-        },
-        {
-          "voter": "Hasan Alp Karabacak",
-          "votes": [
-            "Burçin Oğuz",
-            "bilinmiyor"
-          ],
-          "confidence": "orta",
-          "note": "24 Eki 3:08 — açılış özeti: 'Hasan Burçin'i yazdı' (10:21). İkinci oy geçmiyor."
-        }
-      ],
-      "totals": null,
-      "totals_sum": null,
-      "blank_votes": "",
-      "outcome": "Burçin Oğuz 6. aday (oylama — söylenen oyların en çoğu: 4)",
-      "source": "transkript_27.10.2026 (açılış özeti 13:56) + transkript_24.10.2026 (açılış özeti 3:08-3:25)",
-      "coverage_note": "Söylenen 9 oy; 7 bilinmiyor. 'Tolga' = Tolgahan Özden (24 Eki 7:37'de Tolgahan doğruluyor)."
-    },
-    {
-      "date": "2026-10-24",
-      "team": "Kırmızı",
-      "voters_eligible": [
-        "Enes Vardar",
-        "Armağan Kırant",
-        "Emre İrkilmez",
-        "Elif Nilay Özgen",
-        "Burçin Oğuz",
-        "Hasan Alp Karabacak",
-        "Tolgahan Özden",
-        "Nurten Ocak Tamer"
-      ],
-      "votes_cast": [
-        {
-          "voter": "belirsiz",
-          "votes": [
-            "Hasan Alp Karabacak",
-            "Armağan Kırant"
-          ],
-          "confidence": "dusuk",
-          "note": "24 Eki 2:14:20 — 'Bugün geçmeyen arkadaşları yazdım. Alp'i yazdım. Armağanı yazdım.' Konuşmacı ASR'dan tespit edilemedi; 2 belirsiz oy."
-        }
-      ],
-      "totals": {
-        "Hasan Alp Karabacak": 5,
-        "Armağan Kırant": 5,
-        "Nurten Ocak Tamer": 2
-      },
-      "totals_sum": 12,
-      "blank_votes": "",
-      "outcome": "Hasan Alp Karabacak 8. aday (eşitlik sonrası kaptan Enes'in kararı, 2:18:43). Sayılan 12 oyun 16 beklenen oya karşılık 4'ü transkriptte geçmiyor.",
-      "source": "transkript_24.10.2026 (konsey 2:14:20-2:19:24)",
-      "coverage_note": "Toplam açıklandı (5-5-2 = 12); 16 beklenen oyun 4'ü transkriptte yok. Kaptan Enes eşitliği Hasan Alp lehine bozdu: 'Hasan diyorum' (2:18:43)."
-    },
-    {
-      "date": "2026-11-03",
-      "team": "Mavi",
-      "voters_eligible": [
-        "Armağan Kırant",
-        "Muhammed Yahya Haliloğlu",
-        "Tolga Çakuş",
-        "Kübra Satılmış",
-        "Şadi Altınay",
-        "Tolgahan Özden",
-        "Ayşe Nur İnal"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Muhammed Yahya Haliloğlu",
-          "votes": [
-            "Ayşe Nur İnal",
-            "bilinmiyor"
-          ],
-          "confidence": "yuksek/dusuk",
-          "note": "1. oy: 1:56:34 'Ayşe kusura bakma' + 5 Kas özeti (18:07) Muhammed'in Ayşe'ye 'boş oy adı altında' oy attığı. 2. oy: 'boş oylar katıyorum' (ASR bozuk), hedef bilinmiyor."
-        },
-        {
-          "voter": "Ayşe Nur İnal",
-          "votes": [
-            "Şadi Altınay",
-            "bilinmiyor"
-          ],
-          "confidence": "orta/dusuk",
-          "note": "1:57:25 'Sıra şimdi Ayşe'da' — sıra Ayşe'nin; 1:57:29 'O kişi sensin Şadi abi'. DÜZELTME: önceki sürümde konuşmacı yanlışlıkla Nilay yazılmıştı — Nilay o hafta Kırmızı takımdaydı, Mavi konseyinde oy kullanamaz. 2. oy kendi ifadesiyle 'boş oy', hedef bilinmiyor."
-        },
-        {
-          "voter": "Tolga Çakuş",
-          "votes": [
-            "Ayşe Nur İnal",
-            "bilinmiyor"
-          ],
-          "confidence": "yuksek/dusuk",
-          "note": "1. oy: 2:00:26 'Ben bir Ayşe'ye verdim'. 2. oy: 2:01:21 'Boş oy ya', hedef bilinmiyor."
-        },
-        {
-          "voter": "Şadi Altınay",
-          "votes": [
-            "Ayşe Nur İnal",
-            "bilinmiyor"
-          ],
-          "confidence": "yuksek/dusuk",
-          "note": "1. oy: 5 Kas bölümü 18:50, Ayşe: 'Şadi abi bana attı'. 2. oy bilinmiyor (kavga sırasında oy pusulasını masaya vurdu; oyları zaten kullanılmıştı, 2:08:15)."
-        },
-        {
-          "voter": "Tolgahan Özden",
-          "votes": [
-            "bilinmiyor",
-            "bilinmiyor"
-          ],
-          "confidence": "dusuk",
-          "note": "2:09:07 'İlk oyum bir iyi niyet... İkinci oyumda aşırı hız cezası' — isim söylemedi."
-        },
-        {
-          "voter": "Armağan Kırant",
-          "votes": [
-            "bilinmiyor",
-            "bilinmiyor"
-          ],
-          "confidence": "dusuk",
-          "note": "2:09:56 'daha önce çok az oy verdiğim birine oy verdim' — isim söylemedi; diğerleri Ayşe'ye verdiğini tahmin etti, kendisi doğrulamadı."
-        },
-        {
-          "voter": "Kübra Satılmış",
-          "votes": [
-            "bilinmiyor",
-            "bilinmiyor"
-          ],
-          "confidence": "dusuk",
-          "note": "Kamerada oyunu söylemedi. 5 Kas özeti (15:33-16:04) konuşmacı 'bir boş oy attı' diyor; konuşmacının Kübra olduğu dolaylı çıkarım ('Ayşe ben hariç herkesin oyunu aldı') — kesin değil."
-        }
-      ],
-      "totals": {
-        "Ayşe Nur İnal": 5,
-        "Muhammed Yahya Haliloğlu": 4,
-        "Tolga Çakuş": 3,
-        "Şadi Altınay": 2
-      },
-      "totals_sum": 14,
-      "blank_votes": "belirsiz — 'boş oy' ifadeleri göstermelik oy olarak yorumlandı (bkz. bos_oy_notu); gerçek boş pusula sayısı tespit edilemedi",
-      "outcome": "Ayşe Nur İnal 2. aday olarak potaya gitti (1. aday: Tolgahan Özden, Kübra'nın seçimi)",
-      "source": "transkript_03.11.2026 (konsey 1:56-2:11) + transkript_05.11.2026 (özet 15:28-16:25, 18:50)",
-      "coverage_note": "14 oydan 4'ünün hedefi kamerada söylendi (Ayşe'ye 3: Muhammed, Tolga, Şadi; Şadi'ye 1: Ayşe). Kalan 10 oy bilinmiyor. Ara sayım (2:09:48, Tolgahan'dan sonra): Ayşe 3, Muhammed 3, Tolga 2, Şadi 2 = 10; son 4 oy (Armağan + Kübra) Ayşe +2, Muhammed +1, Tolga +1 getirdi. Toplamlar tutarlı (14)."
-    },
-    {
-      "date": "2026-11-05",
-      "team": "Kırmızı",
-      "voters_eligible": [
-        "Şükran Boyraz",
-        "Bahar Kaya",
-        "Burçin Oğuz",
-        "Nurten Ocak Tamer",
-        "Eyüp Can Güneş",
-        "Elif Nilay Özgen",
-        "Enes Vardar"
-      ],
-      "votes_cast": [
-        {
-          "voter": "Şükran Boyraz",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Enes Vardar"
-          ],
-          "confidence": "yuksek/orta",
-          "note": "2:09:47 'Eyüpçüğüm seni yazdım Enesciğim' — Eyüp Can net, Enes ASR bozukluğundan orta."
-        },
-        {
-          "voter": "Elif Nilay Özgen",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Burçin Oğuz"
-          ],
-          "confidence": "yuksek/orta",
-          "note": "2:10:46 'ilk oyumda... Eyüp Can'; 2. oy: 'Burçin yazıyor gerçekten yanlışlıkla yazdım' — pusulada Burçin yazıyor, kendisi Enes yazmak istediğini söylüyor."
-        },
-        {
-          "voter": "belirsiz",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Şükran Boyraz"
-          ],
-          "confidence": "dusuk",
-          "note": "2:11:45 'ilk oyumu oyuna göre attım. 2'de 0 olduğu için Eyüp Can'ı attım... boş oy gerekiyordu. Şükran'ı yazdım.' Konuşmacı ASR'dan tespit edilemedi; muhtemelen Burçin veya Enes (Eyüp Can kendisi olamaz — kendi oyunu atamaz)."
-        },
-        {
-          "voter": "Bahar Kaya",
-          "votes": [
-            "Eyüp Can Güneş",
-            "Elif Nilay Özgen"
-          ],
-          "confidence": "yuksek",
-          "note": "2:19:00 'oylarımı Eyüp Can ilk önce sana verdim... onun dışında Nilay'a da boş oy attım' — Nilay'a yazılan 'boş oy' toplamda Nilay 1 olarak sayıldı."
-        },
-        {
-          "voter": "Eyüp Can Güneş",
-          "votes": [
-            "Şükran Boyraz",
-            "bilinmiyor"
-          ],
-          "confidence": "orta/dusuk",
-          "note": "2:12:35 'sana yemin ederim yanlışlıkla yazdım' (Şükran'a hitaben; ASR bozuk). 2. oyu söylenmedi; aritmetik (toplamlar) Enes olduğunu düşündürüyor ama kayda alınmadı — çıkarım yapılmadı."
-        },
-        {
-          "voter": "Burçin Oğuz veya Enes Vardar (son seçmen)",
-          "votes": [
-            "bilinmiyor",
-            "bilinmiyor"
-          ],
-          "confidence": "dusuk",
-          "note": "Kamerada oyunu söylemedi; aritmetik kalan 2 oyun Eyüp Can +1, Enes +1 olduğunu gösteriyor ama isimler çıkarım — kayda alınmadı."
-        },
-        {
-          "voter": "Nurten Ocak Tamer",
-          "votes": [
-            "Burçin Oğuz",
-            "bilinmiyor"
-          ],
-          "confidence": "yuksek/dusuk",
-          "note": "SONUÇ AÇIKLANDIKTAN SONRA kullandı (2:19:56 'Nurten sen de oylarını kullan'); açıklanan toplamlara DAHİL DEĞİL. 2:20:22 'Burçin sana da kimse atmaz diye attım'. 2. oyu söylenmedi."
-        }
-      ],
-      "totals": {
-        "Eyüp Can Güneş": 5,
-        "Enes Vardar": 3,
-        "Şükran Boyraz": 2,
-        "Elif Nilay Özgen": 1,
-        "Burçin Oğuz": 1
-      },
-      "totals_sum": 12,
-      "blank_votes": "0 gerçek boş pusula (açıklanan 12 oy = 6 sayılan seçmen x 2; 'boş oy' denen oylar isimli göstermelik oylar, örn. Bahar->Nilay)",
-      "outcome": "Eyüp Can Güneş 4. aday olarak potaya gitti (3. aday: Bahar Kaya, Nurten'in seçimi)",
-      "source": "transkript_05.11.2026 (konsey 2:09-2:20)",
-      "coverage_note": "Sayılan 12 oydan 9'unun hedefi kamerada söylendi (Eyüp Can'a 4: Şükran, Nilay, belirsiz konuşmacı, Bahar; Enes'e 1: Şükran; Burçin'e 1: Nilay; Şükran'a 2: belirsiz konuşmacı, Eyüp Can — ikincisi orta güvenle; Nilay'a 1: Bahar). Kalan 3 oy (Eyüp Can'ın 2. oyu + son seçmenin 2 oyu) bilinmiyor. Ara sayım (2:18:30, Bahar'dan önce): Eyüp Can 4, Enes 3, Şükran 2, Burçin 1 = 10; Bahar Eyüp Can +1, Nilay +1 getirdi. Nurten'in 2 oyu sonuç sonrası, toplam dışı. Toplamlar tutarlı (12)."
+     "voter": "belirsiz",
+     "votes": [
+      "Burçin Oğuz",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "L72655: 'Nilay da zaten potaya girdi. O yüzden bir Burçin ablaya oyumu kullanıyorum.' Konuşmacı tespit edilemedi."
     }
-  ],
-  "dokunulmazlik_secimleri": [
+   ],
+   "totals": {
+    "Burçin Oğuz": 7,
+    "Tolga Çakuş": 6,
+    "Şiringül Kaya": 5,
+    "Hasan Alp Karabacak": 2
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Burçin Oğuz 4. aday olarak potaya gitti (3. aday: Elif Nilay Özgen, Kübra'nın seçimi)",
+   "source": "transkript_12.08.2026",
+   "coverage_note": "Söylenen 1 oy; 19 bilinmiyor. Toplam tam (20)."
+  },
+  {
+   "date": "2026-08-13",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Burçin Oğuz",
+    "Bahar Kaya",
+    "Kübra Satılmış",
+    "Tolga Çakuş",
+    "Eyüp Can Güneş",
+    "Hasan Alp Karabacak",
+    "Elif Nilay Özgen",
+    "Demirhan Ali Tekin",
+    "Şiringül Kaya",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Tolga Çakuş": 12,
+    "Şiringül Kaya": 3,
+    "Hasan Alp Karabacak": 3,
+    "Bahar Kaya": 2
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Tolga Çakuş 6. aday olarak potaya gitti (5. aday: Kübra Satılmış, dokunulmazlık seçimi — kazanan bilinmiyor)",
+   "source": "transkript_13.08.2026",
+   "coverage_note": "Söylenen oy yok. Tolga 12 aritmetik (20 − 3 − 3 − 2); 'ilk kez herkesin oyunu alarak potaya giden' ifadesi (L71909) sayıyla çelişiyor gibi görünüyor — Tolga'nın final sayısı doğrudan anons edilmedi, orta güven."
+  },
+  {
+   "date": "2026-08-14",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Enes Vardar",
+    "Simge Çıtak",
+    "Şükran Boyraz",
+    "Gülbahar Meşe",
+    "Koray Saygı",
+    "Nurten Ocak Tamer",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Enes Vardar": 8
+   },
+   "totals_sum": 8,
+   "blank_votes": "",
+   "outcome": "Enes Vardar 8. aday olarak potaya gitti (7. aday: Simge Çıtak, Muhammed'in seçimi)",
+   "source": "transkript_14.08.2026",
+   "coverage_note": "Yalnızca Enes 8 açıklandı (L70882: 'Simge'nin oyuyla e gidecek ikinci kişi belli oldu. E Enes 8 oy aldı.'); diğer oylar transkriptte yok. 9 seçmen × 2 = 18 beklenir."
+  },
+  {
+   "date": "2026-08-19",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Muhammed Yahya Haliloğlu",
+    "Armağan Kırant",
+    "Gülbahar Meşe",
+    "Ayşe Nur İnal",
+    "Enes Vardar",
+    "Hasan Alp Karabacak",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Recep Batur",
+    "Simge Çıtak"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Koray Saygı": 6,
+    "Şükran Boyraz": 5,
+    "Hasan Alp Karabacak": 4,
+    "Gülbahar Meşe": 1
+   },
+   "totals_sum": 16,
+   "blank_votes": "",
+   "outcome": "Koray Saygı 2. aday olarak potaya gitti (1. aday: Ayşe Nur İnal, Armağan'ın seçimi)",
+   "source": "transkript_19.08.2026",
+   "coverage_note": "Söylenen oy yok. 16/20; 4 oy açıklanmadı."
+  },
+  {
+   "date": "2026-08-20",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Muhammed Yahya Haliloğlu",
+    "Armağan Kırant",
+    "Gülbahar Meşe",
+    "Ayşe Nur İnal",
+    "Enes Vardar",
+    "Hasan Alp Karabacak",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Recep Batur",
+    "Simge Çıtak"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Simge Çıtak": 7,
+    "Armağan Kırant": 5,
+    "Recep Batur": 5,
+    "Enes Vardar": 2,
+    "Şükran Boyraz": 1
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Simge Çıtak 4. aday olarak potaya gitti (3. aday: Gülbahar Meşe, Hasan Alp'in seçimi)",
+   "source": "transkript_20.08.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20)."
+  },
+  {
+   "date": "2026-08-21",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Muhammed Yahya Haliloğlu",
+    "Armağan Kırant",
+    "Gülbahar Meşe",
+    "Ayşe Nur İnal",
+    "Enes Vardar",
+    "Hasan Alp Karabacak",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Recep Batur",
+    "Simge Çıtak"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Enes Vardar": 9,
+    "Hasan Alp Karabacak": 6,
+    "Armağan Kırant": 3,
+    "Muhammed Yahya Haliloğlu": 1
+   },
+   "totals_sum": 19,
+   "blank_votes": "",
+   "outcome": "Enes Vardar 6. aday olarak potaya gitti",
+   "source": "transkript_21.08.2026",
+   "coverage_note": "Söylenen oy yok. 19/20; 1 oy açıklanmadı (Şükran'ın son oyu)."
+  },
+  {
+   "date": "2026-08-22",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Muhammed Yahya Haliloğlu",
+    "Armağan Kırant",
+    "Gülbahar Meşe",
+    "Ayşe Nur İnal",
+    "Enes Vardar",
+    "Hasan Alp Karabacak",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Recep Batur",
+    "Simge Çıtak"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Armağan Kırant": 7,
+    "Hasan Alp Karabacak": 3
+   },
+   "totals_sum": 10,
+   "blank_votes": "",
+   "outcome": "Armağan Kırant son aday olarak potaya gitti",
+   "source": "transkript_22.08.2026",
+   "coverage_note": "Söylenen oy yok. Bu konseyde seçmen başına 1 oy kullanıldı ('iki oy değil bir oy kullanacaksınız'); 10 seçmen × 1 = 10, toplam tam. Ayşe son seçmendi (orta güven: 'Eğer Ayşe de Armağan'a oy verirse potaya giden arkadaşımız Armağan olacak' + final 7)."
+  },
+  {
+   "date": "2026-08-25",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Emre İrkilmez",
+    "Şadi Altınay",
+    "Elif Nilay Özgen",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şükran Boyraz",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Simge Çıtak",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Elif Nilay Özgen": 9,
+    "Hasan Alp Karabacak": 6,
+    "Kübra Satılmış": 3,
+    "Ayşe Nur İnal": 1
+   },
+   "totals_sum": 19,
+   "blank_votes": "",
+   "outcome": "Elif Nilay Özgen 2. aday olarak potaya gitti",
+   "source": "transkript_25.08.2026",
+   "coverage_note": "Söylenen oy yok. 19/20; 1 oy açıklanmadı (kaptan Emre'nin 2. oyu)."
+  },
+  {
+   "date": "2026-08-27",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Emre İrkilmez",
+    "Şadi Altınay",
+    "Elif Nilay Özgen",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şükran Boyraz",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Simge Çıtak",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Ayşe Nur İnal": 7,
+    "Kübra Satılmış": 5,
+    "Recep Batur": 4,
+    "Şükran Boyraz": 2
+   },
+   "totals_sum": 18,
+   "blank_votes": "",
+   "outcome": "Ayşe Nur İnal 4. aday olarak potaya gitti",
+   "source": "transkript_27.08.2026",
+   "coverage_note": "Söylenen oy yok. 18/20; kaptan Emre'nin 2 oyu sayım anında beklemedeydi."
+  },
+  {
+   "date": "2026-08-28",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Emre İrkilmez",
+    "Şadi Altınay",
+    "Elif Nilay Özgen",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şükran Boyraz",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Simge Çıtak",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Kübra Satılmış": 8,
+    "Emre İrkilmez": 7,
+    "Hasan Alp Karabacak": 3,
+    "Tolga Çakuş": 2
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Kübra Satılmış 6. aday olarak potaya gitti",
+   "source": "transkript_28.08.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20)."
+  },
+  {
+   "date": "2026-08-29",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Emre İrkilmez",
+    "Şadi Altınay",
+    "Elif Nilay Özgen",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şükran Boyraz",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Simge Çıtak",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "Şükran Boyraz son aday olarak potaya gitti (7. aday: Hasan Alp Karabacak, Emre'nin seçimi)",
+   "source": "transkript_29.08.2026",
+   "coverage_note": "Final toplam transkriptte net değil ('Şükran 5-1 oldu' sonra '8-1 ve kaptanın oyu' — ASR bozuk); sonuç kesin (Şükran potaya giden son yarışmacı)."
+  },
+  {
+   "date": "2026-09-01",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Cansu Şöhret",
+    "Emre İrkilmez",
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Ayşe Nur İnal",
+    "Recep Batur",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "bilinmiyor",
+   "source": "transkript_01.09.2026",
+   "coverage_note": "Konsey yapıldı (seçmen konuşmaları var: Recep, Batuhan, Armağan, Koray, Emre, Muhammed, Şadi) ama toplam ve sonuç transkriptte bulunamadı. Dokunulmazlık kazananı Şükran (seçimi bilinmiyor). ❓"
+  },
+  {
+   "date": "2026-09-02",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Cansu Şöhret",
+    "Emre İrkilmez",
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Ayşe Nur İnal",
+    "Recep Batur",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Emre İrkilmez": 7,
+    "Batuhan Nazikoğlu": 6,
+    "Cansu Şöhret": 5,
+    "Şadi Altınay": 2
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Emre İrkilmez 4. aday olarak potaya gitti (3. aday: Şükran Boyraz, Armağan'ın seçimi)",
+   "source": "transkript_02.09.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20)."
+  },
+  {
+   "date": "2026-09-03",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Cansu Şöhret",
+    "Emre İrkilmez",
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Koray Saygı",
+    "Şükran Boyraz",
+    "Ayşe Nur İnal",
+    "Recep Batur",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "bilinmiyor",
+   "source": "transkript_03.09.2026",
+   "coverage_note": "Konsey toplamı ve sonucu transkriptte bulunamadı (03 Eyl bölümünde sayım satırı yok). Dokunulmazlık kazananı Ayşe, seçimi Şadi (3. aday). 04 Eyl'de '7 aday var' deniyor — 01+02+03 Eyl'de 6 aday çıkmış olmalı. ❓"
+  },
+  {
+   "date": "2026-09-04",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Eyüp Can Güneş",
+    "Bahar Kaya",
+    "Nurten Ocak Tamer",
+    "Elif Nilay Özgen",
+    "Tolga Çakuş",
+    "Hasan Alp Karabacak",
+    "Enes Vardar",
+    "Burçin Oğuz",
+    "Kübra Satılmış",
+    "Şiringül Kaya"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Nurten Ocak Tamer": 8
+   },
+   "totals_sum": 8,
+   "blank_votes": "",
+   "outcome": "Nurten Ocak Tamer 8. (son) aday olarak potaya gitti",
+   "source": "transkript_04.09.2026",
+   "coverage_note": "Yalnızca Nurten 8 açıklandı (L54412: 'Nurten 8 oyla potaya giden son yarışmacı oluyor'); diğer oylar transkriptte yok. Konsey öncesi '7 aday var' (L54232) — Hasan Alp'in seçimi 7., Nurten 8. aday."
+  },
+  {
+   "date": "2026-09-08",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Tolga Çakuş",
+    "Bahar Kaya",
+    "Şükran Boyraz",
+    "Cansu Şöhret",
+    "Şiringül Kaya",
+    "Elif Nilay Özgen",
+    "Kübra Satılmış",
+    "Burçin Oğuz",
+    "Nurten Ocak Tamer",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
     {
-      "date": "2026-08-11",
-      "winner": "Elif Nilay Özgen",
-      "picked": "Batuhan Nazikoğlu",
-      "source": "web",
-      "confidence": "dusuk",
-      "note": "Kazananın Nilay mı Nilay+Burçin mi olduğu belirsiz (LISTE_WEB.md)."
+     "voter": "belirsiz",
+     "votes": [
+      "Elif Nilay Özgen",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "dusuk",
+     "note": "L51890: 'Biri Nila'ya ikincisini de Nurten ablaya attım.' Konuşmacı tespit edilemedi."
     },
     {
-      "date": "2026-08-19",
-      "winner": "Armağan Kırant",
-      "picked": "Ayşe Nur İnal",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-02",
-      "winner": "Armağan Kırant",
-      "picked": "Şükran Boyraz",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-08",
-      "winner": "Bahar Kaya",
-      "picked": "Cansu Şöhret",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-11",
-      "winner": "Batuhan Nazikoğlu",
-      "picked": "Recep Batur",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-16",
-      "winner": "Kübra Satılmış",
-      "picked": "Faruk Garip",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-18",
-      "winner": "Burçin Oğuz",
-      "picked": "Tolga Çakuş",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-22",
-      "winner": "Burçin Oğuz",
-      "picked": "Recep Batur",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-26",
-      "winner": "Elif Nilay Özgen",
-      "picked": "Muhammed Yahya Haliloğlu",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-09-30",
-      "winner": "Emre İrkilmez",
-      "picked": "Kübra Satılmış",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-13",
-      "winner": "Şadi Altınay",
-      "picked": "Şiringül Kaya",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-15",
-      "winner": "Tolga Çakuş",
-      "picked": "Burçin Oğuz",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-16",
-      "winner": "Ayşe Nur İnal",
-      "picked": "Tolga Çakuş",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-17",
-      "winner": "Muhammed Yahya Haliloğlu",
-      "picked": "Şükran Boyraz",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-20",
-      "winner": "Burçin Oğuz",
-      "picked": "Enes Vardar",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-21",
-      "winner": "Bahar Kaya",
-      "picked": "Ayşe Nur İnal",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-22",
-      "winner": "Enes Vardar",
-      "picked": "Elif Nilay Özgen",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-24",
-      "winner": "Elif Nilay Özgen",
-      "picked": "Tolgahan Özden",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-27",
-      "winner": "Muhammed Yahya Haliloğlu",
-      "picked": "Nurten Ocak Tamer",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-10-28",
-      "winner": "Tolgahan Özden",
-      "picked": "Şükran Boyraz",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-11-03",
-      "winner": "Kübra Satılmış",
-      "picked": "Tolgahan Özden",
-      "source": "transkript_03.11.2026",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-11-05",
-      "winner": "Nurten Ocak Tamer",
-      "picked": "Bahar Kaya",
-      "source": "transkript_05.11.2026",
-      "confidence": "yuksek",
-      "note": ""
-    },
-    {
-      "date": "2026-11-06",
-      "winner": "Tolgahan Özden",
-      "picked": "Şadi Altınay",
-      "source": "web",
-      "confidence": "dusuk",
-      "note": "Yalnızca resmî Instagram yorumlarından gelen iddia — teyit edilecek."
+     "voter": "Tolga Çakuş",
+     "votes": [
+      "Elif Nilay Özgen",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "orta",
+     "note": "Kaptan son oyu kullandı: ara sayım Nilay 7, Nurten 3 iken final Nilay 8, Nurten 4 oldu; arada kullanılan tek oy kaptan Tolga'nın 2 oyu. Sıralı aritmetik çıkarımı."
     }
-  ],
-  "kaptan_beraberlik_kararlari": [
+   ],
+   "totals": {
+    "Elif Nilay Özgen": 8,
+    "Nurten Ocak Tamer": 4,
+    "Burçin Oğuz": 3,
+    "Kübra Satılmış": 3
+   },
+   "totals_sum": 18,
+   "blank_votes": "",
+   "outcome": "Elif Nilay Özgen 2. aday olarak potaya gitti (1. aday: Cansu Şöhret, Bahar'ın seçimi)",
+   "source": "transkript_08.09.2026",
+   "coverage_note": "Söylenen 4 oy; 14 bilinmiyor. 18/20; 2 oy açıklanmadı. Ara sayım (L51890 öncesi): Nilay 5, Nurten 4, Burçin 3, Kübra 2; final Nilay 8, Nurten 4, Burçin 3, Kübra 3."
+  },
+  {
+   "date": "2026-09-10",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Eyüp Can Güneş",
+    "Tolgahan Özden",
+    "Emre İrkilmez",
+    "Enes Vardar",
+    "Muhammed Yahya Haliloğlu",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Armağan Kırant",
+    "Batuhan Nazikoğlu"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Emre İrkilmez": 7,
+    "Armağan Kırant": 3,
+    "Batuhan Nazikoğlu": 3,
+    "Recep Batur": 2,
+    "Şadi Altınay": 1,
+    "Enes Vardar": 1
+   },
+   "totals_sum": 17,
+   "blank_votes": "",
+   "outcome": "Emre İrkilmez 2. aday olarak potaya gitti",
+   "source": "transkript_10.09.2026",
+   "coverage_note": "Söylenen oy yok. 17/20; 3 oy açıklanmadı (Tolga/Tolgahan + Muhammed'in oyları sayım anında beklemedeydi). Dokunulmazlık kazananı Muhammed (seçimi bilinmiyor)."
+  },
+  {
+   "date": "2026-09-11",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Eyüp Can Güneş",
+    "Tolgahan Özden",
+    "Emre İrkilmez",
+    "Enes Vardar",
+    "Muhammed Yahya Haliloğlu",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Armağan Kırant",
+    "Batuhan Nazikoğlu"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Şadi Altınay": 6,
+    "Enes Vardar": 3,
+    "Eyüp Can Güneş": 1,
+    "Muhammed Yahya Haliloğlu": 1,
+    "Armağan Kırant": 1,
+    "Hasan Alp Karabacak": 1
+   },
+   "totals_sum": 13,
+   "blank_votes": "",
+   "outcome": "Şadi Altınay 6. aday olarak potaya gitti (5. aday: Recep Batur, Batuhan'ın seçimi)",
+   "source": "transkript_11.09.2026",
+   "coverage_note": "Söylenen oy yok. 13/20; 7 oy açıklanmadı."
+  },
+  {
+   "date": "2026-09-12",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Eyüp Can Güneş",
+    "Tolgahan Özden",
+    "Emre İrkilmez",
+    "Enes Vardar",
+    "Muhammed Yahya Haliloğlu",
+    "Hasan Alp Karabacak",
+    "Recep Batur",
+    "Armağan Kırant",
+    "Batuhan Nazikoğlu"
+   ],
+   "votes_cast": [
     {
-      "date": "2026-10-15",
-      "captain": "Kübra Satılmış",
-      "picked": "Nurten Ocak Tamer",
-      "tie": "Nurten / Kübra",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": "Oylama eşitliği sonrası kaptan kararı."
+     "voter": "Tolgahan Özden",
+     "votes": [
+      "Eyüp Can Güneş",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "L48545-48550: 'Sıra Tolganda'da... İlk oyum Eyüp Canı.' 2. oyu söylenmedi."
     },
     {
-      "date": "2026-10-17",
-      "captain": "Muhammed Yahya Haliloğlu",
-      "picked": "Enes Vardar",
-      "tie": "Şadi / Enes",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": "Oylama eşitliği sonrası kaptan kararı."
-    },
-    {
-      "date": "2026-10-21",
-      "captain": "Şadi Altınay",
-      "picked": "Eyüp Can Güneş",
-      "tie": "belirtilmedi",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": "Oylama eşitliği sonrası kaptan kararı."
-    },
-    {
-      "date": "2026-10-24",
-      "captain": "Enes Vardar",
-      "picked": "Hasan Alp Karabacak",
-      "tie": "Hasan Alp / Armağan (5-5, Nurten 2)",
-      "source": "transkript_24.10.2026",
-      "confidence": "yuksek",
-      "note": "Konsey sayımı Hasan 5, Armağan 5, Nurten 2 (2:14:53); 'Enes Hasan Alp mi Armağan mı?' (2:17:59); Enes: 'Hasan diyorum' (2:18:43). 'Hasan Alp yedi. Armağan yedi.' haftalık skor, oy değil."
-    },
-    {
-      "date": "2026-10-27",
-      "captain": "Hasan Alp Karabacak",
-      "picked": "Enes Vardar",
-      "tie": "Enes / Şükran",
-      "source": "web",
-      "confidence": "yuksek",
-      "note": "Oylama eşitliği sonrası kaptan kararı."
+     "voter": "Hasan Alp Karabacak",
+     "votes": [
+      "Armağan Kırant",
+      "Eyüp Can Güneş"
+     ],
+     "confidence": "orta",
+     "note": "Son seçmen Hasan Alp: oylarından önce Armağan 7, Eyüp Can 4 iken final Armağan 8, Eyüp Can 5 oldu; arada kullanılan tek oy Hasan Alp'in 2 oyu. Sıralı aritmetik çıkarımı."
     }
-  ],
-  "web_konsey_notu": "Web haftalarında (Ağustos–Ekim) konsey TOPLAMLARI hiçbir kaynakta yazmıyor; yalnızca sonuç (potaya giden aday) biliniyor. Bu yüzden web haftaları için konsey bölümü yok; yalnızca dokunulmazlık kazananının seçimi ve kaptan beraberlik kararları listelendi."
-}
+   ],
+   "totals": {
+    "Armağan Kırant": 8,
+    "Eyüp Can Güneş": 5,
+    "Enes Vardar": 4,
+    "Muhammed Yahya Haliloğlu": 3
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Armağan Kırant son aday olarak potaya gitti (7. aday: Batuhan Nazikoğlu, Hasan Alp'in seçimi)",
+   "source": "transkript_12.09.2026",
+   "coverage_note": "Söylenen 3 oy; 17 bilinmiyor. Toplam tam (20). Ara sayım: Armağan 6, Enes 4, Eyüp Can 3, Muhammed 3."
+  },
+  {
+   "date": "2026-09-15",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Batuhan Nazikoğlu",
+    "Ayşe Nur İnal",
+    "Tolgahan Özden",
+    "Şiringül Kaya",
+    "Recep Batur",
+    "Emre İrkilmez"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Tolgahan Özden": 9,
+    "Ayşe Nur İnal": 4,
+    "Enes Vardar": 3,
+    "Recep Batur": 2,
+    "Nurten Ocak Tamer": 1
+   },
+   "totals_sum": 19,
+   "blank_votes": "",
+   "outcome": "Tolgahan Özden 2. aday olarak potaya gitti (1. aday: Şiringül Kaya, Emre'nin seçimi)",
+   "source": "transkript_15.09.2026",
+   "coverage_note": "Söylenen oy yok. 19/20; 1 oy açıklanmadı (kaptan Armağan'ın son oyu Tolgahan'a gitti: 'Tolgan herkesin oyunu alarak... 9 oy alarak'). Erken sayımda 'Tolga 7' = Tolgahan (ASR kısaltması, Tolga Çakuş değil — Tolga o hafta Kırmızı'da)."
+  },
+  {
+   "date": "2026-09-16",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Bahar Kaya",
+    "Elif Nilay Özgen",
+    "Şükran Boyraz",
+    "Tolga Çakuş",
+    "Hasan Alp Karabacak",
+    "Eyüp Can Güneş",
+    "Burçin Oğuz",
+    "Faruk Garip",
+    "Kübra Satılmış",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Bahar Kaya",
+     "votes": [
+      "Tolga Çakuş",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "17 Eyl açılışı (L43548-43551): 'Bahar ben boş oy olarak seni gördüm Tolga abi sana oy veriyorum dediğinde...' Göstermelik ('boş oy') olarak verildi. 2. oyu bilinmiyor."
+    }
+   ],
+   "totals": {
+    "Şadi Altınay": 7,
+    "Şükran Boyraz": 7
+   },
+   "totals_sum": 14,
+   "blank_votes": "1 seçmenin (Faruk Garip) 2 oyu iptal edildi ('Bir arkadaşımızın oyunu saymadık, iptal ettik' + 17 Eyl: 'Faruk'un oylarını iptal ettik').",
+   "outcome": "Şadi Altınay potaya gitti (beraberlik 7-7, kaptan Bahar'ın kararı; 3. aday: Faruk Garip, Kübra'nın seçimi)",
+   "source": "transkript_16.09.2026",
+   "coverage_note": "Söylenen 1 oy; 15 bilinmiyor (2'si iptal). Açıklanan çift yalnızca beraberlikteki iki isim (7-7 = 14); 4 oy başka isimlere gitti, açıklanmadı. Kaptan = Kırmızı kaptan Bahar (kaybeden takımın kaptanı)."
+  },
+  {
+   "date": "2026-09-18",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Bahar Kaya",
+    "Elif Nilay Özgen",
+    "Şükran Boyraz",
+    "Tolga Çakuş",
+    "Hasan Alp Karabacak",
+    "Eyüp Can Güneş",
+    "Burçin Oğuz",
+    "Faruk Garip",
+    "Kübra Satılmış",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Kübra Satılmış",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "L43276: 'İkinci oyumda Kübracığım sana dün Şükran ablaya verdim. Bugün de o yüzden sana verdim.' Konuşmacı tespit edilemedi."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Şükran Boyraz",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "L43406: 'Kübra gitsin diye sen Şükran'a boş oy mu attın?' — Şükran'a yazılan 1 oy göstermelik ('boş oy') olarak verildi. Konuşmacı tespit edilemedi."
+    }
+   ],
+   "totals": {
+    "Kübra Satılmış": 6,
+    "Eyüp Can Güneş": 5,
+    "Bahar Kaya": 3,
+    "Elif Nilay Özgen": 2,
+    "Hasan Alp Karabacak": 1,
+    "Şükran Boyraz": 1
+   },
+   "totals_sum": 18,
+   "blank_votes": "Şükran'a yazılan 1 oy göstermelik ('boş oy') olarak verildi.",
+   "outcome": "Kübra Satılmış potaya gitti (5. aday: Tolga Çakuş, Burçin'in seçimi)",
+   "source": "transkript_18.09.2026",
+   "coverage_note": "Söylenen 2 oy; 16 bilinmiyor. 18/20; 2 oy açıklanmadı."
+  },
+  {
+   "date": "2026-09-19",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Batuhan Nazikoğlu",
+    "Ayşe Nur İnal",
+    "Tolgahan Özden",
+    "Şiringül Kaya",
+    "Recep Batur",
+    "Emre İrkilmez"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Armağan Kırant",
+     "votes": [
+      "Recep Batur",
+      "Ayşe Nur İnal"
+     ],
+     "confidence": "orta",
+     "note": "Son seçmen kaptan Armağan (L42515-42520): 'İlk oyum... Recep Ayşe tulum çıkararak potaya gittin. E Recep 4, Batuhan 3, Muhammet 3, Emre ise bir oy aldı.' ASR bozuk; Recep net, Ayşe sıralı aritmetikten (8→9)."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Ayşe Nur İnal",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "L42483: 'Arkadaşlar Ayşe seni seviyorum ama mecburum kardeşim. Bir tane sana yazdım.' Konuşmacı tespit edilemedi."
+    }
+   ],
+   "totals": {
+    "Ayşe Nur İnal": 9,
+    "Recep Batur": 4,
+    "Batuhan Nazikoğlu": 3,
+    "Muhammed Yahya Haliloğlu": 3,
+    "Emre İrkilmez": 1
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Ayşe Nur İnal potaya gitti (7. aday: Nurten Ocak Tamer, Enes'in seçimi)",
+   "source": "transkript_19.09.2026",
+   "coverage_note": "Söylenen 3 oy; 17 bilinmiyor. Toplam tam (20). Kaptan Armağan son oyu kullandı. Hafta 2-2 berabere bitti; pota 8 kişi (L42524-42527): Kırmızı: Şadi, Kübra, Tolga, Faruk; Mavi: Şiringül, Tolgahan, Nurten, Ayşe."
+  },
+  {
+   "date": "2026-09-22",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şiringül Kaya",
+    "Armağan Kırant",
+    "Nurten Ocak Tamer",
+    "Hasan Alp Karabacak",
+    "Batuhan Nazikoğlu",
+    "Enes Vardar",
+    "Burçin Oğuz",
+    "Recep Batur",
+    "Kübra Satılmış",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Armağan Kırant": 6,
+    "Enes Vardar": 5,
+    "Şadi Altınay": 5,
+    "Hasan Alp Karabacak": 2,
+    "Batuhan Nazikoğlu": 1,
+    "Nurten Ocak Tamer": 1
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Armağan Kırant 2. aday olarak potaya gitti (1. aday: Recep Batur, Burçin'in seçimi)",
+   "source": "transkript_22.09.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20)."
+  },
+  {
+   "date": "2026-09-23",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Şükran Boyraz",
+    "Bahar Kaya",
+    "Muhammed Yahya Haliloğlu",
+    "Tolga Çakuş",
+    "Elif Nilay Özgen",
+    "Emre İrkilmez",
+    "Eyüp Can Güneş",
+    "Ayşe Nur İnal",
+    "Tolgahan Özden",
+    "Buse Baştan"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Elif Nilay Özgen": 8,
+    "Muhammed Yahya Haliloğlu": 6,
+    "Tolga Çakuş": 4,
+    "Tolgahan Özden": 2
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Elif Nilay Özgen 2. aday olarak potaya gitti (1. aday: Eyüp Can Güneş, Bahar'ın seçimi)",
+   "source": "transkript_23.09.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20). '4 oy' ismi ara sayımda Tolga olarak geçiyor (L39202: 'Nilay 6 oy oldu. Tolga ve Muhammed 4 oy. Tolgahan 2 oy.')."
+  },
+  {
+   "date": "2026-09-24",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şiringül Kaya",
+    "Armağan Kırant",
+    "Nurten Ocak Tamer",
+    "Hasan Alp Karabacak",
+    "Batuhan Nazikoğlu",
+    "Enes Vardar",
+    "Burçin Oğuz",
+    "Recep Batur",
+    "Kübra Satılmış",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Hasan Alp Karabacak": 5,
+    "Burçin Oğuz": 4,
+    "Nurten Ocak Tamer": 4,
+    "Kübra Satılmış": 4,
+    "Şadi Altınay": 2,
+    "Batuhan Nazikoğlu": 1
+   },
+   "totals_sum": 20,
+   "blank_votes": "",
+   "outcome": "Hasan Alp Karabacak 6. aday olarak potaya gitti",
+   "source": "transkript_24.09.2026",
+   "coverage_note": "Söylenen oy yok. Toplam tam (20). Dokunulmazlık kazananı Şiringül (kaptan); seçimi pota slot hesabıyla Enes (orta güven)."
+  },
+  {
+   "date": "2026-09-26",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Şükran Boyraz",
+    "Bahar Kaya",
+    "Muhammed Yahya Haliloğlu",
+    "Tolga Çakuş",
+    "Elif Nilay Özgen",
+    "Emre İrkilmez",
+    "Eyüp Can Güneş",
+    "Ayşe Nur İnal",
+    "Tolgahan Özden",
+    "Buse Baştan"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Ayşe Nur İnal": 7,
+    "Bahar Kaya": 5,
+    "Tolgahan Özden": 3,
+    "Tolga Çakuş": 2,
+    "Emre İrkilmez": 1
+   },
+   "totals_sum": 18,
+   "blank_votes": "",
+   "outcome": "Ayşe Nur İnal son aday olarak potaya gitti (7. aday: Muhammed Yahya Haliloğlu, Nilay'ın seçimi)",
+   "source": "transkript_26.09.2026",
+   "coverage_note": "Söylenen oy yok. 18/20; 2 oy açıklanmadı."
+  },
+  {
+   "date": "2026-09-30",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Nurten Ocak Tamer",
+    "Şükran Boyraz",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Emre İrkilmez",
+    "Elif Nilay Özgen",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal",
+    "Kübra Satılmış"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Ayşe Nur İnal": 7,
+    "Tolgahan Özden": 4,
+    "Şükran Boyraz": 2,
+    "Nurten Ocak Tamer": 2,
+    "Elif Nilay Özgen": 1
+   },
+   "totals_sum": 16,
+   "blank_votes": "",
+   "outcome": "Ayşe Nur İnal 2. aday olarak potaya gitti (1. aday: Kübra Satılmış, Emre'nin seçimi)",
+   "source": "transkript_30.09.2026",
+   "coverage_note": "Söylenen oy yok. 16/20; 4 oy açıklanmadı. Final sayım: '7 oy Ayşe, 4 oyda kaldı Tolgahan. Şükran ve Nurten iki oy, Nilay ise bir oy aldı' (L33467). Emre'nin (dokunulmazlık kazananı) oyları sonucu değiştirmedi."
+  },
+  {
+   "date": "2026-10-01",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Eyüp Can Güneş",
+    "Bahar Kaya",
+    "Armağan Kırant",
+    "Tolga Çakuş",
+    "Burçin Oğuz",
+    "Enes Vardar",
+    "Hasan Alp Karabacak",
+    "Şiringül Kaya",
+    "Buse Baştan"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Buse Baştan",
+     "votes": [
+      "Armağan Kırant",
+      "Tolga Çakuş"
+     ],
+     "confidence": "yuksek",
+     "note": "01 Eki konsey konuşması: Buse kendi oylarını söyledi (Armağan + Tolga)."
+    },
+    {
+     "voter": "Burçin Oğuz",
+     "votes": [
+      "Hasan Alp Karabacak",
+      "bilinmiyor"
+     ],
+     "confidence": "orta/dusuk",
+     "note": "01 Eki konsey konuşması: Burçin Hasan Alp'e oy verdiğini söyledi; 2. oyu bilinmiyor."
+    }
+   ],
+   "totals": {
+    "Buse Baştan": 7,
+    "Tolga Çakuş": 6,
+    "Hasan Alp Karabacak": 3,
+    "Armağan Kırant": 2
+   },
+   "totals_sum": 18,
+   "blank_votes": "",
+   "outcome": "Buse Baştan 4. aday olarak potaya gitti (3. aday: Şiringül Kaya, Bahar'ın seçimi)",
+   "source": "transkript_01.10.2026",
+   "coverage_note": "Söylenen 3 oy; 15 bilinmiyor. Kaptan Eyüp Can'ın 2 oyu (son oy) bilinmiyor; Buse'nin final toplamı 7+ (7, 8 veya 9). 'Buse 7 oy var. Tolga 6 oy var. Hasan 3, Arman 2. Tabii ki de artık Buse ve Tolga arasında olacak. beraberlikte çıkabilir... Son sözü kaptandır' (L32572) — beraberlik olmadı."
+  },
+  {
+   "date": "2026-10-02",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Nurten Ocak Tamer",
+    "Şükran Boyraz",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Emre İrkilmez",
+    "Elif Nilay Özgen",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal",
+    "Kübra Satılmış"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Kübra Satılmış",
+     "votes": [
+      "Muhammed Yahya Haliloğlu",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "yuksek/orta",
+     "note": "02 Eki konsey konuşması: Kübra Muhammed + Nurten'e oy verdiğini söyledi."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Şükran Boyraz",
+      "Elif Nilay Özgen"
+     ],
+     "confidence": "dusuk",
+     "note": "02 Eki konsey konuşması: 'Muhammed'in potaya girmesini istemediğim için bir oyumu Şükran ablaya attım. Bir oyumu da kimse atmaz diye Nilay'a attım.' Konuşmacı tespit edilemedi."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Nurten Ocak Tamer",
+      "Şükran Boyraz"
+     ],
+     "confidence": "dusuk",
+     "note": "02 Eki konsey konuşması (başka bir konuşmacı): Nurten + Şükran'a oy verdiğini söyledi; konuşmacı tespit edilemedi."
+    }
+   ],
+   "totals": {
+    "Nurten Ocak Tamer": 6,
+    "Şükran Boyraz": 4,
+    "Muhammed Yahya Haliloğlu": 4,
+    "Elif Nilay Özgen": 2
+   },
+   "totals_sum": 16,
+   "blank_votes": "",
+   "outcome": "Nurten Ocak Tamer 4. aday olarak potaya gitti (3. aday: Batuhan Nazikoğlu, dokunulmazlık seçimi — kazanan bilinmiyor)",
+   "source": "transkript_02.10.2026",
+   "coverage_note": "Söylenen 6 oy; 10 bilinmiyor. 16/20; 4 oy açıklanmadı. Muhammed'in 1 oyu geçersiz sayıldı ('Muhammed'i pas geçiyoruz çünkü yanlış oy kullandı'). Nurten o hafta Kırmızı kaptan (transkript: 'Kaptan Nurten... potaya giden kaptan oluyorsun kırmızı takımdan'; tablo Şadi yazıyor — bkz. teams_notu)."
+  },
+  {
+   "date": "2026-10-03",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Nurten Ocak Tamer",
+    "Şükran Boyraz",
+    "Muhammed Yahya Haliloğlu",
+    "Batuhan Nazikoğlu",
+    "Emre İrkilmez",
+    "Elif Nilay Özgen",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal",
+    "Kübra Satılmış"
+   ],
+   "votes_cast": [
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Tolgahan Özden",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "L30739: 'Oyumu kullanıyorum. Zaten iki kişi atacağım. Üç kişiyiz. Tolga'ya.' Konuşmacı tespit edilemedi; 'Tolga' burada Tolgahan (konsey toplamı Tolgahan 8). 2. oyu bilinmiyor ('İkinci oyumda yanlışlıkla yazdım')."
+    }
+   ],
+   "totals": {
+    "Tolgahan Özden": 8,
+    "Emre İrkilmez": 6,
+    "Muhammed Yahya Haliloğlu": 4
+   },
+   "totals_sum": 18,
+   "blank_votes": "",
+   "outcome": "Tolgahan Özden son aday olarak potaya gitti (7. aday: Şükran Boyraz, Nilay'ın seçimi)",
+   "source": "transkript_03.10.2026",
+   "coverage_note": "Söylenen 1 oy; 17 bilinmiyor. 18/20; 2 oy açıklanmadı. Kaybeden takım Kırmızı (Nilay Kırmızı'da, seçimi Şükran da Kırmızı)."
+  },
+  {
+   "date": "2026-10-07",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Elif Nilay Özgen",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Ayşe Nur İnal",
+    "Hasan Alp Karabacak",
+    "Şadi Altınay",
+    "Kübra Satılmış",
+    "Buse Baştan"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "Ayşe Nur İnal 2. aday olarak potaya gitti (1. aday: Nurten Ocak Tamer, dokunulmazlık seçimi — kazanan bilinmiyor)",
+   "source": "transkript_07.10.2026",
+   "coverage_note": "Konsey toplamı transkriptte bulunamadı; sonuç: Ayşe 2. aday ('Ayşe... İkinci yarışmacı oldun', L27194)."
+  },
+  {
+   "date": "2026-10-08",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Elif Nilay Özgen",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Ayşe Nur İnal",
+    "Hasan Alp Karabacak",
+    "Şadi Altınay",
+    "Kübra Satılmış",
+    "Buse Baştan"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Ayşe Nur İnal",
+     "votes": [
+      "Buse Baştan",
+      "bilinmiyor"
+     ],
+     "confidence": "yuksek/dusuk",
+     "note": "09 Eki açılışı, 08 Eki konseyi özeti (L24700): 'Ayşe Buse'ye oy attı.' 2. oyu bilinmiyor."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Hasan Alp Karabacak",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "09 Eki açılışı (L24700): 'Ona da atmayıp Hasan Alp'e gönderdi.' Konuşmacı tespit edilemedi (Şadi yerine Hasan Alp'e oy verildi)."
+    }
+   ],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "bilinmiyor",
+   "source": "transkript_09.10.2026 (08 Eki konseyi özeti)",
+   "coverage_note": "Konsey sonucu ve toplamı transkriptte bulunamadı; yalnızca 2 söylenen oy var (09 Eki açılış özetinden). 'Elemeye potaya giden 6' (08 Eki, L25857) ifadesi belirsiz. Dokunulmazlık kazananı ve seçimi bilinmiyor."
+  },
+  {
+   "date": "2026-10-09",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Elif Nilay Özgen",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Ayşe Nur İnal",
+    "Hasan Alp Karabacak",
+    "Şadi Altınay",
+    "Kübra Satılmış",
+    "Buse Baştan"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "Şadi Altınay 6. aday olarak potaya gitti (5. aday: Hasan Alp Karabacak, Kübra'nın seçimi)",
+   "source": "transkript_09.10.2026",
+   "coverage_note": "Konsey toplamı transkriptte bulunamadı; sonuç: Şadi 6. aday ('Elemeye potaya giden 6. yarışmacımız Şadi')."
+  },
+  {
+   "date": "2026-10-10",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Elif Nilay Özgen",
+    "Muhammed Yahya Haliloğlu",
+    "Nurten Ocak Tamer",
+    "Enes Vardar",
+    "Ayşe Nur İnal",
+    "Hasan Alp Karabacak",
+    "Şadi Altınay",
+    "Kübra Satılmış",
+    "Buse Baştan"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "bilinmiyor",
+   "source": "transkript_10.10.2026",
+   "coverage_note": "Konsey sonucu ve toplamı transkriptte bulunamadı. Dokunulmazlık kazananı Muhammed (Kırmızı; seçimi bilinmiyor). NOT: 10 Eyl konseyiyle karıştırılmasın (Emre 7 — o Eylül)."
+  },
+  {
+   "date": "2026-10-13",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Kübra Satılmış",
+    "Bahar Kaya",
+    "Nurten Ocak Tamer",
+    "Tolga Çakuş",
+    "Burçin Oğuz",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Hasan Alp Karabacak": 6,
+    "Enes Vardar": 4,
+    "Şükran Boyraz": 3,
+    "Armağan Kırant": 2,
+    "Eyüp Can Güneş": 1
+   },
+   "totals_sum": 16,
+   "blank_votes": "",
+   "outcome": "Hasan Alp Karabacak 2. aday olarak potaya gitti (1. aday: Şiringül Kaya, Şadi'nin seçimi)",
+   "source": "transkript_13.10.2026",
+   "coverage_note": "Söylenen oy yok. 16/16 (8 seçmen × 2); toplam tam."
+  },
+  {
+   "date": "2026-10-15",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Kübra Satılmış",
+    "Bahar Kaya",
+    "Nurten Ocak Tamer",
+    "Tolga Çakuş",
+    "Burçin Oğuz",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Kübra Satılmış",
+     "votes": [
+      "Ayşe Nur İnal",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:20 — özet: 'Kübra abla Ayşe ve Nurten ablaya oy vermiş.'"
+    },
+    {
+     "voter": "Bahar Kaya",
+     "votes": [
+      "Kübra Satılmış",
+      "Ayşe Nur İnal"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:20 — özet: 'Bahar Kübra ve Ayşe'ye oy vermiş.'"
+    },
+    {
+     "voter": "Nurten Ocak Tamer",
+     "votes": [
+      "Bahar Kaya",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:20 — özet: 'Nurten abla Bahar ve Kübra'ya.'"
+    },
+    {
+     "voter": "Emre İrkilmez",
+     "votes": [
+      "Kübra Satılmış",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:20 — özet: 'Emre Kübra ve Nurten'e.'"
+    },
+    {
+     "voter": "Tolgahan Özden",
+     "votes": [
+      "Nurten Ocak Tamer",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:24 — özet: 'Tolgan Nurten ve Kübra'ya.' DÜZELTME: önceki sürümde seçmen Tolga Çakuş yazılmıştı; ASR 'Tolgan' = Tolgahan."
+    },
+    {
+     "voter": "Ayşe Nur İnal",
+     "votes": [
+      "Nurten Ocak Tamer",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 5:20 — özet: 'Ayşe Nurten ve Kübra'ya.'"
+    }
+   ],
+   "totals": {
+    "Kübra Satılmış": 5,
+    "Nurten Ocak Tamer": 5
+   },
+   "totals_sum": 10,
+   "blank_votes": "",
+   "outcome": "Nurten Ocak Tamer potaya gitti (beraberlik 5-5, kaptan Kübra'nın kararı; 3. aday: Burçin Oğuz, Tolga'nın seçimi)",
+   "source": "transkript_27.10.2026 (açılış özeti 5:20-5:31 — Armağan, Muhammed'in notlarından okudu) + transkript_15.10.2026 (beraberlik, L20035)",
+   "coverage_note": "Açıklanan çift yalnızca beraberlikteki iki isim (5-5); söylenen oyların toplamı Kübra 5, Nurten 4, Ayşe 2, Bahar 1 = 12; kalan 4 oy (Tolga Çakuş + Burçin) bilinmiyor — Nurten'in 5. oyu bunlardan biri. Beraberlik transkriptte doğrulandı (L20035: 'Kübra kaptan olarak ya Nurten'i potaya yolluyorsun ya da kendin potaya')."
+  },
+  {
+   "date": "2026-10-16",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Kübra Satılmış",
+    "Bahar Kaya",
+    "Nurten Ocak Tamer",
+    "Tolga Çakuş",
+    "Burçin Oğuz",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Tolga Çakuş",
+     "votes": [
+      "Emre İrkilmez",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 7:02-7:48 — özet: 'Tolga Emre'ye yazdı. Tolga Kübra'ya yazdı.'"
+    }
+   ],
+   "totals": {
+    "Tolgahan Özden": 5,
+    "Kübra Satılmış": 5
+   },
+   "totals_sum": 10,
+   "blank_votes": "",
+   "outcome": "Tolgahan Özden potaya gitti (beraberlik 5-5, kaptan Kübra'nın kararı; 5. aday: Tolga Çakuş, Ayşe'nin seçimi)",
+   "source": "transkript_27.10.2026 (açılış özeti 7:02-7:48) + transkript_16.10.2026 (beraberlik)",
+   "coverage_note": "Açıklanan çift yalnızca beraberlikteki iki isim (5-5); diğer oylar açıklanmadı. Ayşe son seçmendi ('Ayşe'nin oyları kimin gideceğini belirleyecek'). Söylenen 2 oy; 14 bilinmiyor."
+  },
+  {
+   "date": "2026-10-17",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Muhammed Yahya Haliloğlu",
+    "Armağan Kırant",
+    "Şükran Boyraz",
+    "Elif Nilay Özgen",
+    "Eyüp Can Güneş",
+    "Enes Vardar",
+    "Şiringül Kaya",
+    "Hasan Alp Karabacak",
+    "Şadi Altınay"
+   ],
+   "votes_cast": [],
+   "totals": {
+    "Enes Vardar": 6,
+    "Şadi Altınay": 6
+   },
+   "totals_sum": 12,
+   "blank_votes": "",
+   "outcome": "Enes Vardar potaya gitti (beraberlik 6-6, kaptan Muhammed'in kararı; 7. aday: Şükran Boyraz, Muhammed'in seçimi)",
+   "source": "transkript_17.10.2026",
+   "coverage_note": "Açıklanan çift yalnızca beraberlikteki iki isim (6-6, L18184); diğer oylar açıklanmadı. Söylenen oy yok."
+  },
+  {
+   "date": "2026-10-20",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Enes Vardar",
+    "Armağan Kırant",
+    "Nurten Ocak Tamer",
+    "Burçin Oğuz",
+    "Elif Nilay Özgen",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Hasan Alp Karabacak"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Burçin Oğuz",
+     "votes": [
+      "Elif Nilay Özgen",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 9:04 — özet: 'Burçin abla Nilay'a oy atarken boş oy olarak verdiğini söyledi.' Nilay o gün toplam 3 oy aldı (9:47)."
+    }
+   ],
+   "totals": {
+    "Emre İrkilmez": 6,
+    "Nurten Ocak Tamer": 5,
+    "Elif Nilay Özgen": 2,
+    "Armağan Kırant": 1
+   },
+   "totals_sum": 14,
+   "blank_votes": "Burçin'in Nilay'a oyu 'boş oy' olarak verildi (göstermelik).",
+   "outcome": "Emre İrkilmez 2. aday olarak potaya gitti (1. aday: Enes Vardar, Burçin'in seçimi)",
+   "source": "transkript_20.10.2026 + transkript_27.10.2026 (açılış özeti 9:04-9:47)",
+   "coverage_note": "Söylenen 1 oy; 15 bilinmiyor. 14/16; 2 oy açıklanmadı. Ara sayım Emre 5, Nurten 2, Nilay 2, Armağan 1 idi; final Emre 6, Nurten 5 (20 Eki tartışması L13900-13932: 'Sen 6 oy aldın. Nurten abla 5 oy aldı.'). Nilay'ın gün toplamı 3 olarak da geçiyor (27 Eki 9:47) — konsey sayımı 2 diyor; tutarsızlık ❓."
+  },
+  {
+   "date": "2026-10-21",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Şadi Altınay",
+    "Muhammed Yahya Haliloğlu",
+    "Bahar Kaya",
+    "Eyüp Can Güneş",
+    "Şükran Boyraz",
+    "Ayşe Nur İnal",
+    "Kübra Satılmış",
+    "Tolga Çakuş"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Bahar Kaya",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 10:10 — özet: 'Bahar Eyüp Can'ı yazdı, Kübra'yı yazdı.'"
+    },
+    {
+     "voter": "Şadi Altınay",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Kübra Satılmış"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 10:10 — özet: 'Şadi abi Eyüp Can'ı yazdı, Kübra'yı yazdı.'"
+    },
+    {
+     "voter": "Muhammed Yahya Haliloğlu",
+     "votes": [
+      "Tolga Çakuş",
+      "Eyüp Can Güneş"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 10:11 — özet: 'Muhammed Tolga'yı yazdı, Eyüp Can'ı yazdı.'"
+    },
+    {
+     "voter": "Şükran Boyraz",
+     "votes": [
+      "Muhammed Yahya Haliloğlu",
+      "Eyüp Can Güneş"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 10:14 — özet: 'Şükran abla Muhammed'i yazdı, Eyüp Can'ı yazdı.'"
+    },
+    {
+     "voter": "Eyüp Can Güneş",
+     "votes": [
+      "Şükran Boyraz",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 10:31 — özet: 'Eyüp Can Şükran ablayı yazdı, bilmiyorum.'"
+    },
+    {
+     "voter": "Tolga Çakuş",
+     "votes": [
+      "Şükran Boyraz",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "27 Eki 10:31-10:34 — özet: 'Tolga Şükran ablayı yazdı, bilmiyorum.' İkinci oy 'bilmiyorum' (ASR: 'Tolga yazdı')."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Kübra Satılmış",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "21 Eki konsey konuşması (L14687): 'Kübra'ya da boş oy attım.' Konuşmacı tespit edilemedi; göstermelik ('boş oy') olarak verildi."
+    }
+   ],
+   "totals": {
+    "Eyüp Can Güneş": 5,
+    "Muhammed Yahya Haliloğlu": 5,
+    "Şükran Boyraz": 3,
+    "Kübra Satılmış": 2,
+    "Tolga Çakuş": 1
+   },
+   "totals_sum": 16,
+   "blank_votes": "Bahar ve Şadi'nin Kübra'ya oyları + 1 belirsiz oy 'boş oy' (göstermelik) olarak verildi.",
+   "outcome": "Eyüp Can Güneş 4. aday olarak potaya gitti (beraberlik 5-5, kaptan Şadi'nin kararı; 3. aday: Ayşe Nur İnal, dokunulmazlık seçimi)",
+   "source": "transkript_21.10.2026 + transkript_27.10.2026 (açılış özeti 10:10-10:37 — Muhammed'in notlarından okundu)",
+   "coverage_note": "Söylenen 11 oy; 5 bilinmiyor. Toplam tam (16). Beraberlik transkriptte doğrulandı (L14700-14702: 'Eyüp Can'ın beş oyu var. Muhammed'in beş oyu var... Onu belirleyecek olan kaptan da sensin.'). NOT: 20 Eki tartışmasında geçen 'Eyüp Can 6, Nurten 5' sayıları 20 Eki konseyine aittir (Emre 6, Nurten 5) — 21 Eki ile karıştırılmasın. Final sayımdaki 'Tolgan'ınsa bir oy var' = Tolga Çakuş (ara sayımda 'Tolga 1', L14614; Tolgahan o hafta Kırmızı'da, Mavi konseyinde oy alamaz)."
+  },
+  {
+   "date": "2026-10-22",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Enes Vardar",
+    "Armağan Kırant",
+    "Nurten Ocak Tamer",
+    "Burçin Oğuz",
+    "Elif Nilay Özgen",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Hasan Alp Karabacak"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Armağan Kırant",
+     "votes": [
+      "Tolgahan Özden",
+      "Burçin Oğuz"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 13:56 — özet: 'Armağan Tolgahan'ı yazdı, Burçin'i yazdı.'"
+    },
+    {
+     "voter": "Emre İrkilmez",
+     "votes": [
+      "Burçin Oğuz",
+      "Hasan Alp Karabacak"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 13:56 — özet: 'Emre Burçin'i yazdı, Hasan Alp'i yazdı.'"
+    },
+    {
+     "voter": "Elif Nilay Özgen",
+     "votes": [
+      "Tolgahan Özden",
+      "Hasan Alp Karabacak"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 13:57 — özet: 'Nilay Tolgahan'ı yazdı, Hasan'ı yazdı.'"
+    },
+    {
+     "voter": "Enes Vardar",
+     "votes": [
+      "Burçin Oğuz",
+      "Nurten Ocak Tamer"
+     ],
+     "confidence": "orta",
+     "note": "27 Eki 13:57 — özet: 'Enes Burçin'i yazdı, Nurten'i yazdı.'"
+    },
+    {
+     "voter": "Hasan Alp Karabacak",
+     "votes": [
+      "Burçin Oğuz",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "24 Eki 3:08 — açılış özeti: 'Hasan Burçin'i yazdı' (10:21). İkinci oy geçmiyor."
+    }
+   ],
+   "totals": {
+    "Burçin Oğuz": 5,
+    "Tolgahan Özden": 5
+   },
+   "totals_sum": 10,
+   "blank_votes": "",
+   "outcome": "Burçin Oğuz 6. aday olarak potaya gitti (beraberlik 5-5, kaptan Enes'in kararı; 5. aday: Elif Nilay Özgen, Enes'in seçimi)",
+   "source": "transkript_22.10.2026 + transkript_27.10.2026 (açılış özeti 13:56) + transkript_24.10.2026 (açılış özeti 3:08-3:25) + transkript_23.10.2026 (karar teyidi)",
+   "coverage_note": "Söylenen 9 oy; 7 bilinmiyor. Açıklanan çift yalnızca beraberlikteki iki isim (5-5, L13672); diğer oylar kısmen biliniyor (Hasan Alp 2, Armağan 1, Nurten 1 — söylenen oylardan). Karar 23 Eki açılışında doğrulandı (L12167-12170: Tolgahan: 'Daha sonra Enes de atmayınca Burçin abla gitti.'). Web'in 'Armağan 2. aday' kaydı YANLIŞ — Armağan 22 Eki'de potaya gitmedi. 'Tolga' = Tolgahan Özden (24 Eki 7:37'de Tolgahan doğruluyor)."
+  },
+  {
+   "date": "2026-10-24",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Enes Vardar",
+    "Armağan Kırant",
+    "Nurten Ocak Tamer",
+    "Burçin Oğuz",
+    "Elif Nilay Özgen",
+    "Emre İrkilmez",
+    "Tolgahan Özden",
+    "Hasan Alp Karabacak"
+   ],
+   "votes_cast": [
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Hasan Alp Karabacak",
+      "Armağan Kırant"
+     ],
+     "confidence": "dusuk",
+     "note": "24 Eki 2:14:20 — 'Bugün geçmeyen arkadaşları yazdım. Alp'i yazdım. Armağanı yazdım.' Konuşmacı ASR'dan tespit edilemedi; 2 belirsiz oy."
+    }
+   ],
+   "totals": {
+    "Hasan Alp Karabacak": 5,
+    "Armağan Kırant": 5,
+    "Nurten Ocak Tamer": 2
+   },
+   "totals_sum": 12,
+   "blank_votes": "",
+   "outcome": "Hasan Alp Karabacak 8. aday olarak potaya gitti (beraberlik 5-5, kaptan Enes'in kararı, 2:18:43). Sayılan 12 oyun 16 beklenen oya karşılık 4'ü transkriptte geçmiyor.",
+   "source": "transkript_24.10.2026 (konsey 2:14:20-2:19:24)",
+   "coverage_note": "Toplam açıklandı (5-5-2 = 12); 16 beklenen oyun 4'ü transkriptte yok. Kaptan Enes eşitliği Hasan Alp lehine bozdu: 'Hasan diyorum' (2:18:43). 7. aday: Tolgahan Özden (Nilay'ın seçimi — pota slot hesabıyla, orta güven)."
+  },
+  {
+   "date": "2026-10-27",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Hasan Alp Karabacak",
+    "Muhammed Yahya Haliloğlu",
+    "Şükran Boyraz",
+    "Nurten Ocak Tamer",
+    "Armağan Kırant",
+    "Enes Vardar",
+    "Tolgahan Özden"
+   ],
+   "votes_cast": [],
+   "totals": null,
+   "totals_sum": null,
+   "blank_votes": "",
+   "outcome": "Şükran Boyraz 2. aday olarak potaya gitti (beraberlik Enes/Şükran, kaptan Hasan Alp'in kararı; 1. aday: Nurten Ocak Tamer, Muhammed'in seçimi)",
+   "source": "transkript_28.10.2026 (açılış özeti, 27 Eki konseyi)",
+   "coverage_note": "Beraberlik (Enes/Şükran) — sayılar transkriptte açıklanmadı; karar 28 Eki açılışında doğrulandı (L8377-8390: 'Dünkü beraberlik sonrası Hasan'ın verdiği karar... Şükran ablanın potaya gitti.'). Söylenen oy yok. Web'in 'Enes 2. aday' kaydı YANLIŞ. 27 Eki bölümü (011 'Geniş Özet') konsey sonunu içermiyor — 10-11. hafta konsey özetleri var."
+  },
+  {
+   "date": "2026-10-28",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Hasan Alp Karabacak",
+    "Muhammed Yahya Haliloğlu",
+    "Şükran Boyraz",
+    "Nurten Ocak Tamer",
+    "Armağan Kırant",
+    "Enes Vardar",
+    "Tolgahan Özden"
+   ],
+   "votes_cast": [
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Hasan Alp Karabacak",
+      "bilinmiyor"
+     ],
+     "confidence": "orta",
+     "note": "29 Eki açılışı (L7666): 'fotoya gitmesi gereken kişi Hasan'dı ve diğer oyumu e bir boş oy olarak kullandım.' Konuşmacı tespit edilemedi; 2. oy göstermelik ('boş oy'), hedefi söylenmedi."
+    }
+   ],
+   "totals": {
+    "Hasan Alp Karabacak": 5,
+    "Muhammed Yahya Haliloğlu": 4,
+    "Armağan Kırant": 3
+   },
+   "totals_sum": 12,
+   "blank_votes": "1 belirsiz oy göstermelik ('boş oy') olarak verildi (hedef söylenmedi).",
+   "outcome": "Hasan Alp Karabacak 4. aday olarak potaya gitti (3. aday: Enes Vardar, Tolgahan'ın seçimi — pota slot hesabıyla)",
+   "source": "transkript_28.10.2026 + transkript_29.10.2026 (açılış özeti)",
+   "coverage_note": "Bölüm konsey ortasında kesiliyor (L9404) — final sayım transkriptte yok; ara sayım Hasan Alp 5, Muhammed 4, Armağan 3, son oy Tolgahan'da ('Tolgan Potaya giden arkadaşı belirleyecek. Belki de kaptanı bırakacak.'). Sonuç web + 29 Eki açılışı ('fotoya gitmesi gereken kişi Hasan'dı') ile doğrulandı. Söylenen 1 oy; 13 bilinmiyor. Dokunulmazlık kazananı Tolgahan (haftada 3 kezden 1.si; 31 Eki özeti)."
+  },
+  {
+   "date": "2026-11-03",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şadi Altınay",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Muhammed Yahya Haliloğlu",
+     "votes": [
+      "Ayşe Nur İnal",
+      "bilinmiyor"
+     ],
+     "confidence": "yuksek/dusuk",
+     "note": "1. oy: 1:56:34 'Ayşe kusura bakma' + 5 Kas özeti (18:07) Muhammed'in Ayşe'ye 'boş oy adı altında' oy attığı. 2. oy: 'boş oylar katıyorum' (ASR bozuk), hedef bilinmiyor."
+    },
+    {
+     "voter": "Ayşe Nur İnal",
+     "votes": [
+      "Şadi Altınay",
+      "bilinmiyor"
+     ],
+     "confidence": "orta/dusuk",
+     "note": "1:57:25 'Sıra şimdi Ayşe'da' — sıra Ayşe'nin; 1:57:29 'O kişi sensin Şadi abi'. DÜZELTME: önceki sürümde konuşmacı yanlışlıkla Nilay yazılmıştı — Nilay o hafta Kırmızı takımdaydı, Mavi konseyinde oy kullanamaz. 2. oy kendi ifadesiyle 'boş oy', hedef bilinmiyor."
+    },
+    {
+     "voter": "Tolga Çakuş",
+     "votes": [
+      "Ayşe Nur İnal",
+      "bilinmiyor"
+     ],
+     "confidence": "yuksek/dusuk",
+     "note": "1. oy: 2:00:26 'Ben bir Ayşe'ye verdim'. 2. oy: 2:01:21 'Boş oy ya', hedef bilinmiyor."
+    },
+    {
+     "voter": "Şadi Altınay",
+     "votes": [
+      "Ayşe Nur İnal",
+      "bilinmiyor"
+     ],
+     "confidence": "yuksek/dusuk",
+     "note": "1. oy: 5 Kas bölümü 18:50, Ayşe: 'Şadi abi bana attı'. 2. oy bilinmiyor (kavga sırasında oy pusulasını masaya vurdu; oyları zaten kullanılmıştı, 2:08:15)."
+    },
+    {
+     "voter": "Tolgahan Özden",
+     "votes": [
+      "bilinmiyor",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "2:09:07 'İlk oyum bir iyi niyet... İkinci oyumda aşırı hız cezası' — isim söylemedi."
+    },
+    {
+     "voter": "Armağan Kırant",
+     "votes": [
+      "bilinmiyor",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "2:09:56 'daha önce çok az oy verdiğim birine oy verdim' — isim söylemedi; diğerleri Ayşe'ye verdiğini tahmin etti, kendisi doğrulamadı."
+    },
+    {
+     "voter": "Kübra Satılmış",
+     "votes": [
+      "bilinmiyor",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "Kamerada oyunu söylemedi. 5 Kas özeti (15:33-16:04) konuşmacı 'bir boş oy attı' diyor; konuşmacının Kübra olduğu dolaylı çıkarım ('Ayşe ben hariç herkesin oyunu aldı') — kesin değil."
+    }
+   ],
+   "totals": {
+    "Ayşe Nur İnal": 5,
+    "Muhammed Yahya Haliloğlu": 4,
+    "Tolga Çakuş": 3,
+    "Şadi Altınay": 2
+   },
+   "totals_sum": 14,
+   "blank_votes": "belirsiz — 'boş oy' ifadeleri göstermelik oy olarak yorumlandı (bkz. bos_oy_notu); gerçek boş pusula sayısı tespit edilemedi",
+   "outcome": "Ayşe Nur İnal 2. aday olarak potaya gitti (1. aday: Tolgahan Özden, Kübra'nın seçimi)",
+   "source": "transkript_03.11.2026 (konsey 1:56-2:11) + transkript_05.11.2026 (özet 15:28-16:25, 18:50)",
+   "coverage_note": "14 oydan 4'ünün hedefi kamerada söylendi (Ayşe'ye 3: Muhammed, Tolga, Şadi; Şadi'ye 1: Ayşe). Kalan 10 oy bilinmiyor. Ara sayım (2:09:48, Tolgahan'dan sonra): Ayşe 3, Muhammed 3, Tolga 2, Şadi 2 = 10; son 4 oy (Armağan + Kübra) Ayşe +2, Muhammed +1, Tolga +1 getirdi. Toplamlar tutarlı (14)."
+  },
+  {
+   "date": "2026-11-05",
+   "team": "Kırmızı",
+   "voters_eligible": [
+    "Şükran Boyraz",
+    "Bahar Kaya",
+    "Burçin Oğuz",
+    "Nurten Ocak Tamer",
+    "Eyüp Can Güneş",
+    "Elif Nilay Özgen",
+    "Enes Vardar"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Şükran Boyraz",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Enes Vardar"
+     ],
+     "confidence": "yuksek/orta",
+     "note": "2:09:47 'Eyüpçüğüm seni yazdım Enesciğim' — Eyüp Can net, Enes ASR bozukluğundan orta."
+    },
+    {
+     "voter": "Elif Nilay Özgen",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Burçin Oğuz"
+     ],
+     "confidence": "yuksek/orta",
+     "note": "2:10:46 'ilk oyumda... Eyüp Can'; 2. oy: 'Burçin yazıyor gerçekten yanlışlıkla yazdım' — pusulada Burçin yazıyor, kendisi Enes yazmak istediğini söylüyor."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Şükran Boyraz"
+     ],
+     "confidence": "dusuk",
+     "note": "2:11:45 'ilk oyumu oyuna göre attım. 2'de 0 olduğu için Eyüp Can'ı attım... boş oy gerekiyordu. Şükran'ı yazdım.' Konuşmacı ASR'dan tespit edilemedi; muhtemelen Burçin veya Enes (Eyüp Can kendisi olamaz — kendi oyunu atamaz)."
+    },
+    {
+     "voter": "Bahar Kaya",
+     "votes": [
+      "Eyüp Can Güneş",
+      "Elif Nilay Özgen"
+     ],
+     "confidence": "yuksek",
+     "note": "2:19:00 'oylarımı Eyüp Can ilk önce sana verdim... onun dışında Nilay'a da boş oy attım' — Nilay'a yazılan 'boş oy' toplamda Nilay 1 olarak sayıldı."
+    },
+    {
+     "voter": "Eyüp Can Güneş",
+     "votes": [
+      "Şükran Boyraz",
+      "bilinmiyor"
+     ],
+     "confidence": "orta/dusuk",
+     "note": "2:12:35 'sana yemin ederim yanlışlıkla yazdım' (Şükran'a hitaben; ASR bozuk). 2. oyu söylenmedi; aritmetik (toplamlar) Enes olduğunu düşündürüyor ama kayda alınmadı — çıkarım yapılmadı."
+    },
+    {
+     "voter": "Burçin Oğuz veya Enes Vardar (son seçmen)",
+     "votes": [
+      "bilinmiyor",
+      "bilinmiyor"
+     ],
+     "confidence": "dusuk",
+     "note": "Kamerada oyunu söylemedi; aritmetik kalan 2 oyun Eyüp Can +1, Enes +1 olduğunu gösteriyor ama isimler çıkarım — kayda alınmadı."
+    },
+    {
+     "voter": "Nurten Ocak Tamer",
+     "votes": [
+      "Burçin Oğuz",
+      "bilinmiyor"
+     ],
+     "confidence": "yuksek/dusuk",
+     "note": "SONUÇ AÇIKLANDIKTAN SONRA kullandı (2:19:56 'Nurten sen de oylarını kullan'); açıklanan toplamlara DAHİL DEĞİL. 2:20:22 'Burçin sana da kimse atmaz diye attım'. 2. oyu söylenmedi."
+    }
+   ],
+   "totals": {
+    "Eyüp Can Güneş": 5,
+    "Enes Vardar": 3,
+    "Şükran Boyraz": 2,
+    "Elif Nilay Özgen": 1,
+    "Burçin Oğuz": 1
+   },
+   "totals_sum": 12,
+   "blank_votes": "0 gerçek boş pusula (açıklanan 12 oy = 6 sayılan seçmen x 2; 'boş oy' denen oylar isimli göstermelik oylar, örn. Bahar->Nilay)",
+   "outcome": "Eyüp Can Güneş 4. aday olarak potaya gitti (3. aday: Bahar Kaya, Nurten'in seçimi)",
+   "source": "transkript_05.11.2026 (konsey 2:09-2:20)",
+   "coverage_note": "Sayılan 12 oydan 9'unun hedefi kamerada söylendi (Eyüp Can'a 4: Şükran, Nilay, belirsiz konuşmacı, Bahar; Enes'e 1: Şükran; Burçin'e 1: Nilay; Şükran'a 2: belirsiz konuşmacı, Eyüp Can — ikincisi orta güvenle; Nilay'a 1: Bahar). Kalan 3 oy (Eyüp Can'ın 2. oyu + son seçmenin 2 oyu) bilinmiyor. Ara sayım (2:18:30, Bahar'dan önce): Eyüp Can 4, Enes 3, Şükran 2, Burçin 1 = 10; Bahar Eyüp Can +1, Nilay +1 getirdi. Nurten'in 2 oyu sonuç sonrası, toplam dışı. Toplamlar tutarlı (12)."
+  },
+  {
+   "date": "2026-11-06",
+   "team": "Mavi",
+   "voters_eligible": [
+    "Armağan Kırant",
+    "Muhammed Yahya Haliloğlu",
+    "Tolga Çakuş",
+    "Kübra Satılmış",
+    "Şadi Altınay",
+    "Tolgahan Özden",
+    "Ayşe Nur İnal"
+   ],
+   "votes_cast": [
+    {
+     "voter": "Ayşe Nur İnal",
+     "votes": [
+      "Kübra Satılmış",
+      "Tolga Çakuş"
+     ],
+     "confidence": "yuksek/orta",
+     "note": "Konseyde şeflerin doğrudan sorusu üzerine: 'Muhammed'i değil, Kübra'yı yanımda istedim'; 07 Kas açılışı: 'Dün sen Tolga'ya ve Kübra'ya oy ver. >> Tamam ben yaptım'; Kübra: 'Ayşe arkadaşım beni potaya seçmiş'."
+    },
+    {
+     "voter": "Armağan Kırant",
+     "votes": [
+      "Kübra Satılmış",
+      "Muhammed Yahya Haliloğlu"
+     ],
+     "confidence": "yuksek/orta",
+     "note": "Sayım: 'İlk oyumu Kübra ablaya veriyorum' (Armağan); 2. oy sıralı aritmetikten (ara sayım Kübra 3, Muhammed 3 → Armağan öncesi Kübra 5, Muhammed 4 → final Kübra 6, Muhammed 5)."
+    },
+    {
+     "voter": "belirsiz",
+     "votes": [
+      "Muhammed Yahya Haliloğlu",
+      "Kübra Satılmış"
+     ],
+     "confidence": "dusuk",
+     "note": "Konsey konuşması (konuşmacı tespit edilemedi): Muhammed + Kübra'ya oy verdiğini söyledi."
+    }
+   ],
+   "totals": {
+    "Kübra Satılmış": 6,
+    "Muhammed Yahya Haliloğlu": 5,
+    "Tolga Çakuş": 3
+   },
+   "totals_sum": 14,
+   "blank_votes": "",
+   "outcome": "Kübra Satılmış 6. aday olarak potaya gitti (5. aday: Şadi Altınay, Tolgahan'ın seçimi). 6 Kas HOLD kararı bu transkriptle kapanıyor: takım oyunu beraberlikle bitti, şeflerin puan kararıyla Kırmızı kazandı; Tolgahan dokunulmazlığı aldı ama 03 Kas adaylığı silinmedi — 07 Kas açılış pota listesinde Tolgahan var.",
+   "source": "transkript_06.11.2026 (ep 002, L925-1838) + transkript_07.11.2026 (açılış, L7-8)",
+   "coverage_note": "Söylenen 6 oy; 8 bilinmiyor. Toplam tam (14). Ara sayım (L1812): 'Muhammed ve Kübra 3, Tolga 2'; Armağan öncesi: 'Kübra 5, Muhammed 4, Tolga 3'; final (L1833): 'Kübra 6 oy aldı, Muhammed 5, Tolga 3'. Şadi'nin 2 oyu ve 3 erken seçmenin oyları bilinmiyor. Tolgahan 03 Kas'dan potada olmasına rağmen 06 Kas'da dokunulmazlık kazandı ve potada KALDI (07 Kas pota listesi: Bahar, Kübra, Ayşe, Tolgahan, Eyüp Can, Şadi)."
+  }
+ ],
+ "dokunulmazlik_secimleri": [
+  {
+   "date": "2026-08-11",
+   "winner": "Elif Nilay Özgen",
+   "picked": "Batuhan Nazikoğlu",
+   "source": "transkript_12.08.2026",
+   "confidence": "yuksek",
+   "note": "12 Eki açılış özeti doğruluyor (L72624, L71933)."
+  },
+  {
+   "date": "2026-08-12",
+   "winner": "Kübra Satılmış",
+   "picked": "Elif Nilay Özgen",
+   "source": "transkript_12.08.2026",
+   "confidence": "yuksek",
+   "note": "YENİ (L72633, L72643)."
+  },
+  {
+   "date": "2026-08-13",
+   "winner": "bilinmiyor",
+   "picked": "Kübra Satılmış",
+   "source": "transkript_13.08.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: kazanan transkriptte bulunamadı; seçim hedefi pota slot hesabıyla."
+  },
+  {
+   "date": "2026-08-14",
+   "winner": "Muhammed Yahya Haliloğlu",
+   "picked": "Simge Çıtak",
+   "source": "transkript_14.08.2026",
+   "confidence": "yuksek",
+   "note": "YENİ (L70715, L70875)."
+  },
+  {
+   "date": "2026-08-19",
+   "winner": "Armağan Kırant",
+   "picked": "Ayşe Nur İnal",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-08-20",
+   "winner": "Hasan Alp Karabacak",
+   "picked": "Gülbahar Meşe",
+   "source": "transkript_20.08.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Hasan Alp dokunulmazlığı aldı (armutla yaratıcı tabak), Gülbahar'ı potaya gönderdi (3. aday)."
+  },
+  {
+   "date": "2026-08-25",
+   "winner": "Simge Çıtak",
+   "picked": null,
+   "source": "transkript_25.08.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: Simge dokunulmazlığı aldı; seçimi transkriptte bulunamadı."
+  },
+  {
+   "date": "2026-08-29",
+   "winner": "Emre İrkilmez",
+   "picked": "Hasan Alp Karabacak",
+   "source": "transkript_29.08.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Emre dokunulmazlığı aldı, Hasan Alp'i potaya gönderdi ('taktiksel')."
+  },
+  {
+   "date": "2026-09-01",
+   "winner": "Şükran Boyraz",
+   "picked": null,
+   "source": "transkript_01.09.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: Şükran dokunulmazlığı aldı (irmik helva, L57057); seçimi transkriptte bulunamadı."
+  },
+  {
+   "date": "2026-09-02",
+   "winner": "Armağan Kırant",
+   "picked": "Şükran Boyraz",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-09-03",
+   "winner": "Ayşe Nur İnal",
+   "picked": "Şadi Altınay",
+   "source": "transkript_03.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Ayşe haftanın 3. dokunulmazlığını aldı, Şadi'yi potaya gönderdi (3. aday)."
+  },
+  {
+   "date": "2026-09-04",
+   "winner": "Hasan Alp Karabacak",
+   "picked": null,
+   "source": "transkript_04.09.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: Hasan Alp 3. dokunulmazlığı aldı (L54204); seçimi transkriptte bulunamadı."
+  },
+  {
+   "date": "2026-09-08",
+   "winner": "Bahar Kaya",
+   "picked": "Cansu Şöhret",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-09-10",
+   "winner": "Muhammed Yahya Haliloğlu",
+   "picked": null,
+   "source": "transkript_10.09.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: Muhammed 3. dokunulmazlığı aldı; seçimi transkriptte bulunamadı."
+  },
+  {
+   "date": "2026-09-11",
+   "winner": "Batuhan Nazikoğlu",
+   "picked": "Recep Batur",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-09-12",
+   "winner": "Hasan Alp Karabacak",
+   "picked": "Batuhan Nazikoğlu",
+   "source": "transkript_12.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Hasan Alp dokunulmazlığı aldı, Batuhan'ı potaya gönderdi."
+  },
+  {
+   "date": "2026-09-15",
+   "winner": "Emre İrkilmez",
+   "picked": "Şiringül Kaya",
+   "source": "transkript_15.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ (L45736-45760)."
+  },
+  {
+   "date": "2026-09-16",
+   "winner": "Kübra Satılmış",
+   "picked": "Faruk Garip",
+   "source": "transkript_16.09.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi."
+  },
+  {
+   "date": "2026-09-18",
+   "winner": "Burçin Oğuz",
+   "picked": "Tolga Çakuş",
+   "source": "transkript_18.09.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi (L43269)."
+  },
+  {
+   "date": "2026-09-19",
+   "winner": "Enes Vardar",
+   "picked": "Nurten Ocak Tamer",
+   "source": "transkript_19.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ (L42455-42457)."
+  },
+  {
+   "date": "2026-09-22",
+   "winner": "Burçin Oğuz",
+   "picked": "Recep Batur",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-09-23",
+   "winner": "Bahar Kaya",
+   "picked": "Eyüp Can Güneş",
+   "source": "transkript_23.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ (L39069, L39092)."
+  },
+  {
+   "date": "2026-09-24",
+   "winner": "Şiringül Kaya",
+   "picked": "Enes Vardar",
+   "source": "transkript_24.09.2026",
+   "confidence": "orta",
+   "note": "YENİ: Şiringül haftanın 3. dokunulmazlığını aldı (L38313); seçim hedefi pota slot hesabıyla."
+  },
+  {
+   "date": "2026-09-26",
+   "winner": "Elif Nilay Özgen",
+   "picked": "Muhammed Yahya Haliloğlu",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-09-30",
+   "winner": "Emre İrkilmez",
+   "picked": "Kübra Satılmış",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-10-01",
+   "winner": "Bahar Kaya",
+   "picked": "Şiringül Kaya",
+   "source": "transkript_01.10.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Bahar haftanın 2. dokunulmazlığını aldı, Şiringül'ü potaya gönderdi. NOT: transkriptte bir yerde 'kazanan Arman' diye bozuk bir satır var (L32362) — seçim bölümü + bölüm özeti Bahar diyor; ❓."
+  },
+  {
+   "date": "2026-10-02",
+   "winner": "bilinmiyor",
+   "picked": "Batuhan Nazikoğlu",
+   "source": "transkript_02.10.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: kazanan transkriptte bulunamadı; seçim hedefi pota slot hesabıyla."
+  },
+  {
+   "date": "2026-10-03",
+   "winner": "Elif Nilay Özgen",
+   "picked": "Şükran Boyraz",
+   "source": "transkript_03.10.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Nilay dokunulmazlığı aldı, Şükran'ı potaya gönderdi (6. aday)."
+  },
+  {
+   "date": "2026-10-07",
+   "winner": "bilinmiyor",
+   "picked": "Nurten Ocak Tamer",
+   "source": "transkript_07.10.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: kazanan ismi transkriptte okunamıyor (L27062); seçim hedefi Nurten."
+  },
+  {
+   "date": "2026-10-09",
+   "winner": "Kübra Satılmış",
+   "picked": "Hasan Alp Karabacak",
+   "source": "transkript_09.10.2026",
+   "confidence": "orta",
+   "note": "YENİ (L25355-25365). 08 Eki'de de aynı seçim geçtiği iddiası var — muhtemelen aynı olayın tekrarı, tek kayıt tutuldu (❓)."
+  },
+  {
+   "date": "2026-10-10",
+   "winner": "Muhammed Yahya Haliloğlu",
+   "picked": null,
+   "source": "transkript_10.10.2026",
+   "confidence": "dusuk",
+   "note": "YENİ: Muhammed dokunulmazlığı aldı (L24570); seçimi transkriptte bulunamadı."
+  },
+  {
+   "date": "2026-10-13",
+   "winner": "Şadi Altınay",
+   "picked": "Şiringül Kaya",
+   "source": "transkript_13.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi (L21750)."
+  },
+  {
+   "date": "2026-10-15",
+   "winner": "Tolga Çakuş",
+   "picked": "Burçin Oğuz",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-10-16",
+   "winner": "Ayşe Nur İnal",
+   "picked": "Tolga Çakuş",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-10-17",
+   "winner": "Muhammed Yahya Haliloğlu",
+   "picked": "Şükran Boyraz",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-10-20",
+   "winner": "Burçin Oğuz",
+   "picked": "Enes Vardar",
+   "source": "transkript_20.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi."
+  },
+  {
+   "date": "2026-10-21",
+   "winner": "Bahar Kaya",
+   "picked": "Ayşe Nur İnal",
+   "source": "transkript_21.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi (L14540)."
+  },
+  {
+   "date": "2026-10-22",
+   "winner": "Enes Vardar",
+   "picked": "Elif Nilay Özgen",
+   "source": "transkript_24.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi (L12231)."
+  },
+  {
+   "date": "2026-10-24",
+   "winner": "Elif Nilay Özgen",
+   "picked": "Tolgahan Özden",
+   "source": "web",
+   "confidence": "orta",
+   "note": "DÜZELTME: güven yuksek'ten orta'ya düşürüldü — doğrudan seçim cümlesi bulunamadı; pota slot hesabıyla."
+  },
+  {
+   "date": "2026-10-27",
+   "winner": "Muhammed Yahya Haliloğlu",
+   "picked": "Nurten Ocak Tamer",
+   "source": "web",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-10-28",
+   "winner": "Tolgahan Özden",
+   "picked": "Enes Vardar",
+   "source": "web",
+   "confidence": "orta",
+   "note": "DÜZELTME: hedef Şükran'dan Enes'e (Şükran 27 Eki'de zaten potadaydı); seçim hedefi pota slot hesabıyla."
+  },
+  {
+   "date": "2026-10-29",
+   "winner": "Tolgahan Özden",
+   "picked": null,
+   "source": "transkript_29.10.2026",
+   "confidence": "orta",
+   "note": "YENİ: Tolgahan haftanın 3. dokunulmazlığını aldı (L8117, L8331, L8364); SEÇİM YOK — kalan Armağan + Muhammed oylamasız potaya girdi."
+  },
+  {
+   "date": "2026-10-31",
+   "winner": "Tolgahan Özden",
+   "picked": null,
+   "source": "transkript_31.10.2026",
+   "confidence": "orta",
+   "note": "YENİ: Tolgahan son bireysel dokunulmazlığı aldı (L6474, L6489-6501: haftada 3. kez); SEÇİM YOK — pota zaten 6 kişiyle tamamdı."
+  },
+  {
+   "date": "2026-11-03",
+   "winner": "Kübra Satılmış",
+   "picked": "Tolgahan Özden",
+   "source": "transkript_03.11.2026",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-11-05",
+   "winner": "Nurten Ocak Tamer",
+   "picked": "Bahar Kaya",
+   "source": "transkript_05.11.2026",
+   "confidence": "yuksek",
+   "note": ""
+  },
+  {
+   "date": "2026-11-06",
+   "winner": "Tolgahan Özden",
+   "picked": "Şadi Altınay",
+   "source": "transkript_06.11.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web/dusuk'tan transkript/yuksek'e yükseltildi."
+  },
+  {
+   "date": "2026-11-07",
+   "winner": "Armağan Kırant",
+   "picked": null,
+   "source": "transkript_07.11.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: Armağan son dokunulmazlığı kazandı; SEÇİM YOK — kalan Muhammed + Tolga oylamasız potaya girdi (7. ve 8. aday)."
+  }
+ ],
+ "kaptan_beraberlik_kararlari": [
+  {
+   "date": "2026-09-16",
+   "captain": "Bahar Kaya",
+   "picked": "Şadi Altınay",
+   "tie": "Şadi / Şükran (7-7, 1 oy iptal)",
+   "source": "transkript_16.09.2026",
+   "confidence": "yuksek",
+   "note": "YENİ. Kaptan = Kırmızı kaptan Bahar (kaybeden takımın kaptanı karar verir)."
+  },
+  {
+   "date": "2026-10-15",
+   "captain": "Kübra Satılmış",
+   "picked": "Nurten Ocak Tamer",
+   "tie": "Nurten / Kübra (5-5)",
+   "source": "transkript_15.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi; beraberlik doğrulandı (L20035)."
+  },
+  {
+   "date": "2026-10-16",
+   "captain": "Kübra Satılmış",
+   "picked": "Tolgahan Özden",
+   "tie": "Tolgahan / Kübra (5-5)",
+   "source": "transkript_16.10.2026",
+   "confidence": "yuksek",
+   "note": "YENİ: kaptan ikinci kez beraberlikte kalıyor ve ikinci kez kendi takımından diğer arkadaşını yolluyor."
+  },
+  {
+   "date": "2026-10-17",
+   "captain": "Muhammed Yahya Haliloğlu",
+   "picked": "Enes Vardar",
+   "tie": "Şadi / Enes (6-6)",
+   "source": "transkript_17.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi; beraberlik doğrulandı (L18184)."
+  },
+  {
+   "date": "2026-10-21",
+   "captain": "Şadi Altınay",
+   "picked": "Eyüp Can Güneş",
+   "tie": "Eyüp Can / Muhammed (5-5)",
+   "source": "transkript_21.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: kaynak web'den transkripte yükseltildi; beraberlik doğrulandı (L14700-14702)."
+  },
+  {
+   "date": "2026-10-22",
+   "captain": "Enes Vardar",
+   "picked": "Burçin Oğuz",
+   "tie": "Burçin / Tolgahan (5-5)",
+   "source": "transkript_22.10.2026",
+   "confidence": "yuksek",
+   "note": "YENİ. Karar 23 Eki açılışında doğrulandı (L12167-12170)."
+  },
+  {
+   "date": "2026-10-24",
+   "captain": "Enes Vardar",
+   "picked": "Hasan Alp Karabacak",
+   "tie": "Hasan Alp / Armağan (5-5, Nurten 2)",
+   "source": "transkript_24.10.2026",
+   "confidence": "yuksek",
+   "note": "Konsey sayımı Hasan 5, Armağan 5, Nurten 2 (2:14:53); 'Enes Hasan Alp mi Armağan mı?' (2:17:59); Enes: 'Hasan diyorum' (2:18:43). 'Hasan Alp yedi. Armağan yedi.' haftalık skor, oy değil."
+  },
+  {
+   "date": "2026-10-27",
+   "captain": "Hasan Alp Karabacak",
+   "picked": "Şükran Boyraz",
+   "tie": "Enes / Şükran",
+   "source": "transkript_28.10.2026",
+   "confidence": "yuksek",
+   "note": "DÜZELTME: hedef Enes'ten Şükran'a değiştirildi (28 Eki açılışı L8377-8390)."
+  }
+ ],
+ "konseysiz_gunler": [
+  {
+   "date": "2026-09-09",
+   "note": "Ödül oyunu — konsey ve dokunulmazlık yok."
+  },
+  {
+   "date": "2026-09-17",
+   "note": "Konsey bulunamadı — bölüm 16 Eyl konsey tartışmasıyla geçiyor; takım oyunu / dokunulmazlık yok (hafta 2-2 berabere bitti, 4 oyun günü: 15/16/18/19 Eyl)."
+  },
+  {
+   "date": "2026-09-25",
+   "note": "Bölüm incelenmedi; pota hesabı (8 aday, 4 oyun günü: 22/23/24/26 Eyl) konsey olmadığını düşündürüyor — teyit edilmedi."
+  },
+  {
+   "date": "2026-10-14",
+   "note": "Konsey yok (hafta 10 oyun günleri: 13/15/16/17 Eki)."
+  },
+  {
+   "date": "2026-10-23",
+   "note": "Dosyada 23 Eki bölümü yok (22 Eki'den 24 Eki'ye atlıyor)."
+  },
+  {
+   "date": "2026-10-29",
+   "note": "Konsey yok — Tolgahan dokunulmazlığı aldı, kalan Armağan + Muhammed oylamasız potaya girdi."
+  },
+  {
+   "date": "2026-10-30",
+   "note": "Ödül oyunu (Ayşe 100.000 TL kazandı) — konsey ve dokunulmazlık yok."
+  },
+  {
+   "date": "2026-10-31",
+   "note": "Konsey yok — Tolgahan son dokunulmazlığı aldı, seçim yok (pota zaten 6 kişiyle tamamdı)."
+  },
+  {
+   "date": "2026-11-07",
+   "note": "Konsey yok — Armağan dokunulmazlığı aldı, kalan Muhammed + Tolga oylamasız potaya girdi. 08 Kas eleme potası 8 kişi."
+  }
+ ],
+ "web_konsey_notu": "Web haftalarında (Ağustos–Ekim) konsey TOPLAMLARI hiçbir kaynakta yazmıyor; yalnızca sonuç (potaya giden aday) biliniyordu. Bu dosyada artık transkriptten çıkarılan toplamlar var (bkz. episodes[].totals). Web'den gelen ve transkriptte doğrulanamayan kayıtlar source='web' olarak işaretlendi."
+};
