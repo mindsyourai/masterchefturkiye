@@ -172,6 +172,48 @@ footer .kilim{margin-bottom:16px}
 footer p{padding:0 16px}
 #sources-section ul{font-size:.95rem}
 #sources-section li{margin:5px 0}
+/* ---- Kaynaklar & kullanım kolaylığı (Kas 2026) ---- */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.hero-joke{margin:10px auto 0;max-width:720px;font-size:.98rem;opacity:.92}
+.hero-joke::before{content:"";display:block}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+nav.sticky button:focus-visible,.filter-row button:focus-visible,.detail-close:focus-visible,.team-member:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Nasıl kullanılır */
+.howto{margin:22px 0 6px}
+.howto-title{margin:0 0 4px}
+.howto-sub{font-size:.85rem;color:var(--muted);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-weight:400}
+.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
+.howto-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:transform .12s ease,box-shadow .12s ease}
+.howto-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,35,32,.12)}
+.howto-card h3{margin:6px 0 4px;font-size:1.08rem}
+.howto-card p{margin:0;font-size:.93rem;color:var(--ink)}
+.howto-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-family:Georgia,serif;font-size:1rem}
+
+/* Arama sonucu yok */
+.no-results{background:var(--gold-bg);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:.97rem}
+
+/* Kaynaklar & Uyarılar */
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:14px}
+.source-card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:14px;padding:16px 18px}
+.source-card h3{margin:0 0 10px;font-size:1.12rem}
+.source-card ol,.source-card ul{margin:0;padding-left:20px;font-size:.93rem}
+.source-card li{margin:7px 0}
+.source-card p{font-size:.93rem;margin:8px 0}
+.source-card a{font-weight:600}
+
+/* Yukarı düğmesi */
+#to-top{position:fixed;right:16px;bottom:16px;z-index:30;border:1px solid var(--red);background:var(--red);color:#fff;border-radius:999px;padding:10px 16px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(166,25,46,.35)}
+#to-top:hover{background:var(--red-dark)}
+#to-top[hidden]{display:none}
+
+/* Kartlara hafif yükselme */
+.stat-board{transition:transform .12s ease,box-shadow .12s ease}
+.stat-board:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(43,35,32,.10)}
+.stat{transition:transform .12s ease,box-shadow .12s ease}
+.stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(43,35,32,.10)}
+
 @media (max-width:640px){
   .teams{grid-template-columns:1fr}
   .teams-grid{grid-template-columns:1fr}
