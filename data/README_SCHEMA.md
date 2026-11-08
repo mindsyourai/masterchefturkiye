@@ -1,18 +1,15 @@
 # MasterChef Türkiye 2026 — Dish-Level Dataset: Schema & Guide
 
-**Files:** `dishes.csv` (277 rows) · `dishes.json` (same rows + header block) · `contestants.csv` (33 contestants) · `build_dishes.py` (generator — re-run to rebuild)
-**Built:** 2026-11-06 · **Encoding:** UTF-8 · **Language:** Turkish (dish names in original language)
-**Rule:** No dish, ingredient, or winner was invented. Every row is traceable to one of the five sources below. Where a dish or a participant set is unknown, **no row was created** — the gap is listed in COVERAGE instead.
+**Files:** `dishes.csv` (2,712 rows) · `dishes.json` (same rows + header block) · `contestants.csv` (33 main-cast + reserves) · `build_dishes.py` (generator for the ORIGINAL 338 rows — the merged dataset is built by `transcripts/work/merge_dishes.py` + `normalize_names.py`, do not re-run build_dishes.py over it)
+**Built:** 2026-11-08 (full-season merge) · **Encoding:** UTF-8 · **Language:** Turkish (dish names in original language)
+**Rule:** No dish, ingredient, or winner was invented. Every row is traceable to one of the sources below. Where a dish or a participant set is unknown, **no row was created** — the gap is listed in COVERAGE instead.
 
 ## Sources
 
 | source value | Meaning |
 |---|---|
-| `transkript_17.07.2026` | 17.07.2026 episode transcript (full, in LISTE.md) |
-| `transkript_02.11.2026` | 02.11.2026 episode transcript (MasterChef-2.11.26.pdf, read in full) |
-| `transkript_03.11.2026` | 03.11.2026 episode transcript (MasterChef-3.11.26.pdf, read in full) |
-| `transkript_05.11.2026` | 05.11.2026 episode transcript (MasterChef-5.11.26.pdf, read in full) |
-| `web` | LISTE_WEB.md — TV8, yemek.com, news sites. YouTube was NOT used. |
+| `transkript_DD.MM.YYYY` | Full-season compact transcript file (`tum_kompakt.txt`, 132 episodes, 13.06–07.11.2026); 27.10.2026 rows come from the separate 590-page batch (episode missing from the compact file) |
+| `web` | LISTE_WEB.md — TV8, yemek.com, news sites. YouTube was NOT used. Only 24 web rows survive (reserve entries 15.08/18.08/05.09 + immunity participants whose dishes the transcripts never named) |
 
 **source_confidence:** `yuksek` = transcript · `orta` = web news / inference from transcript context · `dusuk` = single weak source (e.g. Instagram summary) or unclear final group.
 
@@ -22,19 +19,19 @@
 |---|---|
 | `episode_date` | YYYY-MM-DD (episode air date) |
 | `week_no` | 0 = ana kadro seçimleri (Jul–Aug, before weekly format); 1–13 = weekly format (Hafta 1 = 10–16 Aug … Hafta 13 = 2–8 Nov) |
-| `episode_type` | `ana_kadro_secim` / `kaptanlik` / `takim_oyunu` / `bireysel_dokunulmazlik` / `odul_oyunu` / `eleme` |
+| `episode_type` | `ana_kadro_secim` / `kaptanlik` / `takim_oyunu` / `bireysel_dokunulmazlik` / `odul_oyunu` / `eleme` / `secim` (audition/early selection rounds, Jun–Jul — 3rd-round duels and earlier) — plus `kurtarma oyunu` games are typed `bireysel_dokunulmazlik` (rescue game: the winner saves himself from the pot; the show counts it as an immunity, e.g. 29 + 31 Oct) |
 | `game_name` | Game label (e.g. `Uskumru dolması — Somer Şef imza tabağı, düello formatı`, `Tahin ve pekmezle yaratıcı tabak`, `Ali Nazik`) |
 | `round_no` | Round within the game (duel number, Tur 1/2, eleme Tur 1/2) |
-| `contestant` | Canonical full name. `Elif Nilay Özgen` is always written in full (alias: Nilay). Surnames unknown for Mine, Fazlı, Beyhan, Nevzat, Fatma, Hatice — first name only. `Hami Efe Hanedan` surname unconfirmed. |
-| `contestant_team` | `Mavi` / `Kirmizi` / `yok` (no team yet — selection phase, elimination pot) |
+| `contestant` | Canonical full name. `Elif Nilay Özgen` is always written in full (alias: Nilay). Selection-round workers used first names only; these were normalized to canonical full names where identity is established (see `transcripts/work/normalize_names.py`). NOT normalized (ambiguous, left as-is): `Batuhan` (Group 3, 29.07–02.08 — a different Batuhan, not Nazikoğlu), `Tolga` (16.07 Bursa Cantık), `Gülbahar` (07.07 — name itself ❓), `Hatice` (Group 1 — three Hatices exist), `Tolga Göker` / `Tolga Döker`, `Esra` (surname unknown). Surnames still unknown for Mine, Fazlı (→ Fazlı Bulut where identified), Beyhan (→ Beyhan Aysal), Nevzat (→ Nevzat Güzel), Fatma (→ Fatma Yılmaz), Hatice. `Hami Efe Hanedan` surname unconfirmed. |
+| `contestant_team` | `Mavi` / `Kırmızı` / `yok` (no team yet — selection phase, captaincy/prize games, elimination pot). Spelling normalized 2026-11-08 (`Kirmizi`/`kirmizi`/`mavi` → `Kırmızı`/`Mavi`). EXCEPTION: the 29 Oct Cumhuriyet gala assigned teams PER DISH (e.g. Şadi, a week-12 Blue player, cooked the küşleme on the Mavi side per the transcript; Tolgahan cooked the levrek for Kırmızı in the same game) — gala rows follow the transcript's per-dish assignment, not the weekly roster. |
 | `opponent` | Duel opponent, or empty. Only filled for head-to-head duels. |
 | `dish_name` | **Original name as spoken/written.** Turkish dish in Turkish (`Uskumru dolması`, `Hıngal`); foreign dish in its original name (`Fesenjan`, `Vitello Tonnato`, `Crespelle`, `filetto di manzo con purè di patate`, `Gatto di Patate`, `Zwetschgenknödel`, `Crème brûlée`, `Tiramisu`, `Ratatuy` — spelled as in the source). Yaratıcı dishes: descriptive name + key details in `dish_details`. |
 | `dish_category` | One of: `geleneksel` (traditional Turkish) · `yaratici` (creative, theme-based) · `sef_imza` (a judge's signature dish) · `yabanci_mutfak` (foreign cuisine) · `tatli` (dessert) · `corba` (soup) · `hamur_isi` (pastry/börek) · `makarna_hamur` (pasta/dumpling) · `zeytinyagli` (olive-oil dish) |
 | `main_ingredient` | Primary ingredient (e.g. `uskumru`, `patates`, `tahin`, `kuzu`, `levrek`, `kuru incir`). `çeşitli` where the game is a concept (sıfır atık). |
 | `dish_details` | Ingredients, technique, judges' notes — concise, in Turkish. |
 | `time_limit_min` | Minutes, when stated in the source; empty otherwise. |
-| `result` | `kazandi` (won the duel/game) · `kaybetti` (lost the duel) · `gecti` (survived / safe in elimination, or advanced past the round) · `elendi` (eliminated) · `ust_tur` (advanced to next round) · `finalist` (reached the final of that game) · `2.` / `3.` (ranked 2nd/3rd in an individual game) · `ilk_6` (ranked in the top 6 of a ranked game, winner excluded — used for the 2 Nov captain game where ranks 1–6 were announced) · `dokunulmazlik_kazandi` (won individual immunity) · `katildi` (took part; no win/loss recorded for that contestant in that game) |
-| `rank_in_game` | 1 / 2 / 3 when the judges ranked the top 3; empty otherwise. |
+| `result` | `kazandi` (won the duel/game) · `kaybetti` (lost the duel) · `gecti` (survived / safe in elimination, or advanced past the round) · `elendi` (eliminated) · `ust_tur` (advanced to next round) · `finalist` (reached the final of that game) · `2.` / `3.` / `4.` / `5.` / `6.` / `7.` / `8.` (ranked in an individual game) · `ilk_6` (ranked in the top 6 of a ranked game, winner excluded — used for the 2 Nov captain game where ranks 1–6 were announced) · `dokunulmazlik_kazandi` (won individual immunity — includes rescue-game winners, 29 + 31 Oct) · `katildi` (took part; no win/loss recorded for that contestant in that game) · `bilinmiyor` (the row's outcome could not be heard in the transcript, e.g. 13 Oct Jalebi duel) · `berabere` (a duel ended tied) |
+| `rank_in_game` | 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 when the judges ranked the contestants; empty otherwise. |
 | `is_best_dish` | `evet` only when (a) judges explicitly called it the best/most successful dish of the game, or (b) the contestant won that game outright with that dish (individual immunity, captain game, ana kadro final). Duel winners are `hayir` — a duel win is head-to-head, not "best dish of the game". Elimination survival is `hayir` unless explicitly "en iyi" (e.g. Nurten, Flying Noodles 11 Oct). |
 | `score_note` | Team score progression (e.g. `Mavi 2-1`), prize (`Ödül: 100.000 TL`), or outcome note. |
 | `source` / `source_confidence` | See Sources above. |
@@ -43,9 +40,12 @@
 ## Row-construction rules (so the data stays honest)
 
 1. **One row per contestant-dish.** In games where everyone cooks the *same* dish (individual immunity, elimination rounds, captain game), one row is created per *known* participant.
-2. **Participant set must be known.** Team-game menus whose cooks are unattributed (e.g. the 28 Oct düğün menu, 29 Oct gala menu) get **no rows** — they are listed under COVERAGE as "known menu, cooks unattributed".
-3. **Winner/finalist-only web records:** where the web names only the winner (e.g. 02 Sep Armağan/incir, 30 Sep Emre/meyveli tart), only the named contestants get rows.
+2. **Participant set must be known.** Team-game menus whose cooks are unattributed get **no rows** — they are listed under COVERAGE as "known menu, cooks unattributed".
+3. **Winner/finalist-only web records:** where the web names only the winner (e.g. 02 Sep Armağan/incir, 30 Sep Emre/meyveli tart — the latter corrected by transcript: Tolgahan won), only the named contestants get rows.
 4. **Inferences are flagged** in `notes` with `source_confidence` `orta`/`dusuk` (e.g. 5 Nov Tolga–Enes duel winner, 3 Nov Muhammed 2nd place, Batuhan = somon bayıldı, Şiringül = ciğer).
+5. **Rescue games (`Kurtarma oyunu`) are typed `bireysel_dokunulmazlik`.** The winner saves himself from the pot; the show counts it as an immunity ("haftanın 3. bireysel dokunulmazlığı", 29 + 31 Oct). The 29 Oct game is NOT an immunity in format (only 4 played: Tolgahan, Muhammed, Armağan + volunteer Enes) — the losers went to the pot automatically, no council.
+6. **Team validation:** every `takim_oyunu` / `bireysel_dokunulmazlik` row's `contestant_team` was checked against the team rosters (`transcripts/work/teams_weeks1-12.csv`, with the week-1 and week-8 table errors corrected per transcript — see `transcripts/work/MERGE_DECISIONS.md`). 0 mismatches remain. EXCEPTION: the 29 Oct Cumhuriyet gala, where the transcript assigns teams per dish.
+7. **Name normalization:** selection-round first names were mapped to canonical full names only where identity is established (`transcripts/work/normalize_names.py`); ambiguous names were left as-is and listed in the `contestant` row above.
 
 ## Using it for stats
 
@@ -68,7 +68,7 @@ Nodes (with states) and edges — a starting DAG, to be refined once more transc
 - `week_no` → `result` (learning/fatigue over the season)
 - `is_best_dish` as an observed child of `result` (not a parent — it is a judge label, not a cause)
 
-Suggested CPT estimation: count rows per (parent state → result) with Laplace smoothing; the current 277 rows are thin for 33 contestants, so pool by category/ingredient first and add contestant-level priors only where a contestant has ≥ 5 rows. **Do not treat `web` rows and `transcript` rows as equal evidence** — weight by `source_confidence` (yuksek = 1.0, orta = 0.6, dusuk = 0.3) or model confidence as a separate node.
+Suggested CPT estimation: count rows per (parent state → result) with Laplace smoothing; the dataset now has 2,712 rows over 242 contestants (main cast 26 with 15–123 rows each), so pool by category/ingredient first and add contestant-level priors only where a contestant has ≥ 5 rows. **Do not treat `web` rows and `transcript` rows as equal evidence** — weight by `source_confidence` (yuksek = 1.0, orta = 0.6, dusuk = 0.3) or model confidence as a separate node.
 
 ## Knowledge-graph suggestion
 
@@ -82,55 +82,50 @@ Node types and edges:
 - **Dish** —(JUDGE_NOTE)→ **Note** (free text in `dish_details`/`notes`)
 - Candidate edge types for later: **Dish** —(VARIANT_OF)→ **Dish** (e.g. uskumru dolması vs Uskumru Tarator); **Contestant** —(SENT_TO_POT)→ **Contestant** (immunity picks; recorded in `notes` for now, not as rows).
 
-## COVERAGE
+## COVERAGE (2026-11-08 full-season merge)
 
-### Dish-complete episodes (every contestant-dish in the episode is a row)
-| Date | Episode | Rows |
-|---|---|---|
-| 2026-07-17 | Ana kadro 1. Gün — Biber yaratıcılık (14) + Ali Nazik (8) | 22 |
-| 2026-10-24 | 11. Hafta 4. oyun — Ekşili yemekler düello (20) + Kutu oyunu bireysel (8) | 28 |
-| 2026-10-25 | 11. Hafta eleme — Siyah sarımsak Tur 1 (8) + Crespelle Tur 2 (4) | 12 |
-| 2026-10-26 | 12. Hafta kaptanlık — Testi kebabı (15) | 15 |
-| 2026-10-27 | 12. Hafta 1. oyun — Patlıcanlı yemekler düello (19) + Lavaş kebabı bireysel (7) | 26 |
-| 2026-11-02 | 13. Hafta kaptanlık — Pide (14) | 14 |
-| 2026-11-03 | 13. Hafta 1. oyun — Patatesli yemekler düello (14) + Tahin-pekmez bireysel (7) | 21 |
-| 2026-11-05 | 13. Hafta 2. oyun — Uskumru dolması düello (14) + Kuru incir dolması bireysel (7) | 21 |
+**2,712 rows · 242 distinct contestants · 136 dates with rows (13.06–07.11.2026).**
+Transcript rows: 2,688 · web rows: 24 (only where no transcript row exists).
+Confidence: yuksek 2,438 · orta 250 · dusuk 24.
+By episode_type: takim_oyunu 1,022 · secim 420 · ana_kadro_secim 391 · bireysel_dokunulmazlik 370 · kaptanlik 187 · odul_oyunu 181 · eleme 141.
+By result: kazandi 655 · kaybetti 556 · katildi 516 · gecti 351 · elendi 322 · ust_tur 104 · dokunulmazlik_kazandi 52 · 2. 37 · 3. 34 · finalist 28 · 4. 15 · bilinmiyor 12 · 5. 8 · ilk_6 7 · 6. 7 · berabere 4 · 7. 3 · 8. 1.
 
-### Week-level only (winner/finalist rows; most participant dishes unknown)
-Ana kadro seçimleri 18 Jul–8 Aug (winners' dishes only; #3 Hasan Alp, #7 Demirhan, #9 Şadi, #12 Muhammed dishes unknown; #13 Ayşe empanada = Instagram-only, dusuk). Reserves (Recep, Emre, Tolgahan dishes known; Cansu/Faruk/Buse by vote, no dish). Captain games (9 winning dishes only; 2 Nov fully attributed with all 14 pides — see above). Individual immunity games where the dish + losing-team roster are known (20 Aug armut, 8 Sep helva-i hakani, 11 Sep patlıcan, 22 Sep İslim kebabı, 13 Oct Fesenjan, 16 Oct banduma, 28–31 Oct, 30 Oct ödül oyunu finalists only). Elimination games where the dish is named (16/23 Aug patlıcan + Ricciola; 13 Sep filetto; 20 Sep tahin + ördek bastilla [Faruk only]; 27 Sep Dana Şaşırma [Recep only]; 4 Oct Vitello Tonnato; 11 Oct mandalina + Flying Noodles; 18 Oct Uskumru Tarator; 1 Nov Kalamar Dolması…).
+### Dish-complete episodes
+All 132 episodes in the compact transcript file were extracted (13.06–07.11.2026) + 27.10.2026 from the separate 590-page batch (that episode is missing from the compact file). Where the transcript named a dish and its cook, there is a row; where it did not, there is none (see "Known menus, cooks unattributed" below).
 
-### Known menus, cooks unattributed (NO rows — needs transcripts)
-3 Nov patates menüsü is fully attributed (see above). 24 Oct ekşili (9 düello) and 27 Oct patlıcan (9 düello) menus are now fully attributed too. Unattributed: 28 Oct düğün menüsü (7 yemek), 29 Oct Cumhuriyet gala (7), 31 Oct 7 bölge 7 yemek, 13 Oct kızartmalar (9), 15 Oct İspanyol (9), 16 Oct tatlı (9), 11 Sep Hindistan cevizi (9), 8 Sep balık (9), 2 Sep paella (5), 30 Oct Lübnan (9), 30 Sep sokak lezzetleri.
+### Not in the file (coverage gaps)
+- **15–19 June 2026:** no episodes in the compact file (132 = 14.06, 131 = 20.06).
+- **27 October 2026:** episode 011 missing from the compact file — kept from the 590-page batch (patlıcan team game, Mavi 6–3, immunity Muhammed, candidates Nurten + Enes).
+- **8 November 2026 elimination:** not in the file (had not aired when the file was made). Pot for 8 Nov = 8: Şadi, Kübra, Tolgahan, Ayşe, Bahar, Eyüp Can, Muhammed, Tolga.
+- **23 October 2026:** no episode aired. **15 / 18 August, 26 August, 5 September:** no episodes (reserve entries 15.08 Recep, 18.08 Emre, 05.09 Tolgahan are web-only rows).
 
-### Missing entirely (no dish info at all in sources used)
-- **28 Sep–3 Oct games** (8. Hafta dokunulmazlık oyunları) — unresearched.
-- **5–8 Oct games** (9. Hafta dokunulmazlık oyunları) — unresearched.
-- 6 Nov episode — web-verified (CNN Türk + gzt: Kırmızı won, Tolgahan immunity, Şadi + Kübra candidates, pot 6); dishes/menus and vote counts still need the transcript.
-- 7 Nov (3. oyun) and 8 Nov (eleme) — not yet aired at build time.
-- Most individual-immunity dishes in weeks 1–7 where only the winner's name is known (e.g. 16 Sep Kübra, 18 Sep Burçin, 26 Sep Nilay, 20/21/22 Oct, 15/17 Oct).
-- Elimination Tur 1 dishes: 30 Aug, 6 Sep, 18 Oct (ürün bilinmiyor); 1 Nov Tur 1 = armut (transkript açılışı).
+### Known menus, cooks unattributed (NO rows — the transcript never named the cooks)
+28 Oct düğün menüsü (çorba, kabak borani, içli köfte), 30 Oct balıklı tajin, 6 Nov zeytinyağlı portakallı kereviz, 25 Sep kerevizde Mavi aşçı, 23 Sep mısır unlu helva yapan, 26 Sep sıfır atıkta 4. sıra + 2 tabak, 2 Eki sıfır atıkta 2 tabak, 3 Eki Nurten'in vişne kebabı, 1 Eki beyinde 4 tabak, 30 Sep takım oyunu + meyveli tart süreleri. Also: 21 Sep lahmacun 3.'sü, 29 Sep çiğ köfte 5./6. sıraları, Buse'nin lahmacunu (21 Sep) — bilinmiyor.
 
-## Per-contestant row counts (dishes.csv)
+### Eliminations (main cast, transcript-verified)
+Demirhan 16.08 · Gülbahar 23.08 · Simge 30.08 · Koray 06.09 · Cansu 13.09 · Faruk 20.09 · Recep 27.09 · Batuhan 04.10 · Buse 11.10 · Şiringül 18.10 · Emre 25.10 · Hasan Alp 01.11. Remaining 14 as of 2 Nov: Armağan, Muhammed, Tolga, Kübra, Şadi, Tolgahan, Ayşe, Şükran, Bahar, Burçin, Nurten, Eyüp Can, Nilay, Enes.
+
+## Per-contestant row counts (dishes.csv, 2026-11-08 merge)
 
 | Contestant | Rows | Contestant | Rows | Contestant | Rows |
 |---|---|---|---|---|---|
-| Enes Vardar | 24 | Armağan Kırant | 24 | Nurten Ocak Tamer | 22 |
-| Şükran Boyraz | 20 | Hasan Alp Karabacak | 19 | Tolgahan Özden | 18 |
-| Elif Nilay Özgen | 17 | Ayşe Nur İnal | 17 | Burçin Oğuz | 16 |
-| Muhammed Yahya Haliloğlu | 16 | Tolga Çakuş | 15 | Kübra Satılmış | 15 |
-| Şadi Altınay | 15 | Eyüp Can Güneş | 14 | Bahar Kaya | 14 |
-| Emre İrkilmez | 12 | Şiringül Kaya | 8 | Batuhan Nazikoğlu | 6 |
-| Recep Batur | 6 | Gülbahar Meşe | 5 | Simge Çıtak | 5 |
-| Koray Saygı | 5 | Cansu Şöhret | 4 | Hami Efe Hanedan | 3 |
-| Mine | 3 | Buse Baştan | 3 | Fatma | 2 |
-| Hatice | 2 | Nevzat | 2 | Demirhan Ali Tekin | 2 |
-| Faruk Garip | 2 | Beyhan | 1 | Fazlı | 1 |
+| Armağan Kırant | 123 | Şükran Boyraz | 119 | Enes Vardar | 118 |
+| Muhammed Yahya Haliloğlu | 115 | Hasan Alp Karabacak | 112 | Ayşe Nur İnal | 112 |
+| Kübra Satılmış | 113 | Tolga Çakuş | 113 | Şadi Altınay | 106 |
+| Nurten Ocak Tamer | 104 | Eyüp Can Güneş | 104 | Burçin Oğuz | 100 |
+| Elif Nilay Özgen | 99 | Tolgahan Özden | 94 | Emre İrkilmez | 96 |
+| Şiringül Kaya | 79 | Batuhan Nazikoğlu | 79 | Recep Batur | 63 |
+| Gülbahar Meşe | 24 | Simge Çıtak | 25 | Koray Saygı | 36 |
+| Cansu Şöhret | 23 | Buse Baştan | 36 | Faruk Garip | 23 |
+| Demirhan Ali Tekin | 15 | Bahar Kaya | 96 |  |  |
 
-**Rows by source:** transkript_17.07.2026: 22 · transkript_24.10.2026: 28 · transkript_25.10.2026: 12 · transkript_26.10.2026: 15 · transkript_27.10.2026: 26 · transkript_02.11.2026: 14 · transkript_03.11.2026: 21 · transkript_05.11.2026: 21 · web: 179. **Rows by episode_type:** ana_kadro_secim 58 · kaptanlik 37 · takim_oyunu 67 · bireysel_dokunulmazlik 109 · odul_oyunu 2 · eleme 65.
+Selection-round participants (non-qualifiers) with ≥5 rows: Mine (11), Sultan Yılmaz (11), Sercan Okyay (11), Betül Altay (11), Nesibe Yalçın (11), Fatma Yılmaz (10), Hami Efe Hanedan (10), Beyhan Aysal (10), Nevzat Güzel (10), Yalçın Ballı (10), Asuman Esmeray (10), Fatmanur Yazıcı (10), Fazlı Bulut (9), Mertcan Şirin (9), Olabi Laval (9), Nurettin (9), Ferdi Yaka (9), Hatice (8), Üveys Kürşat Eroğlu (8), Batuhan (8), Beyrin Demirkol (8), Şerif (8), Hüseyin Kekeçim (8), Esra (8), Yaren (7), İrem (7), Temanur Korkmaz (7), Türkan (6), Furkan (6).
+
+Total distinct contestants: 242 (33 main-cast + reserves + selection hopefuls).
 
 ## Konsey oyları — votes.csv / votes.json / votes.js
 
-Kim kime oy verdi. Üç dosya aynı veriyi tutar: `votes.csv` (82 satır), `votes.json` (başlıklı yapı),
+Kim kime oy verdi. Üç dosya aynı veriyi tutar: `votes.csv` (144 satır), `votes.json` (başlıklı yapı),
 `votes.js` (web uygulaması için `const VOTES`).
 
 ### Kural — gizli pusula
