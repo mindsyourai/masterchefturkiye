@@ -372,9 +372,11 @@
     var st = STATS[name];
     var best = st.dishes.filter(function (d) { return d.b; });
     var tl = buildTimeline(c);
+    var onContestantsPage = (window.location.pathname || "").indexOf("yarismacilar") !== -1;
+    var fullLink = onContestantsPage ? "" : '<p class="detail-full-link"><a href="yarismacilar.html?kisi=' + encodeURIComponent(c.name) + '">Tam profil →</a></p>';
     var h = '<div class="detail-head"><div><h3>' + esc(c.name) + "</h3>" +
       "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) +
-      (c.status === "elendi" && c.elimDate ? " · Elendi: " + esc(c.elimDate) : "") + "</p>" + statusBadge(c) + "</div>" +
+      (c.status === "elendi" && c.elimDate ? " · Elendi: " + esc(c.elimDate) : "") + "</p>" + statusBadge(c) + fullLink + "</div>" +
       '<button type="button" class="detail-close" id="detail-close">✕ Kapat</button></div>';
     h += '<div class="detail-tiles">' +
       tile(st.dishes.length, "yemek kaydı") +
@@ -434,6 +436,7 @@
     panel.innerHTML = h;
     panel.hidden = false;
     renderContestants();
+    renderRemaining();
     var closeBtn = el("detail-close");
     if (closeBtn) closeBtn.addEventListener("click", closeDetail);
     try {
@@ -448,6 +451,7 @@
     var panel = el("contestant-detail");
     if (panel) { panel.hidden = true; panel.innerHTML = ""; }
     renderContestants();
+    renderRemaining();
   }
   function renderApron() {
     if (!el("apron-table")) return;
@@ -480,6 +484,91 @@
       s.eliminated.map(function (e) { return esc(e.name) + " (" + esc(e.date) + ")"; }).join(", ") + "</span></div>" +
       '<div class="stat"><span class="stat-num">' + s.transcriptComplete.length + '</span><span class="stat-label">bölüm transkriptten tam</span><span class="stat-names">' + esc(s.transcriptComplete.join(", ")) + "</span></div>" +
       '<div class="stat"><span class="stat-num">' + totalDishes + '</span><span class="stat-label">yemek kaydı</span><span class="stat-names">data/dishes.csv — bir yarışmacı-yemek satırı = bir kayıt</span></div>';
+  }
+  function fmtNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  /* ---- Ana sayfa: sezon bandı ---- */
+  function renderSeasonBand() {
+    if (!el("season-band-grid")) return;
+    var ids = EPISODES.map(function (e) { return e.id; }).sort();
+    var start = ids[0], end = ids[ids.length - 1];
+    var totalDishes = 0;
+    Object.keys(DISHES).forEach(function (k) { totalDishes += DISHES[k].length; });
+    var tg = computeTeamGames();
+    var bahar = computeBaharRecord();
+    var topPair = computeTeamCombos().pairs[0];
+    var started = CONTESTANTS.filter(function (c) { return c.apron; }).length;
+    var reserves = CONTESTANTS.filter(function (c) { return !c.apron && (c.group || "").indexOf("Yedek") === 0; }).length;
+    function tile(num, label, sub) {
+      return '<div class="season-tile"><span class="season-num">' + esc(num) + '</span><span class="season-label">' + esc(label) + '</span><span class="season-sub">' + esc(sub) + '</span></div>';
+    }
+    var startShort = trDate(start).replace(" 2026", ""), endShort = trDate(end);
+    var h = "";
+    h += tile(startShort + " – " + endShort, "Sezon", "13 Haziran – 7 Kasım 2026 · 13 hafta");
+    h += tile("3 şef", "Jüri", "Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna");
+    h += tile(started + " → " + SITE.remaining.length, "Yarışmacılar", started + " kişiyle başladı (ana kadro) · " + reserves + " yedek katıldı · " + SITE.eliminated.length + " elendi");
+    h += tile(String(EPISODES.length), "Bölüm", "bölüm transkriptten tam");
+    h += tile(fmtNum(totalDishes), "Yemek kaydı", "bir yarışmacı-yemek satırı = bir kayıt");
+    h += tile(String(tg.blue + tg.red), "Takım oyunu", "Mavi " + tg.blue + " – Kırmızı " + tg.red);
+    h += '<div class="season-tile season-record"><span class="season-label">🏆 Rekor: Bahar Kaya — ' + bahar.freeWeeks + ' hafta potasız</span><span class="season-sub">1–12. haftalar boyunca eleme potasına hiç girmedi; ilk pota ' +
+      (bahar.first ? trDate(bahar.first.date) + " (" + bahar.first.week + "), Nurten'in seçimiyle" : "kayıtlarda yok") + ".</span></div>";
+    if (topPair) {
+      h += '<div class="season-tile season-record"><span class="season-label">👑 En iyi ikili: ' + esc(topPair.a) + " + " + esc(topPair.b) + '</span><span class="season-sub">' +
+        topPair.played + " takım oyunu oynadılar, " + topPair.wins + "'ini kazandılar — %" +
+        (topPair.played ? (topPair.wins / topPair.played * 100).toFixed(1).replace(".", ",") : "0,0") + ".</span></div>";
+    }
+    el("season-band-grid").innerHTML = h;
+  }
+  /* ---- Ana sayfa: kalan yarışmacılar ---- */
+  function latestTeam(c) {
+    for (var i = 0; i < EPISODES.length; i++) {
+      var ep = EPISODES[i];
+      if (!ep.teams) continue;
+      if ((ep.teams.blue || []).some(function (x) { return resolveName(x) === c.name; })) return { team: "blue", week: ep.week };
+      if ((ep.teams.red || []).some(function (x) { return resolveName(x) === c.name; })) return { team: "red", week: ep.week };
+    }
+    return null;
+  }
+  function firstSentence(s) {
+    if (!s) return "";
+    var i = s.indexOf(". ");
+    return i === -1 ? s : s.slice(0, i + 1);
+  }
+  function renderRemaining() {
+    if (!el("remaining-grid")) return;
+    var q = (el("search").value || "").trim().toLowerCase();
+    var list = SITE.remaining.map(function (name) {
+      var c = null;
+      CONTESTANTS.forEach(function (x) { if (x.name === name) c = x; });
+      return c;
+    }).filter(function (c) { return !!c; });
+    if (q) {
+      list = list.filter(function (c) {
+        return (c.name + " " + (c.wins || []).join(" ")).toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    el("remaining-grid").innerHTML = list.map(function (c) {
+      var st = STATS[c.name];
+      var lt = latestTeam(c);
+      var best = st.dishes.filter(function (d) { return d.b; }).length;
+      var teamChip = "";
+      if (lt) teamChip = ' <span class="team-chip ' + lt.team + '">' + (lt.team === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + " · " + esc(lt.week) + "</span>";
+      var hl = firstSentence(NOTES[c.name] || "");
+      return '<button type="button" class="contestant remaining-card' + (lt ? " team-" + lt.team : "") + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
+        "<h4>" + esc(c.name) + "</h4>" + teamChip +
+        "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
+        '<div class="c-stats">' +
+        '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
+        '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
+        '<span class="c-stat"><b>' + st.duelWins + '–' + st.duelLosses + '</b> düello</span>' +
+        '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
+        (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
+        "</div>" +
+        (hl ? '<p class="remaining-highlight">📌 ' + esc(hl) + '</p>' : "") +
+        "<p class='hint'>Profil için tıklayın →</p></button>";
+    }).join("") || "<p class='note'>Eşleşen yarışmacı yok.</p>";
+    document.querySelectorAll("#remaining-grid .contestant").forEach(function (btn) {
+      btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
+    });
   }
   function renderDiscussions() {
     if (!el("discussions")) return;
@@ -652,6 +741,58 @@
     given.sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
     return { received: received, given: given };
   }
+  /* Sezon takım oyunları (STATS.md §4 kuralı): adı "takım oyunu" içeren
+     oyunlar + kazananı Mavi/Kırmızı olan diğer oyunlar; ödül oyunu takım
+     etapları (9 Eyl, 25 Eyl, 14 Eki) sayılmaz — 30 Eki Lübnan sayılır,
+     çünkü oyunun adı takım oyunudur. Beraberlikte tie-break kazananının
+     takımı galip sayılır (22 Eki: Tolga → Mavi).
+     renderStats ve sezon bandı ortak kullanır. */
+  function computeTeamGames() {
+    var weekTeams = {};
+    EPISODES.forEach(function (ep) { if (ep.teams && !weekTeams[ep.week]) weekTeams[ep.week] = ep.teams; });
+    function teamOf(ep, name) {
+      var t = weekTeams[ep.week];
+      if (!t) return null;
+      var full = resolveName(name);
+      if ((t.blue || []).some(function (x) { return resolveName(x) === full; })) return "blue";
+      if ((t.red || []).some(function (x) { return resolveName(x) === full; })) return "red";
+      return null;
+    }
+    var teamGames = { blue: 0, red: 0 };
+    EPISODES.forEach(function (ep) {
+      (ep.games || []).forEach(function (g) {
+        var name = (g.name || "").toLowerCase(), title = (ep.title || "").toLowerCase(), w = g.winner || "";
+        var namedTeam = name.indexOf("takım oyunu") !== -1;
+        var team = null;
+        if (/^mavi/i.test(w)) team = "blue";
+        else if (/^kırmızı/i.test(w)) team = "red";
+        else if (w === "Beraberlik" && namedTeam) {
+          var tb = null;
+          (ep.games || []).forEach(function (x) {
+            if ((x.name || "").toLowerCase().indexOf("beraberlik bozma") !== -1) tb = x;
+          });
+          if (tb && tb.winner) team = teamOf(ep, tb.winner);
+        }
+        if (!team) return;
+        if (namedTeam || title.indexOf("ödül") === -1) teamGames[team]++;
+      });
+    });
+    return teamGames;
+  }
+  /* Bahar Kaya'nın pota kaydı — renderStats ve sezon bandı ortak kullanır. */
+  function computeBaharRecord() {
+    var baharPots = [];
+    EPISODES.slice().reverse().forEach(function (ep) {
+      if ((ep.pot || []).indexOf("Bahar Kaya") !== -1) baharPots.push({ date: ep.id, week: ep.week });
+    });
+    var freeWeeks = 0;
+    for (var w = 1; w <= 13; w++) {
+      var wk = w + ". Hafta";
+      var inPot = EPISODES.some(function (ep) { return ep.week === wk && (ep.pot || []).indexOf("Bahar Kaya") !== -1; });
+      if (!inPot) freeWeeks++;
+    }
+    return { first: baharPots.length ? baharPots[0] : null, freeWeeks: freeWeeks };
+  }
   function renderStats() {
     if (!el("stats")) return;
     var fullStats = el("stats").getAttribute("data-full") === "1";
@@ -682,17 +823,9 @@
       return { name: c.name, n: (DISHES[c.name] || []).filter(function (d) { return d.b; }).length };
     });
     /* Rekorlar — tamamı kayıtlardan çalışma anında hesaplanır. */
-    var baharPots = [];
-    EPISODES.slice().reverse().forEach(function (ep) {
-      if ((ep.pot || []).indexOf("Bahar Kaya") !== -1) baharPots.push({ date: ep.id, week: ep.week });
-    });
-    var baharFirst = baharPots.length ? baharPots[0] : null;
-    var baharFreeWeeks = 0;
-    for (var w = 1; w <= 13; w++) {
-      var wk = w + ". Hafta";
-      var inPot = EPISODES.some(function (ep) { return ep.week === wk && (ep.pot || []).indexOf("Bahar Kaya") !== -1; });
-      if (!inPot) baharFreeWeeks++;
-    }
+    var baharRec = computeBaharRecord();
+    var baharFirst = baharRec.first;
+    var baharFreeWeeks = baharRec.freeWeeks;
     var perDay = {};
     Object.keys(DISHES).forEach(function (k) {
       (DISHES[k] || []).forEach(function (d) { perDay[d.d] = (perDay[d.d] || 0) + 1; });
@@ -706,40 +839,8 @@
         if (per[dt] > dayBest.n) dayBest = { name: k, date: dt, n: per[dt] };
       });
     });
-    /* Sezon takım oyunları (STATS.md §4 kuralı): adı "takım oyunu" içeren
-       oyunlar + kazananı Mavi/Kırmızı olan diğer oyunlar; ödül oyunu takım
-       etapları (9 Eyl, 25 Eyl, 14 Eki) sayılmaz — 30 Eki Lübnan sayılır,
-       çünkü oyunun adı takım oyunudur. Beraberlikte tie-break kazananının
-       takımı galip sayılır (22 Eki: Tolga → Mavi). */
-    var weekTeams = {};
-    EPISODES.forEach(function (ep) { if (ep.teams && !weekTeams[ep.week]) weekTeams[ep.week] = ep.teams; });
-    function teamOf(ep, name) {
-      var t = weekTeams[ep.week];
-      if (!t) return null;
-      var full = resolveName(name);
-      if ((t.blue || []).some(function (x) { return resolveName(x) === full; })) return "blue";
-      if ((t.red || []).some(function (x) { return resolveName(x) === full; })) return "red";
-      return null;
-    }
-    var teamGames = { blue: 0, red: 0 };
-    EPISODES.forEach(function (ep) {
-      (ep.games || []).forEach(function (g) {
-        var name = (g.name || "").toLowerCase(), title = (ep.title || "").toLowerCase(), w = g.winner || "";
-        var namedTeam = name.indexOf("takım oyunu") !== -1;
-        var team = null;
-        if (/^mavi/i.test(w)) team = "blue";
-        else if (/^kırmızı/i.test(w)) team = "red";
-        else if (w === "Beraberlik" && namedTeam) {
-          var tb = null;
-          (ep.games || []).forEach(function (x) {
-            if ((x.name || "").toLowerCase().indexOf("beraberlik bozma") !== -1) tb = x;
-          });
-          if (tb && tb.winner) team = teamOf(ep, tb.winner);
-        }
-        if (!team) return;
-        if (namedTeam || title.indexOf("ödül") === -1) teamGames[team]++;
-      });
-    });
+    /* Sezon takım oyunları (STATS.md §4 kuralı) — ortak yardımcıdan. */
+    var teamGames = computeTeamGames();
     var elimCount = (SITE.eliminated || []).length;
     var statsHtml =
       '<div class="stats-grid">' +
@@ -967,6 +1068,14 @@
       var ci = el("contestants-info");
       if (ci) ci.textContent = q ? anyContestant + " yarışmacı eşleşti" : "";
     }
+    if (el("remaining-grid")) {
+      renderRemaining();
+      var remShown = document.querySelectorAll("#remaining-grid .contestant").length;
+      if (q) parts.push(remShown + " yarışmacı");
+      totalShown += remShown;
+      var ri = el("remaining-info");
+      if (ri) ri.textContent = q ? remShown + " yarışmacı eşleşti" : "";
+    }
     if (el("page-links")) {
       var linkShown = 0;
       document.querySelectorAll("#page-links .page-card").forEach(function (card) {
@@ -989,8 +1098,10 @@
     }
     STATS = computeStats();
     renderSummary();
+    renderSeasonBand();
     renderLatestEpisode();
     renderContestants();
+    renderRemaining();
     renderApron();
     renderEpisodes();
     renderTeams();
