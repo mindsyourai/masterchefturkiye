@@ -17,6 +17,7 @@
 <nav class="sticky" aria-label="Sayfa içi gezinme">
   <button type="button" data-goto="contestants-section">Yarışmacılar</button>
   <button type="button" data-goto="episodes-section">Bölümler</button>
+  <button type="button" data-goto="teams-section">Takımlar</button>
   <button type="button" data-goto="discussions-section">Tartışmalar</button>
   <button type="button" data-goto="votes-section">Konsey Oyları</button>
   <button type="button" data-goto="stats-section">İstatistikler</button>
@@ -48,6 +49,12 @@
     <div id="episodes"></div>
   </section>
 
+  <section id="teams-section">
+    <h2>Takımlar — Hafta Hafta Kadrolar</h2>
+    <p class="note">Her haftanın kadrosu, haftanın kaptanlık bölümündeki (haftanın ilk günü) takım listesinden alınır; kaptanlar 👑 ile işaretlidir. Hafta içi kadro değişikliği kayıtlarda yok. İsme tıklayınca yarışmacının profili açılır. <span id="teams-info"></span></p>
+    <div id="teams"></div>
+  </section>
+
   <section id="discussions-section">
     <h2>Tartışmalar &amp; Gündem</h2>
     <p class="note">Yemeklerin dışında, bölüm transkriptlerinde geçen tartışma ve gündemler — ayrı bir bölümde toplanmıştır. Özetler tarafsız ve olgusaldır; diyalog uydurulmaz, taraf tutulmaz.</p>
@@ -69,10 +76,10 @@
   <section id="sources-section">
     <h2>Kaynaklar ve Eksikler</h2>
     <ul>
-      <li>Transkriptler: 17 Temmuz, 24 Ekim, 25 Ekim (eleme), 26 Ekim (kaptanlık), 27 Ekim (takım oyunu), 2 Kasım (kaptanlık), 3 Kasım, 5 Kasım 2026 — bu bölümler transkriptten tam; 28 Ekim–1 Kasım yalnızca bölümün ilk ~3 dakikası mevcut.</li>
+      <li>Transkriptler: tam sezon dosyası (132 bölüm, 13 Haziran–7 Kasım 2026) + 27 Ekim 2026 (590 sayfalık grup transkripti). 6 Kasım bölümü de transkriptten tam (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday, pota 6 kişi).</li>
       <li>Web: TV8, yemek.com ve haber siteleri (YouTube kullanılmadı).</li>
-      <li>Eksik: 28 Eylül–3 Ekim ve 5–8 Ekim dokunulmazlık oyunları araştırılmadı; çoğu hafta takım oyunu menüleri webde yazmıyor, transkript bekleniyor.</li>
-      <li>Teyit edilecek: 5 Kasım Tolga–Enes düellosu (ASR bozuk), 6 Kasım bölümü (yalnızca Instagram yorumları), Ayşe'nin Empanada önlüğü (yalnızca Instagram özet hesabı), bazı takım listeleri ve hafta numaraları.</li>
+      <li>Eksik: 15–19 Haziran arasında bölüm yok (dosyada 14 Haziran'dan 20 Haziran'a atlanıyor); 28 Eylül–3 Ekim ve 5–8 Ekim dokunulmazlık oyunları araştırılmadı; çoğu hafta takım oyunu menüleri webde yazmıyor, transkript bekleniyor.</li>
+      <li>Teyit edilecek: 5 Kasım Tolga–Enes düellosu (ASR bozuk), Ayşe'nin Empanada önlüğü (yalnızca Instagram özet hesabı), bazı takım listeleri ve hafta numaraları.</li>
       <li>Yeni transkript geldiğinde veri dosyasına (data.js) yeni bir bölüm eklenir; sayfa kendini günceller.</li>
     </ul>
   </section>
