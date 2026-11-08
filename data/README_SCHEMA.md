@@ -88,45 +88,49 @@ Node types and edges:
 | Date | Episode | Rows |
 |---|---|---|
 | 2026-07-17 | Ana kadro 1. Gün — Biber yaratıcılık (14) + Ali Nazik (8) | 22 |
+| 2026-10-24 | 11. Hafta 4. oyun — Ekşili yemekler düello (20) + Kutu oyunu bireysel (8) | 28 |
+| 2026-10-25 | 11. Hafta eleme — Siyah sarımsak Tur 1 (8) + Crespelle Tur 2 (4) | 12 |
+| 2026-10-26 | 12. Hafta kaptanlık — Testi kebabı (15) | 15 |
+| 2026-10-27 | 12. Hafta 1. oyun — Patlıcanlı yemekler düello (19) + Lavaş kebabı bireysel (7) | 26 |
 | 2026-11-02 | 13. Hafta kaptanlık — Pide (14) | 14 |
 | 2026-11-03 | 13. Hafta 1. oyun — Patatesli yemekler düello (14) + Tahin-pekmez bireysel (7) | 21 |
 | 2026-11-05 | 13. Hafta 2. oyun — Uskumru dolması düello (14) + Kuru incir dolması bireysel (7) | 21 |
 
 ### Week-level only (winner/finalist rows; most participant dishes unknown)
-Ana kadro seçimleri 18 Jul–8 Aug (winners' dishes only; #3 Hasan Alp, #7 Demirhan, #9 Şadi, #12 Muhammed dishes unknown; #13 Ayşe empanada = Instagram-only, dusuk). Reserves (Recep, Emre, Tolgahan dishes known; Cansu/Faruk/Buse by vote, no dish). Captain games (9 winning dishes only; 2 Nov fully attributed with all 14 pides — see above). Individual immunity games where the dish + losing-team roster are known (20 Aug armut, 8 Sep helva-i hakani, 11 Sep patlıcan, 22 Sep İslim kebabı, 13 Oct Fesenjan, 16 Oct banduma, 27–31 Oct, 30 Oct ödül oyunu finalists only). Elimination games where the dish is named (16/23 Aug patlıcan + Ricciola; 13 Sep filetto; 20 Sep tahin + ördek bastilla [Faruk only]; 27 Sep Dana Şaşırma [Recep only]; 4 Oct Vitello Tonnato; 11 Oct mandalina + Flying Noodles; 18 Oct Uskumru Tarator; 25 Oct siyah sarımsak + Crespelle; 1 Nov Kalamar Dolması…).
+Ana kadro seçimleri 18 Jul–8 Aug (winners' dishes only; #3 Hasan Alp, #7 Demirhan, #9 Şadi, #12 Muhammed dishes unknown; #13 Ayşe empanada = Instagram-only, dusuk). Reserves (Recep, Emre, Tolgahan dishes known; Cansu/Faruk/Buse by vote, no dish). Captain games (9 winning dishes only; 2 Nov fully attributed with all 14 pides — see above). Individual immunity games where the dish + losing-team roster are known (20 Aug armut, 8 Sep helva-i hakani, 11 Sep patlıcan, 22 Sep İslim kebabı, 13 Oct Fesenjan, 16 Oct banduma, 28–31 Oct, 30 Oct ödül oyunu finalists only). Elimination games where the dish is named (16/23 Aug patlıcan + Ricciola; 13 Sep filetto; 20 Sep tahin + ördek bastilla [Faruk only]; 27 Sep Dana Şaşırma [Recep only]; 4 Oct Vitello Tonnato; 11 Oct mandalina + Flying Noodles; 18 Oct Uskumru Tarator; 1 Nov Kalamar Dolması…).
 
 ### Known menus, cooks unattributed (NO rows — needs transcripts)
-3 Nov patates menüsü is fully attributed (see above). Unattributed: 28 Oct düğün menüsü (7 yemek), 29 Oct Cumhuriyet gala (7), 31 Oct 7 bölge 7 yemek, 13 Oct kızartmalar (9), 15 Oct İspanyol (9), 16 Oct tatlı (9), 11 Sep Hindistan cevizi (9), 8 Sep balık (9), 2 Sep paella (5), 30 Oct Lübnan (9), 30 Sep sokak lezzetleri.
+3 Nov patates menüsü is fully attributed (see above). 24 Oct ekşili (9 düello) and 27 Oct patlıcan (9 düello) menus are now fully attributed too. Unattributed: 28 Oct düğün menüsü (7 yemek), 29 Oct Cumhuriyet gala (7), 31 Oct 7 bölge 7 yemek, 13 Oct kızartmalar (9), 15 Oct İspanyol (9), 16 Oct tatlı (9), 11 Sep Hindistan cevizi (9), 8 Sep balık (9), 2 Sep paella (5), 30 Oct Lübnan (9), 30 Sep sokak lezzetleri.
 
 ### Missing entirely (no dish info at all in sources used)
 - **28 Sep–3 Oct games** (8. Hafta dokunulmazlık oyunları) — unresearched.
 - **5–8 Oct games** (9. Hafta dokunulmazlık oyunları) — unresearched.
-- 6 Nov episode — unconfirmed (Instagram comments only).
+- 6 Nov episode — web-verified (CNN Türk + gzt: Kırmızı won, Tolgahan immunity, Şadi + Kübra candidates, pot 6); dishes/menus and vote counts still need the transcript.
 - 7 Nov (3. oyun) and 8 Nov (eleme) — not yet aired at build time.
-- Most individual-immunity dishes in weeks 1–7 where only the winner's name is known (e.g. 16 Sep Kübra, 18 Sep Burçin, 26 Sep Nilay, 20/21/22/24 Oct, 15/17 Oct).
-- Elimination Tur 1 dishes: 30 Aug, 6 Sep, 18 Oct, 1 Nov (ürün bilinmiyor).
+- Most individual-immunity dishes in weeks 1–7 where only the winner's name is known (e.g. 16 Sep Kübra, 18 Sep Burçin, 26 Sep Nilay, 20/21/22 Oct, 15/17 Oct).
+- Elimination Tur 1 dishes: 30 Aug, 6 Sep, 18 Oct (ürün bilinmiyor); 1 Nov Tur 1 = armut (transkript açılışı).
 
 ## Per-contestant row counts (dishes.csv)
 
 | Contestant | Rows | Contestant | Rows | Contestant | Rows |
 |---|---|---|---|---|---|
-| Enes Vardar | 20 | Nurten Ocak Tamer | 18 | Armağan Kırant | 18 |
-| Şükran Boyraz | 16 | Hasan Alp Karabacak | 15 | Ayşe Nur İnal | 14 |
-| Tolgahan Özden | 14 | Elif Nilay Özgen | 13 | Kübra Satılmış | 13 |
-| Muhammed Yahya Haliloğlu | 13 | Burçin Oğuz | 12 | Tolga Çakuş | 11 |
-| Şadi Altınay | 11 | Emre İrkilmez | 10 | Eyüp Can Güneş | 10 |
-| Bahar Kaya | 9 | Şiringül Kaya | 8 | Batuhan Nazikoğlu | 6 |
+| Enes Vardar | 24 | Armağan Kırant | 24 | Nurten Ocak Tamer | 22 |
+| Şükran Boyraz | 20 | Hasan Alp Karabacak | 19 | Tolgahan Özden | 18 |
+| Elif Nilay Özgen | 17 | Ayşe Nur İnal | 17 | Burçin Oğuz | 16 |
+| Muhammed Yahya Haliloğlu | 16 | Tolga Çakuş | 15 | Kübra Satılmış | 15 |
+| Şadi Altınay | 15 | Eyüp Can Güneş | 14 | Bahar Kaya | 14 |
+| Emre İrkilmez | 12 | Şiringül Kaya | 8 | Batuhan Nazikoğlu | 6 |
 | Recep Batur | 6 | Gülbahar Meşe | 5 | Simge Çıtak | 5 |
 | Koray Saygı | 5 | Cansu Şöhret | 4 | Hami Efe Hanedan | 3 |
 | Mine | 3 | Buse Baştan | 3 | Fatma | 2 |
 | Hatice | 2 | Nevzat | 2 | Demirhan Ali Tekin | 2 |
 | Faruk Garip | 2 | Beyhan | 1 | Fazlı | 1 |
 
-**Rows by source:** transkript_17.07.2026: 22 · transkript_02.11.2026: 14 · transkript_03.11.2026: 21 · transkript_05.11.2026: 21 · web: 199. **Rows by episode_type:** ana_kadro_secim 58 · kaptanlik 23 · takim_oyunu 28 · bireysel_dokunulmazlik 101 · odul_oyunu 2 · eleme 65.
+**Rows by source:** transkript_17.07.2026: 22 · transkript_24.10.2026: 28 · transkript_25.10.2026: 12 · transkript_26.10.2026: 15 · transkript_27.10.2026: 26 · transkript_02.11.2026: 14 · transkript_03.11.2026: 21 · transkript_05.11.2026: 21 · web: 179. **Rows by episode_type:** ana_kadro_secim 58 · kaptanlik 37 · takim_oyunu 67 · bireysel_dokunulmazlik 109 · odul_oyunu 2 · eleme 65.
 
 ## Konsey oyları — votes.csv / votes.json / votes.js
 
-Kim kime oy verdi. Üç dosya aynı veriyi tutar: `votes.csv` (45 satır), `votes.json` (başlıklı yapı),
+Kim kime oy verdi. Üç dosya aynı veriyi tutar: `votes.csv` (82 satır), `votes.json` (başlıklı yapı),
 `votes.js` (web uygulaması için `const VOTES`).
 
 ### Kural — gizli pusula
@@ -152,6 +156,15 @@ açıklanan toplamlar (5+4+3+2=14) 7 seçmen × 2 oyun tamamının isimli olduğ
   Eyüp Can 4. aday oldu. Not: Nurten'in oyları toplam dışı olduğu için sayılan oy 12'dir (6 seçmen × 2);
   7. seçmen Nurten'in 2 oyu ayrıca atıldı.
 
+### Bilinenler (transkript) — 15–24 Ekim 2026
+24 Ekim–1 Kasım 2026 transkriptleriyle eklendi (7 Kasım 2026). 15–22 Ekim oyları **27 Ekim bölümü açılış özetinden** — Armağan, Muhammed'in notlarından okudu; **ikinci el, orta güven**, yarışmacılar bazı ifadeleri canlı tartışıyor. 24 Ekim oyları doğrudan 24 Ekim transkriptinden.
+- **15 Ekim 2026 (10. hafta 2. konsey, takım bilinmiyor):** söylenen 12 oy (6 seçmen × 2). Kübra 5, Nurten 4, Ayşe 2, Bahar 1. Toplam açıklanmadı. Seçmen kümesi tam bilinmiyor (10. hafta takım listesi transkriptte yok).
+- **16 Ekim 2026 (10. hafta 3. konsey, takım bilinmiyor):** söylenen 2 oy — Tolga→Emre, Tolga→Kübra. Sonuç bu transkriptte geçmiyor.
+- **20 Ekim 2026 (11. hafta 1. konsey, Kırmızı):** söylenen 1 oy — Burçin→Nilay ("boş oy" olarak). Nilay'ın gün toplamı 3 oy olarak açıklandı. 15 oy bilinmiyor.
+- **21 Ekim 2026 (11. hafta 2. konsey, Mavi):** söylenen 10 oy; 6 bilinmiyor. Eyüp Can 4 (en çok), Şükran 2, Kübra 2 ("boş oy"), Tolga 1, Muhammed 1. Toplam açıklanmadı; webdeki eşitlik iddiası transkriptle doğrulanmadı.
+- **22 Ekim 2026 (11. hafta 3. konsey, Kırmızı):** söylenen 9 oy; 7 bilinmiyor. Burçin 4 (en çok), Tolgahan 2, Hasan Alp 2, Nurten 1. "Tolga" = Tolgahan Özden (24 Eki 7:37'de doğrulandı).
+- **24 Ekim 2026 (11. hafta 4. konsey, Kırmızı):** toplam açıklandı — Hasan Alp 5, Armağan 5, Nurten 2 (=12). 16 beklenen oyun 4'ü transkriptte yok. Eşitliği kaptan Enes bozdu ("Hasan diyorum", 2:18:43); Hasan Alp 8. aday oldu. 2 belirsiz oy (konuşmacı ASR'dan tespit edilemedi).
+
 ### Düzeltme (6 Kasım 2026) — 3 Kasım konuşmacısı
 İlk sürümde 3 Kasım 1:57:29'daki "O kişi sensin Şadi abi" konuşması yanlışlıkla Nilay'a yazılmıştı.
 Doğrusu **Ayşe→Şadi**: sıra anonsu "Sıra şimdi Ayşe'da" diyor ve Nilay o hafta Kırmızı takımdaydı,
@@ -162,8 +175,8 @@ oy verenin kim olduğu ASR'dan tespit edilemedi — satır olarak eklenmedi.
 ### Web haftaları
 Konsey TOPLAMLARI hiçbir web kaynağında yazmıyor — yalnızca sonuç (potaya giden aday) biliniyor. Bu
 yüzden web haftaları için konsey satırı yok; yalnızca dokunulmazlık kazananının seçimi (23 satır) ve
-kaptan beraberlik kararları (4 satır: 15 Eki Kübra→Nurten, 17 Eki Muhammed→Enes, 21 Eki Şadi→Eyüp Can,
-27 Eki Hasan Alp→Enes) listelendi.
+kaptan beraberlik kararları (5 satır: 15 Eki Kübra→Nurten, 17 Eki Muhammed→Enes, 21 Eki Şadi→Eyüp Can,
+24 Eki Enes→Hasan Alp, 27 Eki Hasan Alp→Enes) listelendi.
 
 ### votes.csv sütunları
 `episode_date, vote_type, voter, voted_for, source, source_confidence, notes` —
