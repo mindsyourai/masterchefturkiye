@@ -505,7 +505,9 @@
   }
   function datSuffix(s) {
     var v = lastVowel(s);
-    return (v === "a" || v === "ı" || v === "o" || v === "u") ? "'a" : "'e";
+    var endsVowel = /[aeıioöuüAEIİOÖUÜ]$/.test(String(s));
+    if (v === "a" || v === "ı" || v === "o" || v === "u") return endsVowel ? "'ya" : "'a";
+    return endsVowel ? "'ye" : "'e";
   }
   function accSuffix(s) {
     var v = lastVowel(s);
@@ -591,7 +593,7 @@
         '<p class="note">Bireysel dokunulmazlığı kazanan yarışmacı, potaya gidecek bir aday seçer. ' + picks.length + " kayıt.</p>" +
         '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Tarih</th><th>Kazanan</th><th>Aday gösterdiği</th><th>Kaynak</th></tr></thead><tbody>' +
         picks.map(function (p) {
-          return "<tr><td>" + esc(trDate(p.date)) + "</td><td><strong>" + esc(p.winner) + "</strong></td><td><strong>" + esc(p.picked) + "</strong>" +
+          return "<tr><td>" + esc(trDate(p.date)) + "</td><td><strong>" + esc(p.winner) + "</strong></td><td><strong>" + (p.picked ? esc(p.picked) : "—") + "</strong>" +
             (p.confidence === "dusuk" ? ' <span class="rank">❓ teyit edilecek</span>' : "") +
             (p.note ? "<br><span class='note'>" + esc(p.note) + "</span>" : "") + "</td><td>" +
             (p.source && p.source.indexOf("transkript") === 0 ? "✅ transkript" : "🌐 web") + "</td></tr>";
@@ -633,7 +635,7 @@
     });
     (VOTES.dokunulmazlik_secimleri || []).forEach(function (p) {
       if (p.picked === name) received.push({ date: p.date, label: trDate(p.date) + " — " + p.winner + "'ın dokunulmazlık seçimiyle potaya girdi" + (p.confidence === "dusuk" ? " (teyit edilecek)" : "") });
-      if (p.winner === name) given.push({ date: p.date, label: trDate(p.date) + " — dokunulmazlığı kazanıp " + shortOf(p.picked) + accSuffix(shortOf(p.picked)) + " potaya gönderdi" + (p.confidence === "dusuk" ? " (teyit edilecek)" : "") });
+      if (p.winner === name) given.push({ date: p.date, label: trDate(p.date) + " — " + (p.picked ? ("dokunulmazlığı kazanıp " + shortOf(p.picked) + accSuffix(shortOf(p.picked)) + " potaya gönderdi") : (p.note && p.note.indexOf("SEÇİM YOK") !== -1 ? "dokunulmazlığı kazandı (seçim yapmadı — kalanlar oylamasız potaya girdi)" : "dokunulmazlığı kazandı (seçimi bilinmiyor)")) + (p.confidence === "dusuk" ? " (teyit edilecek)" : "") });
     });
     (VOTES.kaptan_beraberlik_kararlari || []).forEach(function (t) {
       if (t.picked === name) received.push({ date: t.date, label: trDate(t.date) + " — oylama eşitliğinde kaptan " + shortOf(t.captain) + " onu seçti" });
