@@ -33,19 +33,23 @@
   <section class="summary" id="summary-strip" aria-label="Özet"></section>
   <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
 
-  <section class="howto" aria-label="Nasıl kullanılır">
-    <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
-    <div class="howto-grid">
-      <div class="howto-card"><span class="howto-num">1</span><h3>Yarışmacıyı seç</h3><p>Yarışmacılar bölümünde bir karta tıkla — yemekleri, galibiyetleri, pota geçmişi ve zaman çizelgesi açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
-      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Bölümler en yeniden başlar. Hafta başlığına tıkla, o haftayı aç-kapa. Merak ettiğin günü bul, menüyü ve kazananı gör. 📅</p></div>
-      <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
-    </div>
+  <section id="season-band" aria-label="Sezon bir bakışta">
+    <h2>Sezon Bir Bakışta</h2>
+    <p class="note">13 Haziran'da başlayan sezonun özeti — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
+    <div class="season-grid" id="season-band-grid"></div>
   </section>
 
   <section id="headline-stats">
     <h2>Öne Çıkan İstatistikler</h2>
     <p class="note">Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊 Tüm sıralamalar kayıtlardan hesaplanır; rekorlar ve tam liste için <a href="istatistikler.html">tüm istatistikler →</a></p>
     <div id="stats"></div>
+  </section>
+
+  <section id="remaining-section">
+    <h2>Yarışmaya Devam Edenler ⭐</h2>
+    <p class="note">14 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Takım rozeti, yarışmacının bu haftaki takımıdır. <span id="remaining-info"></span></p>
+    <div class="remaining-grid" id="remaining-grid"></div>
+    <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
 
   <section id="top-pair-section">
@@ -71,6 +75,15 @@
       <a class="page-card" href="konsey.html" data-search="konsey oyları oy pusula aday"><h3>🗳️ Konsey Oyları</h3><p>Konseyler — toplamlar ve söylenen oylar.</p><span class="page-link-arrow">Keşfet →</span></a>
       <a class="page-card" href="istatistikler.html" data-search="istatistikler sıralama rekor düello"><h3>📊 İstatistikler</h3><p>Sıralamalar ve sezon rekorları.</p><span class="page-link-arrow">Keşfet →</span></a>
       <a class="page-card" href="kaynaklar.html" data-search="kaynaklar yöntem uyarı sorumluluk veri"><h3>📂 Kaynaklar &amp; Uyarılar</h3><p>Dosyalar nasıl birleştirildi, ham veriler.</p><span class="page-link-arrow">Keşfet →</span></a>
+    </div>
+  </section>
+
+  <section class="howto" aria-label="Nasıl kullanılır">
+    <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
+    <div class="howto-grid">
+      <div class="howto-card"><span class="howto-num">1</span><h3>Kalan yarışmacıyı seç</h3><p>Aşağıdaki 14 karttan birine tıkla — yemekleri, galibiyetleri, pota geçmişi burada açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
+      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Bölümler en yeniden başlar. Hafta başlığına tıkla, o haftayı aç-kapa. Merak ettiğin günü bul, menüyü ve kazananı gör. 📅</p></div>
+      <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
     </div>
   </section>
 </main>
