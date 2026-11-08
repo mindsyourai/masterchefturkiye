@@ -214,11 +214,38 @@ nav.sticky button:focus-visible,.filter-row button:focus-visible,.detail-close:f
 .stat{transition:transform .12s ease,box-shadow .12s ease}
 .stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(43,35,32,.10)}
 
+/* ---- Çok sayfalı yapı (Kas 2026) ---- */
+nav.sticky a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:.92rem;cursor:pointer;font-family:inherit;color:var(--ink);text-decoration:none;display:inline-block}
+nav.sticky a:hover{border-color:var(--red);color:var(--red)}
+nav.sticky a.active{background:var(--red);color:#fff;border-color:var(--red)}
+nav.sticky a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.fan-badge{display:inline-block;margin:10px auto 0;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 14px;font-size:.88rem}
+main section{margin-bottom:10px}
+main section + section{margin-top:6px}
+
+/* Ana sayfa keşif kartları */
+.page-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.page-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
+.page-card:hover,.page-card:focus-visible{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,35,32,.14);border-color:var(--gold);outline:none}
+.page-card h3{margin:0 0 6px;font-size:1.12rem;color:var(--ink)}
+.page-card p{margin:0 0 10px;font-size:.92rem;color:var(--muted)}
+.page-link-arrow{font-weight:700;color:var(--red);font-size:.9rem}
+
+/* Kırmızı kart içindeki bağlantılar okunabilir kalsın */
+.record-card a{color:#FFE9A8}
+.record-card a:hover{color:#fff}
+
+/* Takım kombinasyonları */
+#team-combos .stat{margin:0 0 14px}
+#team-combos h3{margin:22px 0 8px}
+
 @media (max-width:640px){
   .teams{grid-template-columns:1fr}
   .teams-grid{grid-template-columns:1fr}
   main{padding:12px 10px 40px}
   .ep{padding:14px}
   .detail-panel{padding:16px}
-  nav.sticky input[type="search"]{min-width:0}
+  nav.sticky input[type="search"]{min-width:0;flex-basis:100%;max-width:none}
+  nav.sticky a{padding:6px 11px;font-size:.88rem}
+  header.hero{padding:26px 12px 0}
 }
