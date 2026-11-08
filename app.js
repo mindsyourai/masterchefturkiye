@@ -793,6 +793,8 @@
     var anyContestant = document.querySelectorAll("#contestants-grid .contestant").length;
     el("search-info").textContent = q ? epShown + " bölüm · " + anyContestant + " yarışmacı · " + discShown + " tartışma · " + voteShown + " konsey kaydı · " + teamShown + " hafta kadrosu eşleşti — '" + el("search").value.trim() + "'" : "";
     el("contestants-info").textContent = q ? anyContestant + " yarışmacı eşleşti" : "";
+    var noRes = el("no-results");
+    if (noRes) noRes.hidden = !(q && epShown === 0 && anyContestant === 0 && discShown === 0 && voteShown === 0 && teamShown === 0);
   }
   function init() {
     if (typeof SITE === "undefined" || typeof EPISODES === "undefined" || typeof CONTESTANTS === "undefined") {
@@ -832,6 +834,13 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && selectedName) closeDetail();
     });
+    var toTop = el("to-top");
+    if (toTop) {
+      var showTop = function () { toTop.hidden = !(window.scrollY > 600); };
+      window.addEventListener("scroll", showTop, { passive: true });
+      toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+      showTop();
+    }
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
