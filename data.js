@@ -7,8 +7,8 @@
 const SITE = {
   title: "MasterChef Türkiye 2026",
   subtitle: "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
-  updated: "6 Kasım 2026",
-  note: "Yeni transkriptler geldikçe gün gün ekleniyor. Transkripti olmayan bölümlerde yalnızca webde yazan bilgiler var; yemek listesi eksikse 'bilinmiyor — transkript bekleniyor' diye yazılır.",
+  updated: "7 Kasım 2026",
+  note: "24 Ekim–1 Kasım 2026 transkriptleri eklendi: 24–27 Ekim tam transkriptten doğrulandı; 28 Ekim–1 Kasım yalnızca bölümün ilk ~3 dakikası mevcut, o günlerin çoğu webden. 2–5 Kasım transkriptten tam; 6 Kasım yalnızca webden doğrulandı, transkript bekleniyor. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
   remaining: ["Armağan Kırant","Muhammed Yahya Haliloğlu","Tolga Çakuş","Kübra Satılmış","Şadi Altınay","Tolgahan Özden","Ayşe Nur İnal","Şükran Boyraz","Bahar Kaya","Burçin Oğuz","Nurten Ocak Tamer","Eyüp Can Güneş","Elif Nilay Özgen","Enes Vardar"],
   eliminated: [
     {name:"Demirhan Ali Tekin", date:"16 Ağustos 2026"},
@@ -24,7 +24,7 @@ const SITE = {
     {name:"Emre İrkilmez", date:"25 Ekim 2026"},
     {name:"Hasan Alp Karabacak", date:"1 Kasım 2026"}
   ],
-  transcriptComplete: ["17 Temmuz 2026","2 Kasım 2026","3 Kasım 2026","5 Kasım 2026"]
+  transcriptComplete: ["17 Temmuz 2026","24 Ekim 2026","25 Ekim 2026","26 Ekim 2026","27 Ekim 2026","2 Kasım 2026","3 Kasım 2026","5 Kasım 2026"]
 };
 
 /* Yarışmacılar — wins: yalnızca kaynaklarda açıkça yazan galibiyetler.
@@ -32,7 +32,7 @@ const SITE = {
 const CONTESTANTS = [
   {name:"Batuhan Nazikoğlu", short:"Batuhan", apron:1, group:"1. Grup", status:"elendi", elimDate:"4 Ekim 2026", wins:["17 Tem — Ali Nazik (1. önlük)","11 Eyl — bireysel dokunulmazlık (patlıcan)"]},
   {name:"Elif Nilay Özgen", short:"Nilay", apron:2, group:"1. Grup", status:"yarışıyor", wins:["18 Tem — önlük (tavukla yaratıcı tabak)","26 Eyl — bireysel dokunulmazlık","24 Eki — bireysel dokunulmazlık"]},
-  {name:"Hasan Alp Karabacak", short:"Hasan Alp", apron:3, group:"1. Grup", status:"elendi", elimDate:"1 Kasım 2026", wins:["19 Tem — önlük (yemek bilinmiyor)","20 Ağu — bireysel dokunulmazlık (armutla yaratıcı tabak)"]},
+  {name:"Hasan Alp Karabacak", short:"Hasan Alp", apron:3, group:"1. Grup", status:"elendi", elimDate:"1 Kasım 2026", wins:["19 Tem — önlük (yemek bilinmiyor)","20 Ağu — bireysel dokunulmazlık (armutla yaratıcı tabak)","26 Eki — kaptanlık (Kırmızı kaptan; Kübra'nın seçimi)"]},
   {name:"Şiringül Kaya", short:"Şiringül", apron:4, group:"1. Grup", status:"elendi", elimDate:"18 Ekim 2026", wins:["20 Tem — önlük (kuzu kulağını merkeze alan yaratıcı tabak)"]},
   {name:"Enes Vardar", short:"Enes", apron:5, group:"1. Grup", status:"yarışıyor", wins:["21 Tem — önlük (kazandibi)","22 Eki — bireysel dokunulmazlık"]},
   {name:"Eyüp Can Güneş", short:"Eyüp Can", apron:6, group:"2. Grup", status:"yarışıyor", wins:["23 Tem — önlük (Altı Ezmeli Kebap)"]},
@@ -43,7 +43,7 @@ const CONTESTANTS = [
   {name:"Tolga Çakuş", short:"Tolga", apron:11, group:"3. Grup", status:"yarışıyor", wins:["29 Tem — önlük (Hatay usulü tepsi kebabı)","15 Eki — bireysel dokunulmazlık"]},
   {name:"Muhammed Yahya Haliloğlu", short:"Muhammed", apron:12, group:"3. Grup", status:"yarışıyor", wins:["30 Tem — önlük (yemek bilinmiyor)","27 Eki — bireysel dokunulmazlık (lavaş kebabı)","17 Eki — bireysel dokunulmazlık"]},
   {name:"Ayşe Nur İnal", short:"Ayşe", apron:13, group:"3. Grup", status:"yarışıyor", wins:["31 Tem — önlük (Empanada — teyit edilecek)","16 Eki — bireysel dokunulmazlık (banduma)","30 Eki — ödül oyunu (100.000 TL)"]},
-  {name:"Kübra Satılmış", short:"Kübra", apron:14, group:"3. Grup", status:"yarışıyor", wins:["1 Ağu — önlük (sebze güveci)","16 Eyl — bireysel dokunulmazlık","3 Kas — bireysel dokunulmazlık (karidesli dumpling)"]},
+  {name:"Kübra Satılmış", short:"Kübra", apron:14, group:"3. Grup", status:"yarışıyor", wins:["1 Ağu — önlük (sebze güveci)","16 Eyl — bireysel dokunulmazlık","26 Eki — kaptanlık (testi kebabı, Mavi kaptan)","3 Kas — bireysel dokunulmazlık (karidesli dumpling)"]},
   {name:"Gülbahar Meşe", short:"Gülbahar", apron:15, group:"3. Grup", status:"elendi", elimDate:"23 Ağustos 2026", wins:["2 Ağu — önlük (ekler)"]},
   {name:"Simge Çıtak", short:"Simge", apron:16, group:"4. Grup", status:"elendi", elimDate:"30 Ağustos 2026", wins:["4 Ağu — önlük (pideli köfte)","25 Ağu — bireysel dokunulmazlık"]},
   {name:"Bahar Kaya", short:"Bahar", apron:17, group:"4. Grup", status:"yarışıyor", wins:["5 Ağu — önlük (levreği merkeze alan yaratıcı tabak)","8 Eyl — bireysel dokunulmazlık (helva-i hakani)","21 Eki — bireysel dokunulmazlık"]},
@@ -161,8 +161,9 @@ const EPISODES = [
   summary:"Elenen: Hasan Alp Karabacak (son ikiye Armağan Kırant ile kaldı).",
   pot:["Nurten Ocak Tamer","Enes Vardar","Şükran Boyraz","Hasan Alp Karabacak","Armağan Kırant","Muhammed Yahya Haliloğlu"],
   eliminated:"Hasan Alp Karabacak",
-  games:[{name:"Eleme — 1. etap: yaratıcılık tabağı", detail:"Ürün bilinmiyor — transkript bekleniyor. Enes ve Muhammed kurtuldu.", winner:"Enes Vardar, Muhammed Yahya Haliloğlu kurtuldu"},
-    {name:"Eleme — 2. etap: Kalamar Dolması ve Sucuklu Tereyağında Deniz Tarağı (Somer Şef imza tabağı)", detail:"Nurten ve Şükran kurtuldu; son iki Armağan–Hasan Alp.", winner:"Nurten Ocak Tamer, Şükran Boyraz kurtuldu"}]
+  games:[{name:"Eleme — 1. etap: yaratıcılık tabağı", detail:"Ürün: armut (transkript açılışı). Potada 6 kişi, yalnızca 2'si kurtulabiliyor; gece sonunda 14 kişi kalacak. Enes ve Muhammed kurtuldu (web).", winner:"Enes Vardar, Muhammed Yahya Haliloğlu kurtuldu"},
+    {name:"Eleme — 2. etap: Kalamar Dolması ve Sucuklu Tereyağında Deniz Tarağı (Somer Şef imza tabağı)", detail:"Nurten ve Şükran kurtuldu; son iki Armağan–Hasan Alp.", winner:"Nurten Ocak Tamer, Şükran Boyraz kurtuldu"}],
+  notes:["Bölümün yalnızca ilk ~3 dakikası transkriptte var (açılış): 1. etap ürünü armut; potada 6 kişi (önceden 8); yalnızca 2 kişi kurtulabiliyor; 'Bu gecenin sonunda 14 kişiye düşeceğiz.' Eleme sonucu webden."]
 },
 {
   id:"2026-10-31", date:"31 Ekim 2026", weekday:"Cumartesi", week:"12. Hafta", title:"4. (Son) Takım Oyunu — 7 Bölge 7 Yemek", source:"web",
@@ -179,13 +180,15 @@ const EPISODES = [
     ], detail:"Hangi yemeği kimin yaptığı webde yazmıyor — transkript bekleniyor."}],
   immunity:{name:"Bireysel dokunulmazlık — sıfır atık konsepti yaratıcı yemek", winner:"Tolgahan Özden (final Armağan–Tolgahan)"},
   candidates:["Armağan Kırant — oylama yapılmadı; Kırmızı'da potaya girmeyen tek isim Tolgahan'dı, o da dokunulmazlığı alınca kalan Armağan otomatik potaya girdi."],
-  pot:["Nurten Ocak Tamer","Enes Vardar","Şükran Boyraz","Hasan Alp Karabacak","Armağan Kırant","Muhammed Yahya Haliloğlu"]
+  pot:["Nurten Ocak Tamer","Enes Vardar","Şükran Boyraz","Hasan Alp Karabacak","Armağan Kırant","Muhammed Yahya Haliloğlu"],
+  notes:["Bölümün yalnızca ilk ~3 dakikası transkriptte var (açılış): 'Mavi 3, kırmızı 0' (oyun ortasında) ve 'Bugün de kaybederseniz artık 4-0 olacak... Valla Tolgan için yarışacağız' — Tolgahan potada; Mavi kazanırsa Kırmızı bireysel dokunulmazlık oynuyor, biri kendini kurtarabiliyor. Final skor webden: Mavi 4-3."]
 },
 {
   id:"2026-10-30", date:"30 Ekim 2026", weekday:"Cuma", week:"12. Hafta", title:"Ödül Oyunu (Dokunulmazlık Değil)", source:"web",
   summary:"Takım: Lübnan mutfağı 9 çeşit — Mavi kazandı. Bireysel: burgu peyniriyle yaratıcı tabak; kazanan Ayşe — 100.000 TL.",
   games:[{name:"Takım oyunu — Lübnan mutfağı, 9 çeşit", winner:"Mavi Takım", detail:"Menüdeki yemekler webde yazmıyor — transkript bekleniyor."}],
-  immunity:{name:"Ödül oyunu — burgu peyniriyle yaratıcı tabak", winner:"Ayşe Nur İnal — 100.000 TL (final Şadi–Ayşe)"}
+  immunity:{name:"Ödül oyunu — burgu peyniriyle yaratıcı tabak", winner:"Ayşe Nur İnal — 100.000 TL (final Şadi–Ayşe)"},
+  notes:["Bölümün yalnızca ilk ~3 dakikası transkriptte var (açılış): ödül oyunu ve aile video mesajları doğrulandı ('Bugünkü ödülünüz sizin sevdiklerinizden geliyor. Kazanana mesaj var.'). Kazanan ve ödül miktarı webden."]
 },
 {
   id:"2026-10-29", date:"29 Ekim 2026", weekday:"Perşembe", week:"12. Hafta", title:"3. Takım Oyunu — Cumhuriyet Bayramı Gala Yemeği", source:"web",
@@ -201,7 +204,8 @@ const EPISODES = [
       {dish:"Meyveli elmasiye", winner:"Mavi Takım"}
     ], detail:"Hangi yemeği kimin yaptığı webde yazmıyor — transkript bekleniyor."}],
   immunity:{name:"Bireysel dokunulmazlık — yeşil mercimekle yaratıcı tabak", duration:"45 dk", winner:"Tolgahan Özden"},
-  candidates:["Armağan Kırant ve Muhammed Yahya Haliloğlu — oylama yapılmadı; Kırmızı'da Nurten, Enes, Şükran, Hasan Alp zaten potadaydı, Tolgahan dokunulmazlığı alınca kalan iki isim otomatik potaya girdi."]
+  candidates:["Armağan Kırant ve Muhammed Yahya Haliloğlu — oylama yapılmadı; Kırmızı'da Nurten, Enes, Şükran, Hasan Alp zaten potadaydı, Tolgahan dokunulmazlığı alınca kalan iki isim otomatik potaya girdi."],
+  notes:["Bölümün yalnızca ilk ~3 dakikası transkriptte var (açılış): Cumhuriyet'in 103. yılı ve gala yemeği doğrulandı. Kazanan açıklaması transkriptte yarım kalıyor ('Haftanın 3'üncü takım oyun kazanan...' — cümle bitmeden kesiliyor); kazanan webden."]
 },
 {
   id:"2026-10-28", date:"28 Ekim 2026", weekday:"Çarşamba", week:"12. Hafta", title:"2. Takım Oyunu — Düğün Menüsü", source:"web",
@@ -218,41 +222,91 @@ const EPISODES = [
     ], detail:"Hangi yemeği kimin yaptığı webde yazmıyor — transkript bekleniyor."}],
   immunity:{name:"Bireysel dokunulmazlık — tavuk bagetle yaratıcı yemek", duration:"45 dk", winner:"Tolgahan Özden (final Armağan–Tolgahan)"},
   candidates:["Şükran Boyraz — 3. aday (Tolgahan'ın seçimi)","Hasan Alp Karabacak — 4. aday (oylama)"],
-  pot:["Nurten Ocak Tamer","Enes Vardar","Şükran Boyraz","Hasan Alp Karabacak"]
+  pot:["Nurten Ocak Tamer","Enes Vardar","Şükran Boyraz","Hasan Alp Karabacak"],
+  notes:["Bölümün yalnızca ilk ~3 dakikası transkriptte var (açılış): 'Kabak borani nerede?' ve konuk jüri konsepti ('Gelsin konuklarımız'; iki jüri üyesi birbirine danışarak tadım yapıyor) doğrulandı. Takım oyunu sonucu ve bireysel kazanan webden."]
 },
 {
-  id:"2026-10-27", date:"27 Ekim 2026", weekday:"Salı", week:"12. Hafta", title:"1. Takım Oyunu — Patlıcan Yemekleri", source:"web",
-  summary:"Takım: patlıcan yemekleri konsepti — Mavi kazandı (oy birliği). Bireysel: lavaş kebabı, 40 dk; kazanan Muhammed.",
-  games:[{name:"Takım oyunu — patlıcan yemekleri", winner:"Mavi Takım (oy birliği)", detail:"Menüdeki yemekler bilinmiyor — transkript bekleniyor."}],
+  id:"2026-10-27", date:"27 Ekim 2026", weekday:"Salı", week:"12. Hafta", title:"1. Takım Oyunu — Patlıcan Yemekleri", source:"transkript",
+  summary:"Takım: patlıcan yemekleri, 9 düello, 45 dk — Mavi kazandı 6-3 (webdeki 'oy birliği' iddiası yanlış; transkript düello düello 6-3 veriyor). Bireysel: lavaş kebabı, 40 dk; kazanan Muhammed (final Nurten–Muhammed). 1. aday Nurten (Muhammed'in seçimi); 2. aday bölüm sonuna kadar açıklanmadı — transkript 2:23:08'de, konsey oylaması bitmeden sona eriyor.",
+  games:[{name:"Takım oyunu — patlıcan yemekleri, 9 düello", duration:"45 dk", winner:"Mavi Takım 6-3", score:"Mavi 6 – 3 Kırmızı",
+    dishes:[
+      {dish:"Ajvar", blue:"Elif Nilay Özgen, Tolga Çakuş", red:"Armağan Kırant (ikinci Kırmızı aşçı adlandırılmıyor)", winner:"Kırmızı Takım", score:"Mavi 0-1"},
+      {dish:"Köz patlıcan çorbası", blue:"Bahar Kaya", red:"Armağan Kırant", winner:"Mavi Takım", score:"Mavi 1-1"},
+      {dish:"Nasu Dengaku", blue:"Bahar Kaya", red:"Tolgahan Özden", winner:"Kırmızı Takım", score:"Mavi 1-2"},
+      {dish:"Patlıcanlı Bozcaada böreği", blue:"Tolga Çakuş", red:"Nurten Ocak Tamer", winner:"Mavi Takım", score:"Mavi 2-2"},
+      {dish:"Şeyh Mualla", blue:"Burçin Oğuz", red:"Şükran Boyraz", winner:"Mavi Takım", score:"Mavi 3-2"},
+      {dish:"Malatya Danilo kebabı", blue:"Eyüp Can Güneş", red:"Muhammed Yahya Haliloğlu", winner:"Kırmızı Takım", score:"Mavi 3-3"},
+      {dish:"Hünkar Beğendi", blue:"Şadi Altınay", red:"Hasan Alp Karabacak", winner:"Mavi Takım", score:"Mavi 4-3"},
+      {dish:"Patlıcanlı pilav", blue:"Kübra Satılmış", red:"Şükran Boyraz", winner:"Mavi Takım", score:"Mavi 5-3", note:"Mavi pilavda oyunu garantiledi."},
+      {dish:"Patlıcan tatlısı", blue:"Ayşe Nur İnal", red:"Enes Vardar", winner:"Mavi Takım", score:"Mavi 6-3"}
+    ]}],
   immunity:{name:"Bireysel dokunulmazlık — lavaş kebabı", duration:"40 dk", winner:"Muhammed Yahya Haliloğlu (final Nurten–Muhammed)"},
-  candidates:["Nurten Ocak Tamer — 1. aday (Muhammed'in seçimi)","Enes Vardar — 2. aday (oylama eşitliği Enes/Şükran; kaptan Hasan Alp Enes'i seçti)"]
+  candidates:["Nurten Ocak Tamer — 1. aday (Muhammed'in seçimi)","2. aday bilinmiyor — transkript bölüm sonuna (2:23:08) kadar 2. adayı açıklamıyor; web 'Enes' diyor, doğrulanmadı"]
 },
 {
-  id:"2026-10-26", date:"26 Ekim 2026", weekday:"Pazartesi", week:"12. Hafta", title:"Kaptanlık", source:"web",
-  summary:"Kübra testi kebabı (1 saat) ile Mavi kaptan oldu; Hasan Alp'i Kırmızı kaptan seçti.",
+  id:"2026-10-26", date:"26 Ekim 2026", weekday:"Pazartesi", week:"12. Hafta", title:"Kaptanlık — Testi Kebabı", source:"transkript",
+  summary:"Kübra testi kebabı (1 saat) ile Mavi kaptan oldu; Hasan Alp'i Kırmızı kaptan seçti. En başarılı 5 tabak: 1. Kübra, 3. Nurten, 4. Şadi, 5. Şükran (2. açıklanmadı).",
   captains:{blue:"Kübra Satılmış", red:"Hasan Alp Karabacak"},
   teams:{blue:["Kübra","Ayşe","Tolga","Burçin","Eyüp Can","Nilay","Şadi","Bahar"], red:["Hasan Alp","Muhammed","Şükran","Nurten","Enes","Armağan","Tolgahan"]},
-  games:[{name:"Kaptanlık oyunu — testi kebabı", duration:"1 saat", winner:"Kübra Satılmış (Mavi kaptan)", detail:"Hasan Alp Karabacak Kırmızı kaptan seçildi."}],
-  notes:["elele.com.tr'nin takım listesi Kübra'yı atlayıp Bahar'ı Mavi'de gösteriyor — hatalı sayıldı; 15 kişilik kadro hesabı Mavi'nin 8 kişi olduğunu gerektiriyor."]
+  games:[{name:"Kaptanlık oyunu — testi kebabı", duration:"1 saat", winner:"Kübra Satılmış (Mavi kaptan)", detail:"Herkes 2 adet testi kebabı yaptı; kazanan 1:42:17'de açıklandı. Hasan Alp Karabacak Kırmızı kaptan seçildi.",
+    dishes:[
+      {dish:"Testi kebabı", name:"Kübra Satılmış", rank:"1.", note:"En başarılı tabak; Mavi kaptan oldu."},
+      {dish:"Testi kebabı", name:"Nurten Ocak Tamer", rank:"3.", note:"En başarılı 3. tabak."},
+      {dish:"Testi kebabı", name:"Şadi Altınay", rank:"4.", note:"En başarılı 4. tabak."},
+      {dish:"Testi kebabı", name:"Şükran Boyraz", rank:"5.", note:"En başarılı 5. tabak."},
+      {dish:"Testi kebabı", name:"Armağan Kırant", rank:"—"},
+      {dish:"Testi kebabı", name:"Muhammed Yahya Haliloğlu", rank:"—"},
+      {dish:"Testi kebabı", name:"Tolga Çakuş", rank:"—"},
+      {dish:"Testi kebabı", name:"Tolgahan Özden", rank:"—"},
+      {dish:"Testi kebabı", name:"Ayşe Nur İnal", rank:"—"},
+      {dish:"Testi kebabı", name:"Bahar Kaya", rank:"—"},
+      {dish:"Testi kebabı", name:"Burçin Oğuz", rank:"—"},
+      {dish:"Testi kebabı", name:"Eyüp Can Güneş", rank:"—"},
+      {dish:"Testi kebabı", name:"Elif Nilay Özgen", rank:"—"},
+      {dish:"Testi kebabı", name:"Enes Vardar", rank:"—"},
+      {dish:"Testi kebabı", name:"Hasan Alp Karabacak", rank:"—", note:"Kırmızı kaptan seçildi."}
+    ]}],
+  notes:["Takım listesi transkriptten doğrulandı; elele.com.tr'nin Kübra'yı atlayıp Bahar'ı Mavi'de gösteren listesi hatalı sayıldı."]
 }
 ];
 
 /* Hafta 11–1 ve ana kadro seçimleri — EPISODES dizisine eklenir (en son önce sıralı) */
 EPISODES.push(
 {
-  id:"2026-10-25", date:"25 Ekim 2026", weekday:"Pazar", week:"11. Hafta", title:"Eleme — Emre Elendi", source:"web",
-  summary:"Elenen: Emre İrkilmez (son ikiye Ayşe ile kaldı).",
+  id:"2026-10-25", date:"25 Ekim 2026", weekday:"Pazar", week:"11. Hafta", title:"Eleme — Emre Elendi", source:"transkript",
+  summary:"Elenen: Emre İrkilmez (son ikiye Ayşe ile kaldı). Tur 1 (siyah sarımsak): kurtuluş sırası 1. Burçin, 2. Nilay, 3. Tolgahan, 4. Enes. Tur 2 (Crespelle): 1. Hasan Alp, 2. Eyüp Can, 3. Ayşe; Emre elendi.",
   pot:["Enes Vardar","Emre İrkilmez","Ayşe Nur İnal","Eyüp Can Güneş","Elif Nilay Özgen","Burçin Oğuz","Tolgahan Özden","Hasan Alp Karabacak"],
   eliminated:"Emre İrkilmez",
-  games:[{name:"Eleme — 1. etap: siyah sarımsaklı özgün tabaklar", detail:"Enes, Nilay, Burçin, Tolgahan kurtuldu.", winner:"Enes Vardar, Elif Nilay Özgen, Burçin Oğuz, Tolgahan Özden kurtuldu"},
-    {name:"Eleme — 2. etap: Crespelle (Danilo Şef imza tabağı)", detail:"Hasan Alp, sonra Eyüp Can kurtuldu; son iki Emre–Ayşe.", winner:"Hasan Alp Karabacak, Eyüp Can Güneş kurtuldu"}]
+  games:[{name:"Eleme — 1. etap: siyah sarımsaklı özgün tabaklar", detail:"Kurtuluş sırası: 1. Burçin, 2. Nilay, 3. Tolgahan, 4. Enes.", winner:"Burçin Oğuz, Elif Nilay Özgen, Tolgahan Özden, Enes Vardar kurtuldu"},
+    {name:"Eleme — 2. etap: Crespelle (Danilo Şef imza tabağı)", detail:"Kurtuluş sırası: 1. Hasan Alp, 2. Eyüp Can, 3. Ayşe; son iki Emre–Ayşe.", winner:"Hasan Alp Karabacak, Eyüp Can Güneş, Ayşe Nur İnal kurtuldu"}]
 },
 {
-  id:"2026-10-24", date:"24 Ekim 2026", weekday:"Cumartesi", week:"11. Hafta", title:"4. (Son) Takım Oyunu", source:"web",
-  summary:"Takım: 9 yemek, 45 dk — Mavi kazandı. Bireysel kazanan Nilay. (23 Ekim'de bölüm yayınlanmadı.)",
-  games:[{name:"Takım oyunu — 9 yemek", duration:"45 dk", winner:"Mavi Takım", detail:"Menü bilinmiyor — transkript bekleniyor."}],
-  immunity:{name:"Bireysel dokunulmazlık", winner:"Elif Nilay Özgen"},
-  candidates:["Tolgahan Özden — 7. aday (Nilay'ın seçimi)","Hasan Alp Karabacak — 8. aday (oylama)"],
+  id:"2026-10-24", date:"24 Ekim 2026", weekday:"Cumartesi", week:"11. Hafta", title:"4. (Son) Takım Oyunu — Ekşili Yemekler", source:"transkript",
+  summary:"Takım: ekşili yemekler, 9 düello, 45 dk — Mavi kazandı 5-4 (hafta skoru Mavi 3-1). Bireysel: sıfır atık konsepti, gizli kutu; kazanan Nilay (final Nilay–Nurten). Konseyde Hasan Alp 8. aday oldu (oylama 5-5, kaptan Enes seçti). (23 Ekim'de bölüm yayınlanmadı.)",
+  games:[{name:"Takım oyunu — ekşili yemekler, 9 düello", duration:"45 dk", winner:"Mavi Takım 5-4", score:"Mavi 5 – 4 Kırmızı",
+    dishes:[
+      {dish:"Ekşili kuru dolma", blue:"Eyüp Can Güneş", red:"Nurten Ocak Tamer", winner:"Kırmızı Takım", score:"Mavi 0-1", note:"Eyüp Can 6 dakika geç başladı."},
+      {dish:"Canh Chua", blue:"Bahar Kaya", red:"Hasan Alp Karabacak", winner:"Mavi Takım", score:"Mavi 1-1"},
+      {dish:"Aloo Tikki", blue:"Ayşe Nur İnal", red:"Elif Nilay Özgen", winner:"Kırmızı Takım", score:"Mavi 1-2", note:"Kırmızı aşçı ASR'da 'çattınila' diye geçiyor; 'Bravo Nilay' anonsundan Nilay olduğu anlaşıldı."},
+      {dish:"Palamut ekşilisi", blue:"Muhammed Yahya Haliloğlu", red:"Enes Vardar", winner:"Mavi Takım", score:"Mavi 2-2", note:"Enes kaptan yaptı."},
+      {dish:"Sweet and Sour Chicken", blue:"Tolga Çakuş", red:"Tolgahan Özden", winner:"Kırmızı Takım", score:"Mavi 2-3"},
+      {dish:"Ekşili ayak sulusu", blue:"Şükran Boyraz", red:"Burçin Oğuz", winner:"Mavi Takım", score:"Mavi 3-3"},
+      {dish:"Ghormeh Sabzi", blue:"Şadi Altınay, Bahar Kaya, Eyüp Can Güneş (birlikte)", red:"Armağan Kırant (diğer Kırmızı aşçı/ları adlandırılmıyor)", winner:"Mavi Takım", score:"Mavi 4-3", note:"Mavi'de Şadi, Bahar ve Eyüp Can birlikte yaptı."},
+      {dish:"İhsangazi Ekşili Pilavı", blue:"Kübra Satılmış", red:"Armağan Kırant", winner:"Mavi Takım", score:"Mavi 5-3", note:"Kübra'nın tabağı 'çok lezzetli, ekşiliği ve kıvamı yerinde'; Armağan'ınki 'kısır olmuş, pilav deme şansımız yok'. Bu puanla Mavi oyunu garantiledi."},
+      {dish:"Lemon Delicious Pudding", blue:"Şadi Altınay", red:"Emre İrkilmez", winner:"Kırmızı Takım", score:"Mavi 5-4", note:"Oyun Mavi'nin olmasına rağmen tatlı düellosu oynandı; son puan Kırmızı'nın."}
+    ]}],
+  immunity:{name:"Bireysel dokunulmazlık — kutu oyunu (sıfır atık konsepti, gizli kutu)", winner:"Elif Nilay Özgen (final Nurten–Nilay)",
+    dishes:[
+      {dish:"Dumpling", name:"Elif Nilay Özgen", rank:"1.", note:"Kazanan; Tolgahan'ı 7. aday olarak potaya gönderdi."},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Nurten Ocak Tamer", rank:"2.", note:"Final Nilay–Nurten."},
+      {dish:"Hindi bonfile sarma", name:"Emre İrkilmez", rank:"3.", note:"En başarılı 3. tabak."},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Enes Vardar", rank:"4. (orta güven)", note:"4.'lük ASR'dan çıkarım — kesin değil."},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Hasan Alp Karabacak", rank:"—", note:"Konseyde 8. aday oldu (oylama 5-5; kaptan Enes seçti)."},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Tolgahan Özden", rank:"—", note:"Nilay'ın seçimiyle 7. aday oldu."},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Burçin Oğuz", rank:"—"},
+      {dish:"Kutu oyunu yaratıcı tabak", name:"Armağan Kırant", rank:"—", note:"Konseyde Hasan Alp ile 5-5 berabere kaldı."}
+    ]},
+  candidates:["Tolgahan Özden — 7. aday (Nilay'ın seçimi)","Hasan Alp Karabacak — 8. aday (oylama 5-5; kaptan Enes Hasan Alp'i seçti)"],
   pot:["Enes Vardar","Emre İrkilmez","Ayşe Nur İnal","Eyüp Can Güneş","Elif Nilay Özgen","Burçin Oğuz","Tolgahan Özden","Hasan Alp Karabacak"]
 },
 {
