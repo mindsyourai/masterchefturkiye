@@ -11,6 +11,7 @@
 <header class="hero">
   <h1>MasterChef Türkiye 2026</h1>
   <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <p class="hero-joke">Şefler karar verdi, biz not aldık: 133 bölüm, 2.712 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
   <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 6 Kasım 2026</span></p>
   <div class="kilim" aria-hidden="true"></div>
 </header>
@@ -21,16 +22,27 @@
   <button type="button" data-goto="discussions-section">Tartışmalar</button>
   <button type="button" data-goto="votes-section">Konsey Oyları</button>
   <button type="button" data-goto="stats-section">İstatistikler</button>
+  <button type="button" data-goto="sources-section">Kaynaklar &amp; Uyarılar</button>
   <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
   <span class="search-info" id="search-info"></span>
 </nav>
 <main>
   <p class="note" id="site-note"></p>
   <section class="summary" id="summary-strip" aria-label="Özet"></section>
+  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
+
+  <section class="howto" aria-label="Nasıl kullanılır">
+    <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
+    <div class="howto-grid">
+      <div class="howto-card"><span class="howto-num">1</span><h3>Yarışmacıyı seç</h3><p>Yarışmacılar bölümünde bir karta tıkla — yemekleri, galibiyetleri, pota geçmişi ve zaman çizelgesi açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
+      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Bölümler en yeniden başlar. Hafta başlığına tıkla, o haftayı aç-kapa. Merak ettiğin günü bul, menüyü ve kazananı gör. 📅</p></div>
+      <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
+    </div>
+  </section>
 
   <section id="contestants-section">
     <h2>Yarışmacılar</h2>
-    <p class="note">Karta tıklayın — her yarışmacının yemekleri, galibiyetleri, kaptanlıkları, pota geçmişi ve zaman çizelgesi açılır. Sayılar kayıtlardan hesaplanır; yalnızca kaynaklarda yazan galibiyetler gösterilir. <span id="contestants-info"></span></p>
+    <p class="note">Karta tıklayın — her yarışmacının yemekleri, galibiyetleri, kaptanlıkları, pota geçmişi ve zaman çizelgesi açılır. Sayılar kayıtlardan hesaplanır; yalnızca kaynaklarda yazan galibiyetler gösterilir. Kimin kaç kez potaya gittiğini görmek cesaret ister — Ayşe 8 kez gitti, biz saymaktan yorulmadık. <span id="contestants-info"></span></p>
     <div class="filter-row" role="group" aria-label="Durum filtresi">
       <button type="button" data-status="all" class="active">Tümü</button>
       <button type="button" data-status="active">Yarışıyor</button>
@@ -45,7 +57,7 @@
 
   <section id="episodes-section">
     <h2>Gün Gün Bölümler — En Son Önce</h2>
-    <p class="note"><span id="ep-count"></span> · ✅ transkriptten doğrulandı · 🌐 webden doğrulandı, transkript bekleniyor · ❓ teyit edilecek · Bilinmeyen yemek/kazanan uydurulmaz, "bilinmiyor — transkript bekleniyor" diye yazılır. Hafta başlıklarına tıklayarak açıp kapatabilirsiniz.</p>
+    <p class="note"><span id="ep-count"></span> · ✅ transkriptten doğrulandı · 🌐 webden doğrulandı, transkript bekleniyor · ❓ teyit edilecek · Bilinmeyen yemek/kazanan uydurulmaz, "bilinmiyor — transkript bekleniyor" diye yazılır. Hafta başlıklarına tıklayarak açıp kapatabilirsiniz. En son önce — tıpkı şeflerin önce tabağa bakması gibi. 🍳</p>
     <div id="episodes"></div>
   </section>
 
@@ -57,37 +69,78 @@
 
   <section id="discussions-section">
     <h2>Tartışmalar &amp; Gündem</h2>
-    <p class="note">Yemeklerin dışında, bölüm transkriptlerinde geçen tartışma ve gündemler — ayrı bir bölümde toplanmıştır. Özetler tarafsız ve olgusaldır; diyalog uydurulmaz, taraf tutulmaz.</p>
+    <p class="note">Yemeklerin dışında, bölüm transkriptlerinde geçen tartışma ve gündemler — ayrı bir bölümde toplanmıştır. Özetler tarafsız ve olgusaldır; diyalog uydurulmaz, taraf tutulmaz. Kaşıklar bazen konuşur; burada sadece özet var, kimseyi tutmuyoruz — tabak tutuyoruz. 🥄</p>
     <div id="discussions"></div>
   </section>
 
   <section id="votes-section">
     <h2>Konsey Oyları</h2>
-    <p class="note">Konsey oyları gizli — ekranda yalnızca toplamlar açıklanır. Bireysel oylar, sadece yarışmacının kamerada kendi söylediği oylar; söylenmeyen oylar "bilinmiyor" olarak kalır, toplamdan tahmin edilmez.</p>
+    <p class="note">Konsey oyları gizli — ekranda yalnızca toplamlar açıklanır. Bireysel oylar, sadece yarışmacının kamerada kendi söylediği oylar; söylenmeyen oylar "bilinmiyor" olarak kalır, toplamdan tahmin edilmez. Yani evet, oy pusulasını kimse görmedi — biz de görmedik, uydurmadık. 🤫</p>
     <div id="votes"></div>
   </section>
 
   <section id="stats-section">
     <h2>İstatistikler</h2>
-    <p class="note">Aşağıdaki sıralamalar sayfadaki kayıtlardan (transkriptler, web listesi ve yemek kayıtları) hesaplanır; elle yazılmış sayılar değildir. Web haftalarında yalnızca kazananın adı bilindiği için bazı yemek kayıtları eksiktir — bu, sıralamaları etkileyebilir.</p>
+    <p class="note">Aşağıdaki sıralamalar sayfadaki kayıtlardan (transkriptler, web listesi ve yemek kayıtları) hesaplanır; elle yazılmış sayılar değildir. Web haftalarında yalnızca kazananın adı bilindiği için bazı yemek kayıtları eksiktir — bu, sıralamaları etkileyebilir. Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊</p>
     <div id="stats"></div>
   </section>
 
   <section id="sources-section">
-    <h2>Kaynaklar ve Eksikler</h2>
-    <ul>
-      <li>Transkriptler: tam sezon dosyası (132 bölüm, 13 Haziran–7 Kasım 2026) + 27 Ekim 2026 (590 sayfalık grup transkripti). 6 Kasım bölümü de transkriptten tam (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday, pota 6 kişi).</li>
-      <li>Web: TV8, yemek.com ve haber siteleri (YouTube kullanılmadı).</li>
-      <li>Eksik: 15–19 Haziran arasında bölüm yok (dosyada 14 Haziran'dan 20 Haziran'a atlanıyor); 28 Eylül–3 Ekim ve 5–8 Ekim dokunulmazlık oyunları araştırılmadı; çoğu hafta takım oyunu menüleri webde yazmıyor, transkript bekleniyor.</li>
-      <li>Teyit edilecek: 5 Kasım Tolga–Enes düellosu (ASR bozuk), Ayşe'nin Empanada önlüğü (yalnızca Instagram özet hesabı), bazı takım listeleri ve hafta numaraları.</li>
-      <li>Yeni transkript geldiğinde veri dosyasına (data.js) yeni bir bölüm eklenir; sayfa kendini günceller.</li>
-    </ul>
+    <h2>Kaynaklar, Yöntem &amp; Uyarılar</h2>
+    <p class="note">Bu sayfadaki her sayı bir kaynağa dayanır. "Nereden çıktı bu?" diyenler için — buyurun, mutfağın arkası. 👨‍🍳</p>
+    <div class="sources-grid">
+      <div class="source-card">
+        <h3>📂 Dosyalar nasıl birleştirildi?</h3>
+        <ol>
+          <li><strong>Tam sezon transkript dosyası:</strong> 1.677 sayfalık PDF, 132 bölüm (13 Haziran–7 Kasım 2026). Bölümler otomatik konuşma tanıma (ASR) metni olarak çıkarıldı.</li>
+          <li><strong>590 sayfalık grup transkripti (24 Ekim–1 Kasım):</strong> 27 Ekim buradan; 24–27 Ekim tam, 28 Ekim–1 Kasım yalnızca açılış bölümleri.</li>
+          <li><strong>Tek bölüm transkriptleri:</strong> 2, 3 ve 5 Kasım PDF'leri, bölüm bölüm okundu.</li>
+          <li><strong>Takım tablosu:</strong> 1–12. haftalar, 224 satır (ekran görüntüsünden çıkarıldı) — kadrolar için kısıt olarak kullanıldı.</li>
+          <li><strong>Web karşılaştırması:</strong> TV8, yemek.com ve haber sitelerinden 15 kaynak kontrol edildi; YouTube kullanılmadı.</li>
+          <li><strong>Birleştirme kuralı:</strong> transkript &gt; takım tablosu &gt; web. Çelişki çıkarsa transkript kazanır; çözülemeyen çelişki iki kaynağıyla birlikte yazılır, üstü kapatılmaz.</li>
+          <li><strong>Sayılar elle değil, script ile sayıldı:</strong> 2.712 yemek kaydı, 144 oy kaydı, 32 tartışma, 13 hafta kadrosu — hepsi dosyalardan hesaplanır.</li>
+        </ol>
+      </div>
+      <div class="source-card">
+        <h3>⚠️ Neye dikkat etmeli?</h3>
+        <ul>
+          <li><strong>ASR metni hata yapar:</strong> isimler yanlış duyulabilir, sayılar bulanık olabilir — böyle yerler ❓ işareti ve "orta güven" notuyla yazılır.</li>
+          <li><strong>Konsey oyları gizli:</strong> ekranda yalnızca toplamlar açıklanır. Bireysel oylar, yarışmacı kamerada kendi söylediyse yazılır; söylenmeyen oy "bilinmiyor" kalır.</li>
+          <li><strong>"Boş oy" boş pusula değildir:</strong> sayılan ama "boşuna" atılmış bir isim oyudur — Bahar'ın Nilay'a attığı "boş oy", Nilay'ın 1 oyunda görünür.</li>
+          <li><strong>Eksikler:</strong> 15–19 Haziran arasında bölüm yok (dosyada 14 Haziran'dan 20 Haziran'a atlanıyor); 23 Ekim ve 4 Kasım'da bölüm yayınlanmadı; 8 Kasım eleme henüz yayınlanmadı.</li>
+          <li><strong>Bilinmeyen uydurulmaz:</strong> menüsü, kazananı ya da oyu bulunamayan yer "bilinmiyor" diye yazılır — boşluk tahminle doldurulmaz.</li>
+          <li><strong>Çözülmemiş çelişkiler:</strong> 24 Ekim konsey sayımı (web 5–5, transkript 7–7), 12 Ağustos dokunulmazlık kazananı, 28 Ekim skorları — kaynaklarıyla birlikte sayfada durur.</li>
+        </ul>
+      </div>
+      <div class="source-card">
+        <h3>📜 Sorumluluk reddi</h3>
+        <ul>
+          <li>Bu site <strong>resmî değildir</strong>; TV8, Acun Medya ve MasterChef ile bağlantısı yoktur. Bir hayran kaydıdır.</li>
+          <li>Videolar bu sitede barındırılmaz; yemek adları ve alıntılar yayından aktarılmıştır.</li>
+          <li>Hata olabilir — transkript hatası, yazım hatası, eksik kayıt. Düzeltme için kaynağını göstererek bildirin; düzeltiriz, saklamayız.</li>
+          <li>Yeni transkript geldiğinde sayfa güncellenir — en son bölüm her zaman en üsttedir.</li>
+        </ul>
+      </div>
+      <div class="source-card">
+        <h3>💾 Ham veriler</h3>
+        <p>Kendi istatistiğini çıkarmak isteyenlere — dosyaların ham hali:</p>
+        <ul>
+          <li><a href="data/dishes.csv">dishes.csv</a> — 2.712 yemek kaydı (bir satır = bir yarışmacı-yemek)</li>
+          <li><a href="data/dishes.json">dishes.json</a> — aynı kayıtlar, JSON biçiminde</li>
+          <li><a href="data/votes.csv">votes.csv</a> — 144 konsey / seçim / beraberlik kaydı</li>
+          <li><a href="data/votes.json">votes.json</a> — oylar, JSON biçiminde</li>
+          <li><a href="https://github.com/mindsyourai/masterchefturkiye">GitHub deposu</a> — sayfanın ve verilerin tamamı</li>
+        </ul>
+        <p>Veriler açık — alın, inceleyin, grafik çizin. Kaynak gösterirseniz seviniriz. 📈</p>
+      </div>
+    </div>
   </section>
 </main>
 <footer>
   <div class="kilim" aria-hidden="true"></div>
-  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Veriler: LISTE.md ve LISTE_WEB.md</p>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="#sources-section">Kaynaklar, Yöntem &amp; Uyarılar</a></p>
 </footer>
+<button type="button" id="to-top" aria-label="Yukarı çık" hidden>↑ Yukarı</button>
 <script src="data.js"></script>
 <script src="discussions.js"></script>
 <script src="votes.js"></script>
