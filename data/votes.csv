@@ -44,3 +44,40 @@ episode_date,vote_type,voter,voted_for,source,source_confidence,notes
 2026-10-17,kaptan_beraberlik,Muhammed Yahya Haliloğlu,Enes Vardar,web,yuksek,Oylama eşitliği (Şadi / Enes) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
 2026-10-21,kaptan_beraberlik,Şadi Altınay,Eyüp Can Güneş,web,yuksek,Oylama eşitliği (belirtilmedi) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
 2026-10-27,kaptan_beraberlik,Hasan Alp Karabacak,Enes Vardar,web,yuksek,Oylama eşitliği (Enes / Şükran) sonrası kaptan kararı. Oylama eşitliği sonrası kaptan kararı.
+2026-10-15,konsey,Kübra Satılmış,Ayşe Nur İnal,transkript_27.10.2026,orta,"27 Eki 5:20, Muhammed'in notlarından okundu (konsey özeti, ikinci el); 10. hafta 2. dokunulmazlık konseyi. Tarih: 3. konseyin 16 Eki olduğu (Ayşe'nin Tolga'yı göndermesi, votes.csv 16 Eki) + dokunulmazlık sırası (13/15/16/17 Eki) ile sabitlendi."
+2026-10-15,konsey,Kübra Satılmış,Nurten Ocak Tamer,transkript_27.10.2026,orta,"27 Eki 5:20, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Bahar Kaya,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Bahar Kaya,Ayşe Nur İnal,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Nurten Ocak Tamer,Bahar Kaya,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Nurten Ocak Tamer,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Emre İrkilmez,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Emre İrkilmez,Nurten Ocak Tamer,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Tolga Çakuş,Nurten Ocak Tamer,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey. 'Emre Tolgan ve Ayşe'nin aynı kişilere oy vermiş olması' (5:31) cümlesindeki 'Tolgan' ASR değişkeni — 7. seçmen (Tolgahan) ihtimali bilinmiyor listesinde."
+2026-10-15,konsey,Tolga Çakuş,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 5:24, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Ayşe Nur İnal,Nurten Ocak Tamer,transkript_27.10.2026,orta,"27 Eki 5:31, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-15,konsey,Ayşe Nur İnal,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 5:31, Muhammed'in notlarından okundu; 10. hafta 2. konsey."
+2026-10-16,konsey,Tolga Çakuş,Emre İrkilmez,transkript_27.10.2026,orta,"27 Eki 7:02-7:48, Tolga kendi oyunu anlatıyor ('Bugün ilk defa Emre'ye oy çıkmaz diye ona verdim'; 'Emre ve Kübra'ya oy vermiş bugün'); konuşmacı bağlamdan çıkarım, ASR'da konuşmacı etiketi yok. 10. hafta 3. konsey (Ayşe dokunulmazlığı aldı, Tolga'yı gönderdi — votes.csv 16 Eki)."
+2026-10-16,konsey,Tolga Çakuş,Kübra Satılmış,transkript_27.10.2026,orta,27 Eki 7:19 'Kübracığım ben sana attım bir tane. Emre sana attım bir tane.' + 7:48 'Emre ve Kübra'ya oy vermiş bugün'; konuşmacı bağlamdan çıkarım (Tolga). 10. hafta 3. konsey.
+2026-10-20,konsey,Burçin Oğuz,Elif Nilay Özgen,transkript_27.10.2026,orta,"27 Eki 9:04, özet: 'Burçin abla Nilay'a oy atarken boş oy olarak verdiğini söyledi'; Nilay o gün toplam 3 oy aldı (9:47). 11. hafta 1. konsey (Burçin dokunulmazlığı aldı, Enes'i gönderdi — votes.csv 20 Eki)."
+2026-10-21,konsey,Bahar Kaya,Eyüp Can Güneş,transkript_27.10.2026,orta,"27 Eki 10:10, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Bahar Kaya,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 10:10, Muhammed'in notlarından okundu; Kübra'ya verilen oy 'boş oy' olarak verildi. 11. hafta 2. konsey."
+2026-10-21,konsey,Şadi Altınay,Eyüp Can Güneş,transkript_27.10.2026,orta,"27 Eki 10:10, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Şadi Altınay,Kübra Satılmış,transkript_27.10.2026,orta,"27 Eki 10:17, Muhammed'in notlarından okundu; Kübra'ya verilen oy 'boş oy' olarak verildi ('Ben kızdığım için verdim'). 11. hafta 2. konsey."
+2026-10-21,konsey,Muhammed Yahya Haliloğlu,Tolga Çakuş,transkript_27.10.2026,orta,"27 Eki 10:24, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Muhammed Yahya Haliloğlu,Eyüp Can Güneş,transkript_27.10.2026,orta,"27 Eki 10:24, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Şükran Boyraz,Muhammed Yahya Haliloğlu,transkript_27.10.2026,orta,"27 Eki 10:24, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Şükran Boyraz,Eyüp Can Güneş,transkript_27.10.2026,orta,"27 Eki 10:24, Muhammed'in notlarından okundu; 11. hafta 2. konsey."
+2026-10-21,konsey,Eyüp Can Güneş,Şükran Boyraz,transkript_27.10.2026,orta,27 Eki 10:37 'Şükran ablaya yazdım'; konuşmacı Eyüp (bağlam: 'Eyü neden yazmadın?'). 11. hafta 2. konsey.
+2026-10-21,konsey,Tolga Çakuş,Şükran Boyraz,transkript_27.10.2026,dusuk,27 Eki 10:27 'Eyüp ve Tolga'nın aynı kişiye oy vermesi' + 10:37 Eyüp'ün Şükran'a yazdığı bilgisinden çıkarım; hedef doğrudan söylenmedi. 11. hafta 2. konsey.
+2026-10-22,konsey,Armağan Kırant,Tolgahan Özden,transkript_27.10.2026,orta,"27 Eki 13:56 'ben Tolga ve Burçin ablaya oy vermişim', Muhammed'in notlarından okundu; ASR'daki 'Tolga' = Tolgahan (24 Eki 7:37'de Tolgahan: 'Nilay bana ve Hasan Alp'e oy attı'). 11. hafta 3. konsey (Enes dokunulmazlığı aldı, Nilay'ı gönderdi — votes.csv 22 Eki)."
+2026-10-22,konsey,Armağan Kırant,Burçin Oğuz,transkript_27.10.2026,orta,"27 Eki 13:56, Muhammed'in notlarından okundu; 11. hafta 3. konsey."
+2026-10-22,konsey,Emre İrkilmez,Burçin Oğuz,transkript_27.10.2026,orta,"27 Eki 13:56, Muhammed'in notlarından okundu; 11. hafta 3. konsey. 24 Eki 7:43'te Tolgahan da doğruluyor: 'Emre ... Burçin ablayı attı'."
+2026-10-22,konsey,Emre İrkilmez,Hasan Alp Karabacak,transkript_27.10.2026,orta,"27 Eki 13:56, Muhammed'in notlarından okundu; 11. hafta 3. konsey."
+2026-10-22,konsey,Elif Nilay Özgen,Tolgahan Özden,transkript_27.10.2026,orta,"27 Eki 13:56, Muhammed'in notlarından okundu; ASR'daki 'Tolga' = Tolgahan (24 Eki 7:37'de Tolgahan: 'Nilay ... bana ve Hasan Alp'e ... oy attı'). 11. hafta 3. konsey."
+2026-10-22,konsey,Elif Nilay Özgen,Hasan Alp Karabacak,transkript_27.10.2026,orta,"27 Eki 13:56, Muhammed'in notlarından okundu; 24 Eki 7:37'de Tolgahan doğruluyor. 11. hafta 3. konsey."
+2026-10-22,konsey,Enes Vardar,Burçin Oğuz,transkript_24.10.2026,orta,24 Eki 3:08-3:19 açılış özeti: 'Enes Armağan ve Hasan üçünüz de Burçin'e oy attınız'. 11. hafta 3. konsey.
+2026-10-22,konsey,Enes Vardar,Nurten Ocak Tamer,transkript_24.10.2026,orta,24 Eki 3:19-3:25 açılış özeti: 'Diğer oyun kimeydi Enes? ... Nurten ablayaydı'. 11. hafta 3. konsey.
+2026-10-22,konsey,Hasan Alp Karabacak,Burçin Oğuz,transkript_24.10.2026,orta,24 Eki 3:08-3:19 açılış özeti: 'Enes Armağan ve Hasan üçünüz de Burçin'e oy attınız'. 11. hafta 3. konsey. 2. oyu bilinmiyor.
+2026-10-24,kaptan_beraberlik,Enes Vardar,Hasan Alp Karabacak,transkript_24.10.2026,yuksek,"24 Eki 2:14:53 konsey sayımı Hasan 5, Armağan 5, Nurten 2 (beraberlik); 2:17:59 'Enes Hasan Alp mi Armağan mı?', 2:18:43 Enes: 'Hasan diyorum. Sebebi de o piti piti yaptım.'; 2:19:24 'Hasan potaya giden ikinci yarışmacı'. Enes Kırmızı takım kaptanı. 2:17:59'daki 'Hasan Alp yedi. Armağan yedi.' haftalık skor, oy değil (resmî sayım 5-5-2)."
+2026-10-24,konsey,belirsiz,Hasan Alp Karabacak,transkript_24.10.2026,dusuk,24 Eki 2:14:20 'Bugün geçmeyen arkadaşları yazdım. Alp'i yazdım. Armağanı yazdım.' Konuşmacı ASR'dan tespit edilemedi. 11. hafta 4. konsey.
+2026-10-24,konsey,belirsiz,Armağan Kırant,transkript_24.10.2026,dusuk,24 Eki 2:14:20 'Bugün geçmeyen arkadaşları yazdım. Alp'i yazdım. Armağanı yazdım.' Konuşmacı ASR'dan tespit edilemedi. 11. hafta 4. konsey.
