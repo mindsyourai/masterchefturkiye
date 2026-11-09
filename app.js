@@ -426,6 +426,7 @@
       var st = STATS[c.name];
       var best = st.dishes.filter(function (d) { return d.b; }).length;
       return '<button type="button" class="contestant' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '">' +
+        photoHtml(c) +
         "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + statusBadge(c) +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
@@ -479,7 +480,7 @@
     var tl = buildTimeline(c);
     var onContestantsPage = (window.location.pathname || "").indexOf("yarismacilar") !== -1;
     var fullLink = onContestantsPage ? "" : '<p class="detail-full-link"><a href="yarismacilar.html?kisi=' + encodeURIComponent(c.name) + '">Tam profil →</a></p>';
-    var h = '<div class="detail-head"><div><h3>' + esc(c.name) + "</h3>" +
+    var h = '<div class="detail-head">' + photoHtml(c, "detail-photo") + '<div><h3>' + esc(c.name) + "</h3>" +
       "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) +
       (c.status === "elendi" && c.elimDate ? " · Elendi: " + esc(c.elimDate) : "") + "</p>" +
       (c.instagram ? "<p class='c-meta'>" + instaLine(c) + " <span class='note'>(2026'da kontrol edildi)</span></p>" : "") + statusBadge(c) + fullLink + "</div>" +
@@ -563,6 +564,10 @@
   function instaLine(c) {
     if (!c.instagram) return "";
     return '<span class="insta-link">📷 <a href="https://www.instagram.com/' + esc(c.instagram.handle) + '" target="_blank" rel="noopener">@' + esc(c.instagram.handle) + "</a> · " + esc(c.instagram.followers) + " takipçi</span>";
+  }
+  function photoHtml(c, cls) {
+    if (!c.photo) return "";
+    return '<img class="' + (cls || "contestant-photo") + '" src="' + esc(c.photo) + '" alt="' + esc(c.name) + '" loading="lazy">';
   }
   function tile(num, label) {
     return '<div class="tile"><b>' + num + "</b><span>" + esc(label) + "</span></div>";
@@ -665,6 +670,7 @@
       var best = st.dishes.filter(function (d) { return d.b; }).length;
       var hl = firstSentence(NOTES[c.name] || "");
       return '<button type="button" class="contestant remaining-card' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
+        photoHtml(c) +
         "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
