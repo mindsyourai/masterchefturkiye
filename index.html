@@ -11,15 +11,16 @@
 <header class="hero">
   <h1>MasterChef Türkiye 2026</h1>
   <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <img class="hero-poster" src="images/masterchef-poster.jpg" alt="MasterChef Türkiye 2026 tanıtım görseli — Mehmet Yalçınkaya, Somer Sivrioğlu ve Danilo Zanna" loading="lazy">
   <p class="hero-joke">Şefler karar verdi, biz not aldık: 133 bölüm, 2.712 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
   <p><span class="fan-badge">🏆 Hayran sitesi — resmî değil, ama sayılar gerçek</span></p>
   <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 8 Kasım 2026</span></p>
   <div class="judges" aria-label="Jüri">
     <figure class="judge"><img src="images/mehmet-yalcinkaya.jpg" alt="Mehmet Yalçınkaya" loading="lazy"><figcaption>Mehmet Yalçınkaya</figcaption></figure>
-    <figure class="judge"><span class="judge-initials" aria-hidden="true">SS</span><figcaption>Somer Sivrioğlu <span class="judge-note">fotoğraf bekleniyor</span></figcaption></figure>
+    <figure class="judge"><img src="images/somer-sivrioglu.jpg" alt="Somer Sivrioğlu" loading="lazy"><figcaption>Somer Sivrioğlu</figcaption></figure>
     <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna</figcaption></figure>
   </div>
-  <p class="photo-credit">Jüri fotoğrafları: <a href="https://commons.wikimedia.org/wiki/File:A%C5%9F%C3%A7%C4%B1_Mehmet_Yal%C3%A7%C4%B1nkaya.jpg">Mehmet Yalçınkaya (Kasım 2015)</a> · <a href="https://commons.wikimedia.org/wiki/File:Danilo_Zanna_2025.jpg">Danilo Zanna (2025)</a> — Wikimedia Commons, CC BY 3.0. Somer Şef'in özgür lisanslı fotoğrafı bulunamadı.</p>
+  <p class="photo-credit">Tanıtım görseli: TV8 / Unimedya. Jüri fotoğrafları: <a href="https://commons.wikimedia.org/wiki/File:A%C5%9F%C3%A7%C4%B1_Mehmet_Yal%C3%A7%C4%B1nkaya.jpg">Mehmet Yalçınkaya (Kasım 2015)</a> · <a href="https://commons.wikimedia.org/wiki/File:Danilo_Zanna_2025.jpg">Danilo Zanna (2025)</a> — Wikimedia Commons, CC BY 3.0; Somer Sivrioğlu — tanıtım görselinden kırpma.</p>
   <div class="kilim" aria-hidden="true"></div>
 </header>
 <nav class="sticky" aria-label="Sayfa gezinmesi">
@@ -31,6 +32,7 @@
   <a href="konsey.html">Konsey Oyları</a>
   <a href="istatistikler.html">İstatistikler</a>
   <a href="kaynaklar.html">Kaynaklar &amp; Uyarılar</a>
+  <a href="index.html#iletisim">İletişim</a>
   <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
   <span class="search-info" id="search-info"></span>
 </nav>
@@ -53,7 +55,7 @@
 
   <section id="remaining-section">
     <h2>Yarışmaya Devam Edenler ⭐</h2>
-    <p class="note">14 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Takım rozeti, yarışmacının bu haftaki takımıdır. Kartlar başarı puanına göre sıralı: 3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota. <span id="remaining-info"></span></p>
+    <p class="note">14 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı: 3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota. Her kartta son 4 haftanın formu da yazar; takımlar her hafta değiştiği için takım rozeti yok. <span id="remaining-info"></span></p>
     <div class="remaining-grid" id="remaining-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
@@ -92,10 +94,24 @@
       <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
     </div>
   </section>
+
+  <section id="iletisim" aria-label="İletişim">
+    <h2>Bize Ulaşın ✉️</h2>
+    <p class="note">Düzeltme mi var, eksik mi gördün, yoksa sadece merhaba mı demek istiyorsun? Yaz bize — mesajın mindsyourai@gmail.com adresine gider.</p>
+    <form id="contact-form" class="contact-form">
+      <label>Adın <input type="text" id="contact-name" required maxlength="80" placeholder="Adın"></label>
+      <label>E-postan (isteğe bağlı) <input type="email" id="contact-email" maxlength="120" placeholder="ornek@eposta.com"></label>
+      <label>Konu <input type="text" id="contact-subject" required maxlength="120" placeholder="Konu"></label>
+      <label>Mesajın <textarea id="contact-message" required rows="5" maxlength="2000" placeholder="Mesajını yaz…"></textarea></label>
+      <button type="submit" class="contact-submit">Gönder ✉️</button>
+      <p class="note" id="contact-note" hidden></p>
+    </form>
+    <p class="note">Gönder'e basınca e-posta uygulaman açılır — mesaj mindsyourai@gmail.com adresine gider. Doğrudan yazmak istersen: <a href="mailto:mindsyourai@gmail.com">mindsyourai@gmail.com</a></p>
+  </section>
 </main>
 <footer>
   <div class="kilim" aria-hidden="true"></div>
-  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="kaynaklar.html">Kaynaklar, Yöntem &amp; Uyarılar</a></p>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="kaynaklar.html">Kaynaklar, Yöntem &amp; Uyarılar</a> · Tasarım: mindsyourai · İletişim: <a href="mailto:mindsyourai@gmail.com">mindsyourai@gmail.com</a> · <a href="index.html#iletisim">Bize ulaşın →</a></p>
 </footer>
 <button type="button" id="to-top" aria-label="Yukarı çık" hidden>↑ Yukarı</button>
 <script src="data.js"></script>
