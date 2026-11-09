@@ -306,6 +306,35 @@
     if (c.status === "elendi") return '<span class="badge badge-out">Elendi' + (c.elimDate ? " — " + esc(c.elimDate) : "") + "</span>";
     return '<span class="badge badge-w">' + esc(c.status) + "</span>";
   }
+  /* ---- Başarı puanı: yarışanları sıralamak için ----
+     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota */
+  function successScore(name) {
+    var st = STATS[name];
+    if (!st) return 0;
+    var best = st.dishes.filter(function (d) { return d.b; }).length;
+    return 3 * st.immunity.length + 2 * best + st.duelWins + (st.captainBlue.length + st.captainRed.length) - st.pota.length;
+  }
+  function successOrder(a, b) {
+    var d = successScore(b.name) - successScore(a.name);
+    if (d) return d;
+    d = STATS[b.name].dishes.length - STATS[a.name].dishes.length;
+    if (d) return d;
+    return a.name.localeCompare(b.name, "tr");
+  }
+  function elimOrder(a, b) {
+    var da = parseTrDate(a.elimDate) || "";
+    var db = parseTrDate(b.elimDate) || "";
+    if (da && db && da !== db) return db.localeCompare(da);
+    if (da && !db) return -1;
+    if (!da && db) return 1;
+    return a.name.localeCompare(b.name, "tr");
+  }
+  function activeRanking() {
+    var order = CONTESTANTS.filter(function (c) { return c.status === "yarışıyor"; }).sort(successOrder);
+    var rankOf = {};
+    order.forEach(function (c, i) { rankOf[c.name] = i + 1; });
+    return rankOf;
+  }
   function renderContestants() {
     if (!el("contestants-grid")) return;
     var q = (el("search").value || "").trim().toLowerCase();
@@ -319,6 +348,10 @@
         return (c.name + " " + (c.wins || []).join(" ")).toLowerCase().indexOf(q) !== -1;
       });
     }
+    var rankOf = activeRanking();
+    var active = list.filter(function (c) { return c.status === "yarışıyor"; }).sort(successOrder);
+    var out = list.filter(function (c) { return c.status !== "yarışıyor"; }).sort(elimOrder);
+    list = active.concat(out);
     el("contestants-grid").innerHTML = list.map(function (c) {
       var st = STATS[c.name];
       var tw = teamThisWeek(c);
@@ -328,13 +361,14 @@
       }
       var best = st.dishes.filter(function (d) { return d.b; }).length;
       return '<button type="button" class="contestant' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '">' +
-        "<h4>" + esc(c.name) + "</h4>" + statusBadge(c) + team +
+        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + statusBadge(c) + team +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
         '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
         '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
         '<span class="c-stat"><b>' + (st.captainBlue.length + st.captainRed.length) + '</b> kaptanlık (hafta)</span>' +
         '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
+        (c.status === "yarışıyor" ? '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' : "") +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         "<p class='hint'>Detay için tıklayın →</p></button>";
@@ -546,6 +580,8 @@
         return (c.name + " " + (c.wins || []).join(" ")).toLowerCase().indexOf(q) !== -1;
       });
     }
+    var rankOf = activeRanking();
+    list.sort(successOrder);
     el("remaining-grid").innerHTML = list.map(function (c) {
       var st = STATS[c.name];
       var lt = latestTeam(c);
@@ -554,13 +590,14 @@
       if (lt) teamChip = ' <span class="team-chip ' + lt.team + '">' + (lt.team === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + " · " + esc(lt.week) + "</span>";
       var hl = firstSentence(NOTES[c.name] || "");
       return '<button type="button" class="contestant remaining-card' + (lt ? " team-" + lt.team : "") + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
-        "<h4>" + esc(c.name) + "</h4>" + teamChip +
+        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + teamChip +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
         '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
         '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
         '<span class="c-stat"><b>' + st.duelWins + '–' + st.duelLosses + '</b> düello</span>' +
         '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
+        '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         (hl ? '<p class="remaining-highlight">📌 ' + esc(hl) + '</p>' : "") +
