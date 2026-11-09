@@ -127,15 +127,6 @@
     return stats;
   }
   var STATS = null;
-  function teamThisWeek(c) {
-    for (var i = 0; i < EPISODES.length; i++) {
-      var ep = EPISODES[i];
-      if (!ep.teams) continue;
-      if ((ep.teams.blue || []).some(function (x) { return resolveName(x) === c.name; })) return "blue";
-      if ((ep.teams.red || []).some(function (x) { return resolveName(x) === c.name; })) return "red";
-    }
-    return null;
-  }
   var RESULT_LABEL = {kazandi:"Kazandı", kaybetti:"Kaybetti", katildi:"Katıldı", gecti:"Geçti", ust_tur:"Üst tur", finalist:"Finalist", elendi:"Elendi", dokunulmazlik_kazandi:"Dokunulmazlık kazandı", ilk_6:"İlk 6"};
   function resultLabel(r, rk) {
     if (rk && (rk === "2." || rk === "3.")) return rk + " oldu";
@@ -335,6 +326,69 @@
     order.forEach(function (c, i) { rankOf[c.name] = i + 1; });
     return rankOf;
   }
+  /* ---- Son 4 hafta formu: bölüm tarihlerinden hafta haritası ---- */
+  var WEEK_OF_DATE = {};
+  var WEEK_RANGES = [];
+  (function () {
+    var byWeek = {};
+    EPISODES.forEach(function (ep) {
+      var w = parseInt(ep.week, 10);
+      if (!w) return;
+      WEEK_OF_DATE[ep.id] = w;
+      if (!byWeek[w]) byWeek[w] = [];
+      byWeek[w].push(ep.id);
+    });
+    Object.keys(byWeek).forEach(function (w) {
+      var ds = byWeek[w].sort();
+      WEEK_RANGES.push({ week: parseInt(w, 10), from: ds[0], to: ds[ds.length - 1] });
+    });
+    WEEK_RANGES.sort(function (a, b) { return a.week - b.week; });
+  })();
+  function weekOfDate(iso) {
+    if (!iso) return 0;
+    if (WEEK_OF_DATE[iso]) return WEEK_OF_DATE[iso];
+    for (var i = 0; i < WEEK_RANGES.length; i++) {
+      if (iso >= WEEK_RANGES[i].from && iso <= WEEK_RANGES[i].to) return WEEK_RANGES[i].week;
+    }
+    return 0;
+  }
+  function last4Range() {
+    var maxW = 0;
+    WEEK_RANGES.forEach(function (r) { if (r.week > maxW) maxW = r.week; });
+    return { from: maxW - 3, to: maxW };
+  }
+  function recentStats(name) {
+    var range = last4Range();
+    var st = STATS[name];
+    var r = { dishes: 0, duelW: 0, duelL: 0, immunity: 0, best: 0, pota: 0 };
+    if (!st) return r;
+    (st.dishes || []).forEach(function (d) {
+      var w = weekOfDate(d.d);
+      if (w < range.from || w > range.to) return;
+      r.dishes++;
+      if (d.b) r.best++;
+      if (d.t === "takim_oyunu" && d.o) {
+        if (d.r === "kazandi") r.duelW++;
+        else if (d.r === "kaybetti") r.duelL++;
+      }
+    });
+    (st.immunity || []).forEach(function (x) {
+      var w = weekOfDate(x.date);
+      if (w >= range.from && w <= range.to) r.immunity++;
+    });
+    (st.pota || []).forEach(function (p) {
+      var w = parseInt(p.week, 10);
+      if (w >= range.from && w <= range.to) r.pota++;
+    });
+    return r;
+  }
+  function recentLine(name) {
+    var r = recentStats(name);
+    var range = last4Range();
+    return "Son " + range.from + "–" + range.to + ". hafta: <b>" + r.dishes + "</b> yemek · <b>" + r.duelW + "–" + r.duelL + "</b> düello · <b>" + r.immunity + "</b> dokunulmazlık" +
+      (r.best ? " · ⭐ <b>" + r.best + "</b> en iyi tabak" : "") +
+      (r.pota ? " · <b>" + r.pota + "</b> pota" : "");
+  }
   function renderContestants() {
     if (!el("contestants-grid")) return;
     var q = (el("search").value || "").trim().toLowerCase();
@@ -354,14 +408,9 @@
     list = active.concat(out);
     el("contestants-grid").innerHTML = list.map(function (c) {
       var st = STATS[c.name];
-      var tw = teamThisWeek(c);
-      var team = "";
-      if (c.status === "yarışıyor" && tw) {
-        team = ' <span class="team-chip ' + tw + '">' + (tw === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + " · bu hafta</span>";
-      }
       var best = st.dishes.filter(function (d) { return d.b; }).length;
       return '<button type="button" class="contestant' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '">' +
-        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + statusBadge(c) + team +
+        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + statusBadge(c) +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
         '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
@@ -371,6 +420,7 @@
         (c.status === "yarışıyor" ? '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' : "") +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
+        (c.status === "yarışıyor" ? "<p class='recent-line'>" + recentLine(c.name) + "</p>" : "") +
         "<p class='hint'>Detay için tıklayın →</p></button>";
     }).join("") || "<p class='note'>Eşleşen yarışmacı yok.</p>";
     document.querySelectorAll("#contestants-grid .contestant").forEach(function (btn) {
@@ -419,6 +469,15 @@
       tile(st.duelWins, "düello galibiyeti (takım oyunu)") +
       tile(st.pota.length, "pota (hafta)") +
       tile(best.length, "en iyi tabak") + "</div>";
+    var rs = recentStats(name);
+    var lr = last4Range();
+    h += "<h4>Son 4 Hafta (" + lr.from + "–" + lr.to + ". Hafta)</h4>" +
+      '<div class="detail-tiles">' +
+      tile(rs.dishes, "yemek kaydı") +
+      tile(rs.duelW + "–" + rs.duelL, "düello (G–M)") +
+      tile(rs.immunity, "bireysel dokunulmazlık") +
+      tile(rs.best, "en iyi tabak") +
+      tile(rs.pota, "pota (hafta)") + "</div>";
     if (NOTES[name]) h += '<p class="record">📌 <strong>Not:</strong> ' + esc(NOTES[name]) + "</p>";
     if (st.captainBlue.length || st.captainRed.length) {
       h += "<h4>Kaptanlıklar</h4><ul class='wins-list'>" +
@@ -553,15 +612,6 @@
     el("season-band-grid").innerHTML = h;
   }
   /* ---- Ana sayfa: kalan yarışmacılar ---- */
-  function latestTeam(c) {
-    for (var i = 0; i < EPISODES.length; i++) {
-      var ep = EPISODES[i];
-      if (!ep.teams) continue;
-      if ((ep.teams.blue || []).some(function (x) { return resolveName(x) === c.name; })) return { team: "blue", week: ep.week };
-      if ((ep.teams.red || []).some(function (x) { return resolveName(x) === c.name; })) return { team: "red", week: ep.week };
-    }
-    return null;
-  }
   function firstSentence(s) {
     if (!s) return "";
     var i = s.indexOf(". ");
@@ -584,13 +634,10 @@
     list.sort(successOrder);
     el("remaining-grid").innerHTML = list.map(function (c) {
       var st = STATS[c.name];
-      var lt = latestTeam(c);
       var best = st.dishes.filter(function (d) { return d.b; }).length;
-      var teamChip = "";
-      if (lt) teamChip = ' <span class="team-chip ' + lt.team + '">' + (lt.team === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + " · " + esc(lt.week) + "</span>";
       var hl = firstSentence(NOTES[c.name] || "");
-      return '<button type="button" class="contestant remaining-card' + (lt ? " team-" + lt.team : "") + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
-        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" + teamChip +
+      return '<button type="button" class="contestant remaining-card' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
+        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" +
         "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) + "</p>" +
         '<div class="c-stats">' +
         '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
@@ -600,6 +647,7 @@
         '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
+        "<p class='recent-line'>" + recentLine(c.name) + "</p>" +
         (hl ? '<p class="remaining-highlight">📌 ' + esc(hl) + '</p>' : "") +
         "<p class='hint'>Profil için tıklayın →</p></button>";
     }).join("") || "<p class='note'>Eşleşen yarışmacı yok.</p>";
@@ -1127,6 +1175,23 @@
     var noRes = el("no-results");
     if (noRes) noRes.hidden = !(q && totalShown === 0);
   }
+  /* ---- İletişim formu: statik sitede e-posta uygulamasıyla gönderir ---- */
+  function setupContact() {
+    var form = el("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var name = (el("contact-name").value || "").trim();
+      var email = (el("contact-email").value || "").trim();
+      var subject = (el("contact-subject").value || "").trim();
+      var msg = (el("contact-message").value || "").trim();
+      var body = "Ad: " + name + (email ? "\nE-posta: " + email : "") + "\n\n" + msg;
+      var href = "mailto:mindsyourai@gmail.com?subject=" + encodeURIComponent("[MasterChef 2026] " + subject) + "&body=" + encodeURIComponent(body);
+      var note = el("contact-note");
+      if (note) { note.hidden = false; note.textContent = "E-posta uygulaman açılmalı — açılmazsa mindsyourai@gmail.com adresine doğrudan yazabilirsin. 📬"; }
+      window.location.href = href;
+    });
+  }
   function init() {
     if (typeof SITE === "undefined" || typeof EPISODES === "undefined" || typeof CONTESTANTS === "undefined") {
       var eps = el("episodes");
@@ -1134,6 +1199,7 @@
       return;
     }
     STATS = computeStats();
+    setupContact();
     renderSummary();
     renderSeasonBand();
     renderLatestEpisode();
