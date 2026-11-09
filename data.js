@@ -233,6 +233,7 @@ const CONTESTANTS = [
  {
   "name": "Elif Nilay Özgen",
   "short": "Nilay",
+  "photo": "images/elif-nilay-ozgen.jpg",
   "apron": 2,
   "group": "1. Grup",
   "status": "yarışıyor",
@@ -277,6 +278,7 @@ const CONTESTANTS = [
  {
   "name": "Enes Vardar",
   "short": "Enes",
+  "photo": "images/enes-vardar.jpg",
   "apron": 5,
   "group": "1. Grup",
   "status": "yarışıyor",
@@ -290,6 +292,7 @@ const CONTESTANTS = [
  {
   "name": "Eyüp Can Güneş",
   "short": "Eyüp Can",
+  "photo": "images/eyup-can-gunes.jpg",
   "apron": 6,
   "group": "2. Grup",
   "status": "yarışıyor",
@@ -314,6 +317,7 @@ const CONTESTANTS = [
  {
   "name": "Nurten Ocak Tamer",
   "short": "Nurten",
+  "photo": "images/nurten-ocak-tamer.jpg",
   "apron": 8,
   "group": "2. Grup",
   "status": "yarışıyor",
@@ -325,6 +329,7 @@ const CONTESTANTS = [
  {
   "name": "Şadi Altınay",
   "short": "Şadi",
+  "photo": "images/sadi-altinay.jpg",
   "apron": 9,
   "group": "2. Grup",
   "status": "yarışıyor",
@@ -338,6 +343,7 @@ const CONTESTANTS = [
  {
   "name": "Burçin Oğuz",
   "short": "Burçin",
+  "photo": "images/burcin-oguz.jpg",
   "apron": 10,
   "group": "2. Grup",
   "instagram": {"handle": "burcinoguz", "followers": "15 B"},
@@ -353,6 +359,7 @@ const CONTESTANTS = [
  {
   "name": "Tolga Çakuş",
   "short": "Tolga",
+  "photo": "images/tolga-cakus.jpg",
   "apron": 11,
   "group": "3. Grup",
   "instagram": {"handle": "mastercheftolga", "followers": "30 B"},
@@ -368,6 +375,7 @@ const CONTESTANTS = [
  {
   "name": "Muhammed Yahya Haliloğlu",
   "short": "Muhammed",
+  "photo": "images/muhammed-haliloglu.jpg",
   "apron": 12,
   "group": "3. Grup",
   "instagram": {"handle": "muhammed.chefff", "followers": "140 B"},
@@ -389,6 +397,7 @@ const CONTESTANTS = [
  {
   "name": "Ayşe Nur İnal",
   "short": "Ayşe",
+  "photo": "images/ayse-nur-inal.jpg",
   "apron": 13,
   "group": "3. Grup",
   "status": "yarışıyor",
@@ -441,6 +450,7 @@ const CONTESTANTS = [
  {
   "name": "Bahar Kaya",
   "short": "Bahar",
+  "photo": "images/bahar-kaya.jpg",
   "apron": 17,
   "group": "4. Grup",
   "instagram": {"handle": "baharatplay", "followers": "28 B"},
@@ -455,6 +465,7 @@ const CONTESTANTS = [
  {
   "name": "Şükran Boyraz",
   "short": "Şükran",
+  "photo": "images/sukran-boyraz.jpg",
   "apron": 18,
   "group": "4. Grup",
   "status": "yarışıyor",
@@ -469,6 +480,7 @@ const CONTESTANTS = [
  {
   "name": "Armağan Kırant",
   "short": "Armağan",
+  "photo": "images/armagan-kirant.jpg",
   "apron": 19,
   "group": "4. Grup",
   "instagram": {"handle": "armagankirantt", "followers": "62 B"},
@@ -532,6 +544,7 @@ const CONTESTANTS = [
  {
   "name": "Tolgahan Özden",
   "short": "Tolgahan",
+  "photo": "images/tolgahan-ozden.jpg",
   "apron": null,
   "group": "Yedek 4",
   "status": "yarışıyor",
