@@ -340,6 +340,7 @@ const CONTESTANTS = [
   "short": "Burçin",
   "apron": 10,
   "group": "2. Grup",
+  "instagram": {"handle": "burcinoguz", "followers": "15 B"},
   "status": "yarışıyor",
   "wins": [
    "27 Tem — önlük (tiramisu)",
@@ -354,6 +355,7 @@ const CONTESTANTS = [
   "short": "Tolga",
   "apron": 11,
   "group": "3. Grup",
+  "instagram": {"handle": "mastercheftolga", "followers": "30 B"},
   "status": "yarışıyor",
   "wins": [
    "29 Tem — önlük (Hatay usulü tepsi kebabı)",
@@ -368,6 +370,7 @@ const CONTESTANTS = [
   "short": "Muhammed",
   "apron": 12,
   "group": "3. Grup",
+  "instagram": {"handle": "muhammed.chefff", "followers": "140 B"},
   "status": "yarışıyor",
   "wins": [
    "30 Tem — önlük (yemek bilinmiyor)",
@@ -440,6 +443,7 @@ const CONTESTANTS = [
   "short": "Bahar",
   "apron": 17,
   "group": "4. Grup",
+  "instagram": {"handle": "baharatplay", "followers": "28 B"},
   "status": "yarışıyor",
   "wins": [
    "5 Ağu — önlük (levreği merkeze alan yaratıcı tabak)",
@@ -467,6 +471,7 @@ const CONTESTANTS = [
   "short": "Armağan",
   "apron": 19,
   "group": "4. Grup",
+  "instagram": {"handle": "armagankirantt", "followers": "62 B"},
   "status": "yarışıyor",
   "wins": [
    "7 Ağu — önlük (asma yaprağını merkeze alan yaratıcı tabaklar)",
