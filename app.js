@@ -389,6 +389,22 @@
       (r.best ? " · ⭐ <b>" + r.best + "</b> en iyi tabak" : "") +
       (r.pota ? " · <b>" + r.pota + "</b> pota" : "");
   }
+  /* ---- Son ay puanı: başarı formülü, yalnızca son 4 hafta ----
+     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota.
+     Kaptanlık haftaları STATS'taki kaptanlık kayıtlarından (hafta bazında tekilleştirilmiş)
+     alınır; pencere last4Range() ile aynıdır (son 4 hafta). */
+  function recentScore(name) {
+    var st = STATS[name];
+    if (!st) return 0;
+    var r = recentStats(name);
+    var range = last4Range();
+    var cap = 0;
+    (st.captainBlue || []).concat(st.captainRed || []).forEach(function (x) {
+      var w = weekOfDate(x.date);
+      if (w >= range.from && w <= range.to) cap++;
+    });
+    return 3 * r.immunity + 2 * r.best + r.duelW + cap - r.pota;
+  }
   function renderContestants() {
     if (!el("contestants-grid")) return;
     var q = (el("search").value || "").trim().toLowerCase();
@@ -418,6 +434,7 @@
         '<span class="c-stat"><b>' + (st.captainBlue.length + st.captainRed.length) + '</b> kaptanlık (hafta)</span>' +
         '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
         (c.status === "yarışıyor" ? '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' : "") +
+        (c.status === "yarışıyor" ? '<span class="c-stat" title="Son 4 hafta puanı — aynı formül, yalnızca son 4 hafta">📅 Son ay: <b>' + recentScore(c.name) + '</b> puan</span>' : "") +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         (c.status === "yarışıyor" ? "<p class='recent-line'>" + recentLine(c.name) + "</p>" : "") +
@@ -468,7 +485,8 @@
       tile(st.captainBlue.length + st.captainRed.length, "kaptanlık (hafta)") +
       tile(st.duelWins, "düello galibiyeti (takım oyunu)") +
       tile(st.pota.length, "pota (hafta)") +
-      tile(best.length, "en iyi tabak") + "</div>";
+      tile(best.length, "en iyi tabak") +
+      tile(successScore(name), "başarı puanı (tüm zamanlar)") + "</div>";
     var rs = recentStats(name);
     var lr = last4Range();
     h += "<h4>Son 4 Hafta (" + lr.from + "–" + lr.to + ". Hafta)</h4>" +
@@ -477,7 +495,8 @@
       tile(rs.duelW + "–" + rs.duelL, "düello (G–M)") +
       tile(rs.immunity, "bireysel dokunulmazlık") +
       tile(rs.best, "en iyi tabak") +
-      tile(rs.pota, "pota (hafta)") + "</div>";
+      tile(rs.pota, "pota (hafta)") +
+      tile(recentScore(name), "son ay puanı") + "</div>";
     if (NOTES[name]) h += '<p class="record">📌 <strong>Not:</strong> ' + esc(NOTES[name]) + "</p>";
     if (st.captainBlue.length || st.captainRed.length) {
       h += "<h4>Kaptanlıklar</h4><ul class='wins-list'>" +
@@ -645,6 +664,7 @@
         '<span class="c-stat"><b>' + st.duelWins + '–' + st.duelLosses + '</b> düello</span>' +
         '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
         '<span class="c-stat">🏆 <b>' + successScore(c.name) + '</b> başarı puanı</span>' +
+        '<span class="c-stat" title="Son 4 hafta puanı — aynı formül, yalnızca son 4 hafta">📅 Son ay: <b>' + recentScore(c.name) + '</b> puan</span>' +
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         "<p class='recent-line'>" + recentLine(c.name) + "</p>" +
