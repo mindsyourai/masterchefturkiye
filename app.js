@@ -1206,7 +1206,7 @@
       var subject = (el("contact-subject").value || "").trim();
       var msg = (el("contact-message").value || "").trim();
       var body = "Ad: " + name + (email ? "\nE-posta: " + email : "") + "\n\n" + msg;
-      var href = "mailto:mindsyourai@gmail.com?subject=" + encodeURIComponent("[MasterChef 2026] " + subject) + "&body=" + encodeURIComponent(body);
+      var href = "mailto:mindsyourai@gmail.com?subject=" + encodeURIComponent("[MYAI · MasterChef 2026] " + subject) + "&body=" + encodeURIComponent(body);
       var note = el("contact-note");
       if (note) { note.hidden = false; note.textContent = "E-posta uygulaman açılmalı — açılmazsa mindsyourai@gmail.com adresine doğrudan yazabilirsin. 📬"; }
       window.location.href = href;
