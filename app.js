@@ -1070,8 +1070,11 @@
       return pct(b) - pct(a) || b.wins - a.wins || b.played - a.played ||
         wkNum(b.week) - wkNum(a.week) || (a.team < b.team ? -1 : 1);
     }
+    var statusByName = {};
+    CONTESTANTS.forEach(function (c) { statusByName[c.name] = c.status; });
+    function stillCompeting(n) { return statusByName[n] !== "elendi"; }
     var pairList = Object.keys(pairs).map(function (k) { return pairs[k]; })
-      .filter(function (p) { return p.played >= 5; })
+      .filter(function (p) { return p.played >= 5 && stillCompeting(p.a) && stillCompeting(p.b); })
       .sort(function (a, b) {
         return pct(b) - pct(a) || b.wins - a.wins || b.played - a.played ||
           ((a.a + a.b) < (b.a + b.b) ? -1 : 1);
@@ -1125,7 +1128,7 @@
       h += "</div>";
     }
     h += '<div class="vote-post"><h4>📐 Nasıl hesaplandı?</h4>' +
-      "<p style='margin:0'>Yalnızca bölüm kayıtlarındaki takım oyunları sayıldı: kazananı Mavi veya Kırmızı yazan oyunlar; beraberlikte tie-break'i kazananın takımı galip sayıldı (22 Ekim: Tolga'nın kalem böreği Mavi'ye kazandırdı). <strong>Gala bölümü (29 Ekim) sayılmadı</strong> — takımlar yemek bazında kuruldu, gerçek kadro değil. <strong>Ödül oyunları sayılmadı</strong> — ödül oyunu takım oyunu değildir. 24 ve 27 Ekim bölümlerinde kadro kaydı yok; o haftaların kaptanlık günü kadrosu kullanıldı. İkili tablosu en az 5 takım oyununda birlikte oynamış çiftleri gösterir.</p>" +
+      "<p style='margin:0'>Yalnızca bölüm kayıtlarındaki takım oyunları sayıldı: kazananı Mavi veya Kırmızı yazan oyunlar; beraberlikte tie-break'i kazananın takımı galip sayıldı (22 Ekim: Tolga'nın kalem böreği Mavi'ye kazandırdı). <strong>Gala bölümü (29 Ekim) sayılmadı</strong> — takımlar yemek bazında kuruldu, gerçek kadro değil. <strong>Ödül oyunları sayılmadı</strong> — ödül oyunu takım oyunu değildir. 24 ve 27 Ekim bölümlerinde kadro kaydı yok; o haftaların kaptanlık günü kadrosu kullanıldı. İkili tablosu en az 5 takım oyununda birlikte oynamış çiftleri gösterir; <strong>elenen yarışmacılar tabloda yer almaz — yalnızca hâlâ yarışan çiftler gösterilir.</strong></p>" +
       "<p style='margin:8px 0 0'>Bu sayımın toplamı (<strong>" + c.total + " oyun</strong>) İstatistikler sayfasındaki 53 oyunluk sezon kaydından farklıdır — 53'e 30 Ekim Lübnan ödül oyunu ile 29 Ekim gala dahildir; burada ikisi de hariçtir.</p></div>";
     box.innerHTML = h;
   }
