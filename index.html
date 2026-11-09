@@ -39,19 +39,20 @@
 </nav>
 <main>
   <p class="note" id="site-note"></p>
-  <section class="summary" id="summary-strip" aria-label="Özet"></section>
   <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
 
+  <nav class="page-jump" aria-label="Sayfa içi gezinme">
+    <a href="#season-band">Sezon Bir Bakışta</a>
+    <a href="#remaining-section">Yarışmacılar</a>
+    <a href="#headline-stats">Öne Çıkan İstatistikler</a>
+    <a href="#top-pair-section">En İyi İkili</a>
+    <a href="#latest-ep-section">Son Bölüm</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
   <section id="season-band" aria-label="Sezon bir bakışta">
     <h2>Sezon Bir Bakışta</h2>
     <p class="note">13 Haziran'da başlayan sezonun özeti — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
     <div class="season-grid" id="season-band-grid"></div>
-  </section>
-
-  <section id="headline-stats">
-    <h2>Öne Çıkan İstatistikler</h2>
-    <p class="note">Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊 Tüm sıralamalar kayıtlardan hesaplanır; rekorlar ve tam liste için <a href="istatistikler.html">tüm istatistikler →</a></p>
-    <div id="stats"></div>
   </section>
 
   <section id="remaining-section">
@@ -59,6 +60,11 @@
     <p class="note">13 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı: 3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota. Her kartta son 4 haftanın formu da yazar; 📅 Son ay puanı, aynı formülün yalnızca son 4 haftaya uygulanmış hâlidir (tüm zamanlar puanı yanında durur). <span id="remaining-info"></span></p>
     <div class="remaining-grid" id="remaining-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
+  </section>
+  <section id="headline-stats">
+    <h2>Öne Çıkan İstatistikler</h2>
+    <p class="note">Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊 Tüm sıralamalar kayıtlardan hesaplanır; rekorlar ve tam liste için <a href="istatistikler.html">tüm istatistikler →</a></p>
+    <div id="stats"></div>
   </section>
 
   <section id="top-pair-section">
