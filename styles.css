@@ -298,3 +298,13 @@ main section + section{margin-top:6px}
 .page-jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0 4px}
 .page-jump a{color:var(--red-dark);background:#fff;border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem;text-decoration:none}
 .page-jump a:hover{background:var(--gold-bg)}
+.insta-link{font-size:.85rem}
+.insta-link a{color:var(--red-dark);font-weight:700;text-decoration:none}
+.insta-link a:hover{text-decoration:underline}
+p.insta-line{margin:6px 0 0}
+.judge-note a{color:var(--red-dark)}
+
+.ad-slot{border:2px dashed var(--gold);border-radius:14px;padding:18px;text-align:center;margin:18px 0;background:var(--gold-bg)}
+.ad-title{font-family:Georgia,serif;font-weight:800;font-size:1.15rem;color:var(--red-dark);margin:0 0 4px}
+.ad-text{color:var(--muted);margin:0 0 8px}
+.ad-cta{font-weight:700;color:var(--red-dark)}
