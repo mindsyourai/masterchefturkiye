@@ -8,12 +8,11 @@ const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
  "updated": "8 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 133 bölüm, 2.712 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme henüz yayınlanmadı. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 134 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
   "Tolga Çakuş",
-  "Kübra Satılmış",
   "Şadi Altınay",
   "Tolgahan Özden",
   "Ayşe Nur İnal",
@@ -73,6 +72,10 @@ const SITE = {
   {
    "name": "Hasan Alp Karabacak",
    "date": "1 Kasım 2026"
+  },
+  {
+   "name": "Kübra Satılmış",
+   "date": "8 Kasım 2026"
   }
  ],
  "transcriptComplete": [
@@ -399,7 +402,8 @@ const CONTESTANTS = [
   "short": "Kübra",
   "apron": 14,
   "group": "3. Grup",
-  "status": "yarışıyor",
+  "status": "elendi",
+  "elimDate": "8 Kasım 2026",
   "wins": [
    "1 Ağu — önlük (sebze güveci)",
    "16 Eyl — bireysel dokunulmazlık",
@@ -621,6 +625,69 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Armağan Kırant",
+  "red": "Şükran Boyraz"
+ },
+ "date": "8 Kasım 2026",
+ "eliminated": "Kübra Satılmış",
+ "games": [
+  {
+   "detail": "Ana ürün bal; Ayşe, Bahar, Tolga ve Şadi kurtuldu, Tolgahan, Eyüp Can, Kübra ve Muhammed 2. tura kaldı",
+   "name": "Eleme 1. tur — Bal yaratıcılık",
+   "winner": null
+  },
+  {
+   "detail": "Mehmet Şef'in 'Kömür' tatlısı (pâte à choux, mus, püre, ganaj, aktif karbon); Eyüp Can ve Muhammed kurtuldu, son ikiye Kübra ve Tolgahan kaldı; şeflerin kararıyla teknik hatalar nedeniyle Kübra elendi",
+   "name": "Eleme 2. tur — Kömür (Mehmet Şef)",
+   "winner": null
+  }
+ ],
+ "id": "2026-11-08",
+ "immunity": null,
+ "notes": [
+  "Web doğrulaması: lezzet.com.tr, gazeteyenisoz.com, haberlesende.com (8–9 Kas 2026) — üçü de aynı isim ve tur detaylarında birleşiyor; transkript bekleniyor",
+  "Kübra 6 Kasım konseyinde en çok oyu (6) almıştı",
+  "Bireysel yemek adları web kaynaklarında yok; transkript gelince düzeltilecek"
+ ],
+ "pot": [
+  "Bahar Kaya",
+  "Kübra Satılmış",
+  "Ayşe Nur İnal",
+  "Tolgahan Özden",
+  "Eyüp Can Güneş",
+  "Şadi Altınay",
+  "Muhammed Yahya Haliloğlu",
+  "Tolga Çakuş"
+ ],
+ "source": "web",
+ "summary": "Eleme gecesi: 1. turda ana ürün balda Ayşe, Bahar, Tolga ve Şadi kurtuldu. 2. turda Mehmet Şef'in 'Kömür' tatlısında Eyüp Can ve Muhammed kurtuldu; son ikiye Kübra ve Tolgahan kaldı, şeflerin kararıyla teknik hatalar nedeniyle Kübra Satılmış elendi. Kalan 13 yarışmacı.",
+ "teams": {
+  "blue": [
+   "Armağan Kırant",
+   "Muhammed Yahya Haliloğlu",
+   "Tolga Çakuş",
+   "Kübra Satılmış",
+   "Şadi Altınay",
+   "Tolgahan Özden",
+   "Ayşe Nur İnal"
+  ],
+  "red": [
+   "Şükran Boyraz",
+   "Bahar Kaya",
+   "Burçin Oğuz",
+   "Nurten Ocak Tamer",
+   "Eyüp Can Güneş",
+   "Elif Nilay Özgen",
+   "Enes Vardar"
+  ]
+ },
+ "title": "Eleme: Kübra elendi",
+ "week": "13. Hafta",
+ "weekday": "Pazar"
+},
  {
   "candidates": [
    "Muhammed Yahya Haliloğlu",
