@@ -438,10 +438,14 @@
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         (c.status === "yarışıyor" ? "<p class='recent-line'>" + recentLine(c.name) + "</p>" : "") +
+        (c.instagram ? "<p class='insta-line'>" + instaLine(c) + "</p>" : "") +
         "<p class='hint'>Detay için tıklayın →</p></button>";
     }).join("") || "<p class='note'>Eşleşen yarışmacı yok.</p>";
     document.querySelectorAll("#contestants-grid .contestant").forEach(function (btn) {
       btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
+    });
+    document.querySelectorAll("#contestants-grid .insta-link a").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.stopPropagation(); });
     });
   }
   function buildTimeline(c) {
@@ -477,7 +481,8 @@
     var fullLink = onContestantsPage ? "" : '<p class="detail-full-link"><a href="yarismacilar.html?kisi=' + encodeURIComponent(c.name) + '">Tam profil →</a></p>';
     var h = '<div class="detail-head"><div><h3>' + esc(c.name) + "</h3>" +
       "<p class='c-meta'>" + (c.apron ? "Önlük " + c.apron + " · " : "") + esc(c.group) +
-      (c.status === "elendi" && c.elimDate ? " · Elendi: " + esc(c.elimDate) : "") + "</p>" + statusBadge(c) + fullLink + "</div>" +
+      (c.status === "elendi" && c.elimDate ? " · Elendi: " + esc(c.elimDate) : "") + "</p>" +
+      (c.instagram ? "<p class='c-meta'>" + instaLine(c) + " <span class='note'>(2026'da kontrol edildi)</span></p>" : "") + statusBadge(c) + fullLink + "</div>" +
       '<button type="button" class="detail-close" id="detail-close">✕ Kapat</button></div>';
     h += '<div class="detail-tiles">' +
       tile(st.dishes.length, "yemek kaydı") +
@@ -554,6 +559,10 @@
     try {
       if (typeof panel.scrollIntoView === "function") panel.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (e) { /* eski tarayıcı */ }
+  }
+  function instaLine(c) {
+    if (!c.instagram) return "";
+    return '<span class="insta-link">📷 <a href="https://www.instagram.com/' + esc(c.instagram.handle) + '" target="_blank" rel="noopener">@' + esc(c.instagram.handle) + "</a> · " + esc(c.instagram.followers) + " takipçi</span>";
   }
   function tile(num, label) {
     return '<div class="tile"><b>' + num + "</b><span>" + esc(label) + "</span></div>";
@@ -668,11 +677,15 @@
         (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         "</div>" +
         "<p class='recent-line'>" + recentLine(c.name) + "</p>" +
+        (c.instagram ? "<p class='insta-line'>" + instaLine(c) + "</p>" : "") +
         (hl ? '<p class="remaining-highlight">📌 ' + esc(hl) + '</p>' : "") +
         "<p class='hint'>Profil için tıklayın →</p></button>";
     }).join("") || "<p class='note'>Eşleşen yarışmacı yok.</p>";
     document.querySelectorAll("#remaining-grid .contestant").forEach(function (btn) {
       btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
+    });
+    document.querySelectorAll("#remaining-grid .insta-link a").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.stopPropagation(); });
     });
   }
   function renderDiscussions() {
