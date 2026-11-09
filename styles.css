@@ -294,3 +294,7 @@ main section + section{margin-top:6px}
 }
 
 .brand-logo{height:38px;width:auto;vertical-align:-12px;border-radius:8px;margin-right:2px}
+
+.page-jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0 4px}
+.page-jump a{color:var(--red-dark);background:#fff;border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem;text-decoration:none}
+.page-jump a:hover{background:var(--gold-bg)}
