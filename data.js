@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "8 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 134 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "updated": "9 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 135 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (takım kadroları ve kaptanlık yemeği bilinmiyor, transkript bekleniyor); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -643,6 +643,35 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "9 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "Kaptanlık yemeği web kaynaklarında belirtilmedi; transkript gelince eklenecek",
+   "name": "Kaptanlık oyunu",
+   "winner": "Tolga Çakuş — Mavi kaptan"
+  }
+ ],
+ "id": "2026-11-09",
+ "immunity": null,
+ "notes": [
+  "Web doğrulaması: haberlesende.com, bakirkoytv.com.tr (9 Kas 2026) — ikisi de Tolga'nın kaptanlığı kazandığını ve Tolgahan'ı Kırmızı kaptan seçtiğini yazıyor; transkript bekleniyor",
+  "Yeni eleme sistemi (Somer Şef, 9 Kas bölümünde duyurdu): dokunulmazlığı alan artık sadece kendini korur, aday söylemez; bir aday konsey oylarıyla belirlenir, Pazar potası 4 kişi olur (önceden 6–8 idi). Not: 3 Kasım'da da benzer bir 'pota 4 kişi' duyurusu olmuş ama 13. haftanın potası 6 kişi olmuştu — yeni kuralın uygulanışı izlenecek",
+  "Takım kadroları web kaynaklarında yok; transkript gelince eklenecek"
+ ],
+ "pot": [],
+ "source": "web",
+ "summary": "14. hafta başladı: kaptanlık oyununu Tolga Çakuş kazandı, Mavi kaptan oldu; Kırmızı kaptan olarak Tolgahan Özden'i seçti. Kalan 13 yarışmacı.",
+ "title": "Kaptanlık: Tolga Mavi kaptan",
+ "week": "14. Hafta",
+ "weekday": "Pazartesi"
+},
 {
  "candidates": [],
  "captains": {
