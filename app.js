@@ -1137,6 +1137,59 @@
     if (!box) return;
     box.innerHTML = renderEpisode(EPISODES[0]);
   }
+  /* ---- Bu hafta kazanma şansı (tahmin) ----
+     Model: her yarışmacının sezon düello kaydı (takım oyunu düelloları),
+     az maçlılar %50'ye çekilmiş oran (G+5)/(maç+10); takım gücü =
+     üyelerin ortalaması; tek düello P(Mavi) = güçM/(güçM+güçK)
+     (Bradley–Terry); takım oyunu 7 düelloluk sayılır → P(≥4 galibiyet)
+     binom hesabı. Tahmindir — gerçek oyun bazen 5 yemekli veya jüri
+     puanlı olur; kaptanlık ve günün formu modelde yok. */
+  function renderWeekPrediction() {
+    var box = el("week-prediction");
+    if (!box) return;
+    var ep = null;
+    for (var i = 0; i < EPISODES.length; i++) {
+      if (EPISODES[i].teams && EPISODES[i].teams.blue && EPISODES[i].teams.red) { ep = EPISODES[i]; break; }
+    }
+    if (!ep) { box.innerHTML = ""; return; }
+    function comb(n, k) {
+      var r = 1;
+      for (var j = 1; j <= k; j++) r = r * (n - j + 1) / j;
+      return r;
+    }
+    function binom7(p) {
+      var s = 0;
+      for (var k = 4; k <= 7; k++) s += comb(7, k) * Math.pow(p, k) * Math.pow(1 - p, 7 - k);
+      return s;
+    }
+    function memberStats(list) {
+      return list.map(function (n) {
+        var full = resolveName(n) || n;
+        var st = STATS[full] || { duelWins: 0, duelLosses: 0 };
+        var w = st.duelWins || 0, l = st.duelLosses || 0;
+        return { name: full, w: w, l: l, rate: (w + 5) / (w + l + 10) };
+      });
+    }
+    function mean(a) { var s = 0; a.forEach(function (x) { s += x.rate; }); return a.length ? s / a.length : 0.5; }
+    var blue = memberStats(ep.teams.blue), red = memberStats(ep.teams.red);
+    var sB = mean(blue), sR = mean(red);
+    var pDuel = sB / (sB + sR);
+    var pBlue = binom7(pDuel), pRed = 1 - pBlue;
+    function pct(x) { return "%" + Math.round(x * 100); }
+    function pct1(x) { return "%" + (x * 100).toFixed(1).replace(".", ","); }
+    function teamRows(list, label) {
+      return list.map(function (m) {
+        return "<tr><td>" + label + "</td><td><strong>" + esc(shortOf(m.name)) + "</strong></td><td>" + m.w + "–" + m.l + "</td><td><strong>" + pct1(m.rate) + "</strong></td></tr>";
+      }).join("");
+    }
+    box.innerHTML = '<div class="vote-bars">' +
+      '<div class="vote-bar-row"><span class="vote-bar-name">🔵 Mavi</span><span class="vote-bar-track"><span class="vote-bar-fill" style="width:' + Math.round(pBlue * 100) + '%;background:linear-gradient(90deg,#1E5AA8,#3B82C4)"></span></span><span class="vote-bar-count"><strong>' + pct(pBlue) + "</strong></span></div>" +
+      '<div class="vote-bar-row"><span class="vote-bar-name">🔴 Kırmızı</span><span class="vote-bar-track"><span class="vote-bar-fill" style="width:' + Math.round(pRed * 100) + '%"></span></span><span class="vote-bar-count"><strong>' + pct(pRed) + "</strong></span></div></div>" +
+      '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Takım</th><th>Yarışmacı</th><th>Düello (G–M)</th><th>Oran*</th></tr></thead><tbody>' +
+      teamRows(blue, "🔵 Mavi") + teamRows(red, "🔴 Kırmızı") +
+      "</tbody></table></div>" +
+      "<p class='note'>* Oran: sezon düello kaydı, az maçlı yarışmacılar %50'ye çekildi — (galibiyet+5)/(maç+10). Takım gücü = üyelerin ortalaması (Mavi " + pct1(sB) + " · Kırmızı " + pct1(sR) + "); tek düelloda Mavi şansı " + pct1(pDuel) + ". Takım oyunu 7 düelloluk sayıldı (4 galibiyet alır). <strong>Bu bir tahmindir</strong> — gerçek oyun bazen 5 yemekli veya jüri puanlı olabilir; kaptanlık ve günün formu modelde yok. Kadrolar: " + esc(ep.week || "") + " (" + esc(ep.date || "") + ").</p>";
+  }
   function applySearch() {
     var q = (el("search").value || "").trim().toLowerCase();
     var parts = [], totalShown = 0;
@@ -1245,6 +1298,7 @@
     renderSummary();
     renderSeasonBand();
     renderLatestEpisode();
+    renderWeekPrediction();
     renderContestants();
     renderRemaining();
     renderApron();
