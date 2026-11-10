@@ -8,7 +8,7 @@ const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
  "updated": "9 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 135 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi, Enes'in takımı bilinmiyor); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 135 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -663,7 +663,7 @@ const EPISODES = [
  "notes": [
   "Web doğrulaması: haberlesende.com, bakirkoytv.com.tr (9 Kas 2026) — ikisi de Tolga'nın kaptanlığı kazandığını ve Tolgahan'ı Kırmızı kaptan seçtiğini yazıyor; transkript bekleniyor",
   "Yeni eleme sistemi (Somer Şef, 9 Kas bölümünde duyurdu): dokunulmazlığı alan artık sadece kendini korur, aday söylemez; bir aday konsey oylarıyla belirlenir, Pazar potası 4 kişi olur (önceden 6–8 idi). Not: 3 Kasım'da da benzer bir 'pota 4 kişi' duyurusu olmuş ama 13. haftanın potası 6 kişi olmuştu — yeni kuralın uygulanışı izlenecek",
-  "Takım kadroları MK tarafından iletildi; Enes Vardar'ın takımı bilinmiyor — 13 yarışmacıdan 12'si yerleşti",
+  "Takım kadroları MK tarafından iletildi; Enes Vardar'ın Mavi takımda olduğu 10 Kasım'da doğrulandı",
   "Kaptanlık yemeği web kaynaklarında belirtilmedi; transkript gelince eklenecek"
  ],
  "pot": [],
@@ -676,7 +676,8 @@ const EPISODES = [
    "Armağan Kırant",
    "Burçin Oğuz",
    "Şadi Altınay",
-   "Ayşe Nur İnal"
+   "Ayşe Nur İnal",
+   "Enes Vardar"
   ],
   "red": [
    "Tolgahan Özden",
