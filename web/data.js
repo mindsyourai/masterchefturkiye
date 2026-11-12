@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "11 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 137 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "updated": "12 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 138 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -558,6 +558,7 @@ const CONTESTANTS = [
    "31 Eki — bireysel dokunulmazlık (sıfır atık)",
    "30 Eyl — bireysel dokunulmazlık (Meyveli tart)",
    "6 Kas — bireysel dokunulmazlık (Karides muslin + alıç jeli + karides bisk)",
+   "12 Kas — bireysel dokunulmazlık (Milyon Dolar Chicken Casserole)",
    "5 Eki — ödül oyunu (Tokat Batı (final), 100.000 TL)"
   ]
  },
@@ -645,6 +646,69 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [
+  "Bahar Kaya"
+ ],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "12 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "Mantar gecesi, 7 düello: Mantarlı Risotto (Ayşe–Nilay, kazanan Nilay), Mantarlı Miso Çorbası (Burçin–Bahar, kazanan Burçin), Ekşili Sintar (Şadi–Bahar, kazanan Şadi), Mantarlı Kiş (Armağan–Nurten/Şükran, kazanan Armağan; Kırmızı'nın kiş'i kalıptan çıkarılırken parçalandı), Mantarlı Baklava Börek (Tolga–Şükran/Nurten, kazanan Tolga; bu tabakta Mavi 4-1 öne geçti), Kuzugöbeği Mantar (Enes–Tolgahan, kazanan Enes; 5-1), Güveç (Eyüp Can–Muhammed, kazanan Muhammed; 5-2 — Mehmet Şef, Eyüp Can'ın yemeğinin sote olup olmadığı üzerine tartıştı)",
+   "name": "Takım oyunu — Mantar",
+   "winner": "Mavi 5-2"
+  },
+  {
+   "detail": "Milyon Dolar Chicken Casserole; en iyi iki tabak Tolgahan ve Nilay — kazanan Tolgahan",
+   "name": "Bireysel dokunulmazlık — Milyon Dolar Chicken Casserole",
+   "winner": "Tolgahan Özden"
+  }
+ ],
+ "id": "2026-11-12",
+ "immunity": {
+  "detail": "Milyon Dolar Chicken Casserole; en iyi iki tabak Tolgahan ve Nilay — kazanan Tolgahan",
+  "name": "Bireysel dokunulmazlık — Milyon Dolar Chicken Casserole",
+  "winner": "Tolgahan Özden"
+ },
+ "notes": [
+  "MK'nin bildirdiği sonuçlar (manuel, 12 Kas 2026): takım oyunu Mavi 5-2; dokunulmazlık Tolgahan (Milyon Dolar Chicken Casserole); üçüncü aday Bahar — oylamada herkes Şükran ve Bahar'a oy verdi, Bahar 2 boş oy kullandı ve Şükran'a oy vermedi (MK'nin cümlesinden potaya gidenin Bahar olduğu okunuyor; Şükran ise MK düzeltirse değiştirilecek)",
+  "Düello kazananları 7 farklı kişi (Nilay, Burçin, Şadi, Armağan, Tolga, Enes, Muhammed) — MK'nin ≤3 kuralı gereği düello yemek satırı eklenmedi",
+  "Pota: Nurten (10 Kas) + Burçin (11 Kas) + Bahar (12 Kas)"
+ ],
+ "pot": [
+  "Nurten Ocak Tamer",
+  "Burçin Oğuz",
+  "Bahar Kaya"
+ ],
+ "source": "MK",
+ "summary": "14. haftanın üçüncü takım oyununu (mantar gecesi) Mavi 5-2 kazandı. Bireysel dokunulmazlığı Tolgahan (Milyon Dolar Chicken Casserole) aldı; Kırmızı oylamasında haftanın üçüncü eleme adayı Bahar oldu. Pota: Nurten + Burçin + Bahar.",
+ "teams": {
+  "blue": [
+   "Tolga Çakuş",
+   "Eyüp Can Güneş",
+   "Armağan Kırant",
+   "Burçin Oğuz",
+   "Şadi Altınay",
+   "Ayşe Nur İnal",
+   "Enes Vardar"
+  ],
+  "red": [
+   "Tolgahan Özden",
+   "Muhammed Yahya Haliloğlu",
+   "Bahar Kaya",
+   "Nurten Ocak Tamer",
+   "Şükran Boyraz",
+   "Elif Nilay Özgen"
+  ]
+ },
+ "title": "Üçüncü takım oyunu: Mantar — Mavi 5-2 kazandı, Bahar aday",
+ "week": "14. Hafta",
+ "weekday": "Perşembe"
+},
 {
  "candidates": [
   "Burçin Oğuz"
