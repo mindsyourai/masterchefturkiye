@@ -675,7 +675,7 @@ const EPISODES = [
   "winner": "Tolgahan Özden"
  },
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 12 Kas 2026): takım oyunu Mavi 5-2; dokunulmazlık Tolgahan (Milyon Dolar Chicken Casserole); üçüncü aday Bahar — oylamada herkes Şükran ve Bahar'a oy verdi, Bahar 2 boş oy kullandı ve Şükran'a oy vermedi (MK'nin cümlesinden potaya gidenin Bahar olduğu okunuyor; Şükran ise MK düzeltirse değiştirilecek)",
+  "MK'nin bildirdiği sonuçlar (manuel, 12 Kas 2026; aday MK tarafından 12 Kas 16:03'te doğrulandı): takım oyunu Mavi 5-2; dokunulmazlık Tolgahan (Milyon Dolar Chicken Casserole); üçüncü aday Bahar — oylamada herkes Şükran ve Bahar'a oy verdi, Bahar 2 boş oy kullandı ve Şükran'a oy vermedi",
   "Düello kazananları 7 farklı kişi (Nilay, Burçin, Şadi, Armağan, Tolga, Enes, Muhammed) — MK'nin ≤3 kuralı gereği düello yemek satırı eklenmedi",
   "Pota: Nurten (10 Kas) + Burçin (11 Kas) + Bahar (12 Kas)"
  ],
