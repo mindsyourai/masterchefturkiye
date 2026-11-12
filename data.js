@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "9 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 135 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "updated": "11 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 137 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım web doğrulamasıyla işlendi — Kırmızı kazandı (kebap gecesi, skor belirtilmedi), Armağan bireysel dokunulmazlık (cennet hurması), ikinci aday Burçin. Pota: Nurten + Burçin. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -243,7 +243,8 @@ const CONTESTANTS = [
    "24 Eki — bireysel dokunulmazlık",
    "11 Ağu — bireysel dokunulmazlık (egg fried rice)",
    "3 Eki — bireysel dokunulmazlık (Halep vişne kebabı)",
-   "25 Eyl — ödül oyunu (Ödül oyunu — Bayramiç beyazı (bireysel etap), 100.000 TL)"
+   "25 Eyl — ödül oyunu (Ödül oyunu — Bayramiç beyazı (bireysel etap), 100.000 TL)",
+   "10 Kas — bireysel dokunulmazlık (balıklı ekmek)"
   ]
  },
  {
@@ -491,7 +492,8 @@ const CONTESTANTS = [
    "2 Eyl — bireysel dokunulmazlık (incir)",
    "2 Kas — kaptanlık (kıymalı kaşarlı pide, Mavi kaptan)",
    "7 Kas — bireysel dokunulmazlık (Kadın budu yorumu (buğdaylı köfte))",
-   "14 Eyl — kaptanlık (Profiterol, Mavi kaptan)"
+   "14 Eyl — kaptanlık (Profiterol, Mavi kaptan)",
+   "11 Kas — bireysel dokunulmazlık (cennet hurması)"
   ]
  },
  {
@@ -643,6 +645,130 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [
+  "Burçin Oğuz"
+ ],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "11 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "Kebap gecesi: Basma Kebap, Uykuluk, Çöp Şiş, Ciğer, Kanat, Soğan Kebabı (skor haberlerde belirtilmedi)",
+   "name": "Takım oyunu — Kebap",
+   "winner": "Kırmızı"
+  },
+  {
+   "detail": "Cennet hurmasıyla yemek; son ikiye Armağan ve Burçin kaldı",
+   "name": "Bireysel dokunulmazlık — Cennet hurması",
+   "winner": "Armağan Kırant"
+  }
+ ],
+ "id": "2026-11-11",
+ "immunity": {
+  "detail": "Cennet hurmasıyla yemek; son ikiye Armağan ve Burçin kaldı",
+  "name": "Bireysel dokunulmazlık — Cennet hurması",
+  "winner": "Armağan Kırant"
+ },
+ "notes": [
+  "Web doğrulaması: gazetebirlik, yozgathakimiyet, tasinmazhaber, haberts, ilkses (11–12 Kas 2026) — Kırmızı kazandı, Armağan dokunulmazlık, Burçin ikinci aday; transkript bekleniyor",
+  "Takım oyunu skoru haberlerde belirtilmedi",
+  "Pota: Nurten (10 Kas) + Burçin (11 Kas)"
+ ],
+ "pot": [
+  "Nurten Ocak Tamer",
+  "Burçin Oğuz"
+ ],
+ "source": "web",
+ "summary": "14. haftanın ikinci takım oyununu (kebap gecesi) Kırmızı kazandı. Bireysel dokunulmazlığı Armağan (cennet hurması) aldı; Mavi oylamasında haftanın ikinci eleme adayı Burçin oldu. Pota: Nurten + Burçin.",
+ "teams": {
+  "blue": [
+   "Tolga Çakuş",
+   "Eyüp Can Güneş",
+   "Armağan Kırant",
+   "Burçin Oğuz",
+   "Şadi Altınay",
+   "Ayşe Nur İnal",
+   "Enes Vardar"
+  ],
+  "red": [
+   "Tolgahan Özden",
+   "Muhammed Yahya Haliloğlu",
+   "Bahar Kaya",
+   "Nurten Ocak Tamer",
+   "Şükran Boyraz",
+   "Elif Nilay Özgen"
+  ]
+ },
+ "title": "İkinci takım oyunu: Kebap — Kırmızı kazandı, Burçin aday",
+ "week": "14. Hafta",
+ "weekday": "Çarşamba"
+},
+{
+ "candidates": [
+  "Nurten Ocak Tamer"
+ ],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "10 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "Atatürk'ü Anma Günü özel — Atatürk'ün ziyaret ettiği şehirlerin yemekleri: Peynirli Bougatsa, Çarşamba Keşkeği, Patlıcan Pehli, Şalgam Dolması, Divriği Pilavı, Ankara Tava, Müşebbek",
+   "name": "Takım oyunu — Atatürk'ün sevdiği yemekler",
+   "winner": "Mavi 4-3"
+  },
+  {
+   "detail": "Mehmet Şef'in yemeği balıklı ekmek (Karadeniz usulü); ilk 3: Şükran, Muhammed, Nilay",
+   "name": "Bireysel dokunulmazlık — Balıklı ekmek",
+   "winner": "Elif Nilay Özgen"
+  }
+ ],
+ "id": "2026-11-10",
+ "immunity": {
+  "detail": "Mehmet Şef'in yemeği balıklı ekmek (Karadeniz usulü); ilk 3: Şükran, Muhammed, Nilay",
+  "name": "Bireysel dokunulmazlık — Balıklı ekmek",
+  "winner": "Elif Nilay Özgen"
+ },
+ "notes": [
+  "Web doğrulaması: ahbmedya, yenicaggazetesi, bugunkocaeli, onedio, gzt, habertürk (10–11 Kas 2026) — Mavi 4-3, Nilay dokunulmazlık, Nurten ilk aday; transkript bekleniyor",
+  "Yeni eleme sistemi ilk kez uygulandı: dokunulmazlık kazananı sadece kendini korur, aday söylemez; aday kaybeden takımın oylamasıyla belirlenir",
+  "Bazı haberlerde 2. adayın da belirlendiği yazılsa da adı açıkça belirtilmiyor (2. aday 11 Kasım'da Burçin oldu)",
+  "Bir yapay zekâ derlemesi (mertnews.net) Muhammed'in Kırmızı kaptan seçildiğini iddia ediyor; altı ayrıntılı haber ve canlı kart Tolgahan diyor — güvenilmez sayıldı"
+ ],
+ "pot": [
+  "Nurten Ocak Tamer"
+ ],
+ "source": "web",
+ "summary": "14. haftanın ilk takım oyununu (Atatürk'ün sevdiği yemekler) Mavi 4-3 kazandı. Bireysel dokunulmazlığı Nilay (balıklı ekmek) aldı; Kırmızı oylamasında haftanın ilk eleme adayı Nurten oldu.",
+ "teams": {
+  "blue": [
+   "Tolga Çakuş",
+   "Eyüp Can Güneş",
+   "Armağan Kırant",
+   "Burçin Oğuz",
+   "Şadi Altınay",
+   "Ayşe Nur İnal",
+   "Enes Vardar"
+  ],
+  "red": [
+   "Tolgahan Özden",
+   "Muhammed Yahya Haliloğlu",
+   "Bahar Kaya",
+   "Nurten Ocak Tamer",
+   "Şükran Boyraz",
+   "Elif Nilay Özgen"
+  ]
+ },
+ "title": "İlk takım oyunu: Mavi 4-3 — Nilay dokunulmazlık, Nurten aday",
+ "week": "14. Hafta",
+ "weekday": "Salı"
+},
 {
  "candidates": [],
  "captains": {
