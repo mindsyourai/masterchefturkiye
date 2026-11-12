@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MasterChef Türkiye 2026 — Ana Sayfa</title>
+<meta name="description" content="MasterChef Türkiye 2026 hayran sitesi: yarışmacı profilleri, gün gün yemek listesi, takım kombinasyonları, tartışmalar, konsey oyları ve istatistikler.">
+<link rel="icon" type="image/png" href="images/mindyourai-logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <h1>MasterChef Türkiye 2026</h1>
+  <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
+  <img class="hero-poster" src="images/masterchef-grup.jpg" alt="MasterChef Türkiye 2026 — üç jüri üyesi: Mehmet Yalçınkaya, Somer Sivrioğlu ve Danilo Zanna" loading="lazy">
+  <p class="hero-joke">Şefler karar verdi, biz not aldık: 138 bölüm, 2.724 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
+  <p><span class="fan-badge">🏆 Hayran sitesi — resmî değil, ama sayılar gerçek</span></p>
+  <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 9 Kasım 2026</span></p>
+  <div class="judges" aria-label="Jüri">
+    <figure class="judge"><img src="images/mehmet-yalcinkaya.jpg" alt="Mehmet Yalçınkaya" loading="lazy"><figcaption>Mehmet Yalçınkaya<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/chefmehmetyalcinkaya" target="_blank" rel="noopener">📷 @chefmehmetyalcinkaya · 1,59 Mn takipçi</a></span></figcaption></figure>
+    <figure class="judge"><img src="images/somer-sivrioglu.jpg" alt="Somer Sivrioğlu" loading="lazy"><figcaption>Somer Sivrioğlu<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/somersivrioglu" target="_blank" rel="noopener">📷 @somersivrioglu · 1,4 Mn takipçi</a></span></figcaption></figure>
+    <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/danilozanna" target="_blank" rel="noopener">📷 @danilozanna · 2,3 Mn takipçi</a></span></figcaption></figure>
+  </div>
+  <p class="photo-credit">Jüri fotoğrafları MindYourAI tarafından sağlandı (MasterChef Türkiye / TV8). Takipçi sayıları 2026'da kontrol edildi; Instagram'da her gün değişebilir.</p>
+  <div class="kilim" aria-hidden="true"></div>
+</header>
+<nav class="sticky" aria-label="Sayfa gezinmesi">
+  <a href="index.html" class="active">Ana Sayfa</a>
+  <a href="yarismacilar.html">Yarışmacılar</a>
+  <a href="bolumler.html">Bölümler</a>
+  <a href="takimlar.html">Takımlar</a>
+  <a href="tartismalar.html">Tartışmalar</a>
+  <a href="konsey.html">Konsey Oyları</a>
+  <a href="istatistikler.html">İstatistikler</a>
+  <a href="kaynaklar.html">Kaynaklar &amp; Uyarılar</a>
+  <a href="index.html#iletisim">İletişim</a>
+  <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
+  <span class="search-info" id="search-info"></span>
+</nav>
+<main>
+  <p class="note" id="site-note"></p>
+  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
+
+  <nav class="page-jump" aria-label="Sayfa içi gezinme">
+    <a href="#season-band">Sezon Bir Bakışta</a>
+    <a href="#remaining-section">Yarışmacılar</a>
+    <a href="#headline-stats">Öne Çıkan İstatistikler</a>
+    <a href="#top-pair-section">En İyi İkili</a>
+    <a href="#latest-ep-section">Son Bölüm</a>
+    <a href="#week-prediction-section">Kazanma Şansı</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+  <section id="season-band" aria-label="Sezon bir bakışta">
+    <h2>Sezon Bir Bakışta</h2>
+    <p class="note">13 Haziran'da başlayan sezonun özeti — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
+    <div class="season-grid" id="season-band-grid"></div>
+  </section>
+  <section class="ad-slot" aria-label="Reklam alanı">
+    <p class="ad-title">Reklamınız Burada Olabilir</p>
+    <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
+    <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
+  </section>
+
+  <section id="remaining-section">
+    <h2>Yarışmaya Devam Edenler ⭐</h2>
+    <p class="note">13 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı: 3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota. Her kartta son 4 haftanın formu da yazar; 📅 Son ay puanı, aynı formülün yalnızca son 4 haftaya uygulanmış hâlidir (tüm zamanlar puanı yanında durur). <span id="remaining-info"></span></p>
+    <div class="remaining-grid" id="remaining-grid"></div>
+    <div id="contestant-detail" class="detail-panel" hidden></div>
+  </section>
+  <section id="headline-stats">
+    <h2>Öne Çıkan İstatistikler</h2>
+    <p class="note">Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊 Tüm sıralamalar kayıtlardan hesaplanır; rekorlar ve tam liste için <a href="istatistikler.html">tüm istatistikler →</a></p>
+    <div id="stats"></div>
+  </section>
+  <section class="ad-slot" aria-label="Reklam alanı">
+    <p class="ad-title">Reklamınız Burada Olabilir</p>
+    <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
+    <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
+  </section>
+
+  <section id="top-pair-section">
+    <h2>En İyi İkili 👑</h2>
+    <p class="note">Birlikteyken neredeyse hiç kaybetmeyen çift — takım oyunlarından hesaplandı.</p>
+    <div id="top-pair"></div>
+  </section>
+
+  <section id="latest-ep-section">
+    <h2>Son Bölüm</h2>
+    <p class="note">En son yayınlanan bölüm — transkriptten tam. <a href="bolumler.html">Tüm bölümler →</a></p>
+    <div id="latest-ep"></div>
+  </section>
+  <section id="week-prediction-section">
+    <h2>Bu Hafta Kim Kazanır? 🔮</h2>
+    <p class="note">Bu haftanın takımlarına göre tahmin — sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
+    <div id="week-prediction"></div>
+  </section>
+  <section class="ad-slot" aria-label="Reklam alanı">
+    <p class="ad-title">Reklamınız Burada Olabilir</p>
+    <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
+    <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
+  </section>
+
+  <section id="explore">
+    <h2>Keşfet</h2>
+    <p class="note">Her bölüm kendi sayfasında — gezinmek için karta tıkla.</p>
+    <div class="page-links" id="page-links">
+      <a class="page-card" href="yarismacilar.html" data-search="yarışmacılar yarışmacı profil önlük kadro"><h3>👥 Yarışmacılar</h3><p>Tüm profiller — yemekler, galibiyetler, pota geçmişi.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="bolumler.html" data-search="bölümler gün gün bölüm hafta menü"><h3>📅 Bölümler</h3><p>Gün gün bölümler — en son önce.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="takimlar.html" data-search="takımlar kadro takım kombinasyon ikili mavi kırmızı"><h3>🔵🔴 Takımlar</h3><p>Hafta hafta kadrolar + en iyi ikililer.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="tartismalar.html" data-search="tartışmalar gündem kavga"><h3>💬 Tartışmalar &amp; Gündem</h3><p>Tartışmalar ve gündemler — tarafsız özetler.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="konsey.html" data-search="konsey oyları oy pusula aday"><h3>🗳️ Konsey Oyları</h3><p>Konseyler — toplamlar ve söylenen oylar.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="istatistikler.html" data-search="istatistikler sıralama rekor düello"><h3>📊 İstatistikler</h3><p>Sıralamalar ve sezon rekorları.</p><span class="page-link-arrow">Keşfet →</span></a>
+      <a class="page-card" href="kaynaklar.html" data-search="kaynaklar yöntem uyarı sorumluluk veri"><h3>📂 Kaynaklar &amp; Uyarılar</h3><p>Dosyalar nasıl birleştirildi, ham veriler.</p><span class="page-link-arrow">Keşfet →</span></a>
+    </div>
+  </section>
+
+  <section class="howto" aria-label="Nasıl kullanılır">
+    <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
+    <div class="howto-grid">
+      <div class="howto-card"><span class="howto-num">1</span><h3>Kalan yarışmacıyı seç</h3><p>Aşağıdaki 13 karttan birine tıkla — yemekleri, galibiyetleri, pota geçmişi burada açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
+      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Bölümler en yeniden başlar. Hafta başlığına tıkla, o haftayı aç-kapa. Merak ettiğin günü bul, menüyü ve kazananı gör. 📅</p></div>
+      <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
+    </div>
+  </section>
+
+  <section id="iletisim" aria-label="İletişim">
+    <h2>Bize Ulaşın ✉️</h2>
+    <p class="note">Düzeltme mi var, eksik mi gördün, yoksa sadece merhaba mı demek istiyorsun? Yaz bize — mesajın mindsyourai@gmail.com adresine gider.</p>
+    <form id="contact-form" class="contact-form">
+      <label>Adın <input type="text" id="contact-name" required maxlength="80" placeholder="Adın"></label>
+      <label>E-postan (isteğe bağlı) <input type="email" id="contact-email" maxlength="120" placeholder="ornek@eposta.com"></label>
+      <label>Konu <input type="text" id="contact-subject" required maxlength="120" placeholder="Konu"></label>
+      <label>Mesajın <textarea id="contact-message" required rows="5" maxlength="2000" placeholder="Mesajını yaz…"></textarea></label>
+      <button type="submit" class="contact-submit">Gönder ✉️</button>
+      <p class="note" id="contact-note" hidden></p>
+    </form>
+    <p class="note">Gönder'e basınca e-posta uygulaman açılır — mesaj mindsyourai@gmail.com adresine gider. Doğrudan yazmak istersen: <a href="mailto:mindsyourai@gmail.com">mindsyourai@gmail.com</a></p>
+  </section>
+</main>
+<footer>
+  <div class="kilim" aria-hidden="true"></div>
+  <p>MasterChef Türkiye 2026 — yarışmacı profilleri ve gün gün yemek listesi · Bu site bir hayran kaydıdır, resmî değildir. · Nasıl hazırlandığını merak edenler: <a href="kaynaklar.html">Kaynaklar, Yöntem &amp; Uyarılar</a> · Tasarım: <img class="brand-logo" src="images/mindyourai-logo.png" alt="MindYourAI logosu"> MindYourAI · İletişim: <a href="mailto:mindsyourai@gmail.com">mindsyourai@gmail.com</a> · <a href="index.html#iletisim">Bize ulaşın →</a></p>
+</footer>
+<button type="button" id="to-top" aria-label="Yukarı çık" hidden>↑ Yukarı</button>
+<script src="data.js"></script>
+<script src="discussions.js"></script>
+<script src="votes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
