@@ -149,6 +149,7 @@
   /* ---- Bölüm kartları (v1 ile aynı içerik, yeni gruplama) ---- */
   function sourceBadge(src) {
     if (src === "transkript") return '<span class="badge badge-t">✅ transkript</span>';
+    if (src === "MK") return '<span class="badge badge-t">👤 MK bildirimi</span>';
     if (src === "teyit") return '<span class="badge badge-q">❓ teyit edilecek</span>';
     return '<span class="badge badge-w">🌐 web</span>';
   }
