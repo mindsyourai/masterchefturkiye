@@ -939,7 +939,6 @@
     var potaRows = CONTESTANTS.map(function (c) { return { name: c.name, n: STATS[c.name].pota.length }; });
     /* Düello galibiyeti = takım galibiyeti (STATS.md §1: düello satırlarının
        tamamı Mavi/Kırmızı takımlı). Yüzde = G / (G+M), kararsızlar hariç. */
-    var duelRows = CONTESTANTS.map(function (c) { return { name: c.name, n: STATS[c.name].duelWins }; });
     var duelRateRows = CONTESTANTS.map(function (c) {
       var g = STATS[c.name].duelWins, m = STATS[c.name].duelLosses;
       return { name: c.name, n: (g + m) >= 10 ? (g / (g + m) * 100) : 0, g: g, m: m };
@@ -975,7 +974,6 @@
       top(capRows, "n", "En çok kaptanlık haftası (Mavi + Kırmızı)") +
       top(capBlueRows, "n", "En çok Mavi kaptanlık (oyunu kazanan)") +
       top(potaRows, "n", "En çok pota (hafta)") +
-      top(duelRows, "n", "En çok düello galibiyeti (takım oyunu)") +
       top(duelRateRows, "n", "En yüksek düello galibiyet yüzdesi (en az 10 düello)", 5, function (x) {
         return "%" + x.n.toFixed(1).replace(".", ",") + " (" + x.g + "G-" + x.m + "M)";
       }) +
