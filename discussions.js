@@ -322,5 +322,45 @@ const DISCUSSIONS = [
     kind: "tartışma",
     summary: "7 Kasım bölümünde 6 Kasım konseyinde yaşananlar üzerine uzun tartışma çıktı; 'intikam' ve sosyal medya takipçi sayıları gündeme geldi. Tolga ve Kübra, Ayşe ile Şadi'yi hedef aldı; Ayşe ve Şadi karşılık verdi. Aynı bölümde Eyüp Can, Bahar'ın kendisine iki kez boş oy attığını söyledi; Bahar, en düşük puan alana oy verdiğini savundu.",
     source: "7 Kasım 2026 bölümü transkripti"
+  },
+  {
+    id: "2026-11-12-tolga-enes-inek-esprisi",
+    date: "12 Kasım 2026",
+    dateISO: "2026-11-12",
+    title: "Tolga–Enes 'inek' esprisi tartışması",
+    participants: ["Tolga Çakuş", "Enes Vardar"],
+    kind: "tartışma",
+    summary: "Tolga ile Enes arasında bir 'inek' esprisi yüzünden tartışma çıktı.",
+    source: "12 Kasım 2026 bölümü (MK'nin bildirimi)"
+  },
+  {
+    id: "2026-11-12-muhammed-tolga-iyi-misin",
+    date: "12 Kasım 2026",
+    dateISO: "2026-11-12",
+    title: "Muhammed–Tolga 'iyi misin?' tartışması",
+    participants: ["Muhammed Yahya Haliloğlu", "Tolga Çakuş"],
+    kind: "tartışma",
+    summary: "Takım oyunu sırasında Muhammed, Tolga'ya 'iyi misin?' diye sordu; Tolga'nın cevabını Muhammed alay olarak algıladı ve tartışma çıktı.",
+    source: "12 Kasım 2026 bölümü (MK'nin bildirimi)"
+  },
+  {
+    id: "2026-11-12-tolga-bahar-kavga",
+    date: "12 Kasım 2026",
+    dateISO: "2026-11-12",
+    title: "Tolga–Bahar kavgası (Muhammed'in durumu)",
+    participants: ["Tolga Çakuş", "Bahar Kaya", "Muhammed Yahya Haliloğlu"],
+    kind: "tartışma",
+    summary: "Tolga ile Bahar, Muhammed'in durumu üzerinden kavga etti.",
+    source: "12 Kasım 2026 bölümü (MK'nin bildirimi)"
+  },
+  {
+    id: "2026-11-12-mehmet-sef-eyup-can-sote",
+    date: "12 Kasım 2026",
+    dateISO: "2026-11-12",
+    title: "Mehmet Şef–Eyüp Can 'sote' tartışması",
+    participants: ["Eyüp Can Güneş", "Mehmet Yalçınkaya"],
+    kind: "tartışma",
+    summary: "Güveç düellosunda şefler, Eyüp Can'ın yemeğinin sote olup olmadığı üzerine Eyüp Can'la tartıştı; Mehmet Şef 'bu sote mi değil mi' diye sordu. Düelloyu Muhammed kazandı.",
+    source: "12 Kasım 2026 bölümü (MK'nin bildirimi)"
   }
 ];
