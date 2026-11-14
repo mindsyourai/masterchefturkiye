@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "12 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 138 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "updated": "13 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 139 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -646,6 +646,64 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "13 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "112 Acil Sağlık ekipleri için hazırlanan menü: Ayran Aşı Çorbası, Pırasa Dolması, Dana Rosto ve Patates Püresi, İstanbul Pilavı, Şöbiyet. Seyircilerden seçilen 8 jüri 5 tabağı puanladı — toplam 40 puan: Kırmızı 25, Mavi 15. Mavi'den Eyüp Can ve Ayşe'nin tabakları kaybetmedi.",
+   "name": "Ödül oyunu — 112 Acil Sağlık menüsü (seyirci jürisi)",
+   "winner": "Kırmızı 25-15"
+  },
+  {
+   "detail": "Bireysel finalde Tolgahan ve Bahar kaldı — kazanan Tolgahan, 100.000 TL",
+   "name": "Bireysel ödül finali — 100.000 TL",
+   "winner": "Tolgahan Özden"
+  }
+ ],
+ "id": "2026-11-13",
+ "immunity": null,
+ "notes": [
+  "MK'nin bildirdiği sonuçlar (manuel, 13 Kas 2026): ödül oyunu — ana takım yarışmasının parçası değil; seyirci jürisi (8 kişi) 5 tabağı puanladı, Kırmızı 25-15 kazandı",
+  "Bireysel final: Tolgahan ve Bahar kaldı — Tolgahan 100.000 TL kazandı",
+  "Konsey yok, aday yok — pota Nurten + Burçin + Bahar olarak kaldı",
+  "Mavi'den Eyüp Can ve Ayşe'nin tabakları kaybetmedi; tabakların aşçıları bilinmiyor — yemek satırı eklenmedi"
+ ],
+ "pot": [
+  "Nurten Ocak Tamer",
+  "Burçin Oğuz",
+  "Bahar Kaya"
+ ],
+ "source": "MK",
+ "summary": "14. haftanın ödül oyununu (112 Acil Sağlık menüsü) Kırmızı 25-15 kazandı — ana takım yarışmasının parçası değil; seyircilerden seçilen 8 jüri 5 tabağı puanladı. Bireysel finalde Tolgahan, Bahar'ı geçerek 100.000 TL kazandı. Konsey yok — pota Nurten + Burçin + Bahar.",
+ "teams": {
+  "blue": [
+   "Tolga Çakuş",
+   "Eyüp Can Güneş",
+   "Armağan Kırant",
+   "Burçin Oğuz",
+   "Şadi Altınay",
+   "Ayşe Nur İnal",
+   "Enes Vardar"
+  ],
+  "red": [
+   "Tolgahan Özden",
+   "Muhammed Yahya Haliloğlu",
+   "Bahar Kaya",
+   "Nurten Ocak Tamer",
+   "Şükran Boyraz",
+   "Elif Nilay Özgen"
+  ]
+ },
+ "title": "Ödül oyunu: Kırmızı 25-15 kazandı; 100.000 TL Tolgahan'ın",
+ "week": "14. Hafta",
+ "weekday": "Cuma"
+},
 {
  "candidates": [
   "Bahar Kaya"
