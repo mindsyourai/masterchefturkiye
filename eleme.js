@@ -23,7 +23,7 @@ const ELEME_NIGHTS = [
       {
         "name": "2. tur",
         "product": "Ravioli",
-        "card": {"image": "images/eleme-2026-11-15-r2.png", "ig": null},
+        "card": {"image": "images/eleme-2026-11-15-r2.png", "ig": "https://www.instagram.com/p/DfyAa7wE95D/"},
         "scores": [
           {"name": "Burçin Oğuz", "mehmet": 6, "danilo": 7.5, "somer": 6.5, "total": 20},
           {"name": "Enes Vardar", "mehmet": 6, "danilo": 7, "somer": 6, "total": 19},
