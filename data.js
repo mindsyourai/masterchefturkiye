@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "14 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 140 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır.",
+ "updated": "15 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 140 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır. 15 Kasım MK'nin bildirdiği sonuçlarla işlendi — eleme gecesi (1. tur kereviz, 2. tur ravioli; şef puanları kartlarda): genel toplam Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten elendi, 12 kaldı.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -19,7 +19,6 @@ const SITE = {
   "Şükran Boyraz",
   "Bahar Kaya",
   "Burçin Oğuz",
-  "Nurten Ocak Tamer",
   "Eyüp Can Güneş",
   "Elif Nilay Özgen",
   "Enes Vardar"
@@ -76,6 +75,10 @@ const SITE = {
   {
    "name": "Kübra Satılmış",
    "date": "8 Kasım 2026"
+  },
+  {
+   "name": "Nurten Ocak Tamer",
+   "date": "15 Kasım 2026"
   }
  ],
  "transcriptComplete": [
@@ -321,7 +324,8 @@ const CONTESTANTS = [
   "photo": "images/nurten-ocak-tamer.jpg",
   "apron": 8,
   "group": "2. Grup",
-  "status": "yarışıyor",
+  "status": "elendi",
+  "elimDate": "15 Kasım 2026",
   "wins": [
    "25 Tem — önlük (su böreği)",
    "5 Kas — bireysel dokunulmazlık (zeytinyağlı kuru incir dolması, kariyerinde ilk)"
@@ -647,6 +651,62 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Tolga Çakuş",
+  "red": "Tolgahan Özden"
+ },
+ "date": "15 Kasım 2026",
+ "eliminated": "Nurten Ocak Tamer",
+ "games": [
+  {
+   "detail": "Ana ürün kereviz; şef puanları: Enes 21 (6.5+7+7.5), Burçin 19 (5.5+6.5+7), Bahar 18 (5.5+6+6.5), Nurten 16.5 (5+5.5+6)",
+   "name": "Eleme 1. tur — Kereviz",
+   "winner": null
+  },
+  {
+   "detail": "Ravioli; şef puanları: Burçin 20 (6+7.5+6.5), Enes 19 (6+7+6), Bahar 18 (5.5+6.5+6), Nurten 16.5 (4.5+6+6). Genel toplam: Enes 40, Burçin 39, Bahar 36, Nurten 33 — en düşük toplamla Nurten elendi",
+   "name": "Eleme 2. tur — Ravioli",
+   "winner": null
+  }
+ ],
+ "id": "2026-11-15",
+ "immunity": null,
+ "notes": [
+  "MK'nin bildirdiği sonuçlar (manuel, 15 Kas 2026): 1. tur kereviz, 2. tur ravioli; şef puanları Eleme Gecesi Puanları bölümünde ve Instagram kartlarında"
+ ],
+ "pot": [
+  "Nurten Ocak Tamer",
+  "Burçin Oğuz",
+  "Bahar Kaya",
+  "Enes Vardar"
+ ],
+ "source": "MK",
+ "summary": "Eleme gecesi: 1. tur kerevizde Enes 21 ile lider, Nurten 16.5 ile son. 2. tur raviolide Burçin 20 ile turu kazandı. Genel toplam: Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten Ocak Tamer elendi. Kalan 12 yarışmacı.",
+ "teams": {
+  "blue": [
+   "Tolga Çakuş",
+   "Eyüp Can Güneş",
+   "Armağan Kırant",
+   "Burçin Oğuz",
+   "Şadi Altınay",
+   "Ayşe Nur İnal",
+   "Enes Vardar"
+  ],
+  "red": [
+   "Tolgahan Özden",
+   "Muhammed Yahya Haliloğlu",
+   "Bahar Kaya",
+   "Nurten Ocak Tamer",
+   "Şükran Boyraz",
+   "Elif Nilay Özgen"
+  ]
+ },
+ "title": "Eleme: Nurten elendi",
+ "week": "14. Hafta",
+ "weekday": "Pazar"
+},
 {
  "candidates": ["Enes Vardar"],
  "captains": {
