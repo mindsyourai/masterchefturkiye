@@ -310,3 +310,8 @@ p.insta-line{margin:6px 0 0}
 .ad-title{font-family:Georgia,serif;font-weight:800;font-size:1.15rem;color:var(--red-dark);margin:0 0 4px}
 .ad-text{color:var(--muted);margin:0 0 8px}
 .ad-cta{font-weight:700;color:var(--red-dark)}
+
+.eleme-card{margin:14px 0 4px}
+.eleme-card img{max-width:420px;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
+.eleme-card figcaption{margin-top:6px;font-size:.9rem}
+.eleme-night h4{margin:16px 0 6px;color:var(--red-dark)}
