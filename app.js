@@ -630,7 +630,7 @@
     }
     var startShort = trDate(start).replace(" 2026", ""), endShort = trDate(end);
     var h = "";
-    h += tile(startShort + " – " + endShort, "Sezon", "13 Haziran – 7 Kasım 2026 · 13 hafta");
+    h += tile(startShort + " – " + endShort, "Sezon", "13 Haziran – 15 Kasım 2026 · 14 hafta");
     h += tile("3 şef", "Jüri", "Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna");
     h += tile(started + " → " + SITE.remaining.length, "Yarışmacılar", started + " kişiyle başladı (ana kadro) · " + reserves + " yedek katıldı · " + SITE.eliminated.length + " elendi");
     h += tile(String(EPISODES.length), "Bölüm", "bölüm transkriptten tam");
