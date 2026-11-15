@@ -362,5 +362,15 @@ const DISCUSSIONS = [
     kind: "tartışma",
     summary: "Güveç düellosunda şefler, Eyüp Can'ın yemeğinin sote olup olmadığı üzerine Eyüp Can'la tartıştı; Mehmet Şef 'bu sote mi değil mi' diye sordu. Düelloyu Muhammed kazandı.",
     source: "12 Kasım 2026 bölümü (MK'nin bildirimi)"
+  },
+  {
+    id: "2026-11-14-hasan-sergen-barisma",
+    date: "14 Kasım 2026",
+    dateISO: "2026-11-14",
+    title: "Hasan ve Sergen barıştı",
+    participants: ["Hasan Alp Karabacak", "Sergen"],
+    kind: "gündem",
+    summary: "Eski yarışmacılar Hasan Alp ve Sergen'in arası düzeldi; 14 Kasım bölümünde birlikte jüri olarak görev yaptılar (Sergen & Hasan çifti).",
+    source: "14 Kasım 2026 bölümü (MK'nin bildirimi)"
   }
 ];
