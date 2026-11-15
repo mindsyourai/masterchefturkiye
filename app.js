@@ -918,6 +918,33 @@
     }
     return { first: baharPots.length ? baharPots[0] : null, freeWeeks: freeWeeks };
   }
+  /* ---- Eleme Gecesi Puanları ---- */
+  function renderEleme() {
+    if (!el("eleme-nights")) return;
+    if (typeof ELEME_NIGHTS === "undefined") { el("eleme-nights").innerHTML = "<p>Veri yüklenemedi (eleme.js bulunamadı).</p>"; return; }
+    el("eleme-nights").innerHTML = ELEME_NIGHTS.map(function (n) {
+      var h = '<article class="ep eleme-night" data-search="' + esc((n.title + " " + n.pot.join(" ")).toLowerCase()) + '">';
+      h += "<h3>" + esc(n.title) + "</h3>";
+      h += '<p class="disc-date">' + esc(n.date) + "</p>";
+      h += '<div class="chips">' + n.pot.map(function (p) { return '<span class="chip">' + esc(shortOf(p)) + "</span>"; }).join("") + "</div>";
+      if (n.eliminated) h += "<p><strong>Elenen:</strong> " + esc(n.eliminated) + "</p>";
+      n.rounds.forEach(function (r) {
+        h += "<h4>" + esc(r.name) + " — ürün: " + esc(r.product) + "</h4>";
+        h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th><th>Toplam</th></tr></thead><tbody>';
+        r.scores.forEach(function (s) {
+          h += "<tr><td>" + esc(s.name) + "</td><td>" + s.mehmet + "</td><td>" + s.danilo + "</td><td>" + s.somer + "</td><td><strong>" + s.total + "</strong></td></tr>";
+        });
+        h += "</tbody></table></div>";
+        if (r.card) {
+          h += '<figure class="eleme-card"><img src="' + esc(r.card.image) + '" alt="' + esc(n.title + " " + r.name + " kartı") + '" loading="lazy">';
+          if (r.card.ig) h += '<figcaption><a href="' + esc(r.card.ig) + '" target="_blank" rel="noopener">Instagram&apos;da gör →</a></figcaption>';
+          h += "</figure>";
+        }
+      });
+      if (n.note) h += '<p class="note">' + esc(n.note) + "</p>";
+      return h + "</article>";
+    }).join("");
+  }
   function renderStats() {
     if (!el("stats")) return;
     var fullStats = el("stats").getAttribute("data-full") === "1";
@@ -1217,6 +1244,16 @@
       if (q) parts.push(discShown + " tartışma");
       totalShown += discShown;
     }
+    if (el("eleme-nights")) {
+      var elemeShown = 0;
+      document.querySelectorAll("#eleme-nights .eleme-night").forEach(function (card) {
+        var hit = !q || card.getAttribute("data-search").indexOf(q) !== -1;
+        card.style.display = hit ? "" : "none";
+        if (hit) elemeShown++;
+      });
+      if (q) parts.push(elemeShown + " eleme gecesi");
+      totalShown += elemeShown;
+    }
     if (el("votes")) {
       var voteShown = 0;
       document.querySelectorAll("#votes .vote-ep, #votes .vote-sub").forEach(function (card) {
@@ -1306,6 +1343,7 @@
     renderTeamCombos();
     renderDiscussions();
     renderVotes();
+    renderEleme();
     renderStats();
     var search = el("search");
     if (search) search.addEventListener("input", applySearch);
