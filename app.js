@@ -945,6 +945,49 @@
       return h + "</article>";
     }).join("");
   }
+  /* ---- Eleme şef karnesi + yarışmacı ortalamaları (tüm turlardan hesaplanır) ---- */
+  function renderElemeStats() {
+    if (!el("eleme-stats")) return;
+    if (typeof ELEME_NIGHTS === "undefined") return;
+    var keys = ["mehmet", "danilo", "somer"];
+    var labels = { mehmet: "Mehmet", danilo: "Danilo", somer: "Somer" };
+    var totals = { mehmet: 0, danilo: 0, somer: 0 };
+    var counts = { mehmet: 0, danilo: 0, somer: 0 };
+    var cont = {};
+    ELEME_NIGHTS.forEach(function (n) {
+      n.rounds.forEach(function (r) {
+        r.scores.forEach(function (s) {
+          keys.forEach(function (k) { totals[k] += s[k]; counts[k]++; });
+          if (!cont[s.name]) cont[s.name] = { total: 0, rounds: 0 };
+          cont[s.name].total += s.total; cont[s.name].rounds++;
+        });
+      });
+    });
+    function avg(t, n) { return n ? Math.round(t / n * 100) / 100 : 0; }
+    var chefRows = keys.map(function (k) {
+      return { label: labels[k], n: counts[k], total: totals[k], avg: avg(totals[k], counts[k]) };
+    });
+    var generous = chefRows.slice().sort(function (a, b) { return b.avg - a.avg; })[0];
+    var strict = chefRows.slice().sort(function (a, b) { return a.avg - b.avg; })[0];
+    var contRows = Object.keys(cont).map(function (name) {
+      return { name: name, total: cont[name].total, rounds: cont[name].rounds, avg: avg(cont[name].total, cont[name].rounds) };
+    }).sort(function (a, b) { return b.avg - a.avg; });
+    var h = "<h3>Şef Karnesi</h3>";
+    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Şef</th><th>Verdiği puan</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
+    chefRows.forEach(function (r) {
+      h += "<tr><td>" + esc(r.label) + "</td><td>" + r.n + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
+    });
+    h += "</tbody></table></div>";
+    h += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
+    h += "<h3>Yarışmacı Ortalamaları</h3>";
+    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Tur</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
+    contRows.forEach(function (r) {
+      h += "<tr><td>" + esc(r.name) + "</td><td>" + r.rounds + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
+    });
+    h += "</tbody></table></div>";
+    h += "<p class='note'>Ortalamalar tüm eleme turlarından hesaplanır; yeni tur eklendikçe güncellenir.</p>";
+    el("eleme-stats").innerHTML = h;
+  }
   function renderStats() {
     if (!el("stats")) return;
     var fullStats = el("stats").getAttribute("data-full") === "1";
@@ -1344,6 +1387,7 @@
     renderDiscussions();
     renderVotes();
     renderEleme();
+    renderElemeStats();
     renderStats();
     var search = el("search");
     if (search) search.addEventListener("input", applySearch);
