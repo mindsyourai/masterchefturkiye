@@ -7,7 +7,7 @@ const ELEME_NIGHTS = [
     "dateISO": "2026-11-15",
     "title": "15 Kasım eleme gecesi",
     "pot": ["Nurten Ocak Tamer", "Burçin Oğuz", "Bahar Kaya", "Enes Vardar"],
-    "eliminated": null,
+    "eliminated": "Nurten Ocak Tamer",
     "rounds": [
       {
         "name": "1. tur",
@@ -19,8 +19,18 @@ const ELEME_NIGHTS = [
           {"name": "Bahar Kaya", "mehmet": 5.5, "danilo": 6, "somer": 6.5, "total": 18},
           {"name": "Nurten Ocak Tamer", "mehmet": 5, "danilo": 5.5, "somer": 6, "total": 16.5}
         ]
+      },
+      {
+        "name": "2. tur",
+        "product": "Ravioli",
+        "card": {"image": "images/eleme-2026-11-15-r2.png", "ig": null},
+        "scores": [
+          {"name": "Burçin Oğuz", "mehmet": 6, "danilo": 7.5, "somer": 6.5, "total": 20},
+          {"name": "Enes Vardar", "mehmet": 6, "danilo": 7, "somer": 6, "total": 19},
+          {"name": "Bahar Kaya", "mehmet": 5.5, "danilo": 6.5, "somer": 6, "total": 18},
+          {"name": "Nurten Ocak Tamer", "mehmet": 4.5, "danilo": 6, "somer": 6, "total": 16.5}
+        ]
       }
-    ],
-    "note": "2. tur henüz bildirilmedi — gelince bu geceye eklenecek."
+    ]
   }
 ];
