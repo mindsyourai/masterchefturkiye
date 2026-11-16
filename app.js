@@ -954,10 +954,16 @@
     var totals = { mehmet: 0, danilo: 0, somer: 0 };
     var counts = { mehmet: 0, danilo: 0, somer: 0 };
     var cont = {};
+    var perChef = {};
+    keys.forEach(function (k) { perChef[k] = {}; });
     ELEME_NIGHTS.forEach(function (n) {
       n.rounds.forEach(function (r) {
         r.scores.forEach(function (s) {
-          keys.forEach(function (k) { totals[k] += s[k]; counts[k]++; });
+          keys.forEach(function (k) {
+            totals[k] += s[k]; counts[k]++;
+            if (!perChef[k][s.name]) perChef[k][s.name] = { total: 0, n: 0 };
+            perChef[k][s.name].total += s[k]; perChef[k][s.name].n++;
+          });
           if (!cont[s.name]) cont[s.name] = { total: 0, rounds: 0 };
           cont[s.name].total += s.total; cont[s.name].rounds++;
         });
@@ -979,6 +985,15 @@
     });
     h += "</tbody></table></div>";
     h += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
+    h += "<h3>Şef başına yarışmacı ortalaması</h3>";
+    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th></tr></thead><tbody>';
+    contRows.forEach(function (r) {
+      h += "<tr><td>" + esc(r.name) + "</td>" + keys.map(function (k) {
+        var p = perChef[k][r.name];
+        return "<td>" + (p ? avg(p.total, p.n) : "—") + "</td>";
+      }).join("") + "</tr>";
+    });
+    h += "</tbody></table></div>";
     h += "<h3>Yarışmacı Ortalamaları</h3>";
     h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Tur</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
     contRows.forEach(function (r) {
