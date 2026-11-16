@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "15 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 140 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır. 15 Kasım MK'nin bildirdiği sonuçlarla işlendi — eleme gecesi (1. tur kereviz, 2. tur ravioli; şef puanları kartlarda): genel toplam Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten elendi, 12 kaldı.",
+ "updated": "16 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 140 bölüm, 2.724 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır. 15 Kasım MK'nin bildirdiği sonuçlarla işlendi — eleme gecesi (1. tur kereviz, 2. tur ravioli; şef puanları kartlarda): genel toplam Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten elendi, 12 kaldı. 16 Kasım MK'nin bildirdiği sonuçlarla işlendi — 15. hafta kaptanlık (kuru fasulye pilav; son ikili Ayşe + Armağan, klasik kuru fasulyesiyle Ayşe kazandı, Mavi kaptan; Kırmızı kaptan olarak Şükran'ı seçti). Kaptan düellosu (Fransız omlet) Ayşe kazandı; ödül olarak Tolgahan'ı aldı, Burçin'i verdi (Burçin Mavi'de olmak istemediğini söyledi); Tolga Muhammed'i almadığı için kızdı.",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -412,7 +412,8 @@ const CONTESTANTS = [
    "30 Eki — ödül oyunu (100.000 TL)",
    "3 Eyl — bireysel dokunulmazlık (Cubano sandviç)",
    "14 Kas — bireysel dokunulmazlık",
-   "14 Eki — ödül oyunu (Pastel de Choclo (2. etap), 100.000 TL)"
+   "14 Eki — ödül oyunu (Pastel de Choclo (2. etap), 100.000 TL)",
+   "16 Kas — kaptanlık (Kuru fasulye pilav, Mavi kaptan)"
   ]
  },
  {
@@ -480,7 +481,8 @@ const CONTESTANTS = [
    "21 Ağu — bireysel dokunulmazlık (Eli böğründe)",
    "28 Ağu — bireysel dokunulmazlık (Çeşmi Nigar çorbası)",
    "1 Eyl — bireysel dokunulmazlık (İrmik helvası)",
-   "21 Eyl — kaptanlık (Lahmacun, Mavi kaptan)"
+   "21 Eyl — kaptanlık (Lahmacun, Mavi kaptan)",
+   "16 Kas — kaptanlık (Ayşe'nin seçimi, Kırmızı kaptan)"
   ]
  },
  {
@@ -651,6 +653,58 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Ayşe Nur İnal",
+  "red": "Şükran Boyraz"
+ },
+ "date": "16 Kasım 2026",
+ "eliminated": null,
+ "games": [
+  {
+   "detail": "Kuru fasulye pilav; son ikiye Ayşe ve Armağan kaldı, klasik kuru fasulyesiyle Ayşe kazandı — Mavi kaptan oldu",
+   "name": "Kaptanlık oyunu",
+   "winner": "Ayşe Nur İnal — Mavi kaptan"
+  },
+  {
+   "detail": "Kaptan düellosu (Fransız omlet): Ayşe, Şükran'ı geçti. Ödül olarak karşı takımdan Tolgahan'ı aldı, yerine Burçin'i verdi — gerekçe: Burçin Mavi takımda olmak istemediğini söyledi. Tolga, Muhammed'i almadığı için Ayşe'ye kızdı",
+   "name": "Kaptan düellosu — Fransız omlet",
+   "winner": "Ayşe Nur İnal"
+  }
+ ],
+ "id": "2026-11-16",
+ "immunity": null,
+ "notes": [
+  "MK'nin bildirdiği sonuçlar (manuel, 16 Kas 2026): kaptanlık yemeği kuru fasulye pilav, son ikili Ayşe + Armağan; Ayşe Mavi kaptan, Kırmızı kaptan olarak Şükran'ı seçti",
+  "İlk takım seçimleri: Mavi — Tolga, Bahar, Burçin, Enes, Eyüp Can; Kırmızı — Muhammed, Armağan, Nilay, Tolgahan, Şadi. Kaptan düellosu sonrası takas: Tolgahan Mavi'ye, Burçin Kırmızı'ya — son kadrolar karttaki gibidir",
+  "Tolga'nın tepkisi: Ayşe'nin Tolgahan'ı alıp Muhammed'i almamasına kızdı, neden Muhammed'i almadığını sorguladı"
+ ],
+ "pot": [],
+ "source": "MK",
+ "summary": "15. hafta başladı: kaptanlık oyununda (kuru fasulye pilav) son ikiye Ayşe ve Armağan kaldı; klasik kuru fasulyesiyle Ayşe kazandı, Mavi kaptan oldu. Kırmızı kaptan olarak Şükran'ı seçti. Mavi: Tolga, Bahar, Burçin, Enes, Eyüp Can; Kırmızı: Muhammed, Armağan, Nilay, Tolgahan, Şadi. Kaptan düellosunda (Fransız omlet) Ayşe, Şükran'ı geçti; ödül olarak Tolgahan'ı karşı takımdan aldı, yerine Burçin'i verdi (Burçin Mavi'de olmak istemediğini söyledi). Tolga, Muhammed'i almadığı için Ayşe'ye kızdı. Son kadrolar: Mavi — Ayşe, Tolga, Bahar, Enes, Eyüp Can, Tolgahan; Kırmızı — Şükran, Muhammed, Armağan, Nilay, Şadi, Burçin.",
+ "teams": {
+  "blue": [
+   "Ayşe Nur İnal",
+   "Tolga Çakuş",
+   "Bahar Kaya",
+   "Enes Vardar",
+   "Eyüp Can Güneş",
+   "Tolgahan Özden"
+  ],
+  "red": [
+   "Şükran Boyraz",
+   "Muhammed Yahya Haliloğlu",
+   "Armağan Kırant",
+   "Elif Nilay Özgen",
+   "Şadi Altınay",
+   "Burçin Oğuz"
+  ]
+ },
+ "title": "Kaptanlık: Ayşe Mavi kaptan",
+ "week": "15. Hafta",
+ "weekday": "Pazartesi"
+},
 {
  "candidates": [],
  "captains": {
