@@ -12,7 +12,7 @@
 <header class="hero">
   <h1>MasterChef Türkiye 2026</h1>
   <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
-  <p class="hero-joke">Şefler karar verdi, biz not aldık: 142 bölüm, 2.728 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
+  <p class="hero-joke">Şefler karar verdi, biz not aldık: <span id="hero-eps">142</span> bölüm, <span id="hero-dishes">2.728</span> tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
   <p><span class="fan-badge">🏆 Hayran sitesi — resmî değil, ama sayılar gerçek</span></p>
   <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 9 Kasım 2026</span></p>
   <div class="kilim" aria-hidden="true"></div>
@@ -22,56 +22,41 @@
   <a href="yarismacilar.html">Yarışmacılar</a>
   <a href="bolumler.html">Bölümler</a>
   <a href="takimlar.html">Takımlar</a>
-  <a href="tartismalar.html">Tartışmalar</a>
-  <a href="konsey.html">Konsey Oyları</a>
-  <a href="index.html#eleme-section">Eleme Puanları</a>
   <a href="istatistikler.html">İstatistikler</a>
-  <a href="kaynaklar.html">Kaynaklar &amp; Uyarılar</a>
-  <a href="index.html#iletisim">İletişim</a>
-  <input type="search" id="search" placeholder="Yarışmacı veya yemek ara… (ör. Kübra, uskumru, Fesenjan)" aria-label="Yarışmacı veya yemek ara">
+  <input type="search" id="search" placeholder="Oyuncu, yemek ya da gün ara… (ör. Bahar, uskumru)" aria-label="Yarışmacı veya yemek ara">
   <span class="search-info" id="search-info"></span>
 </nav>
 <main>
-  <p class="note" id="site-note"></p>
-  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
+  <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — yazımı kontrol edip tekrar dene.</p>
 
   <nav class="page-jump" aria-label="Sayfa içi gezinme">
     <a href="#week-current-section">Bu Hafta</a>
     <a href="#players-section">Oyuncular</a>
-    <a href="#team-stats-section">Takım İstatistikleri</a>
-    <a href="#eleme-section">Eleme Puanları</a>
-    <a href="#nasil-kullanilir">Nasıl Kullanılır</a>
-    <a href="#juri">Jüri</a>
-    <a href="#iletisim">İletişim</a>
+    <a href="#team-stats-section">İstatistikler</a>
+    <a href="#eleme-section">Eleme</a>
   </nav>
   <section id="week-current-section" aria-label="Bu hafta">
     <h2>Bu Hafta <span class="week-label" id="week-current-label"></span></h2>
-    <p class="note">Haftanın günleri — en yeni önce. Yeni gün geldikçe kart buraya eklenir.</p>
+    <p class="note">En yeni önce.</p>
     <div class="week-row" id="week-current"></div>
   </section>
   <section id="players-section">
     <h2>Oyuncular 👥</h2>
-    <p class="note"><span id="players-count">12</span> yarışmacı — her kartta düello, dokunulmazlık, en iyi tabak ve pota. Karta tıkla, profil burada açılsın. Kartlar başarı puanına göre sıralı (3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota).</p>
+    <p class="note"><span id="players-count">12</span> yarışmacı · başarı puanına göre sıralı — karta tıkla, profil açılsın.</p>
     <div class="players-grid" id="players-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
   <section id="team-stats-section">
     <h2>Takım İstatistikleri 📊</h2>
-    <p class="note">Sezon ve takımlar — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
     <div class="season-grid" id="season-band-grid"></div>
     <h3>Bu Hafta Kim Kazanır? 🔮</h3>
-    <p class="note">Bu haftanın takımlarına göre tahmin — sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
+    <p class="note">Sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
     <div id="week-prediction"></div>
-    <div id="team-combos"></div>
-  </section>
-  <section class="ad-slot" aria-label="Reklam alanı">
-    <p class="ad-title">Reklamınız Burada Olabilir</p>
-    <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
-    <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
+    <div id="team-combos" data-summary="1"></div>
   </section>
   <section id="eleme-section">
     <h2>Eleme Gecesi Puanları ⭐</h2>
-    <p class="note">Eleme gecelerinde şeflerin her yarışmacıya verdiği puanlar — tur tur, ürün ürün. Puanlar MK'nin bölüm bildirimlerinden alınır; toplamlar aritmetikle doğrulanır, uydurulmaz. Her turun Instagram kartı da burada saklanır.</p>
+    <p class="note">Eleme gecelerinde şeflerin her yarışmacıya verdiği puanlar — tur tur, ürün ürün. Toplamlar aritmetikle doğrulanır.</p>
     <div id="eleme-nights"></div>
     <div class="eleme-cards" id="eleme-cards">
       <div class="eleme-stat-card" id="eleme-players"></div>
@@ -86,7 +71,6 @@
 
   <section id="explore">
     <h2>Keşfet</h2>
-    <p class="note">Sitenin diğer sayfaları — merak ettiğin karta tıkla.</p>
     <div class="page-links" id="page-links">
       <a class="page-card" href="yarismacilar.html" data-search="yarışmacılar yarışmacı profil önlük kadro"><h3>👥 Yarışmacılar</h3><p>Tüm profiller — yemekler, galibiyetler, pota geçmişi.</p><span class="page-link-arrow">Keşfet →</span></a>
       <a class="page-card" href="bolumler.html" data-search="bölümler gün gün bölüm hafta menü"><h3>📅 Bölümler</h3><p>Gün gün bölümler — en son önce.</p><span class="page-link-arrow">Keşfet →</span></a>
@@ -98,14 +82,6 @@
     </div>
   </section>
 
-  <section class="howto" id="nasil-kullanilir" aria-label="Nasıl kullanılır">
-    <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
-    <div class="howto-grid">
-      <div class="howto-card"><span class="howto-num">1</span><h3>Kalan yarışmacıyı seç</h3><p>Yarışmacılar bölümündeki kartlardan birine tıkla — yemekleri, galibiyetleri, pota geçmişi burada açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
-      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Günler en yeniden başlar — merak ettiğin günü bul, menüyü ve kazananı gör. Bölümler sayfasında hafta başlığına tıklayıp o haftayı aç-kapa yapabilirsin. 📅</p></div>
-      <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
-    </div>
-  </section>
 
   <section id="juri" aria-label="Jüri">
     <h2>Jüri 👨‍🍳</h2>
@@ -115,12 +91,12 @@
       <figure class="judge"><img src="images/somer-sivrioglu.jpg" alt="Somer Sivrioğlu" loading="lazy"><figcaption>Somer Sivrioğlu<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/somersivrioglu" target="_blank" rel="noopener">📷 @somersivrioglu · 1,4 Mn takipçi</a></span></figcaption></figure>
       <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/danilozanna" target="_blank" rel="noopener">📷 @danilozanna · 2,3 Mn takipçi</a></span></figcaption></figure>
     </div>
-    <p class="photo-credit">Jüri fotoğrafları MindYourAI tarafından sağlandı (MasterChef Türkiye / TV8). Takipçi sayıları 2026'da kontrol edildi; Instagram'da her gün değişebilir.</p>
+    <p class="photo-credit">Fotoğraflar: MindYourAI (MasterChef Türkiye / TV8).</p>
   </section>
 
   <section id="iletisim" aria-label="İletişim">
     <h2>Bize Ulaşın ✉️</h2>
-    <p class="note">Düzeltme mi var, eksik mi gördün, yoksa sadece merhaba mı demek istiyorsun? Yaz bize — mesajın mindsyourai@gmail.com adresine gider.</p>
+    <p class="note">Düzeltme veya önerin mi var? Yaz bize — mesajın mindsyourai@gmail.com adresine gider.</p>
     <form id="contact-form" class="contact-form">
       <label>Adın <input type="text" id="contact-name" required maxlength="80" placeholder="Adın"></label>
       <label>E-postan (isteğe bağlı) <input type="email" id="contact-email" maxlength="120" placeholder="ornek@eposta.com"></label>
@@ -129,7 +105,6 @@
       <button type="submit" class="contact-submit">Gönder ✉️</button>
       <p class="note" id="contact-note" hidden></p>
     </form>
-    <p class="note">Gönder'e basınca e-posta uygulaman açılır — mesaj mindsyourai@gmail.com adresine gider. Doğrudan yazmak istersen: <a href="mailto:mindsyourai@gmail.com">mindsyourai@gmail.com</a></p>
   </section>
 </main>
 <footer>
