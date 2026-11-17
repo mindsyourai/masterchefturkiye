@@ -37,11 +37,8 @@
 
   <nav class="page-jump" aria-label="Sayfa içi gezinme">
     <a href="#week-current-section">Bu Hafta</a>
-    <a href="#week-last-section">Geçen Hafta</a>
-    <a href="#top5-section">İlk 5</a>
-    <a href="#week-prediction-section">Kazanma Şansı</a>
-    <a href="#season-band">Sezon Bir Bakışta</a>
-    <a href="#remaining-section">Yarışmacılar</a>
+    <a href="#players-section">Oyuncular</a>
+    <a href="#team-stats-section">Takım İstatistikleri</a>
     <a href="#eleme-section">Eleme Puanları</a>
     <a href="#nasil-kullanilir">Nasıl Kullanılır</a>
     <a href="#juri">Jüri</a>
@@ -49,40 +46,28 @@
   </nav>
   <section id="week-current-section" aria-label="Bu hafta">
     <h2>Bu Hafta <span class="week-label" id="week-current-label"></span></h2>
-    <p class="note">Haftanın günleri — en yeni önce.</p>
+    <p class="note">Haftanın günleri — en yeni önce. Yeni gün geldikçe kart buraya eklenir.</p>
     <div class="week-row" id="week-current"></div>
   </section>
-  <section id="week-last-section" aria-label="Geçen hafta">
-    <h2>Geçen Hafta <span class="week-label" id="week-last-label"></span></h2>
-    <p class="note">Bir önceki haftanın günleri — en yeniden eskiye.</p>
-    <div class="week-row" id="week-last"></div>
+  <section id="players-section">
+    <h2>Oyuncular 👥</h2>
+    <p class="note"><span id="players-count">12</span> yarışmacı — her kartta düello, dokunulmazlık, en iyi tabak ve pota. Karta tıkla, profil burada açılsın. Kartlar başarı puanına göre sıralı (3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota).</p>
+    <div class="players-grid" id="players-grid"></div>
+    <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
-  <section id="top5-section">
-    <h2>İlk 5 — Başarı Puanı ⭐</h2>
-    <p class="note">Başarı puanına göre ilk 5 yarışmacı — karta tıkla, profil burada açılsın. Tam liste aşağıda: <a href="#remaining-section">Yarışmaya Devam Edenler →</a></p>
-    <div class="top5-grid" id="top5-grid"></div>
-  </section>
-  <section id="week-prediction-section">
-    <h2>Bu Hafta Kim Kazanır? 🔮</h2>
+  <section id="team-stats-section">
+    <h2>Takım İstatistikleri 📊</h2>
+    <p class="note">Sezon ve takımlar — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
+    <div class="season-grid" id="season-band-grid"></div>
+    <h3>Bu Hafta Kim Kazanır? 🔮</h3>
     <p class="note">Bu haftanın takımlarına göre tahmin — sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
     <div id="week-prediction"></div>
-  </section>
-  <section id="season-band" aria-label="Sezon bir bakışta">
-    <h2>Sezon Bir Bakışta</h2>
-    <p class="note">13 Haziran'da başlayan sezonun özeti — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
-    <div class="season-grid" id="season-band-grid"></div>
+    <div id="team-combos"></div>
   </section>
   <section class="ad-slot" aria-label="Reklam alanı">
     <p class="ad-title">Reklamınız Burada Olabilir</p>
     <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
     <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
-  </section>
-
-  <section id="remaining-section">
-    <h2>Yarışmaya Devam Edenler ⭐</h2>
-    <p class="note"><span id="remaining-count">12</span> yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı (3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota). 📅 Son ay puanı, aynı formülün yalnızca son 4 haftaya uygulanmış hâlidir. <span id="remaining-info"></span></p>
-    <div class="remaining-grid" id="remaining-grid"></div>
-    <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
   <section id="eleme-section">
     <h2>Eleme Gecesi Puanları ⭐</h2>
