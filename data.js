@@ -676,9 +676,6 @@ const EPISODES = [
  "id": "2026-11-16",
  "immunity": null,
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 16 Kas 2026): kaptanlık yemeği kuru fasulye pilav, son ikili Ayşe + Armağan; Ayşe Mavi kaptan, Kırmızı kaptan olarak Şükran'ı seçti",
-  "İlk takım seçimleri: Mavi — Tolga, Bahar, Burçin, Enes, Eyüp Can; Kırmızı — Muhammed, Armağan, Nilay, Tolgahan, Şadi. Kaptan düellosu sonrası takas: Tolgahan Mavi'ye, Burçin Kırmızı'ya — son kadrolar karttaki gibidir",
-  "Tolga'nın tepkisi: Ayşe'nin Tolgahan'ı alıp Muhammed'i almamasına kızdı, neden Muhammed'i almadığını sorguladı"
  ],
  "pot": [],
  "source": "MK",
@@ -728,7 +725,6 @@ const EPISODES = [
  "id": "2026-11-15",
  "immunity": null,
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 15 Kas 2026): 1. tur kereviz, 2. tur ravioli; şef puanları Eleme Gecesi Puanları bölümünde ve Instagram kartlarında"
  ],
  "pot": [
   "Nurten Ocak Tamer",
@@ -784,9 +780,7 @@ const EPISODES = [
  "id": "2026-11-14",
  "immunity": "Ayşe Nur İnal",
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 14 Kas 2026): takım oyununu Kırmızı 12-8 kazandı (jüri puanları); tabaklarda 3-1 Kırmızı, 1 berabere",
-  "Tabak-aşçı eşleşmeleri MK'nin bilgisine göre (kesin değil): Çorba Armağan–Tolgahan, Samosa Tolga–Şükran ve Nurten, Müceddere Şadi–Şükran, Köfte Eyüp Can–Muhammed, Tatlı Ayşe–Bahar",
-  "Düello kazananları 4 farklı kişi (Armağan, Şükran, Muhammed, Bahar) — MK'nin ≤3 kuralı gereği düello yemek satırı eklenmedi",
+  "Tabak eşleşmeleri kesin değil: Çorba Armağan–Tolgahan, Samosa Tolga–Şükran/Nurten, Müceddere Şadi–Şükran, Köfte Eyüp Can–Muhammed, Tatlı Ayşe–Bahar",
   "Bireysel dokunulmazlık: Ayşe kazandı (Mavi oynadı; yemek bilinmiyor); konsey 4. adayı belirledi: Enes — pota Nurten + Burçin + Bahar + Enes"
  ],
  "pot": [
@@ -843,7 +837,6 @@ const EPISODES = [
  "id": "2026-11-13",
  "immunity": null,
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 13 Kas 2026): ödül oyunu — ana takım yarışmasının parçası değil; seyirci jürisi (8 kişi) 5 tabağı puanladı, Kırmızı 25-15 kazandı",
   "Bireysel final: Tolgahan ve Bahar kaldı — Tolgahan 100.000 TL kazandı",
   "Konsey yok, aday yok — pota Nurten + Burçin + Bahar olarak kaldı",
   "Mavi'den Eyüp Can ve Ayşe'nin tabakları kaybetmedi; tabakların aşçıları bilinmiyor — yemek satırı eklenmedi"
@@ -907,8 +900,7 @@ const EPISODES = [
   "winner": "Tolgahan Özden"
  },
  "notes": [
-  "MK'nin bildirdiği sonuçlar (manuel, 12 Kas 2026; aday MK tarafından 12 Kas 16:03'te doğrulandı): takım oyunu Mavi 5-2; dokunulmazlık Tolgahan (Milyon Dolar Chicken Casserole); üçüncü aday Bahar — oylamada herkes Şükran ve Bahar'a oy verdi, Bahar 2 boş oy kullandı ve Şükran'a oy vermedi",
-  "Düello kazananları 7 farklı kişi (Nilay, Burçin, Şadi, Armağan, Tolga, Enes, Muhammed) — MK'nin ≤3 kuralı gereği düello yemek satırı eklenmedi",
+  "Konseyde herkes Şükran ve Bahar'a oy verdi; Bahar 2 boş oy kullandı, Şükran'a oy vermedi",
   "Pota: Nurten (10 Kas) + Burçin (11 Kas) + Bahar (12 Kas)"
  ],
  "pot": [
@@ -970,7 +962,6 @@ const EPISODES = [
   "winner": "Armağan Kırant"
  },
  "notes": [
-  "Transkript doğrulaması (MK'nin gönderdiği 11 Kas .docx): 7 kebap — 7.si Altı Ezmeli Kebap; son tabak öncesi 3-3, son tabağı Kırmızı kazandı → Kırmızı 4-3 (skor '4-3' olarak söylenmiyor, aritmetik)",
   "Bireysel dokunulmazlık ilk 4: Armağan, Ayşe, Enes, Eyüp Can — 4. Ayşe, 3. Enes, kazanan Armağan; final ikilisi Armağan + Eyüp Can (web haberlerindeki 'Armağan + Burçin' yanlış — Burçin ilk 4'te yok; 'son iki' anonsu transkriptte yok, sıralamadan çıkarım)",
   "Web doğrulaması: gazetebirlik, yozgathakimiyet, tasinmazhaber, haberts, ilkses (11–12 Kas 2026) — Kırmızı kazandı, Armağan dokunulmazlık, Burçin ikinci aday",
   "Pota: Nurten (10 Kas) + Burçin (11 Kas)"
@@ -1086,7 +1077,6 @@ const EPISODES = [
  "notes": [
   "Web doğrulaması: haberlesende.com, bakirkoytv.com.tr (9 Kas 2026) — ikisi de Tolga'nın kaptanlığı kazandığını ve Tolgahan'ı Kırmızı kaptan seçtiğini yazıyor; transkript bekleniyor",
   "Yeni eleme sistemi (Somer Şef, 9 Kas bölümünde duyurdu): dokunulmazlığı alan artık sadece kendini korur, aday söylemez; bir aday konsey oylarıyla belirlenir, Pazar potası 4 kişi olur (önceden 6–8 idi). Not: 3 Kasım'da da benzer bir 'pota 4 kişi' duyurusu olmuş ama 13. haftanın potası 6 kişi olmuştu — yeni kuralın uygulanışı izlenecek",
-  "Takım kadroları MK tarafından iletildi; Enes Vardar'ın Mavi takımda olduğu 10 Kasım'da doğrulandı",
   "Kaptanlık yemeği web kaynaklarında belirtilmedi; transkript gelince eklenecek"
  ],
  "pot": [],
