@@ -12,16 +12,9 @@
 <header class="hero">
   <h1>MasterChef Türkiye 2026</h1>
   <p class="tagline">Kim ne pişirdi, kim kazandı — yarışmacı yarışmacı, gün gün.</p>
-  <img class="hero-poster" src="images/masterchef-grup.jpg" alt="MasterChef Türkiye 2026 — üç jüri üyesi: Mehmet Yalçınkaya, Somer Sivrioğlu ve Danilo Zanna" loading="lazy">
-  <p class="hero-joke">Şefler karar verdi, biz not aldık: 138 bölüm, 2.724 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
+  <p class="hero-joke">Şefler karar verdi, biz not aldık: 142 bölüm, 2.728 tabak — ve bu sayfada hiçbir yemek yanmadı. 🔥</p>
   <p><span class="fan-badge">🏆 Hayran sitesi — resmî değil, ama sayılar gerçek</span></p>
   <p class="meta">Jüri: Mehmet Yalçınkaya · Somer Sivrioğlu · Danilo Zanna<br><span id="updated">Son güncelleme: 9 Kasım 2026</span></p>
-  <div class="judges" aria-label="Jüri">
-    <figure class="judge"><img src="images/mehmet-yalcinkaya.jpg" alt="Mehmet Yalçınkaya" loading="lazy"><figcaption>Mehmet Yalçınkaya<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/chefmehmetyalcinkaya" target="_blank" rel="noopener">📷 @chefmehmetyalcinkaya · 1,59 Mn takipçi</a></span></figcaption></figure>
-    <figure class="judge"><img src="images/somer-sivrioglu.jpg" alt="Somer Sivrioğlu" loading="lazy"><figcaption>Somer Sivrioğlu<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/somersivrioglu" target="_blank" rel="noopener">📷 @somersivrioglu · 1,4 Mn takipçi</a></span></figcaption></figure>
-    <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/danilozanna" target="_blank" rel="noopener">📷 @danilozanna · 2,3 Mn takipçi</a></span></figcaption></figure>
-  </div>
-  <p class="photo-credit">Jüri fotoğrafları MindYourAI tarafından sağlandı (MasterChef Türkiye / TV8). Takipçi sayıları 2026'da kontrol edildi; Instagram'da her gün değişebilir.</p>
   <div class="kilim" aria-hidden="true"></div>
 </header>
 <nav class="sticky" aria-label="Sayfa gezinmesi">
@@ -43,15 +36,37 @@
   <p class="no-results" id="no-results" hidden>Aradığın şey bulunamadı — ya şefler henüz tatmadı, ya da yazımı farklı. Bir de "uskumru" yazmayı dene, o hep bulunuyor. 🍽️</p>
 
   <nav class="page-jump" aria-label="Sayfa içi gezinme">
+    <a href="#week-current-section">Bu Hafta</a>
+    <a href="#week-last-section">Geçen Hafta</a>
+    <a href="#top5-section">İlk 5</a>
+    <a href="#week-prediction-section">Kazanma Şansı</a>
     <a href="#season-band">Sezon Bir Bakışta</a>
     <a href="#remaining-section">Yarışmacılar</a>
-    <a href="#headline-stats">Öne Çıkan İstatistikler</a>
-    <a href="#top-pair-section">En İyi İkili</a>
-    <a href="#latest-ep-section">Son Bölüm</a>
     <a href="#eleme-section">Eleme Puanları</a>
-    <a href="#week-prediction-section">Kazanma Şansı</a>
+    <a href="#nasil-kullanilir">Nasıl Kullanılır</a>
+    <a href="#juri">Jüri</a>
     <a href="#iletisim">İletişim</a>
   </nav>
+  <section id="week-current-section" aria-label="Bu hafta">
+    <h2>Bu Hafta <span class="week-label" id="week-current-label"></span></h2>
+    <p class="note">Haftanın günleri — en yeni önce.</p>
+    <div class="week-row" id="week-current"></div>
+  </section>
+  <section id="week-last-section" aria-label="Geçen hafta">
+    <h2>Geçen Hafta <span class="week-label" id="week-last-label"></span></h2>
+    <p class="note">Bir önceki haftanın günleri — en yeniden eskiye.</p>
+    <div class="week-row" id="week-last"></div>
+  </section>
+  <section id="top5-section">
+    <h2>İlk 5 — Başarı Puanı ⭐</h2>
+    <p class="note">Başarı puanına göre ilk 5 yarışmacı — karta tıkla, profil burada açılsın. Tam liste aşağıda: <a href="#remaining-section">Yarışmaya Devam Edenler →</a></p>
+    <div class="top5-grid" id="top5-grid"></div>
+  </section>
+  <section id="week-prediction-section">
+    <h2>Bu Hafta Kim Kazanır? 🔮</h2>
+    <p class="note">Bu haftanın takımlarına göre tahmin — sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
+    <div id="week-prediction"></div>
+  </section>
   <section id="season-band" aria-label="Sezon bir bakışta">
     <h2>Sezon Bir Bakışta</h2>
     <p class="note">13 Haziran'da başlayan sezonun özeti — sayılar kayıtlardan hesaplanır, elle yazılmaz.</p>
@@ -65,42 +80,18 @@
 
   <section id="remaining-section">
     <h2>Yarışmaya Devam Edenler ⭐</h2>
-    <p class="note">12 yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı: 3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota. Her kartta son 4 haftanın formu da yazar; 📅 Son ay puanı, aynı formülün yalnızca son 4 haftaya uygulanmış hâlidir (tüm zamanlar puanı yanında durur). <span id="remaining-info"></span></p>
+    <p class="note"><span id="remaining-count">12</span> yarışmacı kaldı — karta tıkla, profil burada açılsın: yemekler, galibiyetler, pota geçmişi ve zaman çizelgesi. Kartlar başarı puanına göre sıralı (3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota). 📅 Son ay puanı, aynı formülün yalnızca son 4 haftaya uygulanmış hâlidir. <span id="remaining-info"></span></p>
     <div class="remaining-grid" id="remaining-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
-  </section>
-  <section id="headline-stats">
-    <h2>Öne Çıkan İstatistikler</h2>
-    <p class="note">Sayılar konuşur, şefler karar verir — biz sadece topladık. 📊 Tüm sıralamalar kayıtlardan hesaplanır; rekorlar ve tam liste için <a href="istatistikler.html">tüm istatistikler →</a></p>
-    <div id="stats"></div>
-  </section>
-  <section class="ad-slot" aria-label="Reklam alanı">
-    <p class="ad-title">Reklamınız Burada Olabilir</p>
-    <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
-    <p><a class="ad-cta" href="#iletisim">Bize ulaşın →</a></p>
-  </section>
-
-  <section id="top-pair-section">
-    <h2>En İyi İkili 👑</h2>
-    <p class="note">Birlikteyken neredeyse hiç kaybetmeyen çift — takım oyunlarından hesaplandı.</p>
-    <div id="top-pair"></div>
-  </section>
-
-  <section id="latest-ep-section">
-    <h2>Son Bölüm</h2>
-    <p class="note">En son yayınlanan bölüm — transkriptten tam. <a href="bolumler.html">Tüm bölümler →</a></p>
-    <div id="latest-ep"></div>
   </section>
   <section id="eleme-section">
     <h2>Eleme Gecesi Puanları ⭐</h2>
     <p class="note">Eleme gecelerinde şeflerin her yarışmacıya verdiği puanlar — tur tur, ürün ürün. Puanlar MK'nin bölüm bildirimlerinden alınır; toplamlar aritmetikle doğrulanır, uydurulmaz. Her turun Instagram kartı da burada saklanır.</p>
     <div id="eleme-nights"></div>
-    <div id="eleme-stats"></div>
-  </section>
-  <section id="week-prediction-section">
-    <h2>Bu Hafta Kim Kazanır? 🔮</h2>
-    <p class="note">Bu haftanın takımlarına göre tahmin — sezon düello kayıtlarından model. <a href="takimlar.html">Takımlar →</a></p>
-    <div id="week-prediction"></div>
+    <div class="eleme-cards" id="eleme-cards">
+      <div class="eleme-stat-card" id="eleme-players"></div>
+      <div class="eleme-stat-card" id="eleme-chefs"></div>
+    </div>
   </section>
   <section class="ad-slot" aria-label="Reklam alanı">
     <p class="ad-title">Reklamınız Burada Olabilir</p>
@@ -110,7 +101,7 @@
 
   <section id="explore">
     <h2>Keşfet</h2>
-    <p class="note">Her bölüm kendi sayfasında — gezinmek için karta tıkla.</p>
+    <p class="note">Sitenin diğer sayfaları — merak ettiğin karta tıkla.</p>
     <div class="page-links" id="page-links">
       <a class="page-card" href="yarismacilar.html" data-search="yarışmacılar yarışmacı profil önlük kadro"><h3>👥 Yarışmacılar</h3><p>Tüm profiller — yemekler, galibiyetler, pota geçmişi.</p><span class="page-link-arrow">Keşfet →</span></a>
       <a class="page-card" href="bolumler.html" data-search="bölümler gün gün bölüm hafta menü"><h3>📅 Bölümler</h3><p>Gün gün bölümler — en son önce.</p><span class="page-link-arrow">Keşfet →</span></a>
@@ -122,13 +113,24 @@
     </div>
   </section>
 
-  <section class="howto" aria-label="Nasıl kullanılır">
+  <section class="howto" id="nasil-kullanilir" aria-label="Nasıl kullanılır">
     <h2 class="howto-title">Bu sayfa nasıl kullanılır? <span class="howto-sub">30 saniyede tur atalım</span></h2>
     <div class="howto-grid">
-      <div class="howto-card"><span class="howto-num">1</span><h3>Kalan yarışmacıyı seç</h3><p>Aşağıdaki 12 karttan birine tıkla — yemekleri, galibiyetleri, pota geçmişi burada açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
-      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Bölümler en yeniden başlar. Hafta başlığına tıkla, o haftayı aç-kapa. Merak ettiğin günü bul, menüyü ve kazananı gör. 📅</p></div>
+      <div class="howto-card"><span class="howto-num">1</span><h3>Kalan yarışmacıyı seç</h3><p>Yarışmacılar bölümündeki kartlardan birine tıkla — yemekleri, galibiyetleri, pota geçmişi burada açılır. Kaşık atmak yok, sadece tıklamak var. 🥄</p></div>
+      <div class="howto-card"><span class="howto-num">2</span><h3>Gün gün gez</h3><p>Günler en yeniden başlar — merak ettiğin günü bul, menüyü ve kazananı gör. Bölümler sayfasında hafta başlığına tıklayıp o haftayı aç-kapa yapabilirsin. 📅</p></div>
       <div class="howto-card"><span class="howto-num">3</span><h3>Aramayı dene</h3><p>Yukarıdaki aramaya bir yemek ya da isim yaz — "Fesenjan", "Kübra", "uskumru"... Sayfa sana kaç bölümde geçtiğini söyler. 🔍</p></div>
     </div>
+  </section>
+
+  <section id="juri" aria-label="Jüri">
+    <h2>Jüri 👨‍🍳</h2>
+    <img class="hero-poster" src="images/masterchef-grup.jpg" alt="MasterChef Türkiye 2026 — üç jüri üyesi: Mehmet Yalçınkaya, Somer Sivrioğlu ve Danilo Zanna" loading="lazy">
+    <div class="judges" aria-label="Jüri">
+      <figure class="judge"><img src="images/mehmet-yalcinkaya.jpg" alt="Mehmet Yalçınkaya" loading="lazy"><figcaption>Mehmet Yalçınkaya<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/chefmehmetyalcinkaya" target="_blank" rel="noopener">📷 @chefmehmetyalcinkaya · 1,59 Mn takipçi</a></span></figcaption></figure>
+      <figure class="judge"><img src="images/somer-sivrioglu.jpg" alt="Somer Sivrioğlu" loading="lazy"><figcaption>Somer Sivrioğlu<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/somersivrioglu" target="_blank" rel="noopener">📷 @somersivrioglu · 1,4 Mn takipçi</a></span></figcaption></figure>
+      <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/danilozanna" target="_blank" rel="noopener">📷 @danilozanna · 2,3 Mn takipçi</a></span></figcaption></figure>
+    </div>
+    <p class="photo-credit">Jüri fotoğrafları MindYourAI tarafından sağlandı (MasterChef Türkiye / TV8). Takipçi sayıları 2026'da kontrol edildi; Instagram'da her gün değişebilir.</p>
   </section>
 
   <section id="iletisim" aria-label="İletişim">
