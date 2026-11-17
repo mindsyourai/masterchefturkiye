@@ -5,6 +5,7 @@
   --ink:#2B2320; --muted:#6E6259; --line:#E5D9C3; --gold:#C9A227; --gold-bg:#F5EAD0;
   --blue:#1D4ED8; --blue-bg:#DBEAFE; --red-bg:#FBE3E6; --green:#2E7D32; --green-bg:#E2F0DF;
   --amber:#8A6D00; --amber-bg:#FBF3D5; --card:#FFFFFF;
+  --week:#C9A227; --week-dark:#7A5E00; --players:#2E7D32; --stats:#0F766E;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
@@ -25,6 +26,15 @@ nav.sticky input[type="search"]{border:1px solid var(--line);border-radius:999px
 main{max-width:1020px;margin:0 auto;padding:16px 14px 48px}
 h2{margin:38px 0 10px;font-size:1.5rem;border-bottom:2px solid var(--gold);padding-bottom:6px}
 h2::before{content:"◆ ";color:var(--gold);font-size:.85em}
+/* Bölüm renkleri: Bu Hafta altın, Oyuncular yeşil, İstatistikler + Eleme turkuaz */
+#week-current-section h2{border-bottom-color:var(--week)}
+#week-current-section h2::before{color:var(--week)}
+#players-section h2{border-bottom-color:var(--players)}
+#players-section h2::before{color:var(--players)}
+#team-stats-section h2{border-bottom-color:var(--stats)}
+#team-stats-section h2::before{color:var(--stats)}
+#eleme-section h2{border-bottom-color:var(--stats)}
+#eleme-section h2::before{color:var(--stats)}
 h3{margin:20px 0 8px;font-size:1.15rem}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:18px 0 6px}
 .stat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:14px 16px}
@@ -182,17 +192,6 @@ html{scroll-behavior:smooth}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 nav.sticky button:focus-visible,.filter-row button:focus-visible,.detail-close:focus-visible,.team-member:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
-/* Nasıl kullanılır */
-.howto{margin:0 0 30px}
-.howto-title{margin:0 0 4px}
-.howto-sub{font-size:.85rem;color:var(--muted);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-weight:400}
-.howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
-.howto-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:transform .12s ease,box-shadow .12s ease}
-.howto-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(43,35,32,.12)}
-.howto-card h3{margin:6px 0 4px;font-size:1.08rem}
-.howto-card p{margin:0;font-size:.93rem;color:var(--ink)}
-.howto-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-family:Georgia,serif;font-size:1rem}
-
 /* Arama sonucu yok */
 .no-results{background:var(--gold-bg);border:1px solid var(--gold);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:.97rem}
 
@@ -241,8 +240,11 @@ main>section>p.note{margin:2px 0 14px}
 .record-card a:hover{color:#fff}
 
 /* Takım kombinasyonları */
-#team-combos .stat{margin:0 0 14px}
+#team-combos .stat{margin:0 0 14px;border-top-color:var(--stats)}
+#team-combos .stat-num{color:var(--stats)}
+#team-combos .stat-board{border-top-color:var(--stats)}
 #team-combos h3{margin:22px 0 8px}
+#team-combos h3::before{content:"◆ ";color:var(--stats);font-size:.85em}
 
 @media (max-width:640px){
   .teams{grid-template-columns:1fr}
@@ -262,8 +264,8 @@ main>section>p.note{margin:2px 0 14px}
 
 /* ---- Ana sayfa: sezon bandı + kalan yarışmacılar (Kas 2026) ---- */
 .season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
-.season-tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
-.season-num{display:block;font-size:1.55rem;font-weight:800;color:var(--red);font-family:Georgia,serif;line-height:1.15}
+.season-tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--stats);border-radius:12px;padding:14px 16px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+.season-num{display:block;font-size:1.55rem;font-weight:800;color:var(--stats);font-family:Georgia,serif;line-height:1.15}
 .season-label{display:block;font-weight:700;margin-top:2px}
 .season-sub{display:block;color:var(--muted);font-size:.86rem;margin-top:4px}
 .season-record{border-top:4px solid var(--gold);background:var(--gold-bg)}
@@ -291,7 +293,7 @@ main>section>p.note{margin:2px 0 14px}
 .judge-note{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
 .photo-credit{font-size:.78rem;color:var(--muted);margin:6px 0 0}
 .photo-credit a{color:var(--muted)}
-.rank-badge{display:inline-block;background:var(--red);color:#fff;font-size:.8rem;font-weight:800;border-radius:999px;padding:1px 8px;margin-right:6px;vertical-align:2px}
+.rank-badge{display:inline-block;background:var(--players);color:#fff;font-size:.8rem;font-weight:800;border-radius:999px;padding:1px 8px;margin-right:6px;vertical-align:2px}
 .recent-line{font-size:.86rem;color:var(--ink);background:var(--gold-bg);border-radius:8px;padding:7px 10px;margin:10px 0 0;text-align:left}
 .hero-poster{display:block;max-width:340px;width:88%;height:auto;margin:16px auto 4px;border-radius:14px;border:3px solid var(--gold);box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .contact-form{display:grid;gap:12px;max-width:560px;margin-top:14px}
@@ -308,6 +310,9 @@ main>section>p.note{margin:2px 0 14px}
 .page-jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0 4px}
 .page-jump a{color:var(--red-dark);background:#fff;border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem;text-decoration:none}
 .page-jump a:hover{background:var(--gold-bg)}
+.page-jump a[href="#week-current-section"]{border-color:var(--week);color:var(--week-dark)}
+.page-jump a[href="#players-section"]{border-color:var(--players);color:var(--players)}
+.page-jump a[href="#team-stats-section"],.page-jump a[href="#eleme-section"]{border-color:var(--stats);color:var(--stats)}
 .insta-link{font-size:.85rem}
 .insta-link a{color:var(--red-dark);font-weight:700;text-decoration:none}
 .insta-link a:hover{text-decoration:underline}
@@ -328,13 +333,23 @@ p.insta-line{margin:6px 0 0}
 .week-label{color:var(--gold);font-size:.8em;font-weight:400}
 .week-row{margin-top:4px}
 .day-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;padding:0;box-shadow:0 2px 10px rgba(43,35,32,.06)}
-.day-card .ep-head{background:var(--red);padding:14px 18px 12px;border-bottom:3px solid var(--gold)}
-.day-card .ep-date{color:#F5EAD0}
-.day-card h3{color:#fff;margin:2px 0 0;font-size:1.25rem}
+.day-card .ep-head{background:var(--week);padding:14px 18px 12px;border-bottom:3px solid var(--ink)}
+.day-card .ep-date{color:var(--week-dark)}
+.day-card h3{color:var(--ink);margin:2px 0 0;font-size:1.25rem}
 .day-card .ep-summary,.day-card .captains,.day-card .teams,.day-card .game,.day-card .immunity,.day-card .candidates,.day-card .pot,.day-card .eliminated,.day-card .ep-notes{margin-left:18px;margin-right:18px}
 .day-card .ep-summary{margin-top:14px}
 .day-card .ep-notes{margin-bottom:16px}
 .day-card .game,.day-card .immunity{border-top:1px dashed var(--line);margin-top:12px;padding-top:10px}
+
+/* ---- Özet kartlar: yüz satırları + "Detayı gör" düğmesi ---- */
+.day-face{margin:12px 18px 0}
+.day-face p{margin:6px 0}
+.day-toggle{display:inline-block;margin:12px 18px 16px;border:1px solid var(--line);background:var(--cream);border-radius:999px;padding:8px 16px;min-height:44px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.day-toggle:hover{border-color:var(--gold);background:var(--gold-bg)}
+.day-detail{padding:0 0 16px}
+.day-detail[hidden]{display:none}
+.detail-panel .day-toggle{margin:10px 0 0}
+.detail-panel .day-detail{padding:0}
 
 /* ---- İlk 5 ---- */
 .top5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:14px}
@@ -348,7 +363,7 @@ p.insta-line{margin:6px 0 0}
 
 /* ---- Eleme kartları: şefler + yarışmacılar ---- */
 .eleme-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
-.eleme-stat-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+.eleme-stat-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--stats);border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
 .eleme-stat-card h3:first-child{margin-top:0}
 .eleme-stat-card h3{border-bottom:2px solid var(--gold);padding-bottom:6px}
 .eleme-stat-card h3:not(:first-child){margin-top:22px}
@@ -368,17 +383,21 @@ p.insta-line{margin:6px 0 0}
 /* Öne çıkan istatistik kartları + istatistik panoları: gün kartıyla aynı gölge */
 .stat,.stat-board{box-shadow:0 2px 10px rgba(43,35,32,.06)}
 
-/* Tahmin bloğu: çıplak değil, kırmızı bantlı kart */
-#week-prediction{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+/* Tahmin bloğu: turkuaz bantlı kart */
+#week-prediction{background:#fff;border:1px solid var(--line);border-top:4px solid var(--stats);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
 #week-prediction .vote-bars{margin-top:2px}
 #week-prediction>.note:last-child{margin-bottom:2px}
+.pred-headline{margin:12px 0 4px;font-size:1.05rem}
+.pred-headline strong{color:var(--stats);font-family:Georgia,serif;font-size:1.25rem}
+.pred-toggle{margin:10px 0 0}
 
 /* En iyi ikili (kırmızı kart): altın alt çizgiyle IG diline bağlanır */
 #top-pair .record-card{border-bottom:3px solid var(--gold);box-shadow:0 4px 16px rgba(43,35,32,.16)}
 
-/* Eleme gecesi kartları da gün kartı gibi: kırmızı başlık bandı + altın çizgi */
+/* Eleme gecesi kartları da gün kartı gibi: turkuaz başlık bandı + altın çizgi */
 .eleme-night{overflow:hidden}
-.eleme-night h3{margin:-16px -18px 12px;background:var(--red);color:#fff;font-size:1.25rem;padding:14px 18px 12px;border-bottom:3px solid var(--gold)}
+.eleme-night h3{margin:-16px -18px 12px;background:var(--stats);color:#fff;font-size:1.25rem;padding:14px 18px 12px;border-bottom:3px solid var(--gold)}
+.eleme-totals{margin:8px 0}
 
 /* Son kartın alt boşluğu bölüm boşluğuyla çakışmasın */
 .week-row .day-card:last-child{margin-bottom:0}
@@ -401,12 +420,13 @@ p.insta-line{margin:6px 0 0}
 
 /* ---- 3 bölüm: Oyuncular — her yarışmacıya bir IG kartı ---- */
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-.player-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);border-radius:14px;padding:0 0 14px;box-shadow:0 2px 10px rgba(43,35,32,.06);text-align:left}
+.player-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--players);border-radius:14px;padding:0 0 14px;box-shadow:0 2px 10px rgba(43,35,32,.06);text-align:left}
 .player-card .contestant-photo{border-radius:10px 10px 0 0;margin-bottom:0}
 .player-card h4{margin:12px 16px 2px;font-size:1.25rem}
-.player-score{display:block;text-align:center;font-family:Georgia,serif;font-size:2rem;font-weight:800;color:var(--red);line-height:1.1;margin-top:6px}
+.player-score{display:block;text-align:center;font-family:Georgia,serif;font-size:2rem;font-weight:800;color:var(--players);line-height:1.1;margin-top:6px}
 .player-score-label{display:block;text-align:center;font-size:.82rem;color:var(--muted);margin-bottom:8px}
 .player-card .c-stats{margin:0 14px}
+.player-card .c-stat b{color:var(--players)}
 .player-card .hint{margin:10px 16px 0}
 #team-stats-section h3{margin:26px 0 8px;font-size:1.2rem}
-#team-stats-section h3::before{content:"◆ ";color:var(--gold);font-size:.85em}
+#team-stats-section h3::before{content:"◆ ";color:var(--stats);font-size:.85em}
