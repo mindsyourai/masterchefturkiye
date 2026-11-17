@@ -1252,38 +1252,44 @@
     var ll = el("week-last-label");
     if (ll) ll.textContent = (maxW > 1) ? "· " + (maxW - 1) + ". Hafta" : "";
   }
-  /* ---- Ana sayfa: ilk 5 (başarı puanı) ----
-     Tamamen kayıtlardan hesaplanır: SITE.remaining başarı puanına göre
-     sıralanır, ilk 5 alınır. Karta tıklayınca profil paneli açılır. */
-  function renderTop5() {
-    var box = el("top5-grid");
+  /* ---- Ana sayfa: oyuncular — kalan her yarışmacıya bir kart ----
+     Başarı puanına göre sıralı; her kartta düello, dokunulmazlık,
+     en iyi tabak, pota ve son ay puanı. Karta tıklayınca profil paneli açılır. */
+  function renderPlayers() {
+    var box = el("players-grid");
     if (!box) return;
+    var q = (el("search") ? (el("search").value || "") : "").trim().toLowerCase();
     var list = SITE.remaining.map(function (name) {
       var c = null;
       CONTESTANTS.forEach(function (x) { if (x.name === name) c = x; });
       return c;
     }).filter(function (c) { return !!c; });
+    if (q) {
+      list = list.filter(function (c) {
+        return (c.name + " " + (c.wins || []).join(" ")).toLowerCase().indexOf(q) !== -1;
+      });
+    }
     list.sort(successOrder);
-    var top = list.slice(0, 5);
+    var pc = el("players-count");
+    if (pc) pc.textContent = SITE.remaining.length;
     var rankOf = activeRanking();
-    box.innerHTML = top.map(function (c) {
+    box.innerHTML = list.map(function (c) {
       var st = STATS[c.name];
       var best = st.dishes.filter(function (d) { return d.b; }).length;
-      return '<button type="button" class="contestant top5-card" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
-        '<span class="top5-rank">#' + (rankOf[c.name] || "") + "</span>" +
-        "<h4>" + esc(c.name) + "</h4>" +
-        '<span class="top5-score">' + successScore(c.name) + '</span><span class="top5-score-label">başarı puanı</span>' +
+      return '<button type="button" class="contestant player-card' + (selectedName === c.name ? " selected" : "") + '" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
+        photoHtml(c) +
+        "<h4>" + (rankOf[c.name] ? '<span class="rank-badge" title="Başarı puanı: ' + successScore(c.name) + '">#' + rankOf[c.name] + "</span> " : "") + esc(c.name) + "</h4>" +
+        '<span class="player-score">' + successScore(c.name) + '</span><span class="player-score-label">başarı puanı</span>' +
         '<div class="c-stats">' +
-        '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
-        '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
         '<span class="c-stat"><b>' + st.duelWins + '–' + st.duelLosses + '</b> düello</span>' +
+        '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
+        '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' +
         '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
-        (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
         '<span class="c-stat">📅 Son ay: <b>' + recentScore(c.name) + '</b></span>' +
         "</div>" +
         "<p class='hint'>Profil için tıklayın →</p></button>";
     }).join("");
-    document.querySelectorAll("#top5-grid .contestant").forEach(function (btn) {
+    document.querySelectorAll("#players-grid .player-card").forEach(function (btn) {
       btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
     });
   }
@@ -1408,6 +1414,12 @@
       var ci = el("contestants-info");
       if (ci) ci.textContent = q ? anyContestant + " yarışmacı eşleşti" : "";
     }
+    if (el("players-grid")) {
+      renderPlayers();
+      var plShown = document.querySelectorAll("#players-grid .player-card").length;
+      if (q) parts.push(plShown + " yarışmacı");
+      totalShown += plShown;
+    }
     if (el("remaining-grid")) {
       renderRemaining();
       var remShown = document.querySelectorAll("#remaining-grid .contestant").length;
@@ -1461,8 +1473,7 @@
     renderLatestEpisode();
     renderWeekPrediction();
     renderContestants();
-    renderRemaining();
-    renderTop5();
+    renderPlayers();
     renderApron();
     renderEpisodes();
     renderTeams();
