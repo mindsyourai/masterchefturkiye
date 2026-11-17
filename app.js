@@ -666,6 +666,8 @@
     }
     var rankOf = activeRanking();
     list.sort(successOrder);
+    var rc = el("remaining-count");
+    if (rc) rc.textContent = SITE.remaining.length;
     el("remaining-grid").innerHTML = list.map(function (c) {
       var st = STATS[c.name];
       var best = st.dishes.filter(function (d) { return d.b; }).length;
@@ -945,9 +947,12 @@
       return h + "</article>";
     }).join("");
   }
-  /* ---- Eleme şef karnesi + yarışmacı ortalamaları (tüm turlardan hesaplanır) ---- */
+  /* ---- Eleme şef karnesi + yarışmacı ortalamaları (tüm turlardan hesaplanır) ----
+     İki ayrı kart: şefler kartı (Şef Karnesi + şef başına yarışmacı
+     ortalaması) ve yarışmacılar kartı (yarışmacı ortalamaları). */
   function renderElemeStats() {
-    if (!el("eleme-stats")) return;
+    var chefsBox = el("eleme-chefs"), playersBox = el("eleme-players"), legacy = el("eleme-stats");
+    if (!chefsBox && !playersBox && !legacy) return;
     if (typeof ELEME_NIGHTS === "undefined") return;
     var keys = ["mehmet", "danilo", "somer"];
     var labels = { mehmet: "Mehmet", danilo: "Danilo", somer: "Somer" };
@@ -978,30 +983,32 @@
     var contRows = Object.keys(cont).map(function (name) {
       return { name: name, total: cont[name].total, rounds: cont[name].rounds, avg: avg(cont[name].total, cont[name].rounds) };
     }).sort(function (a, b) { return b.avg - a.avg; });
-    var h = "<h3>Şef Karnesi</h3>";
-    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Şef</th><th>Verdiği puan</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
+    var chefHtml = "<h3>Şef Karnesi</h3>";
+    chefHtml += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Şef</th><th>Verdiği puan</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
     chefRows.forEach(function (r) {
-      h += "<tr><td>" + esc(r.label) + "</td><td>" + r.n + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
+      chefHtml += "<tr><td>" + esc(r.label) + "</td><td>" + r.n + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
     });
-    h += "</tbody></table></div>";
-    h += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
-    h += "<h3>Şef başına yarışmacı ortalaması</h3>";
-    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th></tr></thead><tbody>';
+    chefHtml += "</tbody></table></div>";
+    chefHtml += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
+    chefHtml += "<h3>Şef başına yarışmacı ortalaması</h3>";
+    chefHtml += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th></tr></thead><tbody>';
     contRows.forEach(function (r) {
-      h += "<tr><td>" + esc(r.name) + "</td>" + keys.map(function (k) {
+      chefHtml += "<tr><td>" + esc(r.name) + "</td>" + keys.map(function (k) {
         var p = perChef[k][r.name];
         return "<td>" + (p ? avg(p.total, p.n) : "—") + "</td>";
       }).join("") + "</tr>";
     });
-    h += "</tbody></table></div>";
-    h += "<h3>Yarışmacı Ortalamaları</h3>";
-    h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Tur</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
+    chefHtml += "</tbody></table></div>";
+    var playerHtml = "<h3>Yarışmacı Ortalamaları</h3>";
+    playerHtml += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Tur</th><th>Toplam</th><th>Ortalama</th></tr></thead><tbody>';
     contRows.forEach(function (r) {
-      h += "<tr><td>" + esc(r.name) + "</td><td>" + r.rounds + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
+      playerHtml += "<tr><td>" + esc(r.name) + "</td><td>" + r.rounds + "</td><td>" + r.total + "</td><td><strong>" + r.avg + "</strong></td></tr>";
     });
-    h += "</tbody></table></div>";
-    h += "<p class='note'>Ortalamalar tüm eleme turlarından hesaplanır; yeni tur eklendikçe güncellenir.</p>";
-    el("eleme-stats").innerHTML = h;
+    playerHtml += "</tbody></table></div>";
+    playerHtml += "<p class='note'>Ortalamalar tüm eleme turlarından hesaplanır; yeni tur eklendikçe güncellenir.</p>";
+    if (chefsBox) chefsBox.innerHTML = chefHtml;
+    if (playersBox) playersBox.innerHTML = playerHtml;
+    if (legacy) legacy.innerHTML = chefHtml + playerHtml;
   }
   function renderStats() {
     if (!el("stats")) return;
@@ -1221,6 +1228,65 @@
     if (!box) return;
     box.innerHTML = renderEpisode(EPISODES[0]);
   }
+  /* ---- Ana sayfa: haftalık gün kartları ----
+     Gün kartı, bölümün tam görünümü (renderEpisode) ama Instagram
+     kartı tarzında: kırmızı üst bant, kalın başlık, altın çizgi.
+     Satır 1 = güncel hafta (EPISODES'taki en büyük hafta numarası),
+     Satır 2 = bir önceki hafta. Yeni gün data.js'e eklenince kartı
+     otomatik olarak üst satıra düşer — hafta numarası elle yazılmaz. */
+  function renderDayCard(ep) {
+    return renderEpisode(ep).replace('<article class="ep"', '<article class="day-card ep"');
+  }
+  function weekNum(ep) { return parseInt(ep.week, 10) || 0; }
+  function renderWeekRows() {
+    var cur = el("week-current"), last = el("week-last");
+    if (!cur && !last) return;
+    var maxW = 0;
+    EPISODES.forEach(function (ep) { var w = weekNum(ep); if (w > maxW) maxW = w; });
+    var curEps = EPISODES.filter(function (ep) { return weekNum(ep) === maxW; });
+    var lastEps = EPISODES.filter(function (ep) { return weekNum(ep) === maxW - 1; });
+    if (cur) cur.innerHTML = curEps.map(renderDayCard).join("") || "<p class='note'>Bu haftanın kartı henüz yok.</p>";
+    if (last) last.innerHTML = lastEps.map(renderDayCard).join("") || "<p class='note'>Geçen haftanın kartı yok.</p>";
+    var cl = el("week-current-label");
+    if (cl) cl.textContent = maxW ? "· " + maxW + ". Hafta" : "";
+    var ll = el("week-last-label");
+    if (ll) ll.textContent = (maxW > 1) ? "· " + (maxW - 1) + ". Hafta" : "";
+  }
+  /* ---- Ana sayfa: ilk 5 (başarı puanı) ----
+     Tamamen kayıtlardan hesaplanır: SITE.remaining başarı puanına göre
+     sıralanır, ilk 5 alınır. Karta tıklayınca profil paneli açılır. */
+  function renderTop5() {
+    var box = el("top5-grid");
+    if (!box) return;
+    var list = SITE.remaining.map(function (name) {
+      var c = null;
+      CONTESTANTS.forEach(function (x) { if (x.name === name) c = x; });
+      return c;
+    }).filter(function (c) { return !!c; });
+    list.sort(successOrder);
+    var top = list.slice(0, 5);
+    var rankOf = activeRanking();
+    box.innerHTML = top.map(function (c) {
+      var st = STATS[c.name];
+      var best = st.dishes.filter(function (d) { return d.b; }).length;
+      return '<button type="button" class="contestant top5-card" data-name="' + esc(c.name) + '" data-search="' + esc((c.name + " " + (c.wins || []).join(" ")).toLowerCase()) + '">' +
+        '<span class="top5-rank">#' + (rankOf[c.name] || "") + "</span>" +
+        "<h4>" + esc(c.name) + "</h4>" +
+        '<span class="top5-score">' + successScore(c.name) + '</span><span class="top5-score-label">başarı puanı</span>' +
+        '<div class="c-stats">' +
+        '<span class="c-stat"><b>' + st.dishes.length + '</b> yemek</span>' +
+        '<span class="c-stat"><b>' + st.immunity.length + '</b> dokunulmazlık</span>' +
+        '<span class="c-stat"><b>' + st.duelWins + '–' + st.duelLosses + '</b> düello</span>' +
+        '<span class="c-stat"><b>' + st.pota.length + '</b> pota</span>' +
+        (best ? '<span class="c-stat">⭐ <b>' + best + '</b> en iyi tabak</span>' : "") +
+        '<span class="c-stat">📅 Son ay: <b>' + recentScore(c.name) + '</b></span>' +
+        "</div>" +
+        "<p class='hint'>Profil için tıklayın →</p></button>";
+    }).join("");
+    document.querySelectorAll("#top5-grid .contestant").forEach(function (btn) {
+      btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
+    });
+  }
   /* ---- Bu hafta kazanma şansı (tahmin) ----
      Model: her yarışmacının sezon düello kaydı (takım oyunu düelloları),
      az maçlılar %50'ye çekilmiş oran (G+5)/(maç+10); takım gücü =
@@ -1277,9 +1343,9 @@
   function applySearch() {
     var q = (el("search").value || "").trim().toLowerCase();
     var parts = [], totalShown = 0;
-    if (el("episodes") || el("latest-ep")) {
+    if (el("episodes") || el("week-current")) {
       var epShown = 0;
-      document.querySelectorAll("#episodes .ep, #latest-ep .ep").forEach(function (card) {
+      document.querySelectorAll("#episodes .ep, #week-current .ep, #week-last .ep").forEach(function (card) {
         var hit = !q || card.getAttribute("data-search").indexOf(q) !== -1;
         card.style.display = hit ? "" : "none";
         if (hit) epShown++;
@@ -1391,10 +1457,12 @@
     setupContact();
     renderSummary();
     renderSeasonBand();
+    renderWeekRows();
     renderLatestEpisode();
     renderWeekPrediction();
     renderContestants();
     renderRemaining();
+    renderTop5();
     renderApron();
     renderEpisodes();
     renderTeams();
