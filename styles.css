@@ -183,7 +183,7 @@ html{scroll-behavior:smooth}
 nav.sticky button:focus-visible,.filter-row button:focus-visible,.detail-close:focus-visible,.team-member:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
 /* Nasıl kullanılır */
-.howto{margin:22px 0 6px}
+.howto{margin:0 0 30px}
 .howto-title{margin:0 0 4px}
 .howto-sub{font-size:.85rem;color:var(--muted);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-weight:400}
 .howto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}
@@ -222,8 +222,11 @@ nav.sticky a:hover{border-color:var(--red);color:var(--red)}
 nav.sticky a.active{background:var(--red);color:#fff;border-color:var(--red)}
 nav.sticky a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .fan-badge{display:inline-block;margin:10px auto 0;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 14px;font-size:.88rem}
-main section{margin-bottom:10px}
-main section + section{margin-top:6px}
+/* ---- Bölüm ritmi: bölümler arası eşit boşluk, başlık üstte sıfır ---- */
+main>section{margin:0 0 30px}
+main>section:first-of-type{margin-top:16px}
+main>section>h2:first-child{margin-top:0}
+main>section>p.note{margin:2px 0 14px}
 
 /* Ana sayfa keşif kartları */
 .page-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
@@ -250,11 +253,16 @@ main section + section{margin-top:6px}
   nav.sticky input[type="search"]{min-width:0;flex-basis:100%;max-width:none}
   nav.sticky a{padding:6px 11px;font-size:.88rem}
   header.hero{padding:26px 12px 0}
+  .day-card .ep-head{padding:12px 14px 10px}
+  .day-card .ep-summary,.day-card .captains,.day-card .teams,.day-card .game,.day-card .immunity,.day-card .candidates,.day-card .pot,.day-card .eliminated,.day-card .ep-notes{margin-left:14px;margin-right:14px}
+  .eleme-night h3{margin:-14px -14px 12px;padding:12px 14px 10px}
+  #juri{padding:16px 14px 14px}
+  #week-prediction{padding:16px}
 }
 
 /* ---- Ana sayfa: sezon bandı + kalan yarışmacılar (Kas 2026) ---- */
 .season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
-.season-tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.season-tile{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
 .season-num{display:block;font-size:1.55rem;font-weight:800;color:var(--red);font-family:Georgia,serif;line-height:1.15}
 .season-label{display:block;font-weight:700;margin-top:2px}
 .season-sub{display:block;color:var(--muted);font-size:.86rem;margin-top:4px}
@@ -276,10 +284,10 @@ main section + section{margin-top:6px}
 
 /* ---- Jüri fotoğrafları + başarı sıralaması (Kas 2026) ---- */
 .judges{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}
-.judge{margin:0;text-align:center}
+.judge{margin:0;text-align:center;flex:1 1 0;min-width:0;max-width:230px}
 .judge img{width:92px;height:92px;object-fit:cover;object-position:50% 25%;border-radius:50%;border:3px solid var(--gold);display:block;margin:0 auto}
 .judge-initials{display:flex;align-items:center;justify-content:center;width:92px;height:92px;border-radius:50%;border:3px dashed var(--gold);background:var(--gold-bg);color:var(--red-dark);font-weight:800;font-size:1.5rem;font-family:Georgia,serif;margin:0 auto}
-.judge figcaption{font-weight:700;font-size:.88rem;margin-top:6px}
+.judge figcaption{font-weight:700;font-size:.88rem;margin-top:6px;line-height:1.45}
 .judge-note{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
 .photo-credit{font-size:.78rem;color:var(--muted);margin:6px 0 0}
 .photo-credit a{color:var(--muted)}
@@ -306,7 +314,7 @@ main section + section{margin-top:6px}
 p.insta-line{margin:6px 0 0}
 .judge-note a{color:var(--red-dark)}
 
-.ad-slot{border:2px dashed var(--gold);border-radius:14px;padding:18px;text-align:center;margin:18px 0;background:var(--gold-bg)}
+.ad-slot{border:2px dashed var(--gold);border-radius:14px;padding:18px;text-align:center;margin:0 0 30px;background:var(--gold-bg)}
 .ad-title{font-family:Georgia,serif;font-weight:800;font-size:1.15rem;color:var(--red-dark);margin:0 0 4px}
 .ad-text{color:var(--muted);margin:0 0 8px}
 .ad-cta{font-weight:700;color:var(--red-dark)}
@@ -315,3 +323,78 @@ p.insta-line{margin:6px 0 0}
 .eleme-card img{max-width:420px;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
 .eleme-card figcaption{margin-top:6px;font-size:.9rem}
 .eleme-night h4{margin:16px 0 6px;color:var(--red-dark)}
+
+/* ---- Haftalık gün kartları (Instagram kartı tarzı: kırmızı bant + altın çizgi) ---- */
+.week-label{color:var(--gold);font-size:.8em;font-weight:400}
+.week-row{margin-top:4px}
+.day-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0;padding:0;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+.day-card .ep-head{background:var(--red);padding:14px 18px 12px;border-bottom:3px solid var(--gold)}
+.day-card .ep-date{color:#F5EAD0}
+.day-card h3{color:#fff;margin:2px 0 0;font-size:1.25rem}
+.day-card .ep-summary,.day-card .captains,.day-card .teams,.day-card .game,.day-card .immunity,.day-card .candidates,.day-card .pot,.day-card .eliminated,.day-card .ep-notes{margin-left:18px;margin-right:18px}
+.day-card .ep-summary{margin-top:14px}
+.day-card .ep-notes{margin-bottom:16px}
+.day-card .game,.day-card .immunity{border-top:1px dashed var(--line);margin-top:12px;padding-top:10px}
+
+/* ---- İlk 5 ---- */
+.top5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:14px}
+.top5-card{border-top:5px solid var(--red);padding:18px 20px;position:relative;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+.top5-card h4{margin:0 0 10px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.top5-card:first-child{border-top-color:var(--gold)}
+.top5-rank{position:absolute;top:12px;right:16px;font-family:Georgia,serif;font-size:1.6rem;font-weight:800;color:var(--gold)}
+.top5-card h4{font-size:1.3rem;padding-right:56px}
+.top5-score{display:block;font-family:Georgia,serif;font-size:2.6rem;font-weight:800;color:var(--red);line-height:1.05;margin-top:6px}
+.top5-score-label{font-size:.85rem;color:var(--muted);font-weight:700}
+
+/* ---- Eleme kartları: şefler + yarışmacılar ---- */
+.eleme-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.eleme-stat-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+.eleme-stat-card h3:first-child{margin-top:0}
+.eleme-stat-card h3{border-bottom:2px solid var(--gold);padding-bottom:6px}
+.eleme-stat-card h3:not(:first-child){margin-top:22px}
+@media (max-width:640px){.eleme-cards{grid-template-columns:1fr}}
+
+/* ---- Jüri (sayfanın altı): kart olarak, kasıtlı ve derli toplu ---- */
+#juri{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:14px;padding:20px 22px 18px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+#juri .judges{margin:18px 0 6px}
+#juri .photo-credit{text-align:center}
+
+/* ---- 2. tur: görsel cila (Kas 2026) — IG kart dili her karta ----
+   Kırmızı üst bant + altın çizgi + krem zemin; tek kart dili, tek ritim. */
+
+/* Büyük sayılar aynı hizada: tek satır yüksekliği, tek aile */
+.stat-num,.season-num{line-height:1.05}
+
+/* Öne çıkan istatistik kartları + istatistik panoları: gün kartıyla aynı gölge */
+.stat,.stat-board{box-shadow:0 2px 10px rgba(43,35,32,.06)}
+
+/* Tahmin bloğu: çıplak değil, kırmızı bantlı kart */
+#week-prediction{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
+#week-prediction .vote-bars{margin-top:2px}
+#week-prediction>.note:last-child{margin-bottom:2px}
+
+/* En iyi ikili (kırmızı kart): altın alt çizgiyle IG diline bağlanır */
+#top-pair .record-card{border-bottom:3px solid var(--gold);box-shadow:0 4px 16px rgba(43,35,32,.16)}
+
+/* Eleme gecesi kartları da gün kartı gibi: kırmızı başlık bandı + altın çizgi */
+.eleme-night{overflow:hidden}
+.eleme-night h3{margin:-16px -18px 12px;background:var(--red);color:#fff;font-size:1.25rem;padding:14px 18px 12px;border-bottom:3px solid var(--gold)}
+
+/* Son kartın alt boşluğu bölüm boşluğuyla çakışmasın */
+.week-row .day-card:last-child{margin-bottom:0}
+#eleme-nights .eleme-night:last-child{margin-bottom:2px}
+
+/* Eleme kartları dar ekranda erken tek sütuna düşsün (iç tablolar 560px) */
+@media (max-width:760px){
+  .eleme-cards{grid-template-columns:1fr}
+}
+
+/* Çok dar ekran: tahmin çubukları ezilmesin, jüri alt alta dizilsin */
+@media (max-width:480px){
+  #week-prediction .vote-bar-name{width:76px;font-size:.88rem}
+  #week-prediction .vote-bar-count{width:48px;font-size:.85rem}
+  #week-prediction{padding:14px}
+  .judges{flex-direction:column;align-items:center;gap:22px}
+  .judge{flex:0 0 auto;max-width:260px}
+  .judge img,.judge-initials{width:92px;height:92px}
+}
