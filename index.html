@@ -42,6 +42,18 @@
   </section>
   <section id="players-section">
     <h2>Oyuncular 👥</h2>
+    <div class="form-board" id="form-board">
+      <h3>Form — <span id="form-window-label">15. hafta</span></h3>
+      <div class="form-switch" role="group" aria-label="Puan penceresi">
+        <button type="button" data-window="week" class="active">Bu hafta</button>
+        <button type="button" data-window="2weeks">Son 2 hafta</button>
+        <button type="button" data-window="month">Son ay</button>
+      </div>
+      <ol class="form-list" id="form-list"></ol>
+      <button type="button" class="day-toggle" id="form-toggle" data-show="Tümünü gör ▾" data-hide="Tümünü gizle ▴" aria-expanded="false" hidden>Tümünü gör ▾</button>
+      <div class="day-detail" id="form-rest" hidden></div>
+      <p class="note">Kayıtlara göre puan — 14. hafta düello puanları kayıtlarda eksik (10–12 Kasım düelloları eklenmedi).</p>
+    </div>
     <p class="note"><span id="players-count">12</span> yarışmacı · başarı puanına göre sıralı — karta tıkla, profil açılsın.</p>
     <div class="players-grid" id="players-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
