@@ -417,5 +417,19 @@ p.insta-line{margin:6px 0 0}
 .player-card .c-stats{margin:0 14px}
 .player-card .c-stat b{color:var(--players)}
 .player-card .hint{margin:10px 16px 0}
+.form-board{background:#fff;border:1px solid var(--line);border-top:4px solid var(--players);border-radius:14px;padding:16px 18px;margin:0 0 18px}
+.form-board h3{margin:0 0 10px;font-size:1.15rem}
+.form-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.form-switch button{border:1px solid var(--players);background:#fff;color:var(--players);border-radius:999px;padding:8px 16px;min-height:40px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+.form-switch button.active{background:var(--players);color:#fff}
+.form-list{list-style:none;margin:0;padding:0}
+.form-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--line);padding:10px 2px;font:inherit;cursor:pointer;color:var(--ink)}
+.form-row:hover .form-name{text-decoration:underline}
+.form-rank{font-weight:800;color:var(--players);min-width:28px}
+.form-name{font-weight:700;flex:1}
+.form-points{font-family:Georgia,serif;font-size:1.4rem;font-weight:800;color:var(--players);line-height:1}
+.form-break{flex-basis:100%;margin-left:38px;font-size:.82rem;color:var(--muted)}
+.form-board .day-toggle{margin:12px 0 0}
+.form-board .note{margin:12px 0 0}
 #team-stats-section h3{margin:26px 0 8px;font-size:1.2rem}
 #team-stats-section h3::before{content:"◆ ";color:var(--stats);font-size:.85em}
