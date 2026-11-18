@@ -372,19 +372,22 @@
     }
     return 0;
   }
-  function last4Range() {
+  function maxWeek() {
     var maxW = 0;
     WEEK_RANGES.forEach(function (r) { if (r.week > maxW) maxW = r.week; });
-    return { from: maxW - 3, to: maxW };
+    return maxW;
   }
-  function recentStats(name) {
-    var range = last4Range();
+  function last4Range() {
+    var m = maxWeek();
+    return { from: m - 3, to: m };
+  }
+  function windowStats(name, from, to) {
     var st = STATS[name];
     var r = { dishes: 0, duelW: 0, duelL: 0, immunity: 0, best: 0, pota: 0 };
     if (!st) return r;
     (st.dishes || []).forEach(function (d) {
       var w = weekOfDate(d.d);
-      if (w < range.from || w > range.to) return;
+      if (w < from || w > to) return;
       r.dishes++;
       if (d.b) r.best++;
       if (d.t === "takim_oyunu" && d.o) {
@@ -394,13 +397,17 @@
     });
     (st.immunity || []).forEach(function (x) {
       var w = weekOfDate(x.date);
-      if (w >= range.from && w <= range.to) r.immunity++;
+      if (w >= from && w <= to) r.immunity++;
     });
     (st.pota || []).forEach(function (p) {
       var w = parseInt(p.week, 10);
-      if (w >= range.from && w <= range.to) r.pota++;
+      if (w >= from && w <= to) r.pota++;
     });
     return r;
+  }
+  function recentStats(name) {
+    var range = last4Range();
+    return windowStats(name, range.from, range.to);
   }
   function recentLine(name) {
     var r = recentStats(name);
@@ -412,18 +419,22 @@
   /* ---- Son ay puanı: başarı formülü, yalnızca son 4 hafta ----
      3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota.
      Kaptanlık haftaları STATS'taki kaptanlık kayıtlarından (hafta bazında tekilleştirilmiş)
-     alınır; pencere last4Range() ile aynıdır (son 4 hafta). */
-  function recentScore(name) {
+     alınır; pencere last4Range() ile aynıdır (son 4 hafta).
+     windowScore aynı formülü herhangi bir hafta aralığında hesaplar (form tablosu). */
+  function windowScore(name, from, to) {
     var st = STATS[name];
     if (!st) return 0;
-    var r = recentStats(name);
-    var range = last4Range();
+    var r = windowStats(name, from, to);
     var cap = 0;
     (st.captainBlue || []).concat(st.captainRed || []).forEach(function (x) {
       var w = weekOfDate(x.date);
-      if (w >= range.from && w <= range.to) cap++;
+      if (w >= from && w <= to) cap++;
     });
     return 3 * r.immunity + 2 * r.best + r.duelW + cap - r.pota;
+  }
+  function recentScore(name) {
+    var range = last4Range();
+    return windowScore(name, range.from, range.to);
   }
   function renderContestants() {
     if (!el("contestants-grid")) return;
@@ -1356,6 +1367,89 @@
       btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
     });
   }
+  /* ---- Form tablosu: aynı başarı formülü, seçilen pencerede ----
+     Bu hafta / Son 2 hafta / Son ay. Yalnızca yarışmaya devam edenler.
+     Puanlar kayıtlara göredir — 14. hafta düello galibiyetleri kayıtlarda
+     yok (10–12 Kasım düelloları eklenmedi), o hafta eksik görünür. */
+  var formWindow = "week";
+  function formRange() {
+    var m = maxWeek();
+    if (formWindow === "week") return { from: m, to: m, label: m + ". hafta" };
+    if (formWindow === "2weeks") return { from: m - 1, to: m, label: (m - 1) + "–" + m + ". hafta" };
+    return { from: m - 3, to: m, label: (m - 3) + "–" + m + ". hafta" };
+  }
+  function formBreak(r) {
+    var parts = [];
+    if (r.immunity) parts.push(r.immunity + " dokunulmazlık");
+    if (r.best) parts.push(r.best + " en iyi tabak");
+    if (r.duelW) parts.push(r.duelW + " düello galibiyeti");
+    if (r.cap) parts.push(r.cap + " kaptanlık");
+    if (r.pota) parts.push(r.pota + " pota");
+    return parts.length ? parts.join(" · ") : "bu pencerede puan yok";
+  }
+  function formRowHtml(rank, r) {
+    return '<li><button type="button" class="form-row" data-name="' + esc(r.name) + '">' +
+      '<span class="form-rank">#' + rank + '</span>' +
+      '<span class="form-name">' + esc(r.name) + '</span>' +
+      '<span class="form-points">' + r.score + '</span>' +
+      '<span class="form-break">' + formBreak(r) + '</span>' +
+      "</button></li>";
+  }
+  function renderFormBoard() {
+    var board = el("form-board");
+    if (!board) return;
+    var range = formRange();
+    var label = el("form-window-label");
+    if (label) label.textContent = range.label;
+    var rows = SITE.remaining.map(function (name) {
+      var c = null;
+      CONTESTANTS.forEach(function (x) { if (x.name === name) c = x; });
+      return c;
+    }).filter(function (c) { return !!c; }).map(function (c) {
+      var ws = windowStats(c.name, range.from, range.to);
+      var st = STATS[c.name];
+      var cap = 0;
+      if (st) (st.captainBlue || []).concat(st.captainRed || []).forEach(function (x) {
+        var w = weekOfDate(x.date);
+        if (w >= range.from && w <= range.to) cap++;
+      });
+      return {
+        name: c.name,
+        score: 3 * ws.immunity + 2 * ws.best + ws.duelW + cap - ws.pota,
+        immunity: ws.immunity, best: ws.best, duelW: ws.duelW, duelL: ws.duelL, cap: cap, pota: ws.pota
+      };
+    });
+    rows.sort(function (a, b) {
+      return b.score - a.score || successScore(b.name) - successScore(a.name) || (a.name < b.name ? -1 : 1);
+    });
+    var top = rows.slice(0, 5), rest = rows.slice(5);
+    var list = el("form-list");
+    if (list) list.innerHTML = top.map(function (r, i) { return formRowHtml(i + 1, r); }).join("");
+    var restBox = el("form-rest");
+    if (restBox) restBox.innerHTML = '<ol class="form-list">' + rest.map(function (r, i) { return formRowHtml(i + 6, r); }).join("") + "</ol>";
+    var toggle = el("form-toggle");
+    if (toggle) {
+      toggle.hidden = rest.length === 0;
+      if (restBox) restBox.hidden = true;
+      toggle.textContent = toggle.getAttribute("data-show");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    board.querySelectorAll(".form-row").forEach(function (btn) {
+      btn.addEventListener("click", function () { openDetail(btn.getAttribute("data-name")); });
+    });
+  }
+  function setupFormBoard() {
+    var board = el("form-board");
+    if (!board) return;
+    document.querySelectorAll("#form-board .form-switch button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        formWindow = btn.getAttribute("data-window");
+        document.querySelectorAll("#form-board .form-switch button").forEach(function (b) { b.classList.toggle("active", b === btn); });
+        renderFormBoard();
+      });
+    });
+    bindToggles(board);
+  }
   function applySearch() {
     var q = (el("search").value || "").trim().toLowerCase();
     var parts = [], totalShown = 0;
@@ -1483,6 +1577,8 @@
     renderLatestEpisode();
     renderContestants();
     renderPlayers();
+    renderFormBoard();
+    setupFormBoard();
     renderApron();
     renderEpisodes();
     renderTeams();
