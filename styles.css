@@ -259,7 +259,6 @@ main>section>p.note{margin:2px 0 14px}
   .day-card .ep-summary,.day-card .captains,.day-card .teams,.day-card .game,.day-card .immunity,.day-card .candidates,.day-card .pot,.day-card .eliminated,.day-card .ep-notes{margin-left:14px;margin-right:14px}
   .eleme-night h3{margin:-14px -14px 12px;padding:12px 14px 10px}
   #juri{padding:16px 14px 14px}
-  #week-prediction{padding:16px}
 }
 
 /* ---- Ana sayfa: sezon bandı + kalan yarışmacılar (Kas 2026) ---- */
@@ -383,13 +382,6 @@ p.insta-line{margin:6px 0 0}
 /* Öne çıkan istatistik kartları + istatistik panoları: gün kartıyla aynı gölge */
 .stat,.stat-board{box-shadow:0 2px 10px rgba(43,35,32,.06)}
 
-/* Tahmin bloğu: turkuaz bantlı kart */
-#week-prediction{background:#fff;border:1px solid var(--line);border-top:4px solid var(--stats);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(43,35,32,.06)}
-#week-prediction .vote-bars{margin-top:2px}
-#week-prediction>.note:last-child{margin-bottom:2px}
-.pred-headline{margin:12px 0 4px;font-size:1.05rem}
-.pred-headline strong{color:var(--stats);font-family:Georgia,serif;font-size:1.25rem}
-.pred-toggle{margin:10px 0 0}
 
 /* En iyi ikili (kırmızı kart): altın alt çizgiyle IG diline bağlanır */
 #top-pair .record-card{border-bottom:3px solid var(--gold);box-shadow:0 4px 16px rgba(43,35,32,.16)}
@@ -410,9 +402,6 @@ p.insta-line{margin:6px 0 0}
 
 /* Çok dar ekran: tahmin çubukları ezilmesin, jüri alt alta dizilsin */
 @media (max-width:480px){
-  #week-prediction .vote-bar-name{width:76px;font-size:.88rem}
-  #week-prediction .vote-bar-count{width:48px;font-size:.85rem}
-  #week-prediction{padding:14px}
   .judges{flex-direction:column;align-items:center;gap:22px}
   .judge{flex:0 0 auto;max-width:260px}
   .judge img,.judge-initials{width:92px;height:92px}
