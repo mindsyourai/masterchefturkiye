@@ -318,12 +318,13 @@
     return '<span class="badge badge-w">' + esc(c.status) + "</span>";
   }
   /* ---- Başarı puanı: yarışanları sıralamak için ----
-     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota */
+     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası
+     (MK 18 Kas 2026: pota cezası kaldırıldı) */
   function successScore(name) {
     var st = STATS[name];
     if (!st) return 0;
     var best = st.dishes.filter(function (d) { return d.b; }).length;
-    return 3 * st.immunity.length + 2 * best + st.duelWins + (st.captainBlue.length + st.captainRed.length) - st.pota.length;
+    return 3 * st.immunity.length + 2 * best + st.duelWins + (st.captainBlue.length + st.captainRed.length);
   }
   function successOrder(a, b) {
     var d = successScore(b.name) - successScore(a.name);
@@ -417,7 +418,8 @@
       (r.pota ? " · <b>" + r.pota + "</b> pota" : "");
   }
   /* ---- Son ay puanı: başarı formülü, yalnızca son 4 hafta ----
-     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası − 1×pota.
+     3×dokunulmazlık + 2×en iyi tabak + 1×düello galibiyeti + 1×kaptanlık haftası
+     (MK 18 Kas 2026: pota cezası kaldırıldı).
      Kaptanlık haftaları STATS'taki kaptanlık kayıtlarından (hafta bazında tekilleştirilmiş)
      alınır; pencere last4Range() ile aynıdır (son 4 hafta).
      windowScore aynı formülü herhangi bir hafta aralığında hesaplar (form tablosu). */
@@ -430,7 +432,7 @@
       var w = weekOfDate(x.date);
       if (w >= from && w <= to) cap++;
     });
-    return 3 * r.immunity + 2 * r.best + r.duelW + cap - r.pota;
+    return 3 * r.immunity + 2 * r.best + r.duelW + cap;
   }
   function recentScore(name) {
     var range = last4Range();
