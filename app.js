@@ -1417,7 +1417,7 @@
       });
       return {
         name: c.name,
-        score: 3 * ws.immunity + 2 * ws.best + ws.duelW + cap - ws.pota,
+        score: 3 * ws.immunity + 2 * ws.best + ws.duelW + cap,
         immunity: ws.immunity, best: ws.best, duelW: ws.duelW, duelL: ws.duelL, cap: cap, pota: ws.pota
       };
     });
