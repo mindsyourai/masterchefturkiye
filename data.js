@@ -687,7 +687,7 @@ const EPISODES = [
  },
  "notes": [
   "Misafir jüri: Kadir Ezildi (Mavi 2 – Kırmızı 3), Yasemin Sakallıoğlu (4-1), Sibel Turnagöl (2-3); genel skor Mavi 8 – Kırmızı 7",
-  "Avcı böreği Şükran + Armağan ikilisi Tolga'ya karşı oynandı; MK 'yarım puan' dedi — düello berabere sayıldı, detay netleşince düzeltilecek",
+  "Avcı böreği Şükran + Armağan ikilisi Tolga'ya karşı oynandı; ikili kazandı (MK 'yarım puan' dedi)",
   "Bireysel dokunulmazlık: Nilay (yemek bilinmiyor)",
   "Armağan potaya girdi (4. aday, konsey oylaması — yeni sistem); pota 4 kişi tamamlandı",
   "20 Kasım ödül oyunu takım oyunu değildi (Armağan kazandı, 100.000 TL); karta işlenmedi"
