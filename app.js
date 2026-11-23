@@ -975,7 +975,7 @@
         h += "<h4>" + esc(r.name) + " — ürün: " + esc(r.product) + "</h4>";
         h += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th><th>Toplam</th></tr></thead><tbody>';
         r.scores.forEach(function (s) {
-          h += "<tr><td>" + esc(s.name) + "</td><td>" + s.mehmet + "</td><td>" + s.danilo + "</td><td>" + s.somer + "</td><td><strong>" + s.total + "</strong></td></tr>";
+          h += "<tr><td>" + esc(s.name) + "</td><td>" + (s.mehmet == null ? "—" : s.mehmet) + "</td><td>" + (s.danilo == null ? "—" : s.danilo) + "</td><td>" + (s.somer == null ? "—" : s.somer) + "</td><td><strong>" + s.total + "</strong></td></tr>";
         });
         h += "</tbody></table></div>";
         if (r.card) {
@@ -1005,6 +1005,7 @@
     var perChef = {};
     keys.forEach(function (k) { perChef[k] = {}; });
     ELEME_NIGHTS.forEach(function (n) {
+      if (n.totalsOnly) return; /* şef başına dağılımı olmayan gece: Şef Karnesi + ortalamalar 15 Kasım verisinde kalır */
       n.rounds.forEach(function (r) {
         r.scores.forEach(function (s) {
           keys.forEach(function (k) {
