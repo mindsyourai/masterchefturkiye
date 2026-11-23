@@ -3,6 +3,37 @@
 // Kartlar: brand/ig-posts/post-NN.png dosyalarının web/images/ altındaki kopyaları + Instagram bağlantısı.
 const ELEME_NIGHTS = [
   {
+    "date": "22 Kasım 2026",
+    "dateISO": "2026-11-22",
+    "title": "22 Kasım eleme gecesi",
+    "pot": ["Şükran Boyraz", "Tolgahan Özden", "Şadi Altınay", "Armağan Kırant"],
+    "eliminated": "Şükran Boyraz",
+    "totalsOnly": true,
+    "note": "Şef başına puan dağılımı (Mehmet / Danilo / Somer) web kaynaklarında yok — yalnızca tur toplamları doğrulandı. Bu gece Şef Karnesi ve yarışmacı ortalaması hesaplarına katılmaz.",
+    "rounds": [
+      {
+        "name": "1. tur",
+        "product": "Yer elması",
+        "scores": [
+          {"name": "Armağan Kırant", "total": 21.5},
+          {"name": "Şükran Boyraz", "total": 21},
+          {"name": "Şadi Altınay", "total": 20.5},
+          {"name": "Tolgahan Özden", "total": 17.5}
+        ]
+      },
+      {
+        "name": "2. tur",
+        "product": "Ben Saksı Değilim",
+        "scores": [
+          {"name": "Armağan Kırant", "total": 20.5},
+          {"name": "Şadi Altınay", "total": 19},
+          {"name": "Tolgahan Özden", "total": 18},
+          {"name": "Şükran Boyraz", "total": 13}
+        ]
+      }
+    ]
+  },
+  {
     "date": "15 Kasım 2026",
     "dateISO": "2026-11-15",
     "title": "15 Kasım eleme gecesi",
