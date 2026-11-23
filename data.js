@@ -7,8 +7,8 @@
 const SITE = {
  "title": "MasterChef Türkiye 2026",
  "subtitle": "Gün gün yemek listesi — kim ne pişirdi, kim kazandı",
- "updated": "21 Kasım 2026",
- "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 146 bölüm, 2.803 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır. 15 Kasım MK'nin bildirdiği sonuçlarla işlendi — eleme gecesi (1. tur kereviz, 2. tur ravioli; şef puanları kartlarda): genel toplam Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten elendi, 12 kaldı. 16 Kasım MK'nin bildirdiği sonuçlarla işlendi — 15. hafta kaptanlık (kuru fasulye pilav; son ikili Ayşe + Armağan, klasik kuru fasulyesiyle Ayşe kazandı, Mavi kaptan; Kırmızı kaptan olarak Şükran'ı seçti). Kaptan düellosu (Fransız omlet) Ayşe kazandı; ödül olarak Tolgahan'ı aldı, Burçin'i verdi (Burçin Mavi'de olmak istemediğini söyledi); Tolga Muhammed'i almadığı için kızdı. 17 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (kiş/tart gecesi, 7 düello; Kırmızı takımda kiş hamurlarının tamamını Armağan yaptı, Şadi'ninki hariç), Nilay bireysel dokunulmazlık (Hatay Mortadella), ilk aday Şükran. Pota: Şükran. 18 Kasım MK'nin bildirdiği sonuçlarla işlendi — Kırmızı 5-2 kazandı (dolma gecesi, 7 düello; gecenin yemeği Şükran'ın Mumbar'ı; şefler Eyüp Can'ın Kaburga dolması kararını sorguladı). Mavi'nin bireysel dokunulmazlık oyununu (sıfır atık yaratıcı tabaklar, final ikilisi Enes + Bahar) Enes kazandı; oylamada ikinci aday Tolgahan oldu (Eyüp, Tolga'nın ona oy vermemesiyle kurtuldu). Pota: Şükran + Tolgahan. 19 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 4-3 kazandı (tatlı gecesi, 7 düello), Armağan bireysel dokunulmazlık (Kinoa), üçüncü aday Şadi (oybirliği). Pota: Şükran + Tolgahan + Şadi. 20 Kasım ödül oyunu takım oyunu değildi (Armağan kazandı, 100.000 TL); karta işlenmedi. 21 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 8-7 kazandı (misafir jüri: Kadir Ezildi 2-3, Yasemin Sakallıoğlu 4-1, Sibel Turnagöl 2-3; 5 tabak: Zeytinyağlı dolma Nilay, Çorba Bahar, Avcı böreği yarım puan, Patlıcan yemeği Eyüp Can, Tatlı Şadi), Nilay bireysel dokunulmazlık, dördüncü aday Armağan (konsey oylaması). Pota: Şükran + Tolgahan + Şadi + Armağan (4 kişi, yeni sistem).",
+ "updated": "23 Kasım 2026",
+ "note": "Tam sezon transkript dosyası çıkarıldı (132 bölüm + 27 Ekim): 147 bölüm, 2.803 yemek kaydı. 6 Kasım artık transkriptten (Kırmızı kazandı, Tolgahan dokunulmazlık, Şadi + Kübra aday; Tolgahan potada kaldı). 7 Kasım son takım oyunu (Kırmızı 4-3, Armağan son dokunulmazlık); 8 Kasım eleme web doğrulamasıyla işlendi — Kübra elendi, 13 kaldı (transkript bekleniyor, tam yemekler gelince düzeltilecek). 9 Kasım 14. hafta kaptanlık web doğrulamasıyla işlendi — Tolga Mavi kaptan, Tolgahan Kırmızı kaptan (kaptanlık yemeği bilinmiyor, transkript bekleniyor; takım kadroları MK'den geldi (Enes Mavi, 10 Kas doğrulandı); yeni eleme sistemi duyuruldu (dokunulmazlık sadece kendini korur, Pazar potası 4 kişi). 10 Kasım web doğrulamasıyla işlendi — Mavi 4-3 kazandı (Atatürk'ün sevdiği yemekler), Nilay bireysel dokunulmazlık (balıklı ekmek), ilk aday Nurten. 11 Kasım transkript doğrulamasıyla işlendi — Kırmızı 4-3 kazandı (kebap gecesi; 7. kebap Altı Ezmeli), Armağan bireysel dokunulmazlık (cennet hurması; final ikilisi Armağan + Eyüp Can), ikinci aday Burçin. Pota: Nurten + Burçin. 12 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (mantar gecesi), Tolgahan bireysel dokunulmazlık (Milyon Dolar Chicken Casserole), üçüncü aday Bahar. Pota: Nurten + Burçin + Bahar. 13 Kasım MK'nin bildirdiği sonuçlarla işlendi — ödül oyunu (ana takım yarışmasının parçası değil; 112 Acil Sağlık menüsü, seyirci jürisi 8 kişi 5 tabağı puanladı, Kırmızı 25-15), bireysel finalde Tolgahan Bahar'ı geçerek 100.000 TL kazandı; konsey yok, pota Nurten + Burçin + Bahar. 14 Kasım MK'nin bildirdiği sonuçlarla işlendi — dördüncü takım oyununu Kırmızı 12-8 kazandı (eski yarışmacılar jüri: Sergen & Hasan 3-2, Esra & Dilara 2-3, Metin & Kıvanç 1-4, Semih & Kerem 2-3); Ayşe bireysel dokunulmazlık kazandı, konsey 4. adayı belirledi: Enes, pota Nurten + Burçin + Bahar + Enes. Bilinmeyen yemek/kazanan uydurulmaz — 'bilinmiyor' yazılır. 15 Kasım MK'nin bildirdiği sonuçlarla işlendi — eleme gecesi (1. tur kereviz, 2. tur ravioli; şef puanları kartlarda): genel toplam Enes 40, Burçin 39, Bahar 36, Nurten 33 — Nurten elendi, 12 kaldı. 16 Kasım MK'nin bildirdiği sonuçlarla işlendi — 15. hafta kaptanlık (kuru fasulye pilav; son ikili Ayşe + Armağan, klasik kuru fasulyesiyle Ayşe kazandı, Mavi kaptan; Kırmızı kaptan olarak Şükran'ı seçti). Kaptan düellosu (Fransız omlet) Ayşe kazandı; ödül olarak Tolgahan'ı aldı, Burçin'i verdi (Burçin Mavi'de olmak istemediğini söyledi); Tolga Muhammed'i almadığı için kızdı. 17 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 5-2 kazandı (kiş/tart gecesi, 7 düello; Kırmızı takımda kiş hamurlarının tamamını Armağan yaptı, Şadi'ninki hariç), Nilay bireysel dokunulmazlık (Hatay Mortadella), ilk aday Şükran. Pota: Şükran. 18 Kasım MK'nin bildirdiği sonuçlarla işlendi — Kırmızı 5-2 kazandı (dolma gecesi, 7 düello; gecenin yemeği Şükran'ın Mumbar'ı; şefler Eyüp Can'ın Kaburga dolması kararını sorguladı). Mavi'nin bireysel dokunulmazlık oyununu (sıfır atık yaratıcı tabaklar, final ikilisi Enes + Bahar) Enes kazandı; oylamada ikinci aday Tolgahan oldu (Eyüp, Tolga'nın ona oy vermemesiyle kurtuldu). Pota: Şükran + Tolgahan. 19 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 4-3 kazandı (tatlı gecesi, 7 düello), Armağan bireysel dokunulmazlık (Kinoa), üçüncü aday Şadi (oybirliği). Pota: Şükran + Tolgahan + Şadi. 20 Kasım ödül oyunu takım oyunu değildi (Armağan kazandı, 100.000 TL); karta işlenmedi. 21 Kasım MK'nin bildirdiği sonuçlarla işlendi — Mavi 8-7 kazandı (misafir jüri: Kadir Ezildi 2-3, Yasemin Sakallıoğlu 4-1, Sibel Turnagöl 2-3; 5 tabak: Zeytinyağlı dolma Nilay, Çorba Bahar, Avcı böreği yarım puan, Patlıcan yemeği Eyüp Can, Tatlı Şadi), Nilay bireysel dokunulmazlık, dördüncü aday Armağan (konsey oylaması). Pota: Şükran + Tolgahan + Şadi + Armağan (4 kişi, yeni sistem). 22 Kasım web doğrulamasıyla işlendi — eleme gecesi (1. tur yer elması, 2. tur Somer Şef'in 'Ben Saksı Değilim'i; tur toplamları: Armağan 42, Şadi 39.5, Tolgahan 35.5, Şükran 34 — Şükran elendi, 11 kaldı; şef başına puan dağılımı web kaynaklarında yok).",
  "remaining": [
   "Armağan Kırant",
   "Muhammed Yahya Haliloğlu",
@@ -16,7 +16,6 @@ const SITE = {
   "Şadi Altınay",
   "Tolgahan Özden",
   "Ayşe Nur İnal",
-  "Şükran Boyraz",
   "Bahar Kaya",
   "Burçin Oğuz",
   "Eyüp Can Güneş",
@@ -79,6 +78,10 @@ const SITE = {
   {
    "name": "Nurten Ocak Tamer",
    "date": "15 Kasım 2026"
+  },
+  {
+   "name": "Şükran Boyraz",
+   "date": "22 Kasım 2026"
   }
  ],
  "transcriptComplete": [
@@ -478,7 +481,8 @@ const CONTESTANTS = [
   "photo": "images/sukran-boyraz.jpg",
   "apron": 18,
   "group": "4. Grup",
-  "status": "yarışıyor",
+  "status": "elendi",
+  "elimDate": "22 Kasım 2026",
   "wins": [
    "6 Ağu — önlük (sebzeli gyoza)",
    "21 Ağu — bireysel dokunulmazlık (Eli böğründe)",
@@ -657,6 +661,62 @@ const CONTESTANTS = [
 
 /* Bölümler — EN SON önce. source: "transkript" | "web" | "teyit" */
 const EPISODES = [
+{
+ "candidates": [],
+ "captains": {
+  "blue": "Ayşe Nur İnal",
+  "red": "Şükran Boyraz"
+ },
+ "date": "22 Kasım 2026",
+ "eliminated": "Şükran Boyraz",
+ "games": [
+  {
+   "detail": "Ana ürün yer elması; tur toplamları: Armağan 21.5, Şükran 21, Şadi 20.5, Tolgahan 17.5 (şef başına puan dağılımı web kaynaklarında yok)",
+   "name": "Eleme 1. tur — Yer elması",
+   "winner": null
+  },
+  {
+   "detail": "Somer Şef'in imza tabağı 'Ben Saksı Değilim'; tur toplamları: Armağan 20.5, Şadi 19, Tolgahan 18, Şükran 13 (şef başına puan dağılımı web kaynaklarında yok). Genel toplam: Armağan 42, Şadi 39.5, Tolgahan 35.5, Şükran 34 — en düşük toplamla Şükran elendi",
+   "name": "Eleme 2. tur — Ben Saksı Değilim",
+   "winner": null
+  }
+ ],
+ "id": "2026-11-22",
+ "immunity": null,
+ "notes": [
+  "Şef başına puan dağılımı web kaynaklarında yok — yalnızca tur toplamları doğrulandı",
+  "Armağan potadan ilk çıkan, Şadi ikinci; son ikili Şükran + Tolgahan"
+ ],
+ "pot": [
+  "Şükran Boyraz",
+  "Tolgahan Özden",
+  "Şadi Altınay",
+  "Armağan Kırant"
+ ],
+ "source": "web",
+ "summary": "Eleme gecesi: 1. tur yer elmasında Armağan 21.5 ile lider, Tolgahan 17.5 ile son. 2. tur 'Ben Saksı Değilim'de Armağan 20.5 ile turu kazandı. Genel toplam: Armağan 42, Şadi 39.5, Tolgahan 35.5, Şükran 34 — Şükran Boyraz elendi. Kalan 11 yarışmacı.",
+ "teams": {
+  "blue": [
+   "Ayşe Nur İnal",
+   "Tolga Çakuş",
+   "Bahar Kaya",
+   "Enes Vardar",
+   "Eyüp Can Güneş",
+   "Tolgahan Özden"
+  ],
+  "red": [
+   "Şükran Boyraz",
+   "Muhammed Yahya Haliloğlu",
+   "Armağan Kırant",
+   "Elif Nilay Özgen",
+   "Şadi Altınay",
+   "Burçin Oğuz"
+  ]
+ },
+ "title": "Eleme: Şükran elendi",
+ "week": "15. Hafta",
+ "weekday": "Pazar"
+},
 {
  "candidates": [
   "Armağan Kırant"
