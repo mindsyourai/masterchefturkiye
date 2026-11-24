@@ -1157,6 +1157,75 @@
       return '<h3>Şef puan dağılımı</h3><div class="table-wrap"><div style="min-width:560px">' + svg + '</div></div>' + legend +
         '<p class="note" style="text-align:center">Kutu Q1–Q3 • çizgi medyan • nokta ortalama • bıyık min–max</p>';
     })();
+    /* ---- Aynı tabak, üç şef: tabak tabak şef puanları ----
+       Her eleme gecesi, her tur (tabak): aynı yarışmacının tabağına
+       üç şefin verdiği puan yan yana. Yeni eleme gecesi gelince
+       grafikler kendiliğinden eklenir. */
+    var dishChartHtml = (function () {
+      var nights = ELEME_NIGHTS.filter(function (n) { return !n.totalsOnly; }).slice().reverse();
+      if (!nights.length) return "";
+      var chefRGB = { mehmet: [166, 25, 46], danilo: [15, 118, 110], somer: [30, 58, 95] };
+      function rgb(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
+      var legend = '<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;margin:4px 0 12px;font-size:14px;">' +
+        keys.map(function (k) {
+          return '<span><span style="display:inline-block;width:14px;height:14px;background:' + rgb(chefRGB[k]) + ';vertical-align:middle;margin-right:6px"></span>' + esc(labels[k]) + '</span>';
+        }).join("") + '</div>';
+      var h = '<h3>Aynı tabak, üç şef</h3>' + legend +
+        '<p class="note">Aynı yarışmacının aynı tabağına üç şefin verdiği puan — tabak tabak. Çubukların üstündeki sayı puandır.</p>';
+      nights.forEach(function (n) {
+        h += '<h4 style="margin:18px 0 8px">' + esc(n.date) + (n.eliminated ? ' — ' + esc(shortOf(n.eliminated)) + ' elendi' : '') + '</h4>';
+        h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px">';
+        n.rounds.forEach(function (r) {
+          var contestants = r.scores.map(function (s) { return s.name; });
+          var VW = 360, VH = 250, PL = 30, PR = 355, PT = 24, PB = 205;
+          function yv(v) { return PB - v * (PB - PT) / 10; }
+          var svg = '<svg viewBox="0 0 ' + VW + ' ' + VH + '" style="width:100%;height:auto;display:block" role="img" aria-label="' + esc(r.name + ' — ' + (r.product || '')) + ' şef puanları">';
+          [0, 2, 4, 6, 8, 10].forEach(function (v) {
+            var y = yv(v);
+            svg += '<line x1="' + PL + '" y1="' + y + '" x2="' + PR + '" y2="' + y + '" stroke="#e8dec8" stroke-width="1"/>';
+            svg += '<text x="' + (PL - 5) + '" y="' + (y + 3) + '" text-anchor="end" font-size="10" fill="#6e6458">' + v + '</text>';
+          });
+          var groupW = (PR - PL) / Math.max(1, contestants.length);
+          contestants.forEach(function (name, ci) {
+            var s = r.scores[ci];
+            var gcx = PL + groupW * (ci + 0.5);
+            keys.forEach(function (k, ki) {
+              var val = s[k];
+              if (typeof val !== "number") return;
+              var cx = gcx + (ki - 1) * 21;
+              var bw = 18, x = cx - bw / 2;
+              var y = yv(val);
+              svg += '<rect x="' + x + '" y="' + y + '" width="' + bw + '" height="' + (PB - y) + '" fill="' + rgb(chefRGB[k]) + '"/>';
+              svg += '<text x="' + cx + '" y="' + (y - 4) + '" text-anchor="middle" font-size="10" font-weight="bold" fill="' + rgb(chefRGB[k]) + '">' + val + '</text>';
+            });
+            svg += '<text x="' + gcx + '" y="' + (PB + 16) + '" text-anchor="middle" font-size="10" font-weight="bold" fill="#2b2320">' + esc(shortOf(name)) + '</text>';
+          });
+          svg += '</svg>';
+          var worst = null;
+          r.scores.forEach(function (s) {
+            var hi = null, lo = null;
+            keys.forEach(function (k) {
+              if (typeof s[k] !== "number") return;
+              if (!hi || s[k] > hi.val) hi = { chef: labels[k], val: s[k] };
+              if (!lo || s[k] < lo.val) lo = { chef: labels[k], val: s[k] };
+            });
+            if (!hi || !lo) return;
+            var spread = hi.val - lo.val;
+            if (!worst || spread > worst.spread) worst = { name: s.name, spread: spread, hi: hi, lo: lo };
+          });
+          var note = "";
+          if (worst) {
+            if (worst.spread <= 0.5) note = "Üç şef de aynı fikirde — en büyük fark sadece " + worst.spread + " puan.";
+            else note = "En büyük fark: " + esc(shortOf(worst.name)) + " — " + esc(worst.hi.chef) + " " + worst.hi.val + ", " + esc(worst.lo.chef) + " " + worst.lo.val + " (" + worst.spread + " puan).";
+          }
+          h += '<div><h5 style="margin:0 0 4px;font-size:15px">' + esc(r.name + (r.product ? ' — ' + r.product : '')) + '</h5>' +
+            '<div class="table-wrap" style="margin:0"><div style="min-width:320px">' + svg + '</div></div>' +
+            (note ? '<p class="note" style="margin:4px 0 0">' + note + '</p>' : '') + '</div>';
+        });
+        h += '</div>';
+      });
+      return h;
+    })();
     var contRows = Object.keys(cont).map(function (name) {
       return { name: name, total: cont[name].total, rounds: cont[name].rounds, avg: avg(cont[name].total, cont[name].rounds) };
     }).sort(function (a, b) { return b.avg - a.avg; });
@@ -1168,6 +1237,7 @@
     chefHtml += "</tbody></table></div>";
     chefHtml += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
     chefHtml += boxPlotHtml;
+    chefHtml += dishChartHtml;
     chefHtml += "<h3>Şef başına yarışmacı ortalaması</h3>";
     chefHtml += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th></tr></thead><tbody>';
     contRows.forEach(function (r) {
