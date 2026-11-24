@@ -31,15 +31,36 @@
 
   <nav class="page-jump" aria-label="Sayfa içi gezinme">
     <a href="#week-current-section">Bu Hafta</a>
+    <a href="#eleme-section">Eleme</a>
+    <a href="#yorum">Yorum</a>
     <a href="#players-section">Oyuncular</a>
     <a href="#team-stats-section">İstatistikler</a>
-    <a href="#eleme-section">Eleme</a>
   </nav>
   <section id="week-current-section" aria-label="Bu hafta">
     <h2>Bu Hafta <span class="week-label" id="week-current-label"></span></h2>
     <p class="note">En yeni önce.</p>
     <div class="week-row" id="week-current"></div>
   </section>
+
+  <section id="eleme-section">
+    <h2>Eleme Gecesi Puanları ⭐</h2>
+    <p class="note">Eleme gecelerinde şeflerin her yarışmacıya verdiği puanlar — tur tur, ürün ürün. Toplamlar aritmetikle doğrulanır. (22 Kasım gecesinde şef başına dağılım web kaynaklarında yok; yalnızca tur toplamları var.)</p>
+    <div id="eleme-nights"></div>
+    <div class="eleme-cards" id="eleme-cards">
+      <div class="eleme-stat-card" id="eleme-players"></div>
+      <div class="eleme-stat-card" id="eleme-chefs"></div>
+    </div>
+  </section>
+
+  <section id="yorum" aria-label="Eleme gecesi yorumu">
+    <h2>Eleme Gecesi Yorumu — 22 Kasım 🍽️</h2>
+    <p><strong>Şükran 1 puanla elendi.</strong> Bir puan. Tolgahan 35, Şükran 34. O 1 puan nerede kayboldu dersen: ikinci turda. "Ben Saksı Değilim" tabağına üç şef de 4–4,5 verdi — üçü de aynı fikirdeydi, tabak olmamış. Ama asıl hikâye birinci turda: yer elmasında Mehmet 6 verdi, Danilo 7,5, Somer 7,5. Aynı tabak, aynı gece, 1,5 puan fark.</p>
+    <p>Peki bu fark nereden geliyor? Rakamlara bak: iki eleme gecesinde Mehmet 16 tabaktan 15'inde en düşük puanı veren şef oldu. Danilo ise en cömert — ortalaması 6,53, Mehmet'in 5,66. Armağan'ın yer elmasına Danilo 8 verdi, Mehmet 6,5. Yani aynı tabağa biri "neredeyse kusursuz" derken öbürü "eh işte" diyor. Şeflerin damak zevki mi farklı, yoksa biri diğerinden daha mı katı?</p>
+    <p>Bir de şu var: Mehmet, Şükran'a herhangi bir tabakta 1 puan fazla verseydi, Şükran Tolgahan'la 35–35 berabere kalacaktı. O zaman ne olurdu, bilinmez — ama 1 puanın bir yarışmacıyı evine gönderdiği gece, şeflerin puanları arasındaki 1,5 puanlık farklar biraz daha dikkat çekici oluyor, değil mi?</p>
+    <p>Yorum sizde. Puanların tamamı, grafikler ve Şef Karnesi bu sayfada — yeni bölümde görüşmek üzere. Bizi Instagram'da da takip edin: <a href="https://www.instagram.com/mymastercheffanpage/" target="_blank" rel="noopener">@mymastercheffanpage</a></p>
+    <p class="note">Bu yorum sayfanın kendi görüşüdür; puanlar ve ortalamalar eleme gecesi kayıtlarından hesaplanmıştır.</p>
+  </section>
+
   <section id="players-section">
     <h2>Oyuncular 👥</h2>
     <div class="form-board" id="form-board">
@@ -58,20 +79,13 @@
     <div class="players-grid" id="players-grid"></div>
     <div id="contestant-detail" class="detail-panel" hidden></div>
   </section>
+
   <section id="team-stats-section">
     <h2>Takım İstatistikleri 📊</h2>
     <div class="season-grid" id="season-band-grid"></div>
     <div id="team-combos" data-summary="1"></div>
   </section>
-  <section id="eleme-section">
-    <h2>Eleme Gecesi Puanları ⭐</h2>
-    <p class="note">Eleme gecelerinde şeflerin her yarışmacıya verdiği puanlar — tur tur, ürün ürün. Toplamlar aritmetikle doğrulanır. (22 Kasım gecesinde şef başına dağılım web kaynaklarında yok; yalnızca tur toplamları var.)</p>
-    <div id="eleme-nights"></div>
-    <div class="eleme-cards" id="eleme-cards">
-      <div class="eleme-stat-card" id="eleme-players"></div>
-      <div class="eleme-stat-card" id="eleme-chefs"></div>
-    </div>
-  </section>
+
   <section class="ad-slot" aria-label="Reklam alanı">
     <p class="ad-title">Reklamınız Burada Olabilir</p>
     <p class="ad-text">Bu alan sponsorluk için ayrıldı. Siteniz burada görünsün istiyorsanız bize ulaşın.</p>
@@ -91,7 +105,6 @@
     </div>
   </section>
 
-
   <section id="juri" aria-label="Jüri">
     <h2>Jüri 👨‍🍳</h2>
     <img class="hero-poster" src="images/masterchef-grup.jpg" alt="MasterChef Türkiye 2026 — üç jüri üyesi: Mehmet Yalçınkaya, Somer Sivrioğlu ve Danilo Zanna" loading="lazy">
@@ -101,15 +114,6 @@
       <figure class="judge"><img src="images/danilo-zanna.jpg" alt="Danilo Zanna" loading="lazy"><figcaption>Danilo Zanna<span class="judge-note"><a class="insta-link" href="https://www.instagram.com/danilozanna" target="_blank" rel="noopener">📷 @danilozanna · 2,3 Mn takipçi</a></span></figcaption></figure>
     </div>
     <p class="photo-credit">Fotoğraflar: MindYourAI (MasterChef Türkiye / TV8).</p>
-  </section>
-
-  <section id="yorum" aria-label="Eleme gecesi yorumu">
-    <h2>Eleme Gecesi Yorumu — 22 Kasım 🍽️</h2>
-    <p><strong>Şükran 1 puanla elendi.</strong> Bir puan. Tolgahan 35, Şükran 34. O 1 puan nerede kayboldu dersen: ikinci turda. "Ben Saksı Değilim" tabağına üç şef de 4–4,5 verdi — üçü de aynı fikirdeydi, tabak olmamış. Ama asıl hikâye birinci turda: yer elmasında Mehmet 6 verdi, Danilo 7,5, Somer 7,5. Aynı tabak, aynı gece, 1,5 puan fark.</p>
-    <p>Peki bu fark nereden geliyor? Rakamlara bak: iki eleme gecesinde Mehmet 16 tabaktan 15'inde en düşük puanı veren şef oldu. Danilo ise en cömert — ortalaması 6,53, Mehmet'in 5,66. Armağan'ın yer elmasına Danilo 8 verdi, Mehmet 6,5. Yani aynı tabağa biri "neredeyse kusursuz" derken öbürü "eh işte" diyor. Şeflerin damak zevki mi farklı, yoksa biri diğerinden daha mı katı?</p>
-    <p>Bir de şu var: Mehmet, Şükran'a herhangi bir tabakta 1 puan fazla verseydi, Şükran Tolgahan'la 35–35 berabere kalacaktı. O zaman ne olurdu, bilinmez — ama 1 puanın bir yarışmacıyı evine gönderdiği gece, şeflerin puanları arasındaki 1,5 puanlık farklar biraz daha dikkat çekici oluyor, değil mi?</p>
-    <p>Yorum sizde. Puanların tamamı, grafikler ve Şef Karnesi bu sayfada — yeni bölümde görüşmek üzere. Bizi Instagram'da da takip edin: <a href="https://www.instagram.com/mymastercheffanpage/" target="_blank" rel="noopener">@mymastercheffanpage</a></p>
-    <p class="note">Bu yorum sayfanın kendi görüşüdür; puanlar ve ortalamalar eleme gecesi kayıtlarından hesaplanmıştır.</p>
   </section>
 
   <section id="iletisim" aria-label="İletişim">
