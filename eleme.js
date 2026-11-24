@@ -8,27 +8,26 @@ const ELEME_NIGHTS = [
     "title": "22 Kasım eleme gecesi",
     "pot": ["Şükran Boyraz", "Tolgahan Özden", "Şadi Altınay", "Armağan Kırant"],
     "eliminated": "Şükran Boyraz",
-    "totalsOnly": true,
-    "note": "Şef başına puan dağılımı (Mehmet / Danilo / Somer) web kaynaklarında yok — yalnızca tur toplamları doğrulandı. Bu gece Şef Karnesi ve yarışmacı ortalaması hesaplarına katılmaz.",
+    "note": "Şef başına puan dağılımı MK'nin transkriptinden (24 Kasım 2026). Tolgahan 2. tur toplamı 17.5 (web kaynaklarındaki 18 hatalıydı) — genel toplam 35.",
     "rounds": [
       {
         "name": "1. tur",
         "product": "Yer elması",
         "scores": [
-          {"name": "Armağan Kırant", "total": 21.5},
-          {"name": "Şükran Boyraz", "total": 21},
-          {"name": "Şadi Altınay", "total": 20.5},
-          {"name": "Tolgahan Özden", "total": 17.5}
+          {"name": "Armağan Kırant", "mehmet": 6.5, "danilo": 8, "somer": 7, "total": 21.5},
+          {"name": "Şükran Boyraz", "mehmet": 6, "danilo": 7.5, "somer": 7.5, "total": 21},
+          {"name": "Şadi Altınay", "mehmet": 6.5, "danilo": 7, "somer": 7, "total": 20.5},
+          {"name": "Tolgahan Özden", "mehmet": 5, "danilo": 6, "somer": 6.5, "total": 17.5}
         ]
       },
       {
         "name": "2. tur",
         "product": "Ben Saksı Değilim",
         "scores": [
-          {"name": "Armağan Kırant", "total": 20.5},
-          {"name": "Şadi Altınay", "total": 19},
-          {"name": "Tolgahan Özden", "total": 18},
-          {"name": "Şükran Boyraz", "total": 13}
+          {"name": "Armağan Kırant", "mehmet": 6.5, "danilo": 7, "somer": 7, "total": 20.5},
+          {"name": "Şadi Altınay", "mehmet": 6, "danilo": 6.5, "somer": 6.5, "total": 19},
+          {"name": "Tolgahan Özden", "mehmet": 5.5, "danilo": 6, "somer": 6, "total": 17.5},
+          {"name": "Şükran Boyraz", "mehmet": 4, "danilo": 4.5, "somer": 4.5, "total": 13}
         ]
       }
     ]
