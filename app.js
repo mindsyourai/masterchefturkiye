@@ -36,6 +36,53 @@
     var names = ["", "Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
     return parseInt(p[2], 10) + " " + names[parseInt(p[1], 10)] + " " + p[0];
   }
+  /* ---- Tarih yardımcıları: kartlarda hafta yerine tarih aralığı ----
+     Bölüm tarihleri "22 Kasım 2026" biçiminde tutulur; parseTrDate bunları
+     ISO'ya çevirir, dateRangeLabel aralık yazar ("17–21 Kasım 2026"). */
+  var TR_MONTHS_FULL = ["", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+  var TR_MONTHS = { "Ocak": 1, "Şubat": 2, "Mart": 3, "Nisan": 4, "Mayıs": 5, "Haziran": 6, "Temmuz": 7, "Ağustos": 8, "Eylül": 9, "Ekim": 10, "Kasım": 11, "Aralık": 12 };
+  function parseTrDate(str) {
+    var p = (str || "").trim().split(/\s+/);
+    if (p.length < 3) return null;
+    var m = TR_MONTHS[p[1]];
+    if (!m) return null;
+    var d = parseInt(p[0], 10), y = parseInt(p[2], 10);
+    if (!d || !y) return null;
+    return y + "-" + (m < 10 ? "0" : "") + m + "-" + (d < 10 ? "0" : "") + d;
+  }
+  function trDateFull(iso) {
+    if (!iso) return "";
+    var p = iso.split("-");
+    return parseInt(p[2], 10) + " " + TR_MONTHS_FULL[parseInt(p[1], 10)] + " " + p[0];
+  }
+  function shortDate(iso) { /* "22 Kas" — trDate'den yılı at */
+    return trDate(iso).replace(/ \d{4}$/, "");
+  }
+  function dateRangeLabel(isos) {
+    var arr = (isos || []).filter(Boolean).sort();
+    if (!arr.length) return "";
+    var a = arr[0], b = arr[arr.length - 1];
+    if (a === b) return trDateFull(a);
+    var pa = a.split("-"), pb = b.split("-");
+    var da = parseInt(pa[2], 10), ma = parseInt(pa[1], 10), ya = pa[0];
+    var db = parseInt(pb[2], 10), mb = parseInt(pb[1], 10), yb = pb[0];
+    if (ya === yb && ma === mb) return da + "–" + db + " " + TR_MONTHS_FULL[mb] + " " + yb;
+    if (ya === yb) return da + " " + TR_MONTHS_FULL[ma] + " – " + db + " " + TR_MONTHS_FULL[mb] + " " + yb;
+    return trDateFull(a) + " – " + trDateFull(b);
+  }
+  function weekIsos(weekStr) {
+    var w = String(weekStr), out = [];
+    EPISODES.forEach(function (ep) {
+      if (String(ep.week) === w) { var iso = parseTrDate(ep.date); if (iso) out.push(iso); }
+    });
+    return out;
+  }
+  function weekDateRangeLabel(weekStr) { return dateRangeLabel(weekIsos(weekStr)); }
+  function weeksRangeLabel(fromW, toW) {
+    var isos = [];
+    for (var w = fromW; w <= toW; w++) isos = isos.concat(weekIsos(w + ". Hafta"));
+    return dateRangeLabel(isos);
+  }
   function shortToFull(short) {
     for (var i = 0; i < CONTESTANTS.length; i++) {
       if (CONTESTANTS[i].short === short) return CONTESTANTS[i].name;
@@ -193,7 +240,8 @@
     return '<ul class="dish-list">' + items + "</ul>";
   }
   function renderEpisodeHead(ep, showBadge) {
-    return '<header class="ep-head"><div><div class="ep-date">' + esc(ep.date) + " · " + esc(ep.weekday || "") + " · " + esc(ep.week || "Ana Kadro Seçimleri") + "</div>" +
+    var dateParts = [ep.date, ep.weekday].filter(function (x) { return !!x; });
+    return '<header class="ep-head"><div><div class="ep-date">' + esc(dateParts.join(" · ")) + "</div>" +
       '<h3>' + esc(ep.title) + "</h3></div>" + (showBadge ? sourceBadge(ep.source) : "") + "</header>";
   }
   function renderEpisodeBody(ep, hideNotes) {
@@ -239,8 +287,13 @@
       else groups.push({ week: wk, eps: [ep] });
     });
     el("episodes").innerHTML = groups.map(function (g, i) {
+      var isos = g.eps.map(function (e) { return parseTrDate(e.date); });
+      var range = dateRangeLabel(isos);
+      var label = (g.week === "Ana Kadro Seçimleri")
+        ? "Ana Kadro Seçimleri" + (range ? " — " + range : "")
+        : (range || g.week);
       return '<details class="week-group" data-week="' + esc(g.week) + '"' + (i === 0 ? " open" : "") + '>' +
-        "<summary>" + esc(g.week) + " — " + g.eps.length + " bölüm</summary>" +
+        "<summary title=\"" + esc(g.week) + "\">" + esc(label) + " — " + g.eps.length + " bölüm</summary>" +
         g.eps.map(renderEpisode).join("") + "</details>";
     }).join("");
     var ec = el("ep-count");
@@ -254,10 +307,16 @@
      ya da kısa ad karışık yazıldığı için resolveName ile tam ada çevrilir. */
   function buildWeekTeams() {
     var weeks = [];
-    for (var w = 1; w <= 13; w++) {
+    var nums = [];
+    EPISODES.forEach(function (e) {
+      var n = parseInt(e.week, 10);
+      if (n && nums.indexOf(n) === -1) nums.push(n);
+    });
+    nums.sort(function (a, b) { return a - b; });
+    nums.forEach(function (w) {
       var wk = w + ". Hafta";
       var eps = EPISODES.filter(function (e) { return e.week === wk; });
-      if (!eps.length) continue;
+      if (!eps.length) return;
       var oldest = null, captains = null, capOk = true;
       eps.slice().reverse().forEach(function (e) {
         if (e.captains) {
@@ -266,16 +325,17 @@
         }
         if (e.teams && !oldest) oldest = e;
       });
-      if (!oldest) continue;
+      if (!oldest) return;
+      var range = dateRangeLabel(eps.map(function (e) { return parseTrDate(e.date); }));
       weeks.push({
-        week: wk, num: w,
+        week: wk, num: w, range: range || wk,
         date: oldest.date,
         captains: captains,
         captainsConsistent: capOk,
         blue: (oldest.teams.blue || []).map(function (x) { return resolveName(x) || x; }),
         red: (oldest.teams.red || []).map(function (x) { return resolveName(x) || x; })
       });
-    }
+    });
     return weeks;
   }
   function renderTeams() {
@@ -295,10 +355,10 @@
       }
       var h = '<details class="week-group team-week" data-week="' + esc(wk.week) + '" data-search="' +
         esc((wk.week + " " + wk.blue.join(" ") + " " + wk.red.join(" ")).toLowerCase()) + '"' + (i === 0 ? " open" : "") + ">" +
-        "<summary>" + esc(wk.week) + " — Mavi " + wk.blue.length + " · Kırmızı " + wk.red.length +
+        "<summary title=\"" + esc(wk.week) + "\">" + esc(wk.range) + " — Mavi " + wk.blue.length + " · Kırmızı " + wk.red.length +
         (wk.captains ? " · Kaptanlar: " + esc(wk.captains.blue) + " / " + esc(wk.captains.red) : "") + "</summary>" +
         '<div class="teams-grid">' + col("blue", wk.blue) + col("red", wk.red) + "</div>" +
-        "<p class='note'>Kadro kaynağı: " + esc(wk.date) + " bölümü (haftanın ilk günü).</p>";
+        "<p class='note'>Kadro kaynağı: " + esc(wk.date) + " bölümü (aralığın ilk günü).</p>";
       if (!wk.captainsConsistent) h += "<p class='note'>⚠️ Bu haftanın bölümlerinde kaptanlar tutarsız — kayıtlar kontrol edilmeli.</p>";
       return h + "</details>";
     }).join("");
@@ -1024,6 +1084,79 @@
     });
     var generous = chefRows.slice().sort(function (a, b) { return b.avg - a.avg; })[0];
     var strict = chefRows.slice().sort(function (a, b) { return a.avg - b.avg; })[0];
+    /* ---- Şef puan dağılımı (box plot): her şef, her gece ----
+       Eleme verisinden canlı hesaplanır; yeni eleme gecesi gelince
+       grafik kendiliğinden genişler. Kutu Q1–Q3, çizgi medyan,
+       nokta ortalama, bıyık min–max. Gece sırası kronolojik; açık
+       renk eski gece, tam renk son gece. */
+    var boxPlotHtml = (function () {
+      var nights = ELEME_NIGHTS.filter(function (n) { return !n.totalsOnly; }).slice().reverse();
+      if (!nights.length) return "";
+      var chefRGB = { mehmet: [166, 25, 46], danilo: [15, 118, 110], somer: [30, 58, 95] };
+      var chefLight = { mehmet: [232, 180, 190], danilo: [168, 210, 205], somer: [170, 190, 215] };
+      function rgb(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
+      function mix(a, b, t) { return [Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t), Math.round(a[2] + (b[2] - a[2]) * t)]; }
+      function quartiles(vals) {
+        var s = vals.slice().sort(function (x, y) { return x - y; });
+        var n = s.length;
+        function medOf(arr) { var m = arr.length; return m % 2 ? arr[(m - 1) / 2] : (arr[m / 2 - 1] + arr[m / 2]) / 2; }
+        return { min: s[0], q1: medOf(s.slice(0, Math.floor(n / 2))), med: medOf(s), q3: medOf(s.slice(Math.ceil(n / 2))), max: s[n - 1], mean: vals.reduce(function (a, b) { return a + b; }, 0) / n };
+      }
+      var M = nights.length;
+      var stats = {};
+      keys.forEach(function (k) {
+        stats[k] = nights.map(function (n) {
+          var vals = [];
+          n.rounds.forEach(function (r) { r.scores.forEach(function (s) { if (typeof s[k] === "number") vals.push(s[k]); }); });
+          return vals.length ? quartiles(vals) : null;
+        });
+      });
+      var VW = 760, VH = 320, PL = 36, PR = 750, PT = 24, PB = 280;
+      function yv(v) { return PB - v * (PB - PT) / 10; }
+      var svg = '<svg viewBox="0 0 ' + VW + ' ' + VH + '" style="width:100%;height:auto;display:block" role="img" aria-label="Şef puan dağılımı — kutu grafiği">';
+      [0, 2, 4, 6, 8, 10].forEach(function (v) {
+        var y = yv(v);
+        svg += '<line x1="' + PL + '" y1="' + y + '" x2="' + PR + '" y2="' + y + '" stroke="#e8dec8" stroke-width="1"/>';
+        svg += '<text x="' + (PL - 6) + '" y="' + (y + 4) + '" text-anchor="end" font-size="11" fill="#6e6458">' + v + '</text>';
+      });
+      var groupW = (PR - PL) / 3;
+      keys.forEach(function (k, ci) {
+        var gcx = PL + groupW * (ci + 0.5);
+        var boxW = Math.min(70, (groupW - (M - 1) * 12) / M);
+        var step = boxW + 12;
+        var x0start = gcx - ((M - 1) * step) / 2 - boxW / 2;
+        stats[k].forEach(function (st, ni) {
+          if (!st) return;
+          var cx = x0start + boxW / 2 + ni * step;
+          var t = M === 1 ? 1 : ni / (M - 1);
+          var fill = mix(chefLight[k], chefRGB[k], t);
+          var col = rgb(chefRGB[k]);
+          var medCol = t >= 0.75 ? "#ffffff" : col;
+          var x0 = cx - boxW / 2, x1 = cx + boxW / 2;
+          svg += '<line x1="' + cx + '" y1="' + yv(st.max) + '" x2="' + cx + '" y2="' + yv(st.q3) + '" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<line x1="' + cx + '" y1="' + yv(st.q1) + '" x2="' + cx + '" y2="' + yv(st.min) + '" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<line x1="' + x0 + '" y1="' + yv(st.max) + '" x2="' + x1 + '" y2="' + yv(st.max) + '" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<line x1="' + x0 + '" y1="' + yv(st.min) + '" x2="' + x1 + '" y2="' + yv(st.min) + '" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<rect x="' + x0 + '" y="' + yv(st.q3) + '" width="' + boxW + '" height="' + (yv(st.q1) - yv(st.q3)) + '" fill="' + rgb(fill) + '" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<line x1="' + x0 + '" y1="' + yv(st.med) + '" x2="' + x1 + '" y2="' + yv(st.med) + '" stroke="' + medCol + '" stroke-width="2"/>';
+          svg += '<circle cx="' + cx + '" cy="' + yv(st.mean) + '" r="5" fill="#ffffff" stroke="' + col + '" stroke-width="2"/>';
+          svg += '<text x="' + cx + '" y="' + (yv(st.max) - 6) + '" text-anchor="middle" font-size="11" font-weight="bold" fill="' + col + '">' + st.max + '</text>';
+          svg += '<text x="' + cx + '" y="' + (yv(st.min) + 14) + '" text-anchor="middle" font-size="11" font-weight="bold" fill="' + col + '">' + st.min + '</text>';
+        });
+        svg += '<text x="' + gcx + '" y="' + (PB + 22) + '" text-anchor="middle" font-size="13" font-weight="bold" fill="#2b2320">' + esc(labels[k]) + '</text>';
+      });
+      svg += '</svg>';
+      var legend = '<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;margin:8px 0 4px;font-size:14px;">';
+      nights.forEach(function (n, ni) {
+        var t = M === 1 ? 1 : ni / (M - 1);
+        var fill = mix(chefLight.mehmet, chefRGB.mehmet, t);
+        var iso = n.dateISO || parseTrDate(n.date);
+        legend += '<span><span style="display:inline-block;width:16px;height:12px;background:' + rgb(fill) + ';border:2px solid ' + rgb(chefRGB.mehmet) + ';vertical-align:middle;margin-right:6px"></span>' + esc(shortDate(iso) || n.date) + '</span>';
+      });
+      legend += '<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid #2b2320;vertical-align:middle;margin-right:6px"></span>ortalama</span></div>';
+      return '<h3>Şef puan dağılımı</h3><div class="table-wrap"><div style="min-width:560px">' + svg + '</div></div>' + legend +
+        '<p class="note" style="text-align:center">Kutu Q1–Q3 • çizgi medyan • nokta ortalama • bıyık min–max</p>';
+    })();
     var contRows = Object.keys(cont).map(function (name) {
       return { name: name, total: cont[name].total, rounds: cont[name].rounds, avg: avg(cont[name].total, cont[name].rounds) };
     }).sort(function (a, b) { return b.avg - a.avg; });
@@ -1034,6 +1167,7 @@
     });
     chefHtml += "</tbody></table></div>";
     chefHtml += "<p class='note'>En cömert: <strong>" + esc(generous.label) + "</strong> (" + generous.avg + ") • En katı: <strong>" + esc(strict.label) + "</strong> (" + strict.avg + ")</p>";
+    chefHtml += boxPlotHtml;
     chefHtml += "<h3>Şef başına yarışmacı ortalaması</h3>";
     chefHtml += '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Yarışmacı</th><th>Mehmet</th><th>Danilo</th><th>Somer</th></tr></thead><tbody>';
     contRows.forEach(function (r) {
@@ -1238,7 +1372,7 @@
     }
     if (!box) return;
     function lineupRow(l) {
-      return "<tr><td><strong>" + esc(l.week) + "</strong></td><td>" + (l.team === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + "</td><td>" +
+      return "<tr><td><strong>" + esc(weekDateRangeLabel(l.week)) + "</strong></td><td>" + (l.team === "blue" ? "🔵 Mavi" : "🔴 Kırmızı") + "</td><td>" +
         esc(l.roster.map(shortOf).join(", ")) + "</td><td><strong>" + l.wins + "–" + (l.played - l.wins) + "</strong></td><td><strong>" + pctStr(l) + "</strong></td></tr>";
     }
     var h = "";
@@ -1253,14 +1387,14 @@
         (summary ? '<p><a href="takimlar.html">Tüm ikililer →</a></p>' : "");
     }
     if (!summary && c.lineups.length) {
-      h += '<h3>📋 En iyi haftalık kadrolar</h3>' +
-        '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Hafta</th><th>Takım</th><th>Kadro</th><th>Skor</th><th>%</th></tr></thead><tbody>' +
+      h += '<h3>📋 En iyi kadrolar</h3>' +
+        '<div class="table-wrap"><table class="dish-table"><thead><tr><th>Tarih</th><th>Takım</th><th>Kadro</th><th>Skor</th><th>%</th></tr></thead><tbody>' +
         c.lineups.slice(0, 3).map(lineupRow).join("") + "</tbody></table></div>";
     }
     if (c.bestBlue || c.bestRed) {
       h += '<div class="stats-grid">';
-      if (c.bestBlue) h += '<div class="stat-board"><h3>🔵 En iyi Mavi kadro</h3><p><strong>' + esc(c.bestBlue.week) + "</strong> — " + c.bestBlue.wins + "–" + (c.bestBlue.played - c.bestBlue.wins) + " (" + pctStr(c.bestBlue) + ")</p><p class='note'>" + esc(c.bestBlue.roster.map(shortOf).join(", ")) + "</p></div>";
-      if (c.bestRed) h += '<div class="stat-board"><h3>🔴 En iyi Kırmızı kadro</h3><p><strong>' + esc(c.bestRed.week) + "</strong> — " + c.bestRed.wins + "–" + (c.bestRed.played - c.bestRed.wins) + " (" + pctStr(c.bestRed) + ")</p><p class='note'>" + esc(c.bestRed.roster.map(shortOf).join(", ")) + "</p></div>";
+      if (c.bestBlue) h += '<div class="stat-board"><h3>🔵 En iyi Mavi kadro</h3><p><strong>' + esc(weekDateRangeLabel(c.bestBlue.week)) + "</strong> — " + c.bestBlue.wins + "–" + (c.bestBlue.played - c.bestBlue.wins) + " (" + pctStr(c.bestBlue) + ")</p><p class='note'>" + esc(c.bestBlue.roster.map(shortOf).join(", ")) + "</p></div>";
+      if (c.bestRed) h += '<div class="stat-board"><h3>🔴 En iyi Kırmızı kadro</h3><p><strong>' + esc(weekDateRangeLabel(c.bestRed.week)) + "</strong> — " + c.bestRed.wins + "–" + (c.bestRed.played - c.bestRed.wins) + " (" + pctStr(c.bestRed) + ")</p><p class='note'>" + esc(c.bestRed.roster.map(shortOf).join(", ")) + "</p></div>";
       h += "</div>";
     }
     if (!summary) {
@@ -1329,9 +1463,9 @@
     }
     if (last) last.innerHTML = lastEps.map(renderDayCard).join("") || "<p class='note'>Geçen haftanın kartı yok.</p>";
     var cl = el("week-current-label");
-    if (cl) cl.textContent = maxW ? "· " + maxW + ". Hafta" : "";
+    if (cl) cl.textContent = maxW ? "· " + weekDateRangeLabel(maxW + ". Hafta") : "";
     var ll = el("week-last-label");
-    if (ll) ll.textContent = (maxW > 1) ? "· " + (maxW - 1) + ". Hafta" : "";
+    if (ll) ll.textContent = (maxW > 1) ? "· " + weekDateRangeLabel((maxW - 1) + ". Hafta") : "";
   }
   /* ---- Ana sayfa: oyuncular — kalan her yarışmacıya bir kart ----
      Başarı puanına göre sıralı; her kartta düello, dokunulmazlık,
@@ -1377,9 +1511,9 @@
   var formWindow = "week";
   function formRange() {
     var m = maxWeek();
-    if (formWindow === "week") return { from: m, to: m, label: m + ". hafta" };
-    if (formWindow === "2weeks") return { from: m - 1, to: m, label: (m - 1) + "–" + m + ". hafta" };
-    return { from: m - 3, to: m, label: (m - 3) + "–" + m + ". hafta" };
+    if (formWindow === "week") return { from: m, to: m, label: weeksRangeLabel(m, m) };
+    if (formWindow === "2weeks") return { from: m - 1, to: m, label: weeksRangeLabel(m - 1, m) };
+    return { from: m - 3, to: m, label: weeksRangeLabel(m - 3, m) };
   }
   function formBreak(r) {
     var parts = [];
@@ -1507,7 +1641,7 @@
         var hit = !q || (g.getAttribute("data-search") || "").indexOf(q) !== -1;
         g.style.display = hit ? "" : "none";
         if (q) g.open = hit;
-        else g.open = g.getAttribute("data-week") === "13. Hafta";
+        else g.open = g.getAttribute("data-week") === maxWeek() + ". Hafta";
         if (hit) teamShown++;
       });
       if (q) parts.push(teamShown + " hafta kadrosu");
