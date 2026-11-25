@@ -398,7 +398,6 @@ const CONTESTANTS = [
    "14 Ağu — bireysel dokunulmazlık (Burratalı tabak)",
    "22 Ağu — bireysel dokunulmazlık (Lavaşlı köfte)",
    "10 Eyl — bireysel dokunulmazlık (Kızılcıklı tabak)",
-   "2 Eki — bireysel dokunulmazlık (Sıfır atık tabağı)",
    "8 Eki — bireysel dokunulmazlık (Kuru dolma yorumu (kuzu + patlıcan))",
    "10 Eki — bireysel dokunulmazlık (Asitte pişmiş sardalya (sıfır atık))",
    "17 Ağu — kaptanlık (Tepsi pizza, Mavi kaptan)",
@@ -4210,11 +4209,7 @@ const EPISODES = [
    }
   ],
   "id": "2026-10-02",
-  "immunity": {
-   "detail": "45 dk, kuzu pirzola ve sıfır atık malzemeleri. Sıralama: 1. Muhammed, 2. Tolgahan, 3. Ayşe, 4. Kübra. Muhammed 5. aday olarak Batuhan'ı seçti.",
-   "name": "Sıfır atık",
-   "winner": "Muhammed Yahya Haliloğlu"
-  },
+  "immunity": null,
   "notes": [
    "Konsey (Kırmızı): Nurten 6, Şükran 4, Muhammed 4, Nilay 2 (Muhammed'in 2 oyu iptal, 16 sayıldı). Muhammed dokunulmazlık kazanan Tolgahan'ı yazdı.",
    "Cinnamon roll kazananı Kırmızı (orta-yüksek güven); Harira kazananı Mavi (orta güven)."
@@ -4228,7 +4223,7 @@ const EPISODES = [
    "Nurten Ocak Tamer"
   ],
   "source": "transkript",
-  "summary": "Baharatlı dünya yemekleri, 9 yemek, Mavi 5-4 kazandı (hafta 2-1). Bireysel dokunulmazlık Muhammed'in (sıfır atık); Batuhan ve kaptan Nurten potaya gitti. Konseyde Muhammed'in oyları iptal edildi.",
+  "summary": "Baharatlı dünya yemekleri, 9 yemek, Mavi 5-4 kazandı (hafta 2-1). Bireysel dokunulmazlık kazananı doğrulanmadı (2 Ekim sıfır atık oyunu Muhammed'in değil — MK); Batuhan ve kaptan Nurten potaya gitti. Konseyde Muhammed'in oyları iptal edildi.",
   "teams": {
    "blue": [
     "Eyüp Can Güneş",
